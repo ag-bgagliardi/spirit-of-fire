@@ -66,59 +66,62 @@ function Nav({ page, setPage }) {
 
 function Footer() {
   const c = useColors();
-  const links = ["Privacy Cloister","Terms of Service","Press Sanctuary","Archive"];
+  const socials = ["Facebook","Instagram"];
+  const links = ["Privacy Policy","Terms of Service","Archive"];
   return (
     <footer style={{ background:c.surface, padding:"80px 0 32px", borderTop:`1px solid rgba(89,66,56,0.1)` }}>
-      <div style={{ maxWidth:1200, margin:"0 auto", padding:"0 48px", display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:48 }}>
+      <div style={{ maxWidth:1200, margin:"0 auto", padding:"0 48px", display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gap:48 }}>
         <div>
           <div style={{ fontFamily:"'Noto Serif',serif", fontSize:19, color:c.primaryContainer, marginBottom:24 }}>Spirit of Fire</div>
           <p style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", color:c.outlineVariant, lineHeight:1.8, fontSize:13 }}>
-            Dedicated to the restoration of beauty in the dramatic arts. A theatre for the soul, a sanctuary for the seeker.
+            Theatre dedicated to greatness. A place where passion and hardwork are the tools to uplift the soul.
           </p>
         </div>
         <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
-          <h4 style={{ color:c.primary, fontSize:10, textTransform:"uppercase", letterSpacing:".2em", marginBottom:8 }}>Sanctuary Links</h4>
+          <h4 style={{ color:c.primary, fontSize:10, textTransform:"uppercase", letterSpacing:".2em", marginBottom:8 }}>More Information</h4>
           {links.map(l => (
             <span key={l} style={{ color:c.outlineVariant, fontSize:14, cursor:"pointer" }}
               onMouseEnter={e => e.currentTarget.style.color=c.onSurface}
               onMouseLeave={e => e.currentTarget.style.color=c.outlineVariant}>{l}</span>
           ))}
         </div>
+        <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
+          <h4 style={{ color:c.primary, fontSize:10, textTransform:"uppercase", letterSpacing:".2em", marginBottom:8 }}>Social Media Links</h4>
+          {socials.map(l => (
+            <span key={l} style={{ color:c.outlineVariant, fontSize:14, cursor:"pointer" }}
+              onMouseEnter={e => e.currentTarget.style.color=c.onSurface}
+              onMouseLeave={e => e.currentTarget.style.color=c.outlineVariant}>{l}</span>
+          ))}
+        </div>
         <div>
-          <h4 style={{ color:c.primary, fontSize:10, textTransform:"uppercase", letterSpacing:".2em", marginBottom:24 }}>Vespers Newsletter</h4>
+          <h4 style={{ color:c.primary, fontSize:10, textTransform:"uppercase", letterSpacing:".2em", marginBottom:24 }}>Spirit of Fire Newsletter</h4>
           <div style={{ display:"flex", borderBottom:`1px solid ${c.outlineVariant}`, paddingBottom:8, marginBottom:16 }}>
             <input placeholder="Email Address" type="email" style={{ background:"transparent", border:"none", outline:"none", color:c.onSurface, flex:1, fontSize:14 }} />
             <span style={{ color:c.primaryContainer, cursor:"pointer", fontSize:18 }}>→</span>
           </div>
-          <p style={{ fontSize:9, color:c.outlineVariant }}>© MMXXIV Spirit of Fire Theatre Company. Ad Majorem Dei Gloriam.</p>
+          <p style={{ fontSize:9, color:c.outlineVariant }}>© 2026 Spirit of Fire Theatre Company. Soli Deo Gloria.</p>
         </div>
       </div>
     </footer>
   );
 }
 
-function ShowCard({ title, dates, badge, index }) {
+function ShowCard({ title, dates, badge, badgeColor, badgeText }) {
   const c = useColors();
   const [hov, setHov] = useState(false);
-  const grads = ["linear-gradient(160deg,#3d1000,#1a0500)","linear-gradient(160deg,#1a0a1a,#0d0508)","linear-gradient(160deg,#0a0d1a,#050508)"];
-  const icons = ["🎭","⛪","🎹"];
   return (
-    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{ cursor:"pointer" }}>
-      <div style={{ position:"relative", paddingTop:"133%", overflow:"hidden" }}>
-        <div style={{ position:"absolute", inset:0, background:grads[index], transform:hov?"scale(1.06)":"scale(1)", transition:"transform .7s ease", display:"flex", alignItems:"center", justifyContent:"center" }}>
-          <span style={{ fontSize:64, opacity:.3 }}>{icons[index]}</span>
+    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
+      <div style={{ position:"relative", paddingTop:"150%", overflow:"hidden", background:c.surfaceHighest, marginBottom:24 }}>
+        <div style={{ position:"absolute", inset:0, background:"linear-gradient(160deg,#1a0800,#050200)", transform:hov?"scale(1.05)":"scale(1)", filter:hov?"grayscale(0%)":"grayscale(100%)", transition:"all .7s ease", display:"flex", alignItems:"center", justifyContent:"center" }}>
+          <span style={{ fontSize:80 }}>🎭</span>
         </div>
         <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(19,19,19,0.7) 0%,transparent 60%)" }} />
-        {badge && (
-          <div style={{ position:"absolute", bottom:20, left:20 }}>
-            <span style={{ background:c.primaryContainer, color:c.onPrimaryContainer, padding:"4px 12px", fontSize:9, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase" }}>{badge}</span>
-          </div>
-        )}
+        <div style={{ position:"absolute", bottom:20, left:20 }}>
+          <span style={{ background:badgeColor, color:badgeText, padding:"4px 12px", fontSize:9, fontWeight:700, letterSpacing:".25em", textTransform:"uppercase" }}>{badge}</span>
+        </div>
       </div>
-      <div style={{ marginTop:28 }}>
-        <h3 style={{ fontFamily:"'Noto Serif',serif", fontSize:28, color:hov?c.primary:c.onSurface, transition:"color .3s", marginBottom:8 }}>{title}</h3>
-        <p style={{ color:c.onSurfaceVariant, fontSize:10, letterSpacing:".2em", textTransform:"uppercase" }}>{dates}</p>
-      </div>
+      <h3 style={{ fontFamily:"'Noto Serif',serif", fontSize:22, color:hov?c.primary:c.onSurface, transition:"color .3s", marginBottom:8 }}>{title}</h3>
+      <p style={{ fontSize:10, color:c.outline, letterSpacing:".2em", textTransform:"uppercase", marginBottom:16 }}>{dates}</p>
     </div>
   );
 }
@@ -159,10 +162,10 @@ function HeroSection({ setPage }) {
       <div style={{ position:"relative", zIndex:2, maxWidth:1200, margin:"0 auto", padding:"0 48px", display:"grid", gridTemplateColumns:"1fr 1fr", gap:48, alignItems:"center" }}>
         <div style={{ display:"flex", flexDirection:"column", gap:32 }}>
           <h1 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:88, lineHeight:.9, letterSpacing:"-.03em", color:c.onSurface }}>
-            The <span style={{ color:c.primaryContainer }}>Sacred</span><br />Dialogue
+            Soli <span style={{ color:c.primaryContainer }}>Deo</span><br />Gloria
           </h1>
           <p style={{ fontSize:18, color:c.onSurfaceVariant, maxWidth:420, lineHeight:1.7, fontWeight:300 }}>
-            Where the ancient liturgical tradition meets the vanguard of contemporary theatre. Experience the flame of truth.
+            To the glory of God alone.
           </p>
           <div style={{ display:"flex", gap:20 }}>
             <button onClick={() => setPage("productions")} style={{ background:c.primaryContainer, color:c.onPrimaryContainer, padding:"16px 32px", fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase" }}>View Season</button>
@@ -177,8 +180,8 @@ function HeroSection({ setPage }) {
               <span style={{ fontSize:72, opacity:.6 }}>🕯️</span>
             </div>
             <div style={{ position:"absolute", bottom:24, left:-48, background:c.surface, padding:"20px 24px" }}>
-              <span style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", color:c.primaryContainer, fontSize:20, display:"block" }}>Opening Soon</span>
-              <span style={{ textTransform:"uppercase", letterSpacing:".15em", fontSize:10 }}>The Martyr's Silence</span>
+              <span style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", color:c.primaryContainer, fontSize:20, display:"block" }}>Returning Soon</span>
+              <span style={{ textTransform:"uppercase", letterSpacing:".15em", fontSize:10 }}>Mother Rabbit</span>
             </div>
           </div>
         </div>
@@ -194,12 +197,12 @@ function HearthSection() {
       <div style={{ maxWidth:1200, margin:"0 auto", padding:"0 48px", display:"grid", gridTemplateColumns:"5fr 7fr", gap:64, alignItems:"center" }}>
         <div style={{ display:"flex", flexDirection:"column", gap:24 }}>
           <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:48, lineHeight:1.1 }}>
-            Welcome to<br />the <span style={{ color:c.primaryContainer }}>Hearth</span>
+            Welcome to<br />the <span style={{ color:c.primaryContainer }}>Spirit of Fire</span>
           </h2>
           <div style={{ height:3, width:80, background:c.primaryContainer }} />
-          <p style={{ color:c.onSurfaceVariant, lineHeight:1.8, fontWeight:300 }}>At Spirit of Fire, we believe theatre is a liturgical act—a public service that reveals the Divine through the human experience. Our mission is to ignite hearts through stories that resonate with the weight of eternity.</p>
-          <p style={{ color:c.onSurfaceVariant, lineHeight:1.8, fontWeight:300 }}>Founded on the principles of beauty, goodness, and truth, we invite you to sit by the fire and witness the transcendent.</p>
-          <span style={{ color:c.primary, fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", cursor:"pointer" }}>Learn More About Our Charism →</span>
+          <p style={{ color:c.onSurfaceVariant, lineHeight:1.8, fontWeight:300 }}>At Spirit of Fire, we tell stories that encourage, inspire, and challenge people to see all of life and experience–past, present, and future–by the light of Jesus Christ.</p>
+          <p style={{ color:c.onSurfaceVariant, lineHeight:1.8, fontWeight:300 }}>Fire represents the ferocious dedication and passion in any project we undertake. It represents the indwelling Holy Spirit that guides and inspires, and it represents the grace of our Lord we tirelessly seek. Thus, we desire always to have the Spirit, or the essence of this Fire.</p>
+          <span style={{ color:c.primary, fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", cursor:"pointer" }}>Learn More →</span>
         </div>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
           <div style={{ paddingTop:48 }}>
@@ -219,9 +222,9 @@ function HearthSection() {
 function NextOnStageSection() {
   const c = useColors();
   const shows = [
-    { title:"The Passion Play", dates:"Nov 12 — Dec 24", badge:"Limited Run", index:0 },
-    { title:"Voices of the Cloister", dates:"Jan 05 — Jan 30", index:1 },
-    { title:"Ember and Ash", dates:"Feb 14 — Mar 22", index:2 },
+    { title:"Mother Rabbit", dates:"JUN 01 — JUL 01", badge:"Encore Performance", badgeColor:c.tertiaryContainer, badgeText:"#38017a" },
+    { title:"Animal Crackers", dates:"TBD", badge:"Adaptation", badgeColor:c.surfaceContainer, badgeText:c.primary },
+    { title:"Missing the Rain", dates:"TBD", badge:"World Premiere", badgeColor:c.primaryContainer, badgeText:c.onPrimaryContainer },
   ];
   return (
     <section style={{ padding:"96px 0", background:c.surface }}>
@@ -256,8 +259,9 @@ function GallerySection() {
   return (
     <section style={{ padding:"96px 0", background:c.surfaceLowest, overflow:"hidden" }}>
       <div style={{ maxWidth:1200, margin:"0 auto", padding:"0 48px", textAlign:"center", marginBottom:64 }}>
-        <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:48, marginBottom:12 }}>Sacred <span style={{ color:c.primary }}>Spaces</span></h2>
-        <p style={{ color:c.outline, textTransform:"uppercase", letterSpacing:".4em", fontSize:10 }}>Architecture of the Soul</p>
+        <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:48, marginBottom:12 }}>Uplifting the <span style={{ color:c.primary }}>Soul</span></h2>
+        <p style={{ color:c.outline, textTransform:"uppercase", letterSpacing:".4em", lineHeight: "2em", fontSize:10 }}>Considering it an honour to employ</p>
+        <p style={{ color:c.outline, textTransform:"uppercase", letterSpacing:".4em", lineHeight: "2em", fontSize:10 }}>and develop the gifts received from God</p>
       </div>
       <div style={{ maxWidth:1400, margin:"0 auto", padding:"0 16px", display:"grid", gridTemplateColumns:"repeat(4,1fr)", gridTemplateRows:"repeat(2,260px)", gap:8 }}>
         {items.map((g,i) => (
@@ -281,11 +285,11 @@ function CTASection() {
     <section style={{ padding:"160px 24px", background:c.surface, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center", position:"relative" }}>
       <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse at center,rgba(249,94,20,0.07) 0%,transparent 70%)" }} />
       <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:56, maxWidth:700, marginBottom:48, lineHeight:1.15, position:"relative" }}>
-        Will you help us<br />keep the <span style={{ color:c.primaryContainer }}>Flame</span> alive?
+        Keep the <span style={{ color:c.primaryContainer }}>Flame</span> alive
       </h2>
       <div style={{ display:"flex", gap:24, position:"relative" }}>
         <button style={{ padding:"20px 48px", background:c.onSurface, color:c.surface, fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase" }}>Become a Patron</button>
-        <button style={{ padding:"20px 48px", border:`1px solid ${c.outline}`, color:c.onSurface, fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase" }}>Join the Guild</button>
+        <button style={{ padding:"20px 48px", border:`1px solid ${c.outline}`, color:c.onSurface, fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase" }}>Get Involved</button>
       </div>
     </section>
   );
@@ -455,13 +459,13 @@ function ProductionsHero() {
           <span style={{ fontSize:10, textTransform:"uppercase", letterSpacing:".3em", color:c.primary }}>Current Season</span>
         </div>
         <h1 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:80, lineHeight:.92, letterSpacing:"-.03em", marginBottom:32 }}>
-          Embers of<br /><span style={{ color:c.primaryContainer }}>Humanity</span>
+          Mother <span style={{ color:c.primaryContainer }}>Rabbit</span>
         </h1>
         <p style={{ fontSize:17, color:c.onSurfaceVariant, lineHeight:1.7, maxWidth:500, marginBottom:40, fontWeight:300 }}>
-          This season, we explore the divine flicker within the mundane. Each production serves as a liturgical act, inviting the audience into a sanctuary where the line between stage and altar dissolves.
+          Peter Kotski’s mother is sick. His father passed away years ago. His eccentric brothers are eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
         </p>
         <button style={{ border:`1px solid ${c.outlineVariant}`, color:c.onSurface, padding:"12px 32px", fontSize:11, letterSpacing:".2em", textTransform:"uppercase" }}>
-          Read the Liturgical Notes
+          Read More
         </button>
       </div>
       <div style={{ position:"relative" }}>
@@ -472,20 +476,20 @@ function ProductionsHero() {
   );
 }
 
-function StageOfferings({ setPage }) {
+function Performances({ setPage }) {
   const c = useColors();
   const prods = [
-    { title:"The Martyr's Silence", dates:"OCT 12 — NOV 04", badge:"World Premiere", badgeColor:c.primaryContainer, badgeText:c.onPrimaryContainer },
-    { title:"Vesper of the Lost", dates:"NOV 18 — DEC 15", badge:"Limited Engagement", badgeColor:c.surfaceContainer, badgeText:c.primary },
-    { title:"Sacred Anatomy", dates:"JAN 05 — JAN 28", badge:"Encore Performance", badgeColor:c.tertiaryContainer, badgeText:"#38017a" },
+    { title:"Mother Rabbit", dates:"JUN 01 — JUL 01", badge:"Encore Performance", badgeColor:c.tertiaryContainer, badgeText:"#38017a" },
+    { title:"Animal Crackers", dates:"TBD", badge:"Adaptation", badgeColor:c.surfaceContainer, badgeText:c.primary },
+    { title:"Missing the Rain", dates:"TBD", badge:"World Premiere", badgeColor:c.primaryContainer, badgeText:c.onPrimaryContainer },
   ];
   return (
     <section style={{ background:c.surfaceLow, padding:"96px 48px" }}>
       <div style={{ maxWidth:1200, margin:"0 auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:64, borderBottom:`1px solid rgba(89,66,56,0.2)`, paddingBottom:28 }}>
           <div>
-            <h2 style={{ fontFamily:"'Noto Serif',serif", fontSize:36, marginBottom:8 }}>Stage Offerings</h2>
-            <p style={{ fontSize:11, color:c.outline, letterSpacing:".2em", textTransform:"uppercase" }}>Active Productions • MMXXIV</p>
+            <h2 style={{ fontFamily:"'Noto Serif',serif", fontSize:36, marginBottom:8 }}>Performances</h2>
+            <p style={{ fontSize:11, color:c.outline, letterSpacing:".2em", textTransform:"uppercase" }}>Active Productions • 2026</p>
           </div>
           <div style={{ display:"flex", gap:16 }}>
             {["←","→"].map(a => <span key={a} style={{ color:c.primary, cursor:"pointer", fontSize:20 }}>{a}</span>)}
@@ -499,15 +503,15 @@ function StageOfferings({ setPage }) {
   );
 }
 
-function DirectorQuote() {
+function MainQuote() {
   const c = useColors();
   return (
-    <section style={{ padding:"160px 48px", textAlign:"center", maxWidth:860, margin:"0 auto" }}>
+    <section style={{ padding:"160px 48px", textAlign:"center", maxWidth:900, margin:"0 auto" }}>
       <div style={{ fontSize:40, color:c.primaryContainer, marginBottom:32 }}>✦</div>
       <blockquote style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:34, lineHeight:1.4, color:c.onSurface, marginBottom:40 }}>
-        "Theater is the only art form that allows us to witness the fire of the human spirit in real-time, shared between the breath of the actor and the heart of the seeker."
+        All art should have no other end and aim than the glory of God and the soul’s refreshment; where this is not remembered there is no real art but only a devilish hubbub. Soli Deo Gloria.
       </blockquote>
-      <cite style={{ fontSize:10, textTransform:"uppercase", letterSpacing:".4em", color:c.primary, fontStyle:"normal" }}>Director's Manifesto</cite>
+      <cite style={{ fontSize:10, textTransform:"uppercase", letterSpacing:".4em", color:c.primary, fontStyle:"normal" }}>Johann Sebastian Bach</cite>
     </section>
   );
 }
@@ -516,8 +520,8 @@ function ProductionsPage({ setPage }) {
   return (
     <main className="pat" style={{ minHeight:"100vh" }}>
       <ProductionsHero />
-      <StageOfferings setPage={setPage} />
-      <DirectorQuote />
+      <Performances setPage={setPage} />
+      <MainQuote />
       <Footer />
     </main>
   );
@@ -525,7 +529,7 @@ function ProductionsPage({ setPage }) {
 
 function StepIndicator() {
   const c = useColors();
-  const steps = ["I · Production", "II · The Altar", "III · Offering"];
+  const steps = ["I · Production", "II · Seat Choice", "III · Review"];
   return (
     <nav style={{ display:"flex", justifyContent:"center", marginBottom:64, padding:"0 48px" }}>
       <ol style={{ display:"flex", alignItems:"center", width:"100%", maxWidth:600 }}>
@@ -545,13 +549,15 @@ function StepIndicator() {
 
 function ShowSelector({ selected, onSelect }) {
   const c = useColors();
+
   const shows = [
-    { title:"The First Ember", sub:"Opening Cycle", desc:"A liturgical exploration of birth, heat, and the awakening of the spirit through fire." },
-    { title:"Vesper of Shadows", sub:"Main Series", desc:"The centerpiece production: an immersive descent into the silence of the cathedral night." },
+    { title:"Mother Rabbit", sub:"Opening Cycle", desc:"An explosive, anarchic comedy inspired by the works of Abbott and Costello and the Marx Brothers." },
+    { title:"Animal Crackers", sub:"Adaptation Premiere", desc:"The revival of the old American Comedy genuises: the Marx Brothers." },
+    { title:"Missing the Rain", sub:"World Premiere", desc:"A dramatic exploration of forgiveness and family struggles." },
   ];
   return (
     <section>
-      <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:28, marginBottom:32, borderLeft:`2px solid ${c.primaryContainer}`, paddingLeft:24 }}>I. Choose Your Passage</h2>
+      <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:28, marginBottom:32, borderLeft:`2px solid ${c.primaryContainer}`, paddingLeft:24 }}>I. Choose Your Performance</h2>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:24 }}>
         {shows.map((show, i) => (
           <div key={i} onClick={() => onSelect(i)} style={{ background:selected===i?c.surfaceHigh:c.surfaceLow, outline:selected===i?`1px solid ${c.primaryContainer}`:"none", cursor:"pointer", overflow:"hidden" }}>
@@ -581,7 +587,7 @@ function DatePicker({ selected, onSelect }) {
   const dates = Array.from({length:10},(_,i)=>i+1);
   return (
     <section>
-      <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:28, marginBottom:32, borderLeft:`2px solid ${c.primaryContainer}`, paddingLeft:24 }}>II. The Appointed Time</h2>
+      <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:28, marginBottom:32, borderLeft:`2px solid ${c.primaryContainer}`, paddingLeft:24 }}>II. Choose Your Date</h2>
       <div style={{ background:c.surfaceLow, padding:32 }}>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(7,1fr)", gap:8, marginBottom:16, textAlign:"center" }}>
           {days.map(d => <span key={d} style={{ fontSize:9, textTransform:"uppercase", color:c.outline, letterSpacing:".1em" }}>{d}</span>)}
@@ -609,12 +615,12 @@ function SeatMap({ selected, onToggle }) {
   const rows = [[0,1,2,3,4,5],[0,1,2,3,4,5,6,7],[null,null,0,1,2,3,null,null]];
   return (
     <section>
-      <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:28, marginBottom:32, borderLeft:`2px solid ${c.primaryContainer}`, paddingLeft:24 }}>III. The Auditorium</h2>
+      <h2 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:28, marginBottom:32, borderLeft:`2px solid ${c.primaryContainer}`, paddingLeft:24 }}>III. Choose Your Seat</h2>
       <div style={{ background:c.surfaceContainer, padding:48, textAlign:"center" }}>
         <div style={{ position:"relative", marginBottom:40 }}>
           <div style={{ width:"75%", margin:"0 auto", height:2, background:"linear-gradient(to right,transparent,rgba(255,181,154,0.4),transparent)" }} />
-          <span style={{ position:"absolute", top:-18, left:"50%", transform:"translateX(-50%)", fontSize:9, textTransform:"uppercase", letterSpacing:".4em", color:c.primary, whiteSpace:"nowrap" }}>The Altar (Stage)</span>
-        </div>
+          <span style={{ position:"absolute", top:-18, left:"50%", transform:"translateX(-50%)", fontSize:9, textTransform:"uppercase", letterSpacing:".4em", color:c.primary, whiteSpace:"nowrap" }}>The Stage</span>
+        </div> 
         <div style={{ display:"flex", flexDirection:"column", gap:16, alignItems:"center" }}>
           {rows.map((row, ri) => (
             <div key={ri} style={{ display:"flex", gap:10, justifyContent:"center" }}>
@@ -642,18 +648,18 @@ function SeatMap({ selected, onToggle }) {
   );
 }
 
-function PassageSummary({ showIndex, date, seats, offering, onOfferingChange }) {
+function PerformanceSummary({ showIndex, date, seats, offering, onOfferingChange }) {
   const c = useColors();
-  const shows = ["The First Ember","Vesper of Shadows"];
+  const shows = ["Mother Rabbit","Animal Crackers","Missing the Rain"];
   const total = seats.length * 60 + (typeof offering === "number" ? offering : 0);
   return (
     <div style={{ position:"sticky", top:120, background:c.surfaceContainer, padding:32, borderLeft:`1px solid rgba(255,181,154,0.15)` }}>
-      <h3 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:20, color:c.primary, marginBottom:28 }}>Summary of Passage</h3>
+      <h3 style={{ fontFamily:"'Noto Serif',serif", fontStyle:"italic", fontSize:20, color:c.primary, marginBottom:28 }}>Summary of Purchase</h3>
       <div style={{ display:"flex", flexDirection:"column", gap:20, marginBottom:28, paddingBottom:28, borderBottom:`1px solid ${c.outlineVariant}` }}>
         {[
           { label:"Production", value:shows[showIndex] },
-          { label:"Scheduled Time", value:`October ${String(date).padStart(2,"0")}, MMXXIV • 19:30` },
-          { label:"Sacred Stations", value:`Row A, Station ${seats.map(s=>s+1).join(", ")||"—"}`, price:`$${seats.length*60}.00` },
+          { label:"Scheduled Time", value:`June ${String(date).padStart(2,"0")}, 2026 • 7:00 p.m.` },
+          { label:"Seat", value:`Row A, Seat ${seats.map(s=>s+1).join(", ")||"—"}`, price:`$${seats.length*60}.00` },
         ].map((r,i) => (
           <div key={i} style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start" }}>
             <div>
@@ -665,10 +671,10 @@ function PassageSummary({ showIndex, date, seats, offering, onOfferingChange }) 
         ))}
       </div>
       <div style={{ marginBottom:28 }}>
-        <p style={{ fontSize:10, textTransform:"uppercase", letterSpacing:".2em", color:c.primary, fontWeight:700, marginBottom:12 }}>⛩ Votive Offering</p>
+        <p style={{ fontSize:10, textTransform:"uppercase", letterSpacing:".2em", color:c.primary, fontWeight:700, marginBottom:12 }}>⛩ Goodwill Offering</p>
         <p style={{ fontSize:11, color:c.onSurfaceVariant, lineHeight:1.7, marginBottom:16 }}>Support the ongoing mission through a voluntary contribution.</p>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:8 }}>
-          {[5,10,25,"Custom"].map(o => (
+          {[0,5,10,"Custom"].map(o => (
             <button key={o} onClick={() => typeof o==="number" && onOfferingChange(o)} style={{ padding:"8px 4px", fontSize:12, fontWeight:offering===o?700:400, border:`1px solid ${offering===o?c.primary:c.outline}`, color:offering===o?c.primary:c.onSurface, background:offering===o?"rgba(255,181,154,0.1)":"transparent", transition:"all .2s" }}>
               {typeof o==="number"?`$${o}`:o}
             </button>
@@ -677,13 +683,13 @@ function PassageSummary({ showIndex, date, seats, offering, onOfferingChange }) 
       </div>
       <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", fontSize:17, fontWeight:700 }}>
-          <span>Final Offering</span>
+          <span>Total Cost</span>
           <span style={{ color:c.primaryContainer }}>${total}.00</span>
         </div>
         <button style={{ width:"100%", background:c.primaryContainer, color:c.onPrimaryContainer, padding:16, fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", boxShadow:"0 10px 30px rgba(249,94,20,0.3)" }}>
-          Complete Passage
+          Complete Purchase
         </button>
-        <p style={{ fontSize:9, textAlign:"center", color:c.outlineVariant, fontStyle:"italic" }}>All tickets are non-refundable ritual passes.</p>
+        <p style={{ fontSize:9, textAlign:"center", color:c.outlineVariant, fontStyle:"italic" }}>All tickets are non-refundable purchases.</p>
       </div>
     </div>
   );
@@ -709,7 +715,7 @@ function TicketsPage() {
           <SeatMap selected={selectedSeats} onToggle={toggleSeat} />
         </div>
         <div>
-          <PassageSummary showIndex={selectedShow} date={selectedDate} seats={selectedSeats} offering={offering} onOfferingChange={setOffering} />
+          <PerformanceSummary showIndex={selectedShow} date={selectedDate} seats={selectedSeats} offering={offering} onOfferingChange={setOffering} />
         </div>
       </div>
       <div style={{ padding:"0 48px" }}>
