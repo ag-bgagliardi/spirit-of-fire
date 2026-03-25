@@ -1,6 +1,6 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
-import productions from "../Data/CurrentShows"
+import productions from "../Data/CurrentShows";
 
 const shows = productions;
 function StepIndicator() {

@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Nav from "./Nav"
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 
+import Nav from "./Nav";
 import HomePage from "../Pages/HomePage";
 import MissionPage from "../Pages/MissionPage";
 import TeamPage from "../Pages/TeamPage";
@@ -11,22 +11,32 @@ import AffiliatesPage from "../Pages/AffiliatesPage";
 import SupportPage from "../Pages/SupportPage";
 import TheatologyPage from "../Pages/TheatologyPage";
 
-export default function App() {
-  const [page, setPage] = useState("home");
+function Layout() {
+  const { pathname } = useLocation();
   return (
     <>
-      <Nav page={page} setPage={setPage} />
-      <div style={{ paddingTop: page === "home" ? 0 : 80 }}>
-        {page === "home" && <HomePage setPage={setPage} />}
-        {page === "mission" && <MissionPage setPage={setPage} />}
-        {page === "team" && <TeamPage setPage={setPage} />}
-        {page === "productions" && <ProductionsPage setPage={setPage} />}
-        {page === "tickets" && <TicketsPage setPage={setPage} />}
-        {page === "participate" && <ParticipatePage setPage={setPage} />}
-        {page === "affiliates" && <AffiliatesPage />}
-        {page === "support" && <SupportPage setPage={setPage} />}
-        {page === "theatology" && <TheatologyPage />}
+      <Nav />
+      <div style={{ paddingTop: pathname === "/" ? 0 : 80 }}>
+        <Routes>
+          <Route path="/"            element={<HomePage />} />
+          <Route path="/mission"     element={<MissionPage />} />
+          <Route path="/team"        element={<TeamPage />} />
+          <Route path="/productions" element={<ProductionsPage />} />
+          <Route path="/tickets"     element={<TicketsPage />} />
+          <Route path="/participate" element={<ParticipatePage />} />
+          <Route path="/affiliates"  element={<AffiliatesPage />} />
+          <Route path="/support"     element={<SupportPage />} />
+          <Route path="/theatology"  element={<TheatologyPage />} />
+        </Routes>
       </div>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <Layout />
+    </HashRouter>
   );
 }

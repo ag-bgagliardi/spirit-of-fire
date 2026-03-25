@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../Main/Footer";
 import ricoImage from "../Assets/People/Rico.webp";
 import benImage from "../Assets/People/Benjamin.png";
@@ -153,7 +154,8 @@ function LeadershipSection() {
   );
 }
 
-function MissionCTA({ setPage }) {
+function MissionCTA() {
+  const navigate = useNavigate();
   return (
     <section className="section-cta-bordered">
       <div className="section-cta-bordered__inner">
@@ -164,22 +166,22 @@ function MissionCTA({ setPage }) {
           Join us for an evening of unbridled joy and laughter, as family and loved ones learn to forgive and work with each other.
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
-          <button className="btn-primary" onClick={() => setPage("tickets")}>Reserve Your Ticket</button>
-          <button className="btn-ghost-primary" onClick={() => setPage("support")}>Become a Patron</button>
+          <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Your Ticket</button>
+          <button className="btn-ghost-primary" onClick={() => navigate("/support")}>Become a Patron</button>
         </div>
       </div>
     </section>
   );
 }
 
-export default function MissionPage({ setPage }) {
+export default function MissionPage() {
   return (
     <main>
       <MissionHero />
       <MissionStatement />
       <LocationSection />
       <LeadershipSection />
-      <MissionCTA setPage={setPage} />
+      <MissionCTA />
       <Footer />
     </main>
   );

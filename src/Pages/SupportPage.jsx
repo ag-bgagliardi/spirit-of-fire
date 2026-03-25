@@ -1,8 +1,7 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
-import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
-import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
-import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
+import { useNavigate } from "react-router-dom";
+import productions from "../Data/CurrentShows"
 import "../Style/global.css";
 
 const AMOUNTS = [5, 10, 25, 50, 100];
@@ -171,12 +170,9 @@ function SupportProdCard({ title, dates, badge, badgeColor, badgeText, onBook, i
   );
 }
 
-function SupportPerformances({ setPage }) {
-  const prods = [
-    { title: "Mother Rabbit",    dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: "#a37cea", badgeText: "#38017a",  image: motherRabbitImage },
-    { title: "Animal Crackers",  dates: "TBD",              badge: "Adaptation",         badgeColor: "#201f1f", badgeText: "#ffb59a",  image: animalCrackersImage },
-    { title: "Missing the Rain", dates: "TBD",              badge: "World Premiere",     badgeColor: "#f95e14", badgeText: "#4f1700",  image: missingRainImage },
-  ];
+function SupportPerformances() {
+  const navigate = useNavigate();
+  const prods = productions;
   return (
     <section className="section-pad bg-surface-low" style={{ padding: "96px 48px" }}>
       <div className="container" style={{ padding: 0 }}>
@@ -187,7 +183,7 @@ function SupportPerformances({ setPage }) {
         <button
           onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-          onClick={() => setPage("portfolio")}
+          onClick={() => navigate("/portfolio")}
           style={{ width: "20%", padding: 16, margin: "30px 60px", fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer", fontFamily: "var(--font-sans)" }}
         >Purchase Scripts</button>
         <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, borderBottom: "1px solid rgba(89,66,56,0.2)", paddingBottom: 28 }}>
@@ -201,20 +197,20 @@ function SupportPerformances({ setPage }) {
           </div>
         </div>
         <div className="grid-3" style={{ gap: 48 }}>
-          {prods.map(p => <SupportProdCard key={p.title} {...p} onBook={() => setPage("tickets")} />)}
+          {prods.map(p => <SupportProdCard key={p.title} {...p} onBook={() => navigate("/tickets")} />)}
         </div>
       </div>
     </section>
   );
 }
 
-export default function SupportPage({ setPage }) {
+export default function SupportPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <main style={{ paddingTop: 80 }}>
       <SupportHero />
       <DonationForm />
-      <SupportPerformances setPage={setPage} />
+      <SupportPerformances />
       <QuoteStrip />
       <Footer />
     </main>

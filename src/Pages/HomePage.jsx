@@ -1,5 +1,6 @@
 import Footer from "../Main/Footer";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Style/global.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
@@ -38,7 +39,8 @@ function ShowCard({ title, dates, badge, badgeColor, badgeText, image, onBook })
   );
 }
 
-function HeroSection({ setPage }) {
+function HeroSection() {
+  const navigate = useNavigate();
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <section className="hero">
@@ -55,8 +57,8 @@ function HeroSection({ setPage }) {
               To the glory of God alone.
             </p>
             <div className="flex-row" style={{ gap: 20 }}>
-              <button className="btn-primary" onClick={() => setPage("productions")}>View Season</button>
-              <button className="btn-ghost" onClick={() => setPage("mission")}>Our Mission</button>
+              <button className="btn-primary" onClick={() => navigate("/productions")}>View Season</button>
+              <button className="btn-ghost" onClick={() => navigate("/mission")}>Our Mission</button>
             </div>
           </div>
           <div className="flex-row" style={{ justifyContent: "flex-end" }}>
@@ -81,7 +83,8 @@ function HeroSection({ setPage }) {
   );
 }
 
-function SpiritSection({ setPage }) {
+function SpiritSection() {
+  const navigate = useNavigate();
   return (
     <section className="pat section-pad bg-surface-low">
       <div className="container grid-5-7">
@@ -96,7 +99,7 @@ function SpiritSection({ setPage }) {
           <p className="body-md color-on-surface-var">
             Fire represents the ferocious dedication and passion in any project we undertake. It represents the indwelling Holy Spirit that guides and inspires, and it represents the grace of our Lord we tirelessly seek. Thus, we desire always to have the Spirit, or the essence of this Fire.
           </p>
-          <button className="btn-text" onClick={() => setPage("mission")}>Learn More →</button>
+          <button className="btn-text" onClick={() => navigate("/mission")}>Learn More →</button>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
           <div style={{ paddingTop: 48 }}>
@@ -117,7 +120,8 @@ function SpiritSection({ setPage }) {
   );
 }
 
-function NextOnStageSection({ setPage }) {
+function NextOnStageSection() {
+  const navigate = useNavigate();
   const shows = productions;
   return (
     <section className="section-pad bg-surface">
@@ -133,7 +137,7 @@ function NextOnStageSection({ setPage }) {
           </div>
         </div>
         <div className="grid-3">
-          {shows.map(s => <ShowCard onBook={() => setPage("tickets")} key={s.title} {...s} />)}
+          {shows.map(s => <ShowCard onBook={() => navigate("/tickets")} key={s.title} {...s} />)}
         </div>
       </div>
     </section>
@@ -173,7 +177,8 @@ function GallerySection() {
   );
 }
 
-function CTASection({ setPage }) {
+function CTASection() {
+  const navigate = useNavigate();
   return (
     <section className="section-pad-xl bg-surface flex-col flex-center" style={{ textAlign: "center", position: "relative" }}>
       <div className="cta-glow" />
@@ -181,21 +186,21 @@ function CTASection({ setPage }) {
         Keep the <span className="color-primary-container">Flame</span> alive
       </h2>
       <div className="flex-row" style={{ gap: 24, position: "relative" }}>
-        <button className="btn-solid" onClick={() => setPage("support")}>Become a Patron</button>
-        <button className="btn-outline" onClick={() => setPage("participate")}>Get Involved</button>
+        <button className="btn-solid" onClick={() => navigate("/support")}>Become a Patron</button>
+        <button className="btn-outline" onClick={() => navigate("/participate")}>Get Involved</button>
       </div>
     </section>
   );
 }
 
-export default function HomePage({ setPage }) {
+export default function HomePage() {
   return (
     <main>
-      <HeroSection setPage={setPage} />
-      <SpiritSection setPage={setPage} />
-      <NextOnStageSection setPage={setPage}  />
+      <HeroSection />
+      <SpiritSection />
+      <NextOnStageSection  />
       <GallerySection />
-      <CTASection setPage={setPage} />
+      <CTASection />
       <Footer />
     </main>
   );

@@ -1,7 +1,6 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import bigBlueLogo from "../Assets/Logos/bbt.webp";
-
 function AffiliatesHero() {
   return (
     <section className="affiliates-hero" style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>

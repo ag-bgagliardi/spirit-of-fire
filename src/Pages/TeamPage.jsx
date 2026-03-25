@@ -1,5 +1,6 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ricoImage from "../Assets/People/Rico.webp";
 import benImage from "../Assets/People/Benjamin.jpeg";
 import silasImage from "../Assets/People/SilasWide.jpeg";
@@ -141,7 +142,8 @@ function TeamSection() {
   );
 }
 
-function TeamCTA({ setPage }) {
+function TeamCTA() {
+  const navigate = useNavigate();
   return (
     <section className="section-pad bg-surface-lowest" style={{ padding: "120px 48px", borderTop: "1px solid rgba(89,66,56,0.15)", textAlign: "center", position: "relative" }}>
       <div className="cta-glow" style={{ pointerEvents: "none" }} />
@@ -154,21 +156,21 @@ function TeamCTA({ setPage }) {
           Spirit of Fire is always looking for passionate artists who share our devotion to excellence, craft, and the glory of God.
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
-          <button className="btn-primary" onClick={() => setPage("participate")}>Get Involved</button>
-          <button className="btn-ghost-primary" onClick={() => setPage("mission")}>Our Mission</button>
+          <button className="btn-primary" onClick={() => navigate("/participate")}>Get Involved</button>
+          <button className="btn-ghost-primary" onClick={() => navigate("/mission")}>Our Mission</button>
         </div>
       </div>
     </section>
   );
 }
 
-export default function TeamPage({ setPage }) {
+export default function TeamPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <main style={{ paddingTop: 80 }}>
       <TeamHero />
       <TeamSection />
-      <TeamCTA setPage={setPage} />
+      <TeamCTA />
       <Footer />
     </main>
   );

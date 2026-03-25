@@ -1,5 +1,6 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Style/global.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
@@ -74,7 +75,8 @@ function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image })
   );
 }
 
-function Performances({ setPage }) {
+function Performances() {
+  const navigate = useNavigate();
   const prods = productions;
   return (
     <section className="section-pad bg-surface-low" style={{ padding: "96px 48px" }}>
@@ -90,7 +92,7 @@ function Performances({ setPage }) {
           </div>
         </div>
         <div className="grid-3" style={{ gap: 48 }}>
-          {prods.map(p => <ProdCard key={p.title} {...p} onBook={() => setPage("tickets")} />)}
+          {prods.map(p => <ProdCard key={p.title} {...p} onBook={() => navigate("/tickets")} />)}
         </div>
       </div>
     </section>
@@ -110,11 +112,11 @@ function MainQuote() {
   );
 }
 
-export default function ProductionsPage({ setPage }) {
+export default function ProductionsPage() {
   return (
     <main className="pat" style={{ minHeight: "100vh" }}>
       <ProductionsHero />
-      <Performances setPage={setPage} />
+      <Performances />
       <MainQuote />
       <Footer />
     </main>
