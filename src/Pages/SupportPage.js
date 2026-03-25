@@ -206,7 +206,7 @@ function SupportProdCard({ title, dates, badge, badgeColor, badgeText, onBook })
         onMouseEnter={e => { e.currentTarget.style.background = c.primaryContainer; e.currentTarget.style.color = c.onPrimaryContainer; }}
         onMouseLeave={e => { e.currentTarget.style.background = c.surfaceHighest; e.currentTarget.style.color = c.onSurface; }}
         style={{ width: "100%", padding: 16, marginBottom: 10, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: c.surfaceHighest, border: `1px solid rgba(89,66,56,0.3)`, color: c.onSurface, transition: "all .5s" }}>
-        Reserve Seat
+        Reserve Ticket
       </button>
       <div style={{ position: "relative", paddingTop: "150%", overflow: "hidden", background: c.surfaceHighest, marginBottom: 24 }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center" }}>

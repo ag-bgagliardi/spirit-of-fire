@@ -1,8 +1,20 @@
 import useColors from "../Main/GlobalColors"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import facebookLogo from "../Assets/Logos/facebook.png"
+import instagramLogo from "../Assets/Logos/instagram.png"
 
 export default function Footer() {
   const c = useColors();
-  const socials = ["Facebook", "Instagram"];
+  const socials = [{
+    title: "Facebook",
+    icon: "fab fa-facebook",
+    link: "https://www.facebook.com/profile.php/?id=61583353555340"
+  },
+  {
+    title: "Instagram",
+    icon: "fab fa-instagram",
+    link: "https://www.instagram.com/spiritoffiretheatre/"
+  }];
   const links = ["Privacy Policy", "Terms of Service", "Archive"];
   return (
     <footer style={{ background: c.surface, padding: "80px 0 32px", borderTop: `1px solid rgba(89,66,56,0.1)` }}>
@@ -24,9 +36,13 @@ export default function Footer() {
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <h4 style={{ color: c.primary, fontSize: 10, textTransform: "uppercase", letterSpacing: ".2em", marginBottom: 8 }}>Social Media Links</h4>
           {socials.map(l => (
-            <span key={l} style={{ color: c.outlineVariant, fontSize: 14, cursor: "pointer" }}
-              onMouseEnter={e => e.currentTarget.style.color = c.onSurface}
-              onMouseLeave={e => e.currentTarget.style.color = c.outlineVariant}>{l}</span>
+            <>
+              <FontAwesomeIcon icon={l.icon} />
+              <a key={l} style={{ color: c.outlineVariant, fontSize: 14, cursor: "pointer", textDecoration: "none" }}
+                onMouseEnter={e => e.currentTarget.style.color = c.onSurface}
+                onMouseLeave={e => e.currentTarget.style.color = c.outlineVariant}
+                href={l.link}>{l.title}</a>
+            </>
           ))}
         </div>
         <div>

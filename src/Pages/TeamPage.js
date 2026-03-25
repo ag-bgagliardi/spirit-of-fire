@@ -2,6 +2,13 @@ import GlobalStyles from "../Main/GlobalStyles"
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
 import { useState } from "react";
+import ricoImage from "../Assets/People/Rico.webp"
+import benImage from "../Assets/People/Benjamin.jpeg"
+// import kariImage from "../Assets/People/Kari.jpg"
+import silasImage from "../Assets/People/SilasWide.jpeg"
+import madelineImage from "../Assets/People/MadelineWide.jpeg"
+import barbaraImage from "../Assets/People/Barbara.jpg"
+import stephanieImage from "../Assets/People/Stephanie.jpg"
 
 const TEAM = [
   {
@@ -9,8 +16,8 @@ const TEAM = [
     title: "Artistic Director",
     badge: "Cofounder",
     roles: ["Actor", "Director", "Choreographer"],
-    emoji: "🎬",
-    icon: "✦",
+    image: ricoImage,
+    icon: "🎬",
     col: "founder",
   },
   {
@@ -18,31 +25,31 @@ const TEAM = [
     title: "Dramatist",
     badge: "Cofounder",
     roles: ["Actor", "Writer", "Songwriter"],
-    emoji: "✍️",
-    icon: "✦",
+    image: benImage,
+    icon: "✍️",
     col: "founder",
   },
   {
     name: "Madeline Gagliardi",
     title: "Administrator",
     roles: ["Actor", "Singer"],
-    emoji: "🎤",
+    image: madelineImage,
     icon: "◆",
     col: "company",
   },
-  {
-    name: "Kari Heisler",
-    title: "Music Director",
-    roles: ["Actor", "Singer", "Director"],
-    emoji: "🎵",
-    icon: "◆",
-    col: "company",
-  },
+  // {
+  //   name: "Kari Heisler",
+  //   title: "Music Director",
+  //   roles: ["Actor", "Singer", "Director"],
+  //   image: "🎵",
+  //   icon: "◆",
+  //   col: "company",
+  // },
   {
     name: "Silas Heisler",
     title: "Creative",
     roles: ["Actor", "Singer"],
-    emoji: "🕯️",
+    image: silasImage,
     icon: "◆",
     col: "company",
   },
@@ -50,23 +57,23 @@ const TEAM = [
     name: "Barbara Gagliardi",
     title: "Creative",
     roles: ["Actor", "Singer", "Director", "Designer"],
-    emoji: "🎨",
+    image: barbaraImage,
     icon: "◆",
     col: "company",
   },
-  {
-    name: "John Gagliardi",
-    title: "Set Builder",
-    roles: ["Designer", "Architect"],
-    emoji: "🎨",
-    icon: "◆",
-    col: "company",
-  },
+  // {
+  //   name: "John Gagliardi",
+  //   title: "Set Builder",
+  //   roles: ["Designer", "Architect"],
+  //   image: "🎨",
+  //   icon: "◆",
+  //   col: "company",
+  // },
   {
     name: "Stephanie Gagliardi",
     title: "Social Media Manager",
     roles: ["Designer", "Marketer"],
-    emoji: "🎤",
+    image: stephanieImage,
     icon: "◆",
     col: "company",
   },
@@ -91,10 +98,12 @@ function MemberCard({ member, featured }) {
         <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at top left,rgba(249,94,20,0.06),transparent 70%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
         <div style={{ position: "relative" }}>
           <div style={{
-            aspectRatio: "3/4", background: "linear-gradient(160deg,#1a0800,#0a0300)",
+            aspectRatio: "3/4", backgroundImage: `url(${member.image})`, backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat",
             display: "flex", alignItems: "center", justifyContent: "center", fontSize: 64,
             filter: hov ? "grayscale(0)" : "grayscale(1)", transition: "filter .6s",
-          }}>{member.emoji}</div>
+          }}>
+            <div style={{ height:"100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity:"30%" }}></div>
+          </div>
           <div style={{ position: "absolute", top: -10, right: -10, background: c.primaryContainer, padding: "8px 10px", fontSize: 12, color: c.onPrimaryContainer }}>
             {member.icon}
           </div>
@@ -136,12 +145,12 @@ function MemberCard({ member, featured }) {
     >
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at top,rgba(249,94,20,0.06),transparent 70%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
       <div style={{
-        aspectRatio: "4/3", background: "linear-gradient(160deg,#1a0800,#0a0300)",
+        aspectRatio: "4/3", backgroundImage: `url(${member.image})`, backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat",
         display: "flex", alignItems: "center", justifyContent: "center", fontSize: 64,
         filter: hov ? "grayscale(0)" : "grayscale(1)", transition: "filter .6s",
         position: "relative",
       }}>
-        {member.emoji}
+        <div style={{ height:"100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity:"30%" }}></div>
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: 3,
           background: hov ? c.primaryContainer : "transparent", transition: "background .4s",
@@ -206,7 +215,7 @@ function TeamSection() {
             <div style={{ height: 1, width: 48, background: c.primaryContainer }} />
             <h2 style={{ fontFamily: "'Noto Serif',serif", fontSize: 13, textTransform: "uppercase", letterSpacing: ".4em", color: c.primary }}>The Company</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32 }}>
             {company.map(m => <MemberCard key={m.name} member={m} />)}
           </div>
         </div>

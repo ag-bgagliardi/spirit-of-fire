@@ -1,6 +1,9 @@
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
 import { useState } from "react";
+import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg"
+import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg"
+import missingRainImage from "../Assets/Covers/MissingTheRain.webp"
 
 function ProductionsHero() {
   const c = useColors();
@@ -22,8 +25,19 @@ function ProductionsHero() {
         </button>
       </div>
       <div style={{ position: "relative" }}>
-        <div style={{ aspectRatio: "3/4", background: c.surfaceContainer, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 96, opacity: .7 }}>🕯️</div>
-        <div style={{ position: "absolute", bottom: -24, left: -24, background: c.primaryContainer, padding: 24, fontSize: 32 }}>🔥</div>
+        <div style={{
+          aspectRatio: "3/4",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundImage: `url(${motherRabbitImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }}></div>
+        </div>
+        <div style={{ position: "absolute", bottom: -24, left: -24, background: c.primaryContainer, padding: "10px 30px", fontSize: 22 }}>Original Comedy</div>
       </div>
     </section>
   );
@@ -32,9 +46,9 @@ function ProductionsHero() {
 function Performances({ setPage }) {
   const c = useColors();
   const prods = [
-    { title: "Mother Rabbit", dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: c.tertiaryContainer, badgeText: "#38017a" },
-    { title: "Animal Crackers", dates: "TBD", badge: "Adaptation", badgeColor: c.surfaceContainer, badgeText: c.primary },
-    { title: "Missing the Rain", dates: "TBD", badge: "World Premiere", badgeColor: c.primaryContainer, badgeText: c.onPrimaryContainer },
+    { title: "Mother Rabbit", dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: c.tertiaryContainer, badgeText: "#38017a", image: motherRabbitImage },
+    { title: "Animal Crackers", dates: "TBD", badge: "Adaptation", badgeColor: c.surfaceContainer, badgeText: c.primary, image: animalCrackersImage },
+    { title: "Missing the Rain", dates: "TBD", badge: "World Premiere", badgeColor: c.primaryContainer, badgeText: c.onPrimaryContainer, image: missingRainImage },
   ];
   return (
     <section style={{ background: c.surfaceLow, padding: "96px 48px" }}>
@@ -56,14 +70,19 @@ function Performances({ setPage }) {
   );
 }
 
-function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook }) {
+function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image }) {
   const c = useColors();
   const [hov, setHov] = useState(false);
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
       <div style={{ position: "relative", paddingTop: "150%", overflow: "hidden", background: c.surfaceHighest, marginBottom: 24 }}>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontSize: 80 }}>🎭</span>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center",
+          backgroundImage: `url(${image})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div style={{ height:"100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity:"30%" }}></div>
         </div>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,0.7) 0%,transparent 60%)" }} />
         <div style={{ position: "absolute", bottom: 20, left: 20 }}>
@@ -76,7 +95,7 @@ function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook }) {
         onMouseEnter={e => { e.currentTarget.style.background = c.primaryContainer; e.currentTarget.style.color = c.onPrimaryContainer; }}
         onMouseLeave={e => { e.currentTarget.style.background = c.surfaceHighest; e.currentTarget.style.color = c.onSurface; }}
         style={{ width: "100%", padding: 16, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: c.surfaceHighest, border: `1px solid rgba(89,66,56,0.3)`, color: c.onSurface, transition: "all .5s" }}>
-        Reserve Seat
+        Reserve Ticket
       </button>
     </div>
   );

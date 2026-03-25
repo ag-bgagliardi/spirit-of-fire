@@ -2,6 +2,7 @@ import GlobalStyles from "../Main/GlobalStyles"
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
 import { useState } from "react";
+import bigBlueLogo from "../Assets/Logos/bbt.webp"
 
 function AffiliatesHero() {
   const c = useColors();
@@ -40,18 +41,20 @@ function PartnerCard() {
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at left,rgba(249,94,20,0.05),transparent 60%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
 
       {/* Logo panel */}
-      <div style={{
-        background: "linear-gradient(160deg,#0d1a2a,#050a10)",
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-        padding: 40, gap: 16, position: "relative",
-        filter: hov ? "grayscale(0)" : "grayscale(0.6)",
-        transition: "filter .5s",
-      }}>
-        <span style={{ fontSize: 72 }}>🎭</span>
-        <span style={{
-          fontSize: 9, textTransform: "uppercase", letterSpacing: ".3em",
-          color: hov ? c.primaryContainer : c.outline, transition: "color .4s",
-        }}>Affiliate</span>
+      <div style={{background:c.surfaceLight}}>
+        <div style={{
+          backgroundImage: `url(${bigBlueLogo})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat",
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+          gap: 16, position: "relative",
+          filter: hov ? "grayscale(0)" : "grayscale(0.6)",
+          transition: "filter .5s", height:"100%"
+        }}>
+          <div style={{
+            fontSize: 9, textTransform: "uppercase", letterSpacing: ".3em",
+            color: hov ? c.primaryContainer : c.outline, transition: "color .4s", padding:"10px", textAlign:"center",
+            height:"100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity:"30%"
+          }}>Affiliate</div>
+        </div>
       </div>
 
       {/* Info panel */}
@@ -70,16 +73,17 @@ function PartnerCard() {
         </div>
         <div style={{ height: 1, width: 48, background: c.outlineVariant }} />
         <p style={{ color: c.onSurfaceVariant, lineHeight: 1.8, fontSize: 14, fontWeight: 300, maxWidth: 480 }}>
-          Big Blue Theatre is a Chicago-based ensemble dedicated to bold, original theatrical work. Spirit of Fire is proud to count them among our closest collaborators and friends in the craft.
+          Big Blue Theatre's mission is to support the work of artists through the creation of new theatrical work. This includes plays, concerts, improv, and any other form of theatrical entertainment.
         </p>
         <div>
-          <span
+          <a
             style={{ color: c.primaryContainer, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", cursor: "pointer" }}
             onMouseEnter={e => e.currentTarget.style.color = c.primary}
             onMouseLeave={e => e.currentTarget.style.color = c.primaryContainer}
+            href="https://www.bigbluetheatre.org/"
           >
             Visit Big Blue Theatre →
-          </span>
+          </a>
         </div>
       </div>
     </div>

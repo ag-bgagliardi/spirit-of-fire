@@ -1,5 +1,8 @@
 import useColors from "../Main/GlobalColors"
+import { useState } from "react";
 import Footer from "../Main/Footer"
+import ricoImage from "../Assets/People/Rico.webp"
+import benImage from "../Assets/People/Benjamin.png"
 
 function MissionHero() {
   const c = useColors();
@@ -32,7 +35,7 @@ function MissionStatement() {
             To tell stories that<em style={{ color: c.primaryContainer }}> encourage, inspire, and challenge</em> people to see all of life and experience: past, present, and future, by the <em style={{ color: c.primaryContainer }}>light of Jesus Christ.</em>
           </h2>
           <h2 style={{ fontFamily: "'Noto Serif',serif", textTransform: "uppercase", letterSpacing: ".2em", padding: "20px 0px" }}>Ideals:</h2>
-          <ul style={{paddingLeft:40}}>
+          <ul style={{ paddingLeft: 40 }}>
             <li style={{ color: c.onSurfaceVariant, fontWeight: 300, marginBottom: 24 }}>To create and develop art that exemplify Christian virtues of Faith, Hope, Love, and Joy.</li>
             <li style={{ color: c.onSurfaceVariant, fontWeight: 300, marginBottom: 24 }}>To tell stories that encourage, inspire, and challenge people to see all of life and experience–past, present, and future–by the light of Jesus Christ.</li>
             <li style={{ color: c.onSurfaceVariant, fontWeight: 300, marginBottom: 24 }}>A story worth telling is one that moves us closer to God, whether that be joy in what we have seen, or recognition of our own human nature</li>
@@ -81,12 +84,29 @@ function LocationSection() {
   );
 }
 
-function LeadershipProfile({ name, role, bio, cta, icon, emoji }) {
+function LeadershipProfile({ name, role, bio, cta, icon, image }) {
   const c = useColors();
+  const [hov, setHov] = useState(false);
   return (
-    <div style={{ display: "flex", gap: 32, alignItems: "flex-start" }}>
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{ display: "flex", gap: 32, alignItems: "flex-start" }}>
       <div style={{ position: "relative", width: 200, flexShrink: 0 }}>
-        <div style={{ aspectRatio: "3/4", background: "linear-gradient(160deg,#1a0800,#0a0300)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 72 }}>{emoji}</div>
+        <div style={{
+          aspectRatio: "3/4",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundImage: `url(${image})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          filter: hov ? "grayscale(0)" : "grayscale(1)",
+          transition: "filter .6s"
+        }}>
+          <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }}></div>
+        </div>
         <div style={{ position: "absolute", top: -12, right: -12, background: c.primaryContainer, padding: 10 }}>
           <span style={{ fontSize: 16 }}>{icon}</span>
         </div>
@@ -104,8 +124,22 @@ function LeadershipProfile({ name, role, bio, cta, icon, emoji }) {
 function LeadershipSection() {
   const c = useColors();
   const profiles = [
-    { name: "Rico Heisler", role: "Artistic Director", bio: "A Bachelor of Arts graduate from the University of Northwestern (Saint Paul) and the J.D. William Mitchell College of Law, he has had over 20 years of directing, choreographing and acting experience. Rico brings and intensity and deep physical breadth to every project.", cta: "Read More", icon: "📖", emoji: "👨‍🎭" },
-    { name: "Benjamin Gagliardi", role: "Dramatist", bio: "A graduate of Theatre and Computer Science from the University of Wisconsin, Madison, Benjamin is an aspiring writer and actor. He finds particular joy in humor and comedy", cta: "View Portfolio", icon: "🎨", emoji: "👩‍🎨" },
+    {
+      name: "Rico Heisler",
+      role: "Artistic Director",
+      bio: "A Bachelor of Arts graduate from the University of Northwestern (Saint Paul) and the J.D. William Mitchell College of Law, he has had over 20 years of directing, choreographing and acting experience. Rico brings and intensity and deep physical breadth to every project.",
+      cta: "Read More",
+      icon: "🎬",
+      image: ricoImage
+    },
+    {
+      name: "Benjamin Gagliardi",
+      role: "Dramatist",
+      bio: "A graduate of Theatre and Computer Science from the University of Wisconsin, Madison, Benjamin is an aspiring writer and actor. He finds particular joy in humor and comedy",
+      cta: "View Portfolio",
+      icon: "✍️",
+      image: benImage
+    },
   ];
   return (
     <section style={{ padding: "96px 48px" }}>
