@@ -1,6 +1,7 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import bigBlueLogo from "../Assets/Logos/bbt.webp";
+import "../Style/global.css";
 
 function AffiliatesHero() {
   return (

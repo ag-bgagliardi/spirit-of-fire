@@ -1,5 +1,5 @@
 import Footer from "../Main/Footer";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "../Style/global.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
+import "../Style/global.css";
 
 const AMOUNTS = [5, 10, 25, 50, 100];
 

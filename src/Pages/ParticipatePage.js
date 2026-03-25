@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Footer from "../Main/Footer";
+import "../Style/global.css";
 
 // ── Shared field ─────────────────────────────────────────────────────────────
 function Field({ label, children }) {

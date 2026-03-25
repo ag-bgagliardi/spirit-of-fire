@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Footer from "../Main/Footer";
 import ricoImage from "../Assets/People/Rico.webp";
 import benImage from "../Assets/People/Benjamin.png";
+import "../Style/global.css";
 
 function MissionHero() {
   return (

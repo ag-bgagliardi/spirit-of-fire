@@ -1,57 +1,45 @@
-import useColors from "../Main/GlobalColors"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import facebookLogo from "../Assets/Logos/facebook.png"
-import instagramLogo from "../Assets/Logos/instagram.png"
+import facebookLogo from "../Assets/Logos/facebook.png";
+import instagramLogo from "../Assets/Logos/instagram.png";
+
+const LINKS = ["Privacy Policy", "Terms of Service", "Archive"];
+
+const SOCIALS = [
+  { title: "Facebook",  logo: facebookLogo,  link: "https://www.facebook.com/profile.php/?id=61583353555340" },
+  { title: "Instagram", logo: instagramLogo, link: "https://www.instagram.com/spiritoffiretheatre/" },
+];
 
 export default function Footer() {
-  const c = useColors();
-  const socials = [{
-    title: "Facebook",
-    icon: "fab fa-facebook",
-    link: "https://www.facebook.com/profile.php/?id=61583353555340"
-  },
-  {
-    title: "Instagram",
-    icon: "fab fa-instagram",
-    link: "https://www.instagram.com/spiritoffiretheatre/"
-  }];
-  const links = ["Privacy Policy", "Terms of Service", "Archive"];
   return (
-    <footer style={{ background: c.surface, padding: "80px 0 32px", borderTop: `1px solid rgba(89,66,56,0.1)` }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 48 }}>
+    <footer className="footer">
+      <div className="footer__grid">
         <div>
-          <div style={{ fontFamily: "'Noto Serif',serif", fontSize: 19, color: c.primaryContainer, marginBottom: 24 }}>Spirit of Fire</div>
-          <p style={{ fontFamily: "'Noto Serif',serif", fontStyle: "italic", color: c.outlineVariant, lineHeight: 1.8, fontSize: 13 }}>
+          <div className="footer__logo">Spirit of Fire</div>
+          <p className="serif-italic footer__tagline">
             Theatre dedicated to greatness. A place where passion and hardwork are the tools to uplift the soul.
           </p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <h4 style={{ color: c.primary, fontSize: 10, textTransform: "uppercase", letterSpacing: ".2em", marginBottom: 8 }}>More Information</h4>
-          {links.map(l => (
-            <span key={l} style={{ color: c.outlineVariant, fontSize: 14, cursor: "pointer" }}
-              onMouseEnter={e => e.currentTarget.style.color = c.onSurface}
-              onMouseLeave={e => e.currentTarget.style.color = c.outlineVariant}>{l}</span>
+        <div className="flex-col" style={{ gap: 16 }}>
+          <h4 className="footer__heading">More Information</h4>
+          {LINKS.map(l => (
+            <span key={l} className="footer__link">{l}</span>
           ))}
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <h4 style={{ color: c.primary, fontSize: 10, textTransform: "uppercase", letterSpacing: ".2em", marginBottom: 8 }}>Social Media Links</h4>
-          {socials.map(l => (
-            <>
-              <FontAwesomeIcon icon={l.icon} />
-              <a key={l} style={{ color: c.outlineVariant, fontSize: 14, cursor: "pointer", textDecoration: "none" }}
-                onMouseEnter={e => e.currentTarget.style.color = c.onSurface}
-                onMouseLeave={e => e.currentTarget.style.color = c.outlineVariant}
-                href={l.link}>{l.title}</a>
-            </>
+        <div className="flex-col" style={{ gap: 16 }}>
+          <h4 className="footer__heading">Social Media Links</h4>
+          {SOCIALS.map(s => (
+            <a key={s.title} className="footer__social" href={s.link} target="_blank" rel="noreferrer">
+              <img src={s.logo} alt={s.title} className="footer__social-icon" />
+              {s.title}
+            </a>
           ))}
         </div>
         <div>
-          <h4 style={{ color: c.primary, fontSize: 10, textTransform: "uppercase", letterSpacing: ".2em", marginBottom: 24 }}>Spirit of Fire Newsletter</h4>
-          <div style={{ display: "flex", borderBottom: `1px solid ${c.outlineVariant}`, paddingBottom: 8, marginBottom: 16 }}>
-            <input placeholder="Email Address" type="email" style={{ background: "transparent", border: "none", outline: "none", color: c.onSurface, flex: 1, fontSize: 14 }} />
-            <span style={{ color: c.primaryContainer, cursor: "pointer", fontSize: 18 }}>→</span>
+          <h4 className="footer__heading" style={{ marginBottom: 24 }}>Spirit of Fire Newsletter</h4>
+          <div className="footer__newsletter">
+            <input className="footer__newsletter-input" placeholder="Email Address" type="email" />
+            <span className="footer__newsletter-btn">→</span>
           </div>
-          <p style={{ fontSize: 9, color: c.outlineVariant }}>© 2026 Spirit of Fire Theatre Company. Soli Deo Gloria.</p>
+          <p className="footer__copyright">© 2026 Spirit of Fire Theatre Company. Soli Deo Gloria.</p>
         </div>
       </div>
     </footer>

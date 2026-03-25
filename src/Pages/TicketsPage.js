@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
+import "../Style/global.css";
 
 const SHOWS = [
   { title: "Mother Rabbit",    dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: "#a37cea", badgeText: "#38017a", image: motherRabbitImage },
