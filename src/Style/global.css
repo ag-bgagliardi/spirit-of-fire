@@ -579,12 +579,8 @@ input {
 .participate-hero__content {
   position: relative;
   z-index: 2;
-  height: 520px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 48px 80px;
   max-width: 860px;
+  padding: 340px 48px 80px;
 }
 
 .participate-hero__jump-bar {
@@ -595,6 +591,9 @@ input {
 .participate-hero__jump-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
 }
 
 /* ── Jump card ── */
@@ -609,6 +608,9 @@ input {
 
 .jump-card__emoji {
   font-size: 28px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
   transition: filter .4s;
 }
 
@@ -616,11 +618,13 @@ input {
   font-size: 18px;
   transition: color .3s;
   margin-bottom: 2px;
+  white-space: nowrap;
 }
 
 .jump-card__arrow {
   margin-left: auto;
   font-size: 18px;
+  flex-shrink: 0;
   transition: color .3s;
 }
 

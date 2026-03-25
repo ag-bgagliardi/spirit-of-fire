@@ -267,27 +267,27 @@ function JumpCard({ card, i, onNav }) {
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function ParticipateHero({ onNav }) {
   const cards = [
-    { label: "Auditions",     desc: "Step onto the stage",      emoji: "🎭", id: "auditions" },
-    { label: "Submissions",   desc: "Pitch your project",       emoji: "✍️", id: "submissions" },
-    { label: "Join the Crew", desc: "Work behind the scenes",   emoji: "🔧", id: "crew" },
+    { label: "Auditions",     desc: "Step onto the stage",    emoji: "🎭", id: "auditions" },
+    { label: "Submissions",   desc: "Pitch your project",     emoji: "✍️", id: "submissions" },
+    { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔧", id: "crew" },
   ];
   return (
-    <section className="participate-hero">
-      <div className="participate-hero__bg-base" />
-      <div className="participate-hero__bg-fade" />
-      <div className="participate-hero__bg-glow" />
-      <div className="participate-hero__content">
-        <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Be Part of the Story</span>
-        <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>Participate</h1>
-        <p className="body-md color-on-surface-var" style={{ fontSize: 17, maxWidth: 540 }}>
-          Spirit of Fire is built by passionate people. Whether you perform, create, or work behind the scenes — there is a place for you here.
-        </p>
+    <section style={{ position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px" }}>
+        <div className="participate-hero__bg-base" />
+        <div className="participate-hero__bg-fade" />
+        <div className="participate-hero__bg-glow" />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
+          <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Be Part of the Story</span>
+          <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>Participate</h1>
+          <p className="body-md color-on-surface-var" style={{ fontSize: 17, maxWidth: 540 }}>
+            Spirit of Fire is built by passionate people. Whether you perform, create, or work behind the scenes — there is a place for you here.
+          </p>
+        </div>
       </div>
       <div className="participate-hero__jump-bar">
-        <div className="container">
-          <div className="participate-hero__jump-grid">
-            {cards.map((card, i) => <JumpCard key={card.id} card={card} i={i} onNav={onNav} />)}
-          </div>
+        <div className="participate-hero__jump-grid">
+          {cards.map((card, i) => <JumpCard key={card.id} card={card} i={i} onNav={onNav} />)}
         </div>
       </div>
     </section>
