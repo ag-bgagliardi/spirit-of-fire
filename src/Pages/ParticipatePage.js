@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GlobalStyles from "../Main/GlobalStyles"
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
@@ -325,7 +325,7 @@ function ParticipateHero({ onNav }) {
   const cards = [
     { label: "Auditions", desc: "Step onto the stage", emoji: "🎭", id: "auditions" },
     { label: "Submissions", desc: "Pitch your project", emoji: "✍️", id: "submissions" },
-    { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔦", id: "crew" },
+    { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔥", id: "crew" },
   ];
   return (
     <section style={{ position: "relative", overflow: "hidden" }}>
@@ -368,6 +368,9 @@ function Divider() {
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default function ParticipatePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   const scrollTo = id => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });

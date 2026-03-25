@@ -1,6 +1,6 @@
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg"
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg"
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp"
@@ -76,13 +76,14 @@ function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image })
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
       <div style={{ position: "relative", paddingTop: "150%", overflow: "hidden", background: c.surfaceHighest, marginBottom: 24 }}>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center",
+        <div style={{
+          position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center",
           backgroundImage: `url(${image})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}>
-          <div style={{ height:"100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity:"30%" }}></div>
+          <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "30%" }}></div>
         </div>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,0.7) 0%,transparent 60%)" }} />
         <div style={{ position: "absolute", bottom: 20, left: 20 }}>
@@ -103,6 +104,9 @@ function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image })
 
 function MainQuote() {
   const c = useColors();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <section style={{ padding: "160px 48px", textAlign: "center", maxWidth: 900, margin: "0 auto" }}>
       <div style={{ fontSize: 40, color: c.primaryContainer, marginBottom: 32 }}>✦</div>

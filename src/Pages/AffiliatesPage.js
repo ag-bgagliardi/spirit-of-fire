@@ -1,7 +1,7 @@
 import GlobalStyles from "../Main/GlobalStyles"
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import bigBlueLogo from "../Assets/Logos/bbt.webp"
 
 function AffiliatesHero() {
@@ -27,6 +27,9 @@ function AffiliatesHero() {
 function PartnerCard() {
   const c = useColors();
   const [hov, setHov] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <div
       onMouseEnter={() => setHov(true)}
@@ -41,18 +44,18 @@ function PartnerCard() {
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at left,rgba(249,94,20,0.05),transparent 60%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
 
       {/* Logo panel */}
-      <div style={{background:c.surfaceLight}}>
+      <div style={{ background: c.surfaceLight }}>
         <div style={{
           backgroundImage: `url(${bigBlueLogo})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
           gap: 16, position: "relative",
           filter: hov ? "grayscale(0)" : "grayscale(0.6)",
-          transition: "filter .5s", height:"100%"
+          transition: "filter .5s", height: "100%"
         }}>
           <div style={{
             fontSize: 9, textTransform: "uppercase", letterSpacing: ".3em",
-            color: hov ? c.primaryContainer : c.outline, transition: "color .4s", padding:"10px", textAlign:"center",
-            height:"100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity:"30%"
+            color: hov ? c.primaryContainer : c.outline, transition: "color .4s", padding: "10px", textAlign: "center",
+            height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "30%"
           }}>Affiliate</div>
         </div>
       </div>

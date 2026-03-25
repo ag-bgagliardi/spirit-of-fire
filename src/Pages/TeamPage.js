@@ -1,7 +1,7 @@
 import GlobalStyles from "../Main/GlobalStyles"
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ricoImage from "../Assets/People/Rico.webp"
 import benImage from "../Assets/People/Benjamin.jpeg"
 // import kariImage from "../Assets/People/Kari.jpg"
@@ -247,6 +247,9 @@ function TeamCTA() {
 }
 
 export default function TeamPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <>
       <GlobalStyles />

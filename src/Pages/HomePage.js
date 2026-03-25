@@ -1,15 +1,24 @@
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg"
+import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg"
+import missingRainImage from "../Assets/Covers/MissingTheRain.webp"
 
-function ShowCard({ title, dates, badge, badgeColor, badgeText }) {
+function ShowCard({ title, dates, badge, badgeColor, badgeText, image }) {
   const c = useColors();
   const [hov, setHov] = useState(false);
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
       <div style={{ position: "relative", paddingTop: "150%", overflow: "hidden", background: c.surfaceHighest, marginBottom: 24 }}>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontSize: 80 }}>🎭</span>
+        <div style={{
+          position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0800,#050200)", transform: hov ? "scale(1.05)" : "scale(1)", filter: hov ? "grayscale(0%)" : "grayscale(100%)", transition: "all .7s ease", display: "flex", alignItems: "center", justifyContent: "center",
+          backgroundImage: `url(${image})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "30%" }}></div>
         </div>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,0.7) 0%,transparent 60%)" }} />
         <div style={{ position: "absolute", bottom: 20, left: 20 }}>
@@ -24,6 +33,9 @@ function ShowCard({ title, dates, badge, badgeColor, badgeText }) {
 
 function HeroSection({ setPage }) {
   const c = useColors();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <section style={{ position: "relative", height: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,#0a0000 0%,#1a0800 40%,#0d0500 100%)" }} />
@@ -46,8 +58,14 @@ function HeroSection({ setPage }) {
           <div style={{ position: "relative", width: 280, height: 420 }}>
             <div style={{ position: "absolute", inset: 0, border: `1px solid rgba(89,66,56,0.4)` }} />
             <div style={{ position: "absolute", inset: -16, border: `1px solid rgba(249,94,20,0.15)`, zIndex: -1 }} />
-            <div style={{ width: "100%", height: "100%", background: "linear-gradient(160deg,#2a1000,#0a0300)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontSize: 72, opacity: .6 }}>🕯️</span>
+            <div style={{
+              height: "100%", width: "100%",
+              backgroundImage: `url(${motherRabbitImage})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}>
+              <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }}></div>
             </div>
             <div style={{ position: "absolute", bottom: 24, left: -48, background: c.surface, padding: "20px 24px" }}>
               <span style={{ fontFamily: "'Noto Serif',serif", fontStyle: "italic", color: c.primaryContainer, fontSize: 20, display: "block" }}>Returning Soon</span>
@@ -92,9 +110,9 @@ function SpiritSection() {
 function NextOnStageSection() {
   const c = useColors();
   const shows = [
-    { title: "Mother Rabbit", dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: c.tertiaryContainer, badgeText: "#38017a" },
-    { title: "Animal Crackers", dates: "TBD", badge: "Adaptation", badgeColor: c.surfaceContainer, badgeText: c.primary },
-    { title: "Missing the Rain", dates: "TBD", badge: "World Premiere", badgeColor: c.primaryContainer, badgeText: c.onPrimaryContainer },
+    { title: "Mother Rabbit", dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: c.tertiaryContainer, badgeText: "#38017a", image: motherRabbitImage },
+    { title: "Animal Crackers", dates: "TBD", badge: "Adaptation", badgeColor: c.surfaceContainer, badgeText: c.primary, image: animalCrackersImage },
+    { title: "Missing the Rain", dates: "TBD", badge: "World Premiere", badgeColor: c.primaryContainer, badgeText: c.onPrimaryContainer, image: missingRainImage },
   ];
   return (
     <section style={{ padding: "96px 0", background: c.surface }}>

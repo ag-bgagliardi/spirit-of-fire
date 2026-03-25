@@ -28,7 +28,7 @@ export default function Nav({ page, setPage }) {
             }}>{label}</span>
           ))}
         </nav>
-        <button onClick={() => setPage("tickets")} style={{ background: c.primaryContainer, color: c.onPrimaryContainer, padding: "8px 24px", fontSize: 11, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase" }}>
+        <button onClick={() => setPage("tickets")} style={{ background: c.primaryContainer, color: c.onPrimaryContainer, padding: "10px 24px", fontSize: 12, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase" }}>
           Book Tickets
         </button>
       </div>

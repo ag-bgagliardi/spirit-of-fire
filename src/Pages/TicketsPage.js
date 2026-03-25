@@ -1,6 +1,6 @@
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function StepIndicator() {
   const c = useColors();
@@ -175,6 +175,9 @@ export default function TicketsPage() {
   const [selectedDate, setSelectedDate] = useState(4);
   const [selectedSeats, setSelectedSeats] = useState([2, 3]);
   const [offering, setOffering] = useState(25);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   function toggleSeat(key) {
     setSelectedSeats(prev => prev.includes(key) ? prev.filter(s => s !== key) : [...prev, key]);

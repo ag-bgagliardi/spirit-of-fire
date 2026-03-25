@@ -1,5 +1,5 @@
 import useColors from "../Main/GlobalColors"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../Main/Footer"
 import ricoImage from "../Assets/People/Rico.webp"
 import benImage from "../Assets/People/Benjamin.png"
@@ -87,6 +87,9 @@ function LocationSection() {
 function LeadershipProfile({ name, role, bio, cta, icon, image }) {
   const c = useColors();
   const [hov, setHov] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <div
       onMouseEnter={() => setHov(true)}

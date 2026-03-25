@@ -1,6 +1,7 @@
 import GlobalStyles from "../Main/GlobalStyles"
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
+import { useEffect } from "react";
 
 function TheaHero() {
   const c = useColors();
@@ -124,6 +125,9 @@ function TheaBody() {
 }
 
 export default function TheatologyPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <>
       <GlobalStyles />
