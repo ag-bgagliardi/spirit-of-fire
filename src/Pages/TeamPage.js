@@ -154,21 +154,21 @@ function TeamCTA({ setPage }) {
           Spirit of Fire is always looking for passionate artists who share our devotion to excellence, craft, and the glory of God.
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
-          <button className="btn-primary">Get Involved</button>
-          <button className="btn-ghost-primary">Our Mission</button>
+          <button className="btn-primary" onClick={() => setPage("participate")}>Get Involved</button>
+          <button className="btn-ghost-primary" onClick={() => setPage("mission")}>Our Mission</button>
         </div>
       </div>
     </section>
   );
 }
 
-export default function TeamPage() {
+export default function TeamPage({ setPage }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <main style={{ paddingTop: 80 }}>
       <TeamHero />
       <TeamSection />
-      <TeamCTA />
+      <TeamCTA setPage={setPage} />
       <Footer />
     </main>
   );

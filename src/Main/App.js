@@ -19,10 +19,10 @@ export default function App() {
       <div style={{ paddingTop: page === "home" ? 0 : 80 }}>
         {page === "home" && <HomePage setPage={setPage} />}
         {page === "mission" && <MissionPage setPage={setPage} />}
-        {page === "team" && <TeamPage />}
+        {page === "team" && <TeamPage setPage={setPage} />}
         {page === "productions" && <ProductionsPage setPage={setPage} />}
-        {page === "tickets" && <TicketsPage />}
-        {page === "participate" && <ParticipatePage />}
+        {page === "tickets" && <TicketsPage setPage={setPage} />}
+        {page === "participate" && <ParticipatePage setPage={setPage} />}
         {page === "affiliates" && <AffiliatesPage />}
         {page === "support" && <SupportPage setPage={setPage} />}
         {page === "theatology" && <TheatologyPage />}
