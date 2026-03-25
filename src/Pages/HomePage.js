@@ -149,7 +149,7 @@ function GallerySection() {
   );
 }
 
-function CTASection() {
+function CTASection({ setPage }) {
   const c = useColors();
   return (
     <section style={{ padding: "160px 24px", background: c.surface, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", position: "relative" }}>
@@ -158,8 +158,8 @@ function CTASection() {
         Keep the <span style={{ color: c.primaryContainer }}>Flame</span> alive
       </h2>
       <div style={{ display: "flex", gap: 24, position: "relative" }}>
-        <button style={{ padding: "20px 48px", background: c.onSurface, color: c.surface, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase" }}>Become a Patron</button>
-        <button style={{ padding: "20px 48px", border: `1px solid ${c.outline}`, color: c.onSurface, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase" }}>Get Involved</button>
+        <button onClick={() => setPage("support")} style={{ padding: "20px 48px", background: c.onSurface, color: c.surface, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase" }}>Become a Patron</button>
+        <button onClick={() => setPage("participate")} style={{ padding: "20px 48px", border: `1px solid ${c.outline}`, color: c.onSurface, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase" }}>Get Involved</button>
       </div>
     </section>
   );
@@ -172,7 +172,7 @@ export default function HomePage({ setPage }) {
       <SpiritSection />
       <NextOnStageSection />
       <GallerySection />
-      <CTASection />
+      <CTASection setPage={setPage} />
       <Footer />
     </main>
   );

@@ -20,7 +20,7 @@ export default function App() {
       <Nav page={page} setPage={setPage} />
       <div style={{ paddingTop: page === "home" ? 0 : 80 }}>
         {page === "home" && <HomePage setPage={setPage} />}
-        {page === "mission" && <MissionPage />}
+        {page === "mission" && <MissionPage setPage={setPage} />}
         {page === "team" && <TeamPage />}
         {page === "productions" && <ProductionsPage setPage={setPage} />}
         {page === "tickets" && <TicketsPage />}

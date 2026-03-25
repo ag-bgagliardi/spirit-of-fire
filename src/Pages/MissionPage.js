@@ -119,7 +119,7 @@ function LeadershipSection() {
   );
 }
 
-function MissionCTA() {
+function MissionCTA({ setPage }) {
   const c = useColors();
   return (
     <section style={{ padding: "96px 48px", background: c.surfaceLow, borderTop: `1px solid rgba(89,66,56,0.1)`, borderBottom: `1px solid rgba(89,66,56,0.1)` }}>
@@ -127,22 +127,22 @@ function MissionCTA() {
         <h2 style={{ fontFamily: "'Noto Serif',serif", fontSize: 48, marginBottom: 24 }}>Don't miss <em style={{ color: c.primary }}> Mother Rabbit!</em></h2>
         <p style={{ color: "rgba(229,226,225,0.6)", marginBottom: 48, fontSize: 17, lineHeight: 1.7 }}>Join us for an evening of unbridled joy and laughter, as family and loved ones learn to forgive and work with each other.</p>
         <div style={{ display: "flex", justifyContent: "center", gap: 24 }}>
-          <button style={{ background: c.primaryContainer, color: c.onPrimaryContainer, padding: "16px 40px", fontSize: 12, fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase" }}>Reserve Your Ticket</button>
-          <button style={{ border: `1px solid rgba(255,181,154,0.3)`, color: c.primary, padding: "16px 40px", fontSize: 12, fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase" }}>Become a Patron</button>
+          <button onClick={() => setPage("tickets")} style={{ background: c.primaryContainer, color: c.onPrimaryContainer, padding: "16px 40px", fontSize: 12, fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase" }}>Reserve Your Ticket</button>
+          <button onClick={() => setPage("support")} style={{ border: `1px solid rgba(255,181,154,0.3)`, color: c.primary, padding: "16px 40px", fontSize: 12, fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase" }}>Become a Patron</button>
         </div>
       </div>
     </section>
   );
 }
 
-export default function MissionPage() {
+export default function MissionPage({ setPage }) {
   return (
     <main>
       <MissionHero />
       <MissionStatement />
       <LocationSection />
       <LeadershipSection />
-      <MissionCTA />
+      <MissionCTA setPage={setPage} />
       <Footer />
     </main>
   );
