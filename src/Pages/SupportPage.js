@@ -67,6 +67,7 @@ function DonationForm() {
               <span className="custom-amount__symbol">$</span>
               <input
                 className="field__input"
+                style={{ borderBottom: "none" }}
                 placeholder="Custom amount"
                 value={custom}
                 type="number"
@@ -96,7 +97,7 @@ function DonationForm() {
           {/* Right: why give */}
           <div style={{ position: "sticky", top: 120 }}>
             <div className="why-give-card">
-              <span style={{ fontSize: 32, display: "block", marginBottom: 20 }}>🔥</span>
+              <span style={{ fontSize: 32, display: "block", marginBottom: 20 }}><img src="/favicon.ico" alt="" /></span>
               <h3 className="serif-italic" style={{ fontSize: 26, marginBottom: 16, lineHeight: 1.2 }}>Why Your Gift Matters</h3>
               <p className="body-md color-on-surface-var" style={{ fontSize: 14, marginBottom: 24 }}>
                 Spirit of Fire is an independent theatre company. We rely on ticket sales, goodwill offerings, and the generous patronage of those who believe in what we are doing.
@@ -130,7 +131,7 @@ function QuoteStrip() {
     <section className="section-pad bg-surface-lowest" style={{ padding: "96px 48px", textAlign: "center" }}>
       <div className="color-primary-container" style={{ fontSize: 28, marginBottom: 24 }}>✦</div>
       <blockquote className="serif-italic color-on-surface" style={{ fontSize: 28, lineHeight: 1.5, maxWidth: 720, margin: "0 auto 28px" }}>
-        We desire always to have the Spirit — the essence of this Fire.
+        You have made us for yourself, O Lord, and our heart is restless until it rests in you.
       </blockquote>
       <cite className="label-xs color-primary" style={{ letterSpacing: ".4em", fontStyle: "normal" }}>Spirit of Fire Theatre Company</cite>
     </section>
