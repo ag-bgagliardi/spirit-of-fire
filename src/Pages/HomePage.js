@@ -101,7 +101,7 @@ function NextOnStageSection() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64 }}>
           <div>
-            <span style={{ color: c.primary, fontSize: 11, letterSpacing: ".3em", textTransform: "uppercase", fontWeight: 600 }}>Curated Performances</span>
+            <span style={{ color: c.primary, fontSize: 11, letterSpacing: ".3em", textTransform: "uppercase", fontWeight: 600 }}>Upcoming Performances</span>
             <h2 style={{ fontFamily: "'Noto Serif',serif", fontSize: 56, marginTop: 12 }}>Next on <em>Stage</em></h2>
           </div>
           <div style={{ display: "flex", gap: 12 }}>
