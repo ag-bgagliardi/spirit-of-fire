@@ -1,6 +1,9 @@
 import useColors from "../Main/GlobalColors"
 import Footer from "../Main/Footer"
 import { useState, useEffect } from "react";
+import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg"
+import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg"
+import missingRainImage from "../Assets/Covers/MissingTheRain.webp"
 
 function StepIndicator() {
   const c = useColors();
@@ -26,18 +29,24 @@ function ShowSelector({ selected, onSelect }) {
   const c = useColors();
 
   const shows = [
-    { title: "Mother Rabbit", sub: "Opening Cycle", desc: "An explosive, anarchic comedy inspired by the works of Abbott and Costello and the Marx Brothers." },
-    { title: "Animal Crackers", sub: "Adaptation Premiere", desc: "The revival of the old American Comedy genuises: the Marx Brothers." },
-    { title: "Missing the Rain", sub: "World Premiere", desc: "A dramatic exploration of forgiveness and family struggles." },
+    { title: "Mother Rabbit", dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: c.tertiaryContainer, badgeText: "#38017a", image: motherRabbitImage },
+    { title: "Animal Crackers", dates: "TBD", badge: "Adaptation", badgeColor: c.surfaceContainer, badgeText: c.primary, image: animalCrackersImage },
+    { title: "Missing the Rain", dates: "TBD", badge: "World Premiere", badgeColor: c.primaryContainer, badgeText: c.onPrimaryContainer, image: missingRainImage },
   ];
   return (
     <section>
       <h2 style={{ fontFamily: "'Noto Serif',serif", fontStyle: "italic", fontSize: 28, marginBottom: 32, borderLeft: `2px solid ${c.primaryContainer}`, paddingLeft: 24 }}>I. Choose Your Performance</h2>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
         {shows.map((show, i) => (
-          <div key={i} onClick={() => onSelect(i)} style={{ background: selected === i ? c.surfaceHigh : c.surfaceLow, outline: selected === i ? `1px solid ${c.primaryContainer}` : "none", cursor: "pointer", overflow: "hidden" }}>
-            <div style={{ aspectRatio: "16/10", background: `linear-gradient(160deg,${i === 0 ? "#1a0500,#0a0200" : "#1a0a00,#0d0500"})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 48, position: "relative" }}>
-              {i === 0 ? "🕯️" : "🎭"}
+          <div key={i} onClick={() => onSelect(i)} style={{ outline: selected === i ? `1px solid ${c.primaryContainer}` : "none", cursor: "pointer", overflow: "hidden" }}>
+            <div style={{
+              aspectRatio: "16/10", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 48, position: "relative",
+              backgroundImage: `url(${show.image})`,
+              backgroundPosition: "top",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}>
+              <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "80%" }}></div>
               {selected === i && <div style={{ position: "absolute", inset: 0, background: "rgba(249,94,20,0.1)" }} />}
               {selected === i && <span style={{ position: "absolute", top: 8, right: 8, color: c.primaryContainer }}>✓</span>}
             </div>
@@ -126,7 +135,7 @@ function SeatMap({ selected, onToggle }) {
 function PerformanceSummary({ showIndex, date, seats, offering, onOfferingChange }) {
   const c = useColors();
   const shows = ["Mother Rabbit", "Animal Crackers", "Missing the Rain"];
-  const total = seats.length * 60 + (typeof offering === "number" ? offering : 0);
+  const total = seats.length * 15 + (typeof offering === "number" ? offering : 0);
   return (
     <div style={{ position: "sticky", top: 120, background: c.surfaceContainer, padding: 32, borderLeft: `1px solid rgba(255,181,154,0.15)` }}>
       <h3 style={{ fontFamily: "'Noto Serif',serif", fontStyle: "italic", fontSize: 20, color: c.primary, marginBottom: 28 }}>Summary of Purchase</h3>
@@ -134,7 +143,7 @@ function PerformanceSummary({ showIndex, date, seats, offering, onOfferingChange
         {[
           { label: "Production", value: shows[showIndex] },
           { label: "Scheduled Time", value: `June ${String(date).padStart(2, "0")}, 2026 • 7:00 p.m.` },
-          { label: "Seat", value: `Row A, Seat ${seats.map(s => s + 1).join(", ") || "—"}`, price: `$${seats.length * 60}.00` },
+          { label: "Seat", value: `Row A, Seat ${seats.map(s => s + 1).join(", ") || "—"}`, price: `$${seats.length * 15}.00` },
         ].map((r, i) => (
           <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
@@ -173,7 +182,7 @@ function PerformanceSummary({ showIndex, date, seats, offering, onOfferingChange
 export default function TicketsPage() {
   const [selectedShow, setSelectedShow] = useState(1);
   const [selectedDate, setSelectedDate] = useState(4);
-  const [selectedSeats, setSelectedSeats] = useState([2, 3]);
+  const [selectedSeats, setSelectedSeats] = useState([2]);
   const [offering, setOffering] = useState(25);
   useEffect(() => {
     window.scrollTo(0, 0)

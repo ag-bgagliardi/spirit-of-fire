@@ -99,7 +99,7 @@ function SpiritSection({ setPage }) {
               onMouseLeave={e => e.currentTarget.style.filter = "grayscale(1)"}>📚</div>
           </div>
           <div>
-            <div style={{ width: "100%", height: 460, background: "linear-gradient(180deg,#0d0500,#1a0a00)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 64 }}>🔥</div>
+            <div style={{ width: "100%", height: 460, background: "linear-gradient(180deg,#0d0500,#1a0a00)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 64 }}><img src="../favicon.ico" /></div>
           </div>
         </div>
       </div>

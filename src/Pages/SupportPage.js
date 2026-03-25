@@ -123,7 +123,7 @@ function DonationForm() {
         {/* Right: why give */}
         <div style={{ position: "sticky", top: 120 }}>
           <div style={{ background: c.surfaceContainer, border: `1px solid rgba(89,66,56,0.2)`, padding: 40, marginBottom: 24 }}>
-            <span style={{ fontSize: 32, display: "block", marginBottom: 20 }}>🔥</span>
+            <span style={{ fontSize: 32, display: "block", marginBottom: 20 }}><img src="../favicon.ico" /></span>
             <h3 style={{ fontFamily: "'Noto Serif',serif", fontStyle: "italic", fontSize: 26, marginBottom: 16, lineHeight: 1.2 }}>Why Your Gift Matters</h3>
             <p style={{ color: c.onSurfaceVariant, lineHeight: 1.8, fontSize: 14, fontWeight: 300, marginBottom: 24 }}>
               Spirit of Fire is an independent theatre company. We rely on ticket sales, goodwill offerings, and the generous patronage of those who believe in what we are doing.

@@ -325,7 +325,7 @@ function ParticipateHero({ onNav }) {
   const cards = [
     { label: "Auditions", desc: "Step onto the stage", emoji: "🎭", id: "auditions" },
     { label: "Submissions", desc: "Pitch your project", emoji: "✍️", id: "submissions" },
-    { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔥", id: "crew" },
+    { label: "Join the Crew", desc: "Work behind the scenes", emoji: <img src="../favicon.ico" />, id: "crew" },
   ];
   return (
     <section style={{ position: "relative", overflow: "hidden" }}>

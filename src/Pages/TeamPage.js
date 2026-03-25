@@ -32,7 +32,7 @@ const TEAM = [
   {
     name: "Madeline Gagliardi",
     title: "Administrator",
-    roles: ["Actor", "Singer"],
+    roles: ["Manager", "Actor", "Singer"],
     image: madelineImage,
     icon: "◆",
     col: "company",
@@ -47,7 +47,7 @@ const TEAM = [
   // },
   {
     name: "Silas Heisler",
-    title: "Creative",
+    title: "Creative Consultant",
     roles: ["Actor", "Singer"],
     image: silasImage,
     icon: "◆",
@@ -55,7 +55,7 @@ const TEAM = [
   },
   {
     name: "Barbara Gagliardi",
-    title: "Creative",
+    title: "Creative Designer",
     roles: ["Actor", "Singer", "Director", "Designer"],
     image: barbaraImage,
     icon: "◆",
@@ -70,8 +70,8 @@ const TEAM = [
   //   col: "company",
   // },
   {
-    name: "Stephanie Gagliardi",
-    title: "Social Media Manager",
+    name: "Stephanie Wilson",
+    title: "Director of Marketing",
     roles: ["Designer", "Marketer"],
     image: stephanieImage,
     icon: "◆",
@@ -230,7 +230,7 @@ function TeamCTA() {
     <section style={{ padding: "120px 48px", background: c.surfaceLowest, borderTop: `1px solid rgba(89,66,56,0.15)`, textAlign: "center", position: "relative" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center,rgba(249,94,20,0.06) 0%,transparent 65%)", pointerEvents: "none" }} />
       <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
-        <span style={{ fontSize: 32, display: "block", marginBottom: 24 }}>🔥</span>
+        <span style={{ fontSize: 32, display: "block", marginBottom: 24 }}><img src="../favicon.ico" /></span>
         <h2 style={{ fontFamily: "'Noto Serif',serif", fontStyle: "italic", fontSize: 44, marginBottom: 20, lineHeight: 1.2 }}>
           Feel the <span style={{ color: c.primaryContainer }}>calling?</span>
         </h2>
