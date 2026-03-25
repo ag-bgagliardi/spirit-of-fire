@@ -78,7 +78,7 @@ function HeroSection({ setPage }) {
   );
 }
 
-function SpiritSection() {
+function SpiritSection({ setPage }) {
   const c = useColors();
   return (
     <section className="pat" style={{ padding: "96px 0", background: c.surfaceLow }}>
@@ -90,7 +90,7 @@ function SpiritSection() {
           <div style={{ height: 3, width: 80, background: c.primaryContainer }} />
           <p style={{ color: c.onSurfaceVariant, lineHeight: 1.8, fontWeight: 300 }}>At Spirit of Fire, we tell stories that encourage, inspire, and challenge people to see all of life and experience–past, present, and future–by the light of Jesus Christ.</p>
           <p style={{ color: c.onSurfaceVariant, lineHeight: 1.8, fontWeight: 300 }}>Fire represents the ferocious dedication and passion in any project we undertake. It represents the indwelling Holy Spirit that guides and inspires, and it represents the grace of our Lord we tirelessly seek. Thus, we desire always to have the Spirit, or the essence of this Fire.</p>
-          <span style={{ color: c.primary, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", cursor: "pointer" }}>Learn More →</span>
+          <button onClick={() => setPage("mission")} style={{ color: c.primary, fontSize: 11, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", cursor: "pointer"}}>Learn More →</button>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
           <div style={{ paddingTop: 48 }}>
@@ -187,7 +187,7 @@ export default function HomePage({ setPage }) {
   return (
     <main>
       <HeroSection setPage={setPage} />
-      <SpiritSection />
+      <SpiritSection setPage={setPage} />
       <NextOnStageSection />
       <GallerySection />
       <CTASection setPage={setPage} />
