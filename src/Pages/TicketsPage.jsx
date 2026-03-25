@@ -1,15 +1,8 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
-import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
-import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
-import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
+import productions from "../Data/CurrentShows"
 
-const SHOWS = [
-  { title: "Mother Rabbit",    dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: "#a37cea", badgeText: "#38017a", image: motherRabbitImage },
-  { title: "Animal Crackers",  dates: "TBD",              badge: "Adaptation",         badgeColor: "#201f1f", badgeText: "#ffb59a", image: animalCrackersImage },
-  { title: "Missing the Rain", dates: "TBD",              badge: "World Premiere",     badgeColor: "#f95e14", badgeText: "#4f1700", image: missingRainImage },
-];
-
+const shows = productions;
 function StepIndicator() {
   const steps = ["I · Production", "II · Seat Choice", "III · Review"];
   return (
@@ -38,7 +31,7 @@ function ShowSelector({ selected, onSelect }) {
     <section>
       <h2 className="tickets-section-heading">I. Choose Your Performance</h2>
       <div className="show-selector-grid">
-        {SHOWS.map((show, i) => (
+        {shows.map((show, i) => (
           <div key={i} onClick={() => onSelect(i)} className="show-selector-card" style={{ outline: selected === i ? "1px solid var(--primary-container)" : "none", minWidth: 0 }}>
             <div className="show-selector-card__image" style={{ backgroundImage: `url(${show.image})` }}>
               <div className="show-selector-card__image-overlay" />
@@ -141,7 +134,7 @@ function PerformanceSummary({ showIndex, date, seats, offering, onOfferingChange
       <h3 className="serif-italic color-primary" style={{ fontSize: 20, marginBottom: 28 }}>Summary of Purchase</h3>
       <div className="performance-summary__details">
         {[
-          { label: "Production",      value: SHOWS[showIndex].title },
+          { label: "Production",      value: shows[showIndex].title },
           { label: "Scheduled Time",  value: `June ${String(date).padStart(2,"0")}, 2026 • 7:00 p.m.` },
           { label: "Seat",            value: `Row A, Seat ${seats.map(s => s + 1).join(", ") || "—"}`, price: `$${seats.length * 15}.00` },
         ].map((r, i) => (
@@ -183,7 +176,7 @@ export default function TicketsPage() {
   const [selectedShow, setSelectedShow] = useState(1);
   const [selectedDate, setSelectedDate] = useState(4);
   const [selectedSeats, setSelectedSeats] = useState([2]);
-  const [offering, setOffering] = useState(25);
+  const [offering, setOffering] = useState(0);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   function toggleSeat(key) {

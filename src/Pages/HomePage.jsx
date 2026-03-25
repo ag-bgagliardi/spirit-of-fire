@@ -2,8 +2,7 @@ import Footer from "../Main/Footer";
 import { useEffect } from "react";
 import "../Style/global.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
-import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
-import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
+import productions from "../Data/CurrentShows"
 
 function ShowCard({ title, dates, badge, badgeColor, badgeText, image, onBook }) {
   return (
@@ -119,11 +118,7 @@ function SpiritSection({ setPage }) {
 }
 
 function NextOnStageSection({ setPage }) {
-  const shows = [
-    { title: "Mother Rabbit",   dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: "#a37cea", badgeText: "#38017a",  image: motherRabbitImage },
-    { title: "Animal Crackers", dates: "TBD",             badge: "Adaptation",         badgeColor: "#201f1f", badgeText: "#ffb59a",  image: animalCrackersImage },
-    { title: "Missing the Rain",dates: "TBD",             badge: "World Premiere",     badgeColor: "#f95e14", badgeText: "#4f1700",  image: missingRainImage },
-  ];
+  const shows = productions;
   return (
     <section className="section-pad bg-surface">
       <div className="container">

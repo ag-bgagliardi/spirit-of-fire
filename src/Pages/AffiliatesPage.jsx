@@ -118,7 +118,7 @@ function ContactStrip() {
           Interested in <span className="color-primary-container">partnering</span> with us?
         </h2>
         <p className="body-md color-on-surface-var" style={{ fontSize: 15, marginBottom: 40 }}>
-          We welcome relationships with organizations that share our passion for theatre and our devotion to excellence. Reach out — we'd love to talk.
+          Theatre dedicated to greatness. A place where passion and hardwork are the tools to uplift the soul.
         </p>
         <button
           className="btn-primary"

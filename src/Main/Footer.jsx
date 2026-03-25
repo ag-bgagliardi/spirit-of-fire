@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <div className="footer__logo">Spirit of Fire</div>
           <p className="serif-italic footer__tagline">
-            Theatre dedicated to greatness. A place where passion and hardwork are the tools to uplift the soul.
+            Artwork is courtesy of <a href="https://www.fullofeyes.com/" style={{ color:"#ffb59a" }}>Fullofeyes</a>, a beautiful library of exegetical art and animation, completely free for the Global Church.
           </p>
         </div>
         <div className="flex-col" style={{ gap: 16 }}>
