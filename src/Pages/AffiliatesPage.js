@@ -1,15 +1,14 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import bigBlueLogo from "../Assets/Logos/bbt.webp";
-import "../Style/global.css";
 
 function AffiliatesHero() {
   return (
-    <section style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", padding: "0 48px 80px", overflow: "hidden" }}>
+    <section className="affiliates-hero" style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,1) 0%,rgba(19,19,19,0.2) 70%)" }} />
       <div style={{ position: "absolute", inset: 0, opacity: .18, backgroundImage: "radial-gradient(ellipse at 65% 40%,rgba(249,94,20,0.6) 0%,transparent 60%)" }} />
-      <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
+      <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 860 }}>
         <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>
           Community &amp; Collaboration
         </span>
@@ -29,19 +28,18 @@ function PartnerCard() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div
+      className="partner-card"
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        display: "grid", gridTemplateColumns: "260px 1fr", overflow: "hidden",
         border: `1px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
         background: hov ? "var(--surface-high)" : "var(--surface-low)",
-        transition: "all .4s", position: "relative",
       }}
     >
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at left,rgba(249,94,20,0.05),transparent 60%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
 
       {/* Logo panel */}
-      <div style={{ background: "var(--surface-light)" }}>
+      <div className="partner-card__logo" style={{ background: "var(--surface-light)" }}>
         <div style={{
           backgroundImage: `url(${bigBlueLogo})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
@@ -58,7 +56,7 @@ function PartnerCard() {
       </div>
 
       {/* Info panel */}
-      <div className="flex-col" style={{ padding: "44px 48px", justifyContent: "center", gap: 20 }}>
+      <div className="partner-card__info flex-col" style={{ padding: "44px 48px", justifyContent: "center", gap: 20 }}>
         <div>
           <span className="label-tiny color-primary" style={{ letterSpacing: ".3em", display: "block", marginBottom: 10 }}>✦ Featured Partner</span>
           <h2 className="serif" style={{ fontSize: 36, lineHeight: 1.1, color: hov ? "var(--primary)" : "var(--on-surface)", transition: "color .3s", marginBottom: 6 }}>
@@ -93,15 +91,15 @@ function PartnersSection() {
           <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>Our Partners</h2>
         </div>
         <PartnerCard />
-        <div style={{ marginTop: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+        <div className="partner-placeholders" style={{ marginTop: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
           {[0, 1].map(i => (
-            <div key={i} className="flex-col bg-surface-lowest" style={{
-              border: "1px dashed rgba(89,66,56,0.3)", padding: "48px 40px",
-              alignItems: "center", justifyContent: "center", gap: 16, textAlign: "center",
+            <div key={i} className="flex-col bg-surface-lowest partner-placeholder" style={{
+              border: "1px dashed rgba(89,66,56,0.3)",
+              alignItems: "center", justifyContent: "center", gap: 16, textAlign: "center", padding:"30px 0px"
             }}>
               <span style={{ fontSize: 32, opacity: .3 }}>✦</span>
               <p className="serif-italic color-outline" style={{ fontSize: 18 }}>Partner Forthcoming</p>
-              <p className="label-upper" style={{ color: "rgba(168,138,126,0.4)" }}>More collaborators to come</p>
+              <p className="label-upper" style={{ color: "rgba(168,138,126,0.4)", padding:10 }}>More collaborators to come</p>
             </div>
           ))}
         </div>

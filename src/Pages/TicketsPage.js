@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
-import "../Style/global.css";
 
 const SHOWS = [
   { title: "Mother Rabbit",    dates: "JUN 01 — JUL 01", badge: "Encore Performance", badgeColor: "#a37cea", badgeText: "#38017a", image: motherRabbitImage },
@@ -40,7 +39,7 @@ function ShowSelector({ selected, onSelect }) {
       <h2 className="tickets-section-heading">I. Choose Your Performance</h2>
       <div className="show-selector-grid">
         {SHOWS.map((show, i) => (
-          <div key={i} onClick={() => onSelect(i)} className="show-selector-card" style={{ outline: selected === i ? "1px solid var(--primary-container)" : "none" }}>
+          <div key={i} onClick={() => onSelect(i)} className="show-selector-card" style={{ outline: selected === i ? "1px solid var(--primary-container)" : "none", minWidth: 0 }}>
             <div className="show-selector-card__image" style={{ backgroundImage: `url(${show.image})` }}>
               <div className="show-selector-card__image-overlay" />
               {selected === i && <div className="show-selector-card__image-tint" />}
@@ -184,7 +183,7 @@ export default function TicketsPage() {
   const [selectedShow, setSelectedShow] = useState(1);
   const [selectedDate, setSelectedDate] = useState(4);
   const [selectedSeats, setSelectedSeats] = useState([2]);
-  const [offering, setOffering] = useState(0);
+  const [offering, setOffering] = useState(25);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   function toggleSeat(key) {
@@ -204,7 +203,7 @@ export default function TicketsPage() {
           <PerformanceSummary showIndex={selectedShow} date={selectedDate} seats={selectedSeats} offering={offering} onOfferingChange={setOffering} />
         </div>
       </div>
-      <div style={{ padding: "0 48px" }}>
+      <div className="container">
         <Footer />
       </div>
     </main>
