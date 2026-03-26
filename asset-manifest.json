@@ -1,12 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.031d0de5.css",
-    "main.js": "/static/js/main.42ffb773.js",
+    "main.css": "/static/css/main.92f0abba.css",
+    "main.js": "/static/js/main.7a3db108.js",
+    "static/media/Stuart.jpg": "/static/media/Stuart.bc2717c5ff30ff2ba1a9.jpg",
+    "static/media/Lance.jpg": "/static/media/Lance.cda061442f0eb6545cc5.jpg",
     "static/media/Barbara.jpg": "/static/media/Barbara.35c982002720d4afd8dd.jpg",
     "static/media/SilasWide.jpeg": "/static/media/SilasWide.4d26be525726cc4a1f3e.jpeg",
     "static/media/Benjamin.png": "/static/media/Benjamin.a5fe75fee4e3352142b8.png",
+    "static/media/Martha.jpg": "/static/media/Martha.e84c86f9b636ddb4ab84.jpg",
     "static/media/MadelineWide.jpeg": "/static/media/MadelineWide.a715164aa2d469903610.jpeg",
+    "static/media/Kenzie.jpg": "/static/media/Kenzie.a6196cd65f6967a6b803.jpg",
     "static/media/MotherRabbit.jpg": "/static/media/MotherRabbit.727339330f967ae214fc.jpg",
+    "static/media/Brandyn.jpg": "/static/media/Brandyn.0406e3446281bb6956d8.jpg",
     "static/media/MissingTheRain.webp": "/static/media/MissingTheRain.9727353f16412b64607b.webp",
     "static/media/Stephanie.jpg": "/static/media/Stephanie.1bdb53a82bb3e4113a4d.jpg",
     "static/media/bbt.webp": "/static/media/bbt.2d41d9bd87bcc27a2c8d.webp",
@@ -14,11 +19,11 @@
     "static/media/AnimalCrackers.jpg": "/static/media/AnimalCrackers.9af4bb6b78183e6a21ef.jpg",
     "static/media/Rico.webp": "/static/media/Rico.efacf7afc755c0b7b821.webp",
     "index.html": "/index.html",
-    "main.031d0de5.css.map": "/static/css/main.031d0de5.css.map",
-    "main.42ffb773.js.map": "/static/js/main.42ffb773.js.map"
+    "main.92f0abba.css.map": "/static/css/main.92f0abba.css.map",
+    "main.7a3db108.js.map": "/static/js/main.7a3db108.js.map"
   },
   "entrypoints": [
-    "static/css/main.031d0de5.css",
-    "static/js/main.42ffb773.js"
+    "static/css/main.92f0abba.css",
+    "static/js/main.7a3db108.js"
   ]
 }
