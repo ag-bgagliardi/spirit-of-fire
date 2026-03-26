@@ -33,6 +33,7 @@ function PartnerCard() {
       style={{
         border: `1px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
         background: hov ? "var(--surface-high)" : "var(--surface-low)",
+        cursor: hov ? "pointer": "auto"
       }}
     >
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at left,rgba(249,94,20,0.05),transparent 60%)" : "none", transition: "all .5s", pointerEvents: "none" }} />

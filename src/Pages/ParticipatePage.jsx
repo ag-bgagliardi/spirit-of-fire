@@ -253,11 +253,12 @@ function JumpCard({ card, i, onNav }) {
       style={{
         borderRight: i < 2 ? "1px solid rgba(89,66,56,0.2)" : "none",
         background: hov ? "var(--surface-container)" : "transparent",
+        cursor: hov ? "pointer": "auto"
       }}
     >
-      <span className="jump-card__emoji" style={{ filter: hov ? "grayscale(0)" : "grayscale(1)" }}>{card.emoji}</span>
+      <span className="jump-card__emoji" style={{ filter: hov ? "grayscale(0)" : "grayscale(1)", cursor: hov ? "pointer": "auto" }}>{card.emoji}</span>
       <div>
-        <p className="jump-card__label serif" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>{card.label}</p>
+        <p className="jump-card__label serif" style={{ color: hov ? "var(--primary)" : "var(--on-surface)", cursor: hov ? "pointer": "auto" }}>{card.label}</p>
         <p className="label-xs color-outline">{card.desc}</p>
       </div>
       <span className="jump-card__arrow" style={{ color: hov ? "var(--primary-container)" : "transparent" }}>→</span>

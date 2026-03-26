@@ -6,6 +6,7 @@ import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
 
 function ProductionsHero() {
+  const navigate = useNavigate();
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 48px 96px" }}>
       <div className="grid-2">
@@ -20,7 +21,7 @@ function ProductionsHero() {
           <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
             Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
           </p>
-          <button className="btn-ghost">Read More</button>
+          <button className="btn-ghost" onClick={() => navigate("/motherrabbit")}>Read More</button>
         </div>
         <div style={{ position: "relative" }}>
           <div style={{
@@ -41,7 +42,7 @@ function ProductionsHero() {
   );
 }
 
-function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image }) {
+function ProdCard({ title, dates, badges, onBook, image }) {
   const [hov, setHov] = useState(false);
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
@@ -52,13 +53,17 @@ function ProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image })
             backgroundImage: `url(${image})`,
             transform: hov ? "scale(1.05)" : "scale(1)",
             filter: hov ? "grayscale(0%)" : "grayscale(100%)",
+            cursor: hov ? "pointer": "auto"
           }}
         >
           <div className="show-card_image-overlay" />
         </div>
         <div className="show-card_gradient" />
         <div className="show-card_badge-wrap">
-          <span className="show-card_badge" style={{ background: badgeColor, color: badgeText }}>{badge}</span>
+          <span
+            className="show-card_badge"
+            style={{ background: badges[0].color, color: badges[0].textcolor, display: "inline-block", width: "fit-content" }}
+          >{badges[0].label}</span>
         </div>
       </div>
       <h3 className="show-card_title" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>{title}</h3>

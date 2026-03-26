@@ -38,13 +38,14 @@ function MemberCard({ member, featured }) {
         style={{
           background: hov ? "var(--surface-high)" : "var(--surface-low)",
           border: `1px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
+          cursor: hov ? "pointer": "auto"
         }}
       >
         <div className="member-card__glow" style={{ background: hov ? "radial-gradient(ellipse at top left,rgba(249,94,20,0.06),transparent 70%)" : "none" }} />
         <div style={{ position: "relative" }}>
           <div
             className="member-card__image member-card__image--portrait"
-            style={{ backgroundImage: `url(${member.image})`, filter: hov ? "grayscale(0)" : "grayscale(1)" }}
+            style={{ backgroundImage: `url(${member.image})`, filter: hov ? "grayscale(0)" : "grayscale(1)", cursor: hov ? "pointer": "auto" }}
           >
             <div className="member-card__image-overlay" />
           </div>
@@ -76,7 +77,7 @@ function MemberCard({ member, featured }) {
       <div className="member-card__glow" style={{ background: hov ? "radial-gradient(ellipse at top,rgba(249,94,20,0.06),transparent 70%)" : "none" }} />
       <div
         className="member-card__image member-card__image--landscape"
-        style={{ backgroundImage: `url(${member.image})`, filter: hov ? "grayscale(0)" : "grayscale(1)" }}
+        style={{ backgroundImage: `url(${member.image})`, filter: hov ? "grayscale(0)" : "grayscale(1)", cursor: hov ? "pointer": "auto" }}
       >
         <div className="member-card__image-overlay" />
         <div className="member-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />

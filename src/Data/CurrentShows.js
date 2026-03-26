@@ -2,6 +2,7 @@
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
+import People from "./CastCrew"
 
 const badges = {
     encore: {
@@ -19,32 +20,90 @@ const badges = {
         color: "#f95e14",
         textcolor: "#4f1700",
     },
+    original: {
+        label: "Original Work",
+        color: "#352c00",
+        textcolor: "#e2bc00",
+    },
+    family: {
+        label: "Family-Friendly",
+        textcolor: "#3fc465",
+        color: "#00350b",
+    },
+    age: {
+        label: "PG13",
+        textcolor: "#78bfe9",
+        color: "#0d0035",
+    },
+    comedy: {
+        label: "Comedy",
+        color: "#f95e14",
+        textcolor: "#4f1700",
+    },
+    drama: {
+        label: "Drama",
+        color: "#f95e14",
+        textcolor: "#4f1700",
+    },
+    romance: {
+        label: "Romance",
+        color: "#f95e14",
+        textcolor: "#4f1700",
+    },
+    musical: {
+        label: "Musical",
+        color: "#f95e14",
+        textcolor: "#4f1700",
+    },
 };
 
 const productions = [
-    { 
+    {
         title: "Mother Rabbit",
         dates: "JUN 01 — JUL 01",
-        badge: badges.encore.label,
-        badgeColor: badges.encore.color,
-        badgeText: badges.encore.textcolor,
-        image: motherRabbitImage
+        badges: [
+            badges.encore,
+            badges.comedy,
+            badges.original,
+            badges.family,
+        ],
+        image: motherRabbitImage,
+        id: "motherrabbit",
+        cast: People.casts.MotherRabbit_Jun_2026,
+        description: `Peter Kotski's mother is sick. His father passed away years ago. 
+        His eccentric brothers are eccentric, and estranged. His mother's illness 
+        brings them all together again, where they must reconcile with each other, 
+        and her infamous personal Doctor, Reverend Byrd. Filled with boystrous energy
+        shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
+        who comes. The show is Family-friendly and has strong themes of forgiveness and 
+        family values.`
     },
-    { 
+    {
         title: "Animal Crackers",
         dates: "TBD",
-        badge: badges.adaptation.label,
-        badgeColor: badges.adaptation.color,
-        badgeText: badges.adaptation.textcolor,
-        image: animalCrackersImage
+        badges: [
+            badges.adaptation,
+            badges.comedy,
+            badges.family,
+        ],
+        image: animalCrackersImage,
+        id: "animalcrackers",
+        cast: "",
+        description: ""
     },
     {
         title: "Missing the Rain",
         dates: "TBD",
-        badge: badges.premiere.label,
-        badgeColor: badges.premiere.color,
-        badgeText: badges.premiere.textcolor,
-        image: missingRainImage
+        badges: [
+            badges.premiere,
+            badges.drama,
+            badges.original,
+            badges.age,
+        ],
+        image: missingRainImage,
+        id: "missingtherain",
+        cast: "",
+        description: ""
     },
 ];
 

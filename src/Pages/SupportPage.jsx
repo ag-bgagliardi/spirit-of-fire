@@ -138,7 +138,7 @@ function QuoteStrip() {
   );
 }
 
-function SupportProdCard({ title, dates, badge, badgeColor, badgeText, onBook, image }) {
+function SupportProdCard({ title, dates, badges, onBook, image }) {
   const [hov, setHov] = useState(false);
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
@@ -157,14 +157,17 @@ function SupportProdCard({ title, dates, badge, badgeColor, badgeText, onBook, i
             backgroundImage: `url(${image})`,
             transform: hov ? "scale(1.05)" : "scale(1)",
             filter: hov ? "grayscale(0%)" : "grayscale(100%)",
+            cursor: hov ? "pointer": "auto"
           }}
         >
           <div className="show-card_image-overlay" />
         </div>
         <div className="show-card_gradient" />
         <div className="show-card_badge-wrap">
-          <span className="show-card_badge" style={{ background: badgeColor, color: badgeText }}>{badge}</span>
-        </div>
+          <span
+            className="show-card_badge"
+            style={{ background: badges[0].color, color: badges[0].textcolor, display: "inline-block", width: "fit-content" }}
+          >{badges[0].label}</span>        </div>
       </div>
     </div>
   );

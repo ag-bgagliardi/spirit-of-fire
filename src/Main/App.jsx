@@ -10,6 +10,13 @@ import ParticipatePage from "../Pages/ParticipatePage";
 import AffiliatesPage from "../Pages/AffiliatesPage";
 import SupportPage from "../Pages/SupportPage";
 import TheatologyPage from "../Pages/TheatologyPage";
+import PerformancePage from "../Pages/PerformancePage";
+import productions from "../Data/CurrentShows";
+
+for (const show of productions) {
+  console.log(show)
+
+}
 
 function Layout() {
   const { pathname } = useLocation();
@@ -27,6 +34,9 @@ function Layout() {
           <Route path="/affiliates"  element={<AffiliatesPage />} />
           <Route path="/support"     element={<SupportPage />} />
           <Route path="/theatology"  element={<TheatologyPage />} />
+          {productions.map((show) => {
+            return <Route path={`/${show.id}`}  element={<PerformancePage show={show} />} />
+          })}
         </Routes>
       </div>
     </>

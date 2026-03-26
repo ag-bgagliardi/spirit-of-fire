@@ -111,6 +111,7 @@ function LeadershipProfile({ name, role, bio, cta, icon, image }) {
           style={{
             backgroundImage: `url(${image})`,
             filter: hov ? "grayscale(0)" : "grayscale(1)",
+            cursor: hov ? "pointer": "auto"
           }}
         >
           <div className="profile-card__image-overlay" />

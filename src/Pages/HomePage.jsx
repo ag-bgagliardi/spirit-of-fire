@@ -5,7 +5,8 @@ import "../Style/global.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
 
-function ShowCard({ title, dates, badge, badgeColor, badgeText, image, onBook }) {
+function ShowCard({ title, dates, badges, image, onBook }) {
+            console.log("🚀 ~ ShowCard ~ badges:", badges)
   return (
     <div className="show-card">
       <div className="show-card_image-wrap">
@@ -19,10 +20,8 @@ function ShowCard({ title, dates, badge, badgeColor, badgeText, image, onBook })
         <div className="show-card_badge-wrap">
           <span
             className="show-card_badge"
-            style={{ background: badgeColor, color: badgeText }}
-          >
-            {badge}
-          </span>
+            style={{ background: badges[0].color, color: badges[0].textcolor, display: "inline-block", width: "fit-content" }}
+          >{badges[0].label}</span>
         </div>
       </div>
       <h3 className="show-card_title">{title}</h3>
@@ -198,7 +197,7 @@ export default function HomePage() {
     <main>
       <HeroSection />
       <SpiritSection />
-      <NextOnStageSection  />
+      <NextOnStageSection />
       <GallerySection />
       <CTASection />
       <Footer />
