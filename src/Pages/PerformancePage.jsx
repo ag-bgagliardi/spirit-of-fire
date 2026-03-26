@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Main/Footer";
+import productions from "../Data/CurrentShows";
 
 // ── Placeholder components — override per show ────────────────────────────────
 export function ShowDescription() {
@@ -31,7 +32,7 @@ function ShowHero({ show, scrollTo }) {
                     <div className="performance-tags-buttons flex-row" style={{ justifyContent:"space-between" }}>
                         <div className="flex-col " style={{ gap: 16 }}>
                             <button onClick={scrollTo} className="btn-ghost">Cast Crew ↓</button>
-                            <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Tickets</button>
+                            <button className="btn-primary" onClick={() => navigate("/tickets", { state: show })}>Reserve Tickets</button>
                         </div>
                         <div className="show-card-badges">
                             {
@@ -217,7 +218,7 @@ function ShowCTA({ title }) {
                     Reserve your seat and join us for an unforgettable evening.
                 </p>
                 <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
-                    <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Your Ticket</button>
+                    <button className="btn-primary" onClick={() => navigate("/tickets", {show: productions[0]} )}>Reserve Your Ticket</button>
                     <button className="btn-ghost-primary" onClick={() => navigate("/support")}>Become a Patron</button>
                 </div>
             </div>

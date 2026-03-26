@@ -1,15 +1,15 @@
 import Footer from "../Main/Footer";
-import { useEffect } from "react";
+import ShowModal from "./ShowModal";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/global.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
 
-function ShowCard({ title, dates, badges, image, onBook }) {
-            console.log("🚀 ~ ShowCard ~ badges:", badges)
+function ShowCard({ title, dates, badges, image, onBook, setModalShow, production }) {
   return (
     <div className="show-card">
-      <div className="show-card_image-wrap">
+      <div onClick={() => setModalShow(production)} className="show-card_image-wrap" style={{ cursor: "pointer" }}>
         <div
           className="show-card_image"
           style={{ backgroundImage: `url(${image})` }}
@@ -119,7 +119,7 @@ function SpiritSection() {
   );
 }
 
-function NextOnStageSection() {
+function NextOnStageSection({ setModalShow }) {
   const navigate = useNavigate();
   const shows = productions;
   return (
@@ -130,13 +130,16 @@ function NextOnStageSection() {
             <span className="label-upper color-primary">Upcoming Performances</span>
             <h2 className="display-lg" style={{ marginTop: 12 }}>Next on <em>Stage</em></h2>
           </div>
-          <div className="flex-row" style={{ gap: 12 }}>
-            <button className="btn-icon">←</button>
-            <button className="btn-icon">→</button>
-          </div>
+          {
+            productions.length > 3 ?
+              <div className="flex-row" style={{ gap: 16 }}>
+                <button className="btn-icon">←</button>
+                <button className="btn-icon">→</button>
+              </div> : <></>
+          }
         </div>
         <div className="grid-3">
-          {shows.map(s => <ShowCard onBook={() => navigate("/tickets")} key={s.title} {...s} />)}
+          {shows.map(s => <ShowCard onBook={() => navigate("/tickets", { state: s })} key={s.title} {...s} setModalShow={setModalShow} production={s} />)}
         </div>
       </div>
     </section>
@@ -193,13 +196,21 @@ function CTASection() {
 }
 
 export default function HomePage() {
+  const [modalShow, setModalShow] = useState(null);
   return (
     <main>
       <HeroSection />
       <SpiritSection />
-      <NextOnStageSection />
+      <NextOnStageSection setModalShow={setModalShow} />
       <GallerySection />
       <CTASection />
+      {modalShow && (
+        <ShowModal
+          show={modalShow}
+          onClose={() => setModalShow(null)}
+          ShowDescription={"MotherRabbitDescription"} // optional per-show component
+        />
+      )}
       <Footer />
     </main>
   );

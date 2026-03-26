@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <div className="footer__logo">Spirit of Fire</div>
           <p className="serif-italic footer__tagline">
-            Artwork is courtesy of <a href="https://www.fullofeyes.com/" style={{ color:"#ffb59a" }}>Fullofeyes</a>, a beautiful library of exegetical art and animation, completely free for the Global Church.
+            Artwork is courtesy of <a href="https://www.fullofeyes.com/" target="_blank" style={{ color:"#ffb59a" }}>Fullofeyes</a>, a beautiful library of exegetical art and animation, completely free for the Global Church.
           </p>
         </div>
         <div className="flex-col" style={{ gap: 16 }}>

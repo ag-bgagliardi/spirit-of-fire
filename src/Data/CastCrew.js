@@ -187,6 +187,112 @@ const Casts = {
             bio: "",
             image: "",
         },
+    ],
+    "AnimalCrackers_Characters": [
+        {
+            character: "Captain Jeffrey T. Spaulding",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "The Professor",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Signor Emanuel Ravelli",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Horatio Jamison",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Arabella Rittenhouse",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Mrs. Rittenhouse",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Roscoe W. Chandler",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "John Parker",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Mrs. Whitehead",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Grace Carpenter",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Hives",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Inspector Hennessey",
+            name: "",
+            bio: "",
+            image: "",
+        },
+    ],
+    "MissingTheRain_Characters": [
+        {
+            character: "George Pridane",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Lisa Pridane",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Logan Pridane",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Manny Belmeyer",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Lenny Yenti",
+            name: "",
+            bio: "",
+            image: "",
+        },
     ]
 }
 

@@ -4,6 +4,7 @@ import Footer from "../Main/Footer";
 import ricoImage from "../Assets/People/Rico.webp";
 import benImage from "../Assets/People/Benjamin.png";
 import "../Style/global.css";
+import productions from "../Data/CurrentShows"; 
 
 function MissionHero() {
   return (
@@ -167,7 +168,7 @@ function MissionCTA() {
           Join us for an evening of unbridled joy and laughter, as family and loved ones learn to forgive and work with each other.
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
-          <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Your Ticket</button>
+          <button className="btn-primary" onClick={() => navigate("/tickets", {show: productions[0]} )}>Reserve Your Ticket</button>
           <button className="btn-ghost-primary" onClick={() => navigate("/support")}>Become a Patron</button>
         </div>
       </div>

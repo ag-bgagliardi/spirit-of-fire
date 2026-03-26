@@ -1,4 +1,5 @@
 import Footer from "../Main/Footer";
+import ShowModal from "./ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/global.css";
@@ -23,7 +24,7 @@ function ProductionsHero() {
           </p>
           <button className="btn-ghost" onClick={() => navigate("/motherrabbit")}>Read More</button>
         </div>
-        <div style={{ position: "relative" }}>
+        <div style={{ position: "relative", cursor:"pointer" }} onClick={() => navigate("/motherrabbit")}>
           <div style={{
             aspectRatio: "3/4",
             backgroundImage: `url(${motherRabbitImage})`,
@@ -42,18 +43,18 @@ function ProductionsHero() {
   );
 }
 
-function ProdCard({ title, dates, badges, onBook, image }) {
+function ProdCard({ title, dates, badges, onBook, image, setModalShow, production }) {
   const [hov, setHov] = useState(false);
   return (
-    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
-      <div className="show-card_image-wrap">
+    <div onClick={() => setModalShow(production)} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
+      <div className="show-card_image-wrap" style={{ cursor: hov ? "pointer" : "auto" }}>
         <div
           className="show-card_image"
           style={{
             backgroundImage: `url(${image})`,
             transform: hov ? "scale(1.05)" : "scale(1)",
             filter: hov ? "grayscale(0%)" : "grayscale(100%)",
-            cursor: hov ? "pointer": "auto"
+            cursor: hov ? "pointer" : "auto"
           }}
         >
           <div className="show-card_image-overlay" />
@@ -71,7 +72,7 @@ function ProdCard({ title, dates, badges, onBook, image }) {
       <button
         onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
         onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-        onClick={onBook}
+        onClick={() => onBook(production)}
         style={{ width: "100%", padding: 16, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer" }}
       >
         Reserve Ticket
@@ -80,9 +81,10 @@ function ProdCard({ title, dates, badges, onBook, image }) {
   );
 }
 
-function Performances() {
+function Performances({ setModalShow }) {
   const navigate = useNavigate();
   const prods = productions;
+
   return (
     <section className="section-pad bg-surface-low" style={{ padding: "96px 48px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -91,13 +93,16 @@ function Performances() {
             <h2 className="serif" style={{ fontSize: 36, marginBottom: 8 }}>Performances</h2>
             <p className="label-xs color-outline">Active Productions • 2026</p>
           </div>
-          <div className="flex-row" style={{ gap: 16 }}>
-            <button className="btn-icon">←</button>
-            <button className="btn-icon">→</button>
-          </div>
+          {
+            productions.length > 3 ?
+              <div className="flex-row" style={{ gap: 16 }}>
+                <button className="btn-icon">←</button>
+                <button className="btn-icon">→</button>
+              </div> : <></>
+          }
         </div>
         <div className="grid-3" style={{ gap: 48 }}>
-          {prods.map(p => <ProdCard key={p.title} {...p} onBook={() => navigate("/tickets")} />)}
+          {prods.map(p => <ProdCard key={p.title} {...p} onBook={() => navigate("/tickets", {state: p})} setModalShow={setModalShow} production={p} />)}
         </div>
       </div>
     </section>
@@ -118,11 +123,20 @@ function MainQuote() {
 }
 
 export default function ProductionsPage() {
+  const [modalShow, setModalShow] = useState(null);
+
   return (
     <main className="pat" style={{ minHeight: "100vh" }}>
       <ProductionsHero />
-      <Performances />
+      <Performances setModalShow={setModalShow} />
       <MainQuote />
+      {modalShow && (
+        <ShowModal
+          show={modalShow}
+          onClose={() => setModalShow(null)}
+          ShowDescription={"MotherRabbitDescription"} // optional per-show component
+        />
+      )}
       <Footer />
     </main>
   );

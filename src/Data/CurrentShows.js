@@ -88,8 +88,8 @@ const productions = [
         ],
         image: animalCrackersImage,
         id: "animalcrackers",
-        cast: "",
-        description: ""
+        cast: People.casts.AnimalCrackers_Characters,
+        description: "Mayhem and zaniness ensue when a valuable painting goes missing during a party in honor of famed African explorer Captain Spaulding."
     },
     {
         title: "Missing the Rain",
@@ -102,7 +102,7 @@ const productions = [
         ],
         image: missingRainImage,
         id: "missingtherain",
-        cast: "",
+        cast: People.casts.MissingTheRain_Characters,
         description: ""
     },
 ];

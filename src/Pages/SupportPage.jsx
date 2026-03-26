@@ -1,4 +1,5 @@
 import Footer from "../Main/Footer";
+import ShowModal from "./ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import productions from "../Data/CurrentShows"
@@ -7,9 +8,9 @@ import "../Style/global.css";
 const AMOUNTS = [5, 10, 25, 50, 100];
 
 const TIERS = [
-  { label: "Friend of the Fire",  range: "$1 – $49",   desc: "Recognition in our programmes." },
-  { label: "Patron of the Arts",  range: "$50 – $249",  desc: "Programme credit and a reserved seat at opening night." },
-  { label: "Founding Patron",     range: "$250+",       desc: "Named recognition, early ticket access, and a personal thank-you from the artistic director." },
+  { label: "Friend of the Fire", range: "$1 – $49", desc: "Recognition in our programmes." },
+  { label: "Patron of the Arts", range: "$50 – $249", desc: "Programme credit and a reserved seat at opening night." },
+  { label: "Founding Patron", range: "$250+", desc: "Named recognition, early ticket access, and a personal thank-you from the artistic director." },
 ];
 
 function SupportHero() {
@@ -138,10 +139,10 @@ function QuoteStrip() {
   );
 }
 
-function SupportProdCard({ title, dates, badges, onBook, image }) {
+function SupportProdCard({ title, dates, badges, onBook, image, setModalShow, production }) {
   const [hov, setHov] = useState(false);
   return (
-    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
+    <div onClick={() => setModalShow(production)} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
       <h3 className="display-sm" style={{ color: hov ? "var(--primary)" : "var(--on-surface)", transition: "color .3s", marginBottom: 8 }}>{title}</h3>
       <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
       <button
@@ -150,14 +151,14 @@ function SupportProdCard({ title, dates, badges, onBook, image }) {
         onClick={onBook}
         style={{ width: "100%", padding: 16, marginBottom: 10, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer", fontFamily: "var(--font-sans)" }}
       >Reserve Ticket</button>
-      <div className="show-card_image-wrap">
+      <div className="show-card_image-wrap" style={{ cursor: hov ? "pointer" : "auto" }}>
         <div
           className="show-card_image"
           style={{
             backgroundImage: `url(${image})`,
             transform: hov ? "scale(1.05)" : "scale(1)",
             filter: hov ? "grayscale(0%)" : "grayscale(100%)",
-            cursor: hov ? "pointer": "auto"
+            cursor: hov ? "pointer" : "auto"
           }}
         >
           <div className="show-card_image-overlay" />
@@ -173,7 +174,7 @@ function SupportProdCard({ title, dates, badges, onBook, image }) {
   );
 }
 
-function SupportPerformances() {
+function SupportPerformances( {setModalShow} ) {
   const navigate = useNavigate();
   const prods = productions;
   return (
@@ -194,13 +195,16 @@ function SupportPerformances() {
             <h2 className="serif" style={{ fontSize: 36, marginBottom: 8 }}>Current Projects</h2>
             <p className="label-xs color-outline">Active Productions • 2026</p>
           </div>
-          <div className="flex-row" style={{ gap: 16 }}>
-            <button className="btn-icon">←</button>
-            <button className="btn-icon">→</button>
-          </div>
+          {
+            productions.length > 3 ?
+              <div className="flex-row" style={{ gap: 16 }}>
+                <button className="btn-icon">←</button>
+                <button className="btn-icon">→</button>
+              </div> : <></>
+          }
         </div>
         <div className="grid-3" style={{ gap: 48 }}>
-          {prods.map(p => <SupportProdCard key={p.title} {...p} onBook={() => navigate("/tickets")} />)}
+          {prods.map(p => <SupportProdCard key={p.title} {...p} onBook={() => navigate("/tickets", {state: p} )} setModalShow={setModalShow} production={p} />)}
         </div>
       </div>
     </section>
@@ -209,12 +213,20 @@ function SupportPerformances() {
 
 export default function SupportPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [modalShow, setModalShow] = useState(null);
   return (
     <main style={{ paddingTop: 80 }}>
       <SupportHero />
       <DonationForm />
-      <SupportPerformances />
+      <SupportPerformances setModalShow={setModalShow}  />
       <QuoteStrip />
+      {modalShow && (
+        <ShowModal
+          show={modalShow}
+          onClose={() => setModalShow(null)}
+          ShowDescription={"MotherRabbitDescription"} // optional per-show component
+        />
+      )}
       <Footer />
     </main>
   );

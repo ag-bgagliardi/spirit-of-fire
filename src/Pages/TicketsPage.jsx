@@ -1,5 +1,6 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
+import { useLocation } from 'react-router'
 import productions from "../Data/CurrentShows";
 
 const shows = productions;
@@ -173,8 +174,17 @@ function PerformanceSummary({ showIndex, date, seats, offering, onOfferingChange
 }
 
 export default function TicketsPage() {
-  const [selectedShow, setSelectedShow] = useState(1);
-  const [selectedDate, setSelectedDate] = useState(4);
+  const initShow = useLocation().state || productions[0];
+  console.log("🚀 ~ TicketsPage ~ useLocation().state:", useLocation().state)
+  console.log("🚀 ~ TicketsPage ~ initShow:", initShow)
+  let initIndex = 0;
+  for (let i = 0; i < productions.length; i++) {
+    if (initShow.id === productions[i].id)
+      initIndex = i;
+  }
+  console.log("🚀 ~ TicketsPage ~ initIndex:", initIndex)
+  const [selectedShow, setSelectedShow] = useState(initIndex);
+  const [selectedDate, setSelectedDate] = useState(initShow.dates);
   const [selectedSeats, setSelectedSeats] = useState([2]);
   const [offering, setOffering] = useState(0);
   useEffect(() => { window.scrollTo(0, 0); }, []);

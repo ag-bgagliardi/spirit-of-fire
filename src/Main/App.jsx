@@ -13,11 +13,6 @@ import TheatologyPage from "../Pages/TheatologyPage";
 import PerformancePage from "../Pages/PerformancePage";
 import productions from "../Data/CurrentShows";
 
-for (const show of productions) {
-  console.log(show)
-
-}
-
 function Layout() {
   const { pathname } = useLocation();
   return (
