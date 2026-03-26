@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Main/Footer";
 import productions from "../Data/CurrentShows";
 
-// ── Placeholder components — override per show ────────────────────────────────
 export function ShowDescription() {
     return (
         <div className="show-description__placeholder">
@@ -15,7 +14,6 @@ export function ShowDescription() {
 export function ProductionPhotos() {
     return null;
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
 function ShowHero({ show, scrollTo }) {
     const navigate = useNavigate();
@@ -24,31 +22,25 @@ function ShowHero({ show, scrollTo }) {
             <div className="show-hero__bg" style={{ backgroundImage: `url(${show.image})` }} />
             <div className="show-hero__bg-fade" />
             <div className="show-hero__bg-vignette" />
-            <div className="show-hero__content container" style={{ paddingTop: 50 }}>
+            <div className="show-hero__content container">
                 <div className="show-hero__meta">
                     <h1 className="display-xl color-on-surface" style={{ marginBottom: 16 }}>{show.title}</h1>
                     <p className="label-xs color-outline" style={{ letterSpacing: ".3em", marginBottom: 20, fontSize: 20 }}>{show.dates}</p>
-                    <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
-                    <div className="performance-tags-buttons flex-row" style={{ justifyContent:"space-between" }}>
-                        <div className="flex-col " style={{ gap: 16 }}>
-                            <button onClick={scrollTo} className="btn-ghost">Cast Crew ↓</button>
+                    <div className="show-hero__actions">
+                        <div className="flex-col" style={{ gap: 12 }}>
+                            <button onClick={scrollTo} className="btn-ghost">Cast & Crew ↓</button>
                             <button className="btn-primary" onClick={() => navigate("/tickets", { state: show })}>Reserve Tickets</button>
                         </div>
                         <div className="show-card-badges">
-                            {
-                                show.badges.map((badge) => {
-                                    return (
-                                        <span
-                                            className="show-card_badge"
-                                            style={{ background: badge.color, color: badge.textcolor, display: "inline-block", width: "fit-content" }}
-                                        >{badge.label}</span>
-                                    )
-                                })
-                            }
+                            {show.badges.map((badge, i) => (
+                                <span key={i} className="show-card_badge"
+                                    style={{ background: badge.color, color: badge.textcolor, display: "inline-block", width: "fit-content" }}>
+                                    {badge.label}
+                                </span>
+                            ))}
                         </div>
                     </div>
-                        {show.description}
-                    </p>
+                    <p className="body-md color-on-surface-var show-hero__description">{show.description}</p>
                 </div>
                 <div className="show-hero__cover">
                     <div className="show-hero__cover-border" />
@@ -64,58 +56,40 @@ function CastMember({ person }) {
     const [hov, setHov] = useState(false);
     return (
         <div
-            className="cast-card"
+            className="cast-card cast-card-body"
+            onMouseEnter={() => setHov(true)}
+            onMouseLeave={() => setHov(false)}
             style={{
-                overflow: "visible"
+                border: `1px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
+                background: hov ? "var(--surface-high)" : "var(--surface-low)",
+                cursor: hov ? "pointer" : "auto",
+                transition: "background .4s, border .3s",
             }}
         >
-            <div
-                className="cast-card__body"
-                onMouseEnter={() => setHov(true)}
-                onMouseLeave={() => setHov(false)}
-                style={{
-                    border: `1px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
-                    background: hov
-                        ? "linear-gradient(to right, var(--secondary-container) 30%, var(--secondary) 100%)"
-                        : "linear-gradient(to right, var(--primary-container) 30%, var(--primary-lighter) 100%)",
-                    cursor: hov ? "pointer" : "auto"
-                }}
-            >
-                {person.character && (
-                    <span
-                        className="label-upper"
-                        style={{ fontSize: 16, color: hov ? "var(--on-primary-container)" : "var(--on-surface)" }}>
-                        {person.character}
-                    </span>
-                )}
+            <div className="cast-card-name-container">
+                <h5 className="serif cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
+                    {person.name}
+                </h5>
+                <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
             </div>
-            <div
-                className="cast-card-body"
-                onMouseEnter={() => setHov(true)}
-                onMouseLeave={() => setHov(false)}
+            <div className="cast-card__image"
                 style={{
-                    border: `1px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
-                    background: hov ? "var(--surface-high)" : "var(--surface-low)",
-                    cursor: hov ? "pointer" : "auto"
+                    backgroundImage: person.image ? `url(${person.image})` : "none",
+                    filter: hov ? "grayscale(0)" : "grayscale(1)",
                 }}
             >
-                <div
-                    className="cast-card__image"
-                    style={{
-                        backgroundImage: person.image ? `url(${person.image})` : "none",
-                        filter: hov ? "grayscale(0)" : "grayscale(1)",
-                    }}
+                {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
+                <div className="cast-card__image-overlay" />
+                <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
+            </div>
+            <div className="cast-card-character-container">
+                <h5 
+                    className="cast-card__name" 
+                    style={{  color: hov ? "var(--primary)" : "var(--on-surface)" }}
                 >
-                    {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
-                    <div className="cast-card__image-overlay" />
-                    <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
-                </div>
-                <div className="cast-card-name-container">
-                    <h5 className="serif cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
-                        {person.name}
-                    </h5>
-                    <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
-                </div>
+                    as {person.character}
+                </h5>
+                <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
             </div>
         </div>
     );
@@ -148,9 +122,7 @@ function ShowAbout({ children }) {
                             <div className="divider-flame" style={{ height: 1, width: 48 }} />
                             <span className="label-xs color-primary" style={{ letterSpacing: ".4em" }}>About the Show</span>
                         </div>
-                        <h2 className="serif" style={{ fontSize: 40, marginBottom: 32 }}>
-                            The Story
-                        </h2>
+                        <h2 className="serif" style={{ fontSize: 40, marginBottom: 32 }}>The Story</h2>
                         {children}
                     </div>
                 </div>
@@ -161,20 +133,10 @@ function ShowAbout({ children }) {
 
 function PhotoCarousel({ children }) {
     const [idx, setIdx] = useState(0);
-    const [items, setItems] = useState([]);
-
-    // Children are photo elements — collect via cloneElement if provided
-    const photos = Array.isArray(children)
-        ? children
-        : children
-            ? [children]
-            : [];
-
+    const photos = Array.isArray(children) ? children : children ? [children] : [];
     if (photos.length === 0) return null;
-
     const prev = () => setIdx(i => (i - 1 + photos.length) % photos.length);
     const next = () => setIdx(i => (i + 1) % photos.length);
-
     return (
         <section className="section-pad bg-surface-lowest">
             <div className="container" style={{ marginBottom: 48 }}>
@@ -185,20 +147,14 @@ function PhotoCarousel({ children }) {
             </div>
             <div className="carousel">
                 <div className="carousel__track" style={{ transform: `translateX(-${idx * 100}%)` }}>
-                    {photos.map((photo, i) => (
-                        <div key={i} className="carousel__slide">{photo}</div>
-                    ))}
+                    {photos.map((photo, i) => <div key={i} className="carousel__slide">{photo}</div>)}
                 </div>
                 <button className="carousel__btn carousel__btn--prev" onClick={prev}>←</button>
                 <button className="carousel__btn carousel__btn--next" onClick={next}>→</button>
                 <div className="carousel__dots">
                     {photos.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => setIdx(i)}
-                            className="carousel__dot"
-                            style={{ background: i === idx ? "var(--primary-container)" : "var(--outline-variant)" }}
-                        />
+                        <button key={i} onClick={() => setIdx(i)} className="carousel__dot"
+                            style={{ background: i === idx ? "var(--primary-container)" : "var(--outline-variant)" }} />
                     ))}
                 </div>
             </div>
@@ -214,11 +170,11 @@ function ShowCTA({ title }) {
                 <h2 className="serif" style={{ fontSize: 44, marginBottom: 20 }}>
                     Don't miss <em className="color-primary">{title}!</em>
                 </h2>
-                <p className="body-lg color-on-surface-var" style={{ color: "rgba(229,226,225,0.6)", marginBottom: 48 }}>
+                <p className="body-lg" style={{ color: "rgba(229,226,225,0.6)", marginBottom: 48 }}>
                     Reserve your seat and join us for an unforgettable evening.
                 </p>
-                <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
-                    <button className="btn-primary" onClick={() => navigate("/tickets", {show: productions[0]} )}>Reserve Your Ticket</button>
+                <div className="flex-row" style={{ justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
+                    <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Reserve Your Ticket</button>
                     <button className="btn-ghost-primary" onClick={() => navigate("/support")}>Become a Patron</button>
                 </div>
             </div>
@@ -226,24 +182,18 @@ function ShowCTA({ title }) {
     );
 }
 
-export default function PerformancePage({ show, ShowDescription: Desc = ShowDescription, children }) {
+export default function ShowPage({ show, ShowDescription: Desc = ShowDescription, children }) {
     useEffect(() => { window.scrollTo(0, 0); }, []);
     const scrollTo = () => {
         const el = document.getElementById("learn-more-anchor");
         if (el) el.scrollIntoView({ behavior: "smooth" });
     };
-
     return (
         <main>
             <ShowHero show={show} scrollTo={scrollTo} />
             <CastSection cast={show.cast} />
-            <ShowAbout>
-                <Desc />
-            </ShowAbout>
-            <PhotoCarousel>
-                {/* Pass <img> or <div> children per show via ProductionPhotos */}
-                <ProductionPhotos />
-            </PhotoCarousel>
+            <ShowAbout><Desc /></ShowAbout>
+            <PhotoCarousel><ProductionPhotos /></PhotoCarousel>
             <ShowCTA title={show.title} />
             <Footer />
         </main>

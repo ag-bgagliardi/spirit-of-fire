@@ -24,13 +24,14 @@ function ProductionsHero() {
           </p>
           <button className="btn-ghost" onClick={() => navigate("/motherrabbit")}>Read More</button>
         </div>
-        <div style={{ position: "relative", cursor:"pointer" }} onClick={() => navigate("/motherrabbit")}>
+        <div style={{ position: "relative" }}>
           <div style={{
             aspectRatio: "3/4",
             backgroundImage: `url(${motherRabbitImage})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
+            maxHeight:"70vh"
           }}>
             <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
           </div>
@@ -54,7 +55,7 @@ function ProdCard({ title, dates, badges, onBook, image, setModalShow, productio
             backgroundImage: `url(${image})`,
             transform: hov ? "scale(1.05)" : "scale(1)",
             filter: hov ? "grayscale(0%)" : "grayscale(100%)",
-            cursor: hov ? "pointer" : "auto"
+            cursor: hov ? "pointer" : "auto",
           }}
         >
           <div className="show-card_image-overlay" />
@@ -101,7 +102,7 @@ function Performances({ setModalShow }) {
               </div> : <></>
           }
         </div>
-        <div className="grid-3" style={{ gap: 48 }}>
+        <div className="grid-3" style={{ gap: 48, }}>
           {prods.map(p => <ProdCard key={p.title} {...p} onBook={() => navigate("/tickets", {state: p})} setModalShow={setModalShow} production={p} />)}
         </div>
       </div>
