@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.92f0abba.css",
-    "main.js": "/static/js/main.7a3db108.js",
+    "main.css": "/static/css/main.b84c3397.css",
+    "main.js": "/static/js/main.c21aba2e.js",
     "static/media/Stuart.jpg": "/static/media/Stuart.bc2717c5ff30ff2ba1a9.jpg",
     "static/media/Lance.jpg": "/static/media/Lance.cda061442f0eb6545cc5.jpg",
     "static/media/Barbara.jpg": "/static/media/Barbara.35c982002720d4afd8dd.jpg",
@@ -16,14 +16,15 @@
     "static/media/Stephanie.jpg": "/static/media/Stephanie.1bdb53a82bb3e4113a4d.jpg",
     "static/media/bbt.webp": "/static/media/bbt.2d41d9bd87bcc27a2c8d.webp",
     "static/media/Benjamin.jpeg": "/static/media/Benjamin.eaa2f3f75c79ea6cb755.jpeg",
+    "static/media/salvationArmy.webp": "/static/media/salvationArmy.556225f4ac0d0fd01baa.webp",
     "static/media/AnimalCrackers.jpg": "/static/media/AnimalCrackers.9af4bb6b78183e6a21ef.jpg",
     "static/media/Rico.webp": "/static/media/Rico.efacf7afc755c0b7b821.webp",
     "index.html": "/index.html",
-    "main.92f0abba.css.map": "/static/css/main.92f0abba.css.map",
-    "main.7a3db108.js.map": "/static/js/main.7a3db108.js.map"
+    "main.b84c3397.css.map": "/static/css/main.b84c3397.css.map",
+    "main.c21aba2e.js.map": "/static/js/main.c21aba2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.92f0abba.css",
-    "static/js/main.7a3db108.js"
+    "static/css/main.b84c3397.css",
+    "static/js/main.c21aba2e.js"
   ]
 }
