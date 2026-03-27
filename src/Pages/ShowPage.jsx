@@ -60,14 +60,14 @@ function CastMember({ person }) {
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}
             style={{
-                border: `1px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
+                border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
                 background: hov ? "var(--surface-high)" : "var(--surface-low)",
                 cursor: hov ? "pointer" : "auto",
                 transition: "background .4s, border .3s",
             }}
         >
             <div className="cast-card-name-container">
-                <h5 className="serif cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
+                <h5 className="cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
                     {person.name}
                 </h5>
                 <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
@@ -83,12 +83,12 @@ function CastMember({ person }) {
                 <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
             </div>
             <div className="cast-card-character-container">
-                <h5 
-                    className="cast-card__name" 
-                    style={{  color: hov ? "var(--primary)" : "var(--on-surface)" }}
+                <h4 
+                    className="serif cast-card__name" 
+                    style={{  color: hov ? "var(--primary)" : "var(--primary-lighter)" }}
                 >
-                    as {person.character}
-                </h5>
+                    {person.character}
+                </h4>
                 <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
             </div>
         </div>

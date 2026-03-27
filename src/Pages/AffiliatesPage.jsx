@@ -1,6 +1,7 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import bigBlueLogo from "../Assets/Logos/bbt.webp";
+import salvationArmyLogo from "../Assets/Logos/salvationArmy.webp";
 function AffiliatesHero() {
   return (
     <section className="affiliates-hero" style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
@@ -22,7 +23,7 @@ function AffiliatesHero() {
   );
 }
 
-function PartnerCard() {
+function PartnerCard({ partner }) {
   const [hov, setHov] = useState(false);
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
@@ -31,50 +32,51 @@ function PartnerCard() {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        border: `1px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
+        border: `3px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
         background: hov ? "var(--surface-high)" : "var(--surface-low)",
+        marginBottom: 32 
       }}
     >
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at left,rgba(249,94,20,0.05),transparent 60%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
 
       {/* Logo panel */}
-      <div className="partner-card__logo" style={{ background: "var(--surface-light)" }}>
+      <div className="partner-card__logo" style={{ background: partner.background }}>
         <div style={{
-          backgroundImage: `url(${bigBlueLogo})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat",
+          backgroundImage: `url(${partner.logo})`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
           gap: 16, position: "relative",
           filter: hov ? "grayscale(0)" : "grayscale(0.6)",
           transition: "filter .5s", height: "100%",
         }}>
           <div style={{
-            fontSize: 9, textTransform: "uppercase", letterSpacing: ".3em",
-            color: hov ? "var(--primary-container)" : "var(--outline)", transition: "color .4s", padding: "10px", textAlign: "center",
+            fontSize: 12, textTransform: "uppercase", letterSpacing: ".3em", fontWeight: "bold",
+            color: hov ? "var(--primary-container)" : "var(--primary-container)", transition: "color .4s", padding: "10px", textAlign: "center",
             height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "30%",
           }}>Affiliate</div>
         </div>
       </div>
 
       {/* Info panel */}
-      <div className="partner-card__info flex-col" style={{ padding: "44px 48px", justifyContent: "center", gap: 20 }}>
+      <div className="partner-card__info flex-col" style={{ padding: "44px 48px", justifyContent: "center", gap: 20}}>
         <div>
           <span className="label-tiny color-primary" style={{ letterSpacing: ".3em", display: "block", marginBottom: 10 }}>✦ Featured Partner</span>
           <h2 className="serif" style={{ fontSize: 36, lineHeight: 1.1, color: hov ? "var(--primary)" : "var(--on-surface)", transition: "color .3s", marginBottom: 6 }}>
-            Big Blue Theatre
+            {partner.name}
           </h2>
-          <span className="label-xs color-outline">Theatre Company · Chicago, IL</span>
+          <span className="label-xs color-outline">{partner.type} · {partner.location}</span>
         </div>
         <div style={{ height: 1, width: 48, background: "var(--outline-variant)" }} />
         <p className="color-on-surface-var" style={{ lineHeight: 1.8, fontSize: 14, fontWeight: 300, maxWidth: 480 }}>
-          Big Blue Theatre's mission is to support the work of artists through the creation of new theatrical work. This includes plays, concerts, improv, and any other form of theatrical entertainment.
+          {partner.description}
         </p>
         <a
           className="label-upper"
           style={{ color: "var(--primary-container)" }}
           onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
           onMouseLeave={e => e.currentTarget.style.color = "var(--primary-container)"}
-          href="https://www.bigbluetheatre.org/" target="_blank"
+          href={partner.link} target="_blank"
         >
-          Visit Big Blue Theatre →
+          Visit {partner.name} →
         </a>
       </div>
     </div>
@@ -82,6 +84,26 @@ function PartnerCard() {
 }
 
 function PartnersSection() {
+  const partners = [
+    {
+      name: 'Big Blue Theatre',
+      description: "Big Blue Theatre's mission is to support the work of artists through the creation of new theatrical work. This includes plays, concerts, improv, and any other form of theatrical entertainment.",
+      logo: bigBlueLogo,
+      type: "Theatre Company",
+      link: "https://www.bigbluetheatre.org/",
+      location: "Woodbury, MN",
+      background: "var(--surface-light)"
+    },
+    {
+      name: "The Salvation Army",
+      description: "The Salvation Army, an international movement, is an evangelical part of the universal Christian Church. Its message is based on the Bible. Its ministry is motivated by the love of God. Its mission is to preach the gospel of Jesus Christ and to meet human needs in His name without discrimination.",
+      logo: salvationArmyLogo,
+      type: "Evangelical Organization",
+      link: "https://www.salvationarmyusa.org/mn/saint-paul/woodlynn-ave-corps/",
+      location: "Many Locations, U.S.",
+      background: "white"
+    },
+  ]
   return (
     <section className="pat section-pad bg-surface-low">
       <div className="container">
@@ -89,8 +111,12 @@ function PartnersSection() {
           <div style={{ height: 1, width: 48, background: "var(--primary-container)" }} />
           <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>Our Partners</h2>
         </div>
-        <PartnerCard />
-        <div className="partner-placeholders" style={{ marginTop: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+        {
+          partners.map(partner => {
+            return <PartnerCard partner={partner} />
+          })
+        }
+        <div className="partner-placeholders" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
           {[0, 1].map(i => (
             <div key={i} className="flex-col bg-surface-lowest partner-placeholder" style={{
               border: "1px dashed rgba(89,66,56,0.3)",
