@@ -112,8 +112,9 @@ function CastSection({ cast }) {
     );
 }
 
-function ShowAbout({ children }) {
+function ShowAbout({ show }) {
     return (
+        show.about ?
         <section className="pat section-pad bg-surface-low">
             <div className="container">
                 <div className="show-about__grid">
@@ -123,17 +124,17 @@ function ShowAbout({ children }) {
                             <span className="label-xs color-primary" style={{ letterSpacing: ".4em" }}>About the Show</span>
                         </div>
                         <h2 className="serif" style={{ fontSize: 40, marginBottom: 32 }}>The Story</h2>
-                        {children}
+                        {show.about}
                     </div>
                 </div>
             </div>
-        </section>
-    );
+        </section> : <></>
+    );  
 }
 
-function PhotoCarousel({ children }) {
+function PhotoCarousel({ show }) {
     const [idx, setIdx] = useState(0);
-    const photos = Array.isArray(children) ? children : children ? [children] : [];
+    const photos = Array.isArray(show.photos) ? show.photos : [];
     if (photos.length === 0) return null;
     const prev = () => setIdx(i => (i - 1 + photos.length) % photos.length);
     const next = () => setIdx(i => (i + 1) % photos.length);
@@ -192,8 +193,8 @@ export default function ShowPage({ show, ShowDescription: Desc = ShowDescription
         <main>
             <ShowHero show={show} scrollTo={scrollTo} />
             <CastSection cast={show.cast} />
-            <ShowAbout><Desc /></ShowAbout>
-            <PhotoCarousel><ProductionPhotos /></PhotoCarousel>
+            <ShowAbout show={show} ><Desc /></ShowAbout>
+            <PhotoCarousel show={show} ><ProductionPhotos /></PhotoCarousel>
             <ShowCTA title={show.title} />
             <Footer />
         </main>
