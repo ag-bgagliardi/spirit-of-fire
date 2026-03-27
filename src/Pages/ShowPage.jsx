@@ -163,20 +163,20 @@ function PhotoCarousel({ show }) {
     );
 }
 
-function ShowCTA({ title }) {
+function ShowCTA({ show }) {
     const navigate = useNavigate();
     return (
         <section className="section-cta-bordered">
             <div className="section-cta-bordered__inner">
                 <h2 className="serif" style={{ fontSize: 44, marginBottom: 20 }}>
-                    Don't miss <em className="color-primary">{title}!</em>
+                    Don't miss <em className="color-primary">{show.title}!</em>
                 </h2>
                 <p className="body-lg" style={{ color: "rgba(229,226,225,0.6)", marginBottom: 48 }}>
                     Reserve your seat and join us for an unforgettable evening.
                 </p>
                 <div className="flex-row" style={{ justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
                     <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Reserve Your Ticket</button>
-                    <button className="btn-ghost-primary" onClick={() => navigate("/support")}>Become a Patron</button>
+                    <button className="btn-ghost-primary" onClick={() => navigate("/support", {state: show})}>Become a Patron</button>
                 </div>
             </div>
         </section>
@@ -195,7 +195,7 @@ export default function ShowPage({ show, ShowDescription: Desc = ShowDescription
             <CastSection cast={show.cast} />
             <ShowAbout show={show} ><Desc /></ShowAbout>
             <PhotoCarousel show={show} ><ProductionPhotos /></PhotoCarousel>
-            <ShowCTA title={show.title} />
+            <ShowCTA show={show} />
             <Footer />
         </main>
     );
