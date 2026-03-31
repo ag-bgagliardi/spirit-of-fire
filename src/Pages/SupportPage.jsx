@@ -3,7 +3,7 @@ import ShowModal from "./ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import productions from "../Data/CurrentShows"
-import "../Style/global.css";
+import "../Style/index.css";
 
 const AMOUNTS = [5, 10, 25, 50, 100];
 
@@ -149,7 +149,7 @@ function SupportProdCard({ title, dates, badges, onBook, image, setModalShow, pr
         onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
         onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
         onClick={onBook}
-        style={{ width: "100%", padding: 16, marginBottom: 10, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer", fontFamily: "var(--font-sans)" }}
+        className="reserve-ticket-button"
       >Reserve Ticket</button>
       <div className="show-card_image-wrap" style={{ cursor: hov ? "pointer" : "auto" }}>
         <div

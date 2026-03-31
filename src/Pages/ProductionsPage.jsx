@@ -2,7 +2,7 @@ import Footer from "../Main/Footer";
 import ShowModal from "./ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Style/global.css";
+import "../Style/index.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
 
@@ -35,7 +35,7 @@ function ProductionsHero() {
           }}>
             <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
           </div>
-          <div className="btn-primary" style={{ position: "absolute", bottom: -24, left: -24, padding: "10px 30px", fontSize: 22 }}>
+          <div className="btn-primary" onClick={() => navigate("/motherrabbit")} style={{ position: "absolute", bottom: -24, left: -24, padding: "10px 30px", fontSize: 22 }}>
             Original Comedy
           </div>
         </div>
@@ -74,7 +74,7 @@ function ProdCard({ title, dates, badges, onBook, image, setModalShow, productio
         onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
         onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
         onClick={() => onBook(production)}
-        style={{ width: "100%", padding: 16, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer" }}
+        className="reserve-ticket-button"
       >
         Reserve Ticket
       </button>

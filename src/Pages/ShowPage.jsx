@@ -98,7 +98,8 @@ function CastMember({ person }) {
 function CastSection({ cast }) {
     if (!cast || cast.length === 0) return null;
     return (
-        <section id="learn-more-anchor" className="section-pad bg-surface">
+        <section id="learn-more-anchor" className="section-pad bg-surface section-flames">
+            <div className="flames-background"></div>
             <div className="container">
                 <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 80 }}>
                     <div className="divider-flame" style={{ height: 1, width: 48 }} />

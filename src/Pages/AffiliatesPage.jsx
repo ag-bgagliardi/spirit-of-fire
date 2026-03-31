@@ -1,7 +1,7 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
-import bigBlueLogo from "../Assets/Logos/bbt.webp";
-import salvationArmyLogo from "../Assets/Logos/salvationArmy.webp";
+import partnersData from "../Data/PartnersData"
+
 function AffiliatesHero() {
   return (
     <section className="affiliates-hero" style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
@@ -84,26 +84,7 @@ function PartnerCard({ partner }) {
 }
 
 function PartnersSection() {
-  const partners = [
-    {
-      name: 'Big Blue Theatre',
-      description: "Big Blue Theatre's mission is to support the work of artists through the creation of new theatrical work. This includes plays, concerts, improv, and any other form of theatrical entertainment.",
-      logo: bigBlueLogo,
-      type: "Theatre Company",
-      link: "https://www.bigbluetheatre.org/",
-      location: "Woodbury, MN",
-      background: "var(--surface-light)"
-    },
-    {
-      name: "The Salvation Army",
-      description: "The Salvation Army, an international movement, is an evangelical part of the universal Christian Church. Its message is based on the Bible. Its ministry is motivated by the love of God. Its mission is to preach the gospel of Jesus Christ and to meet human needs in His name without discrimination.",
-      logo: salvationArmyLogo,
-      type: "Evangelical Organization",
-      link: "https://www.salvationarmyusa.org/mn/saint-paul/woodlynn-ave-corps/",
-      location: "Many Locations, U.S.",
-      background: "white"
-    },
-  ]
+  const partners = partnersData;
   return (
     <section className="pat section-pad bg-surface-low">
       <div className="container">

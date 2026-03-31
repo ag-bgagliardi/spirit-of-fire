@@ -2,7 +2,7 @@ import Footer from "../Main/Footer";
 import ShowModal from "./ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Style/global.css";
+import "../Style/index.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
 
@@ -30,7 +30,7 @@ function ShowCard({ title, dates, badges, image, onBook, setModalShow, productio
         onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
         onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
         onClick={onBook}
-        style={{ width: "100%", padding: 16, fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer" }}
+        className="reserve-ticket-button"
       >
         Reserve Ticket
       </button>

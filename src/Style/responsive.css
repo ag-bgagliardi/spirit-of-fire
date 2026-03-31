@@ -1,0 +1,99 @@
+/* ════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════════ */
+
+/* ── Tablet (≤900px) ── */
+@media (max-width: 900px) {
+  /* Layout */
+  .btn-icon         { display: none; }
+  .grid-2           { grid-template-columns: 1fr; }
+  .grid-3           { grid-template-columns: 1fr 1fr; }
+  .grid-5-7         { grid-template-columns: 1fr; }
+  .grid-gallery     { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+
+  /* Mission */
+  .mission-statement__grid        { grid-template-columns: 1fr; }
+  .mission-statement__image-frame { display: none; }
+  .warehouse-grid                 { grid-template-columns: 1fr; }
+
+  /* Team */
+  .team-grid         { grid-template-columns: 1fr; }
+  .team-grid__col    { padding: 0 var(--pad-x); }
+  .team-company-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Participate */
+  .section-block__grid           { grid-template-columns: 1fr; gap: 32px; }
+  .section-block__label          { position: static; }
+  .participate-hero__jump-grid   { grid-template-columns: 1fr; }
+  .jump-card { border-right: none !important; border-bottom: 1px solid rgba(89,66,56,0.2); }
+
+  /* Tickets */
+  .tickets-page        { padding: 32px 0 64px; overflow: hidden; }
+  .tickets-layout      { grid-template-columns: 1fr; padding: 0 var(--pad-x); min-width: 0; }
+  .performance-summary { position: static; border-left: none; border-top: 1px solid rgba(255,181,154,0.15); }
+  .show-selector-grid  { grid-template-columns: 1fr; gap: 16px; }
+  .show-selector-card  { width: 100%; min-width: 0; }
+  .amount-grid         { grid-template-columns: repeat(3, 1fr); }
+
+  /* Donation */
+  .donation-grid { grid-template-columns: 1fr; }
+
+  /* Affiliates */
+  .partner-card       { grid-template-columns: 1fr; }
+  .partner-card__info { display: none; }
+  .partner-card__logo { width: 100%; min-height: 220px; }
+  .affiliates-hero    { padding: 0 var(--pad-x) 48px; }
+  .affiliates-hero h1 { font-size: clamp(36px, 10vw, 80px); word-break: break-word; }
+  .affiliates-hero p  { max-width: 100%; word-break: break-word; }
+
+  /* Essay */
+  .essay-virtue-grid { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+
+  /* Show page */
+  .show-hero__content { grid-template-columns: 1fr; padding-top: 100px; }
+  .show-hero__cover   { display: none; }
+  .show-hero__actions { flex-direction: column; align-items: flex-start; }
+  .show-hero__description { max-width: 100%; font-size: 15px; }
+  .show-card-badges   { align-items: flex-start; }
+  .cast-grid          { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); column-gap: 24px; row-gap: 60px; }
+  .carousel__slide    { aspect-ratio: 16/9; }
+
+  /* Modal */
+  .modal { grid-template-columns: 1fr; max-height: 95vh; overflow-y: auto; }
+  .modal__cover  { min-height: 220px; }
+  .modal__right  { padding: 24px 20px; max-height: none; overflow-y: visible; }
+  .modal__close  { top: 12px; right: 12px; }
+}
+
+/* ── Mobile (≤600px) ── */
+@media (max-width: 600px) {
+  /* Layout */
+  .grid-3       { grid-template-columns: 1fr; }
+  .grid-gallery { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .form-grid    { grid-template-columns: 1fr; }
+  .hero_card    { display: none; }
+
+  /* Team */
+  .team-company-grid    { grid-template-columns: 1fr; }
+  .member-card-featured { grid-template-columns: 1fr; }
+
+  /* Tickets */
+  .show-selector-grid { grid-template-columns: 1fr; }
+  .amount-grid        { grid-template-columns: repeat(2, 1fr); }
+  .step-indicator__list { max-width: 100%; }
+
+  /* Profile */
+  .profile-card { flex-direction: column; }
+  .profile-card__image-wrap { width: 100%; }
+
+  /* Footer */
+  .footer__grid { grid-template-columns: 1fr; }
+
+  /* Show page */
+  .cast-grid { grid-template-columns: 1fr 1fr; column-gap: 16px; row-gap: 48px; }
+  .show-hero__content { padding-top: 100px; padding-bottom: 48px; }
+  .section-cta-bordered__inner h2 { font-size: clamp(28px, 6vw, 44px); }
+}

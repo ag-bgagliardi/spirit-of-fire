@@ -4,56 +4,59 @@ import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
 import People from "./CastCrew"
 
+const badgeColor = "#ffbb00";
+const textColor = "#350000";
+
 const badges = {
     encore: {
         label: "Encore Performance",
-        color: "#a37cea",
-        textcolor: "#38017a",
+        color: badgeColor,
+        textcolor: textColor,
     },
     adaptation: {
         label: "Adaptation",
-        color: "#201f1f",
-        textcolor: "#ffb59a",
+        color: badgeColor,
+        textcolor: textColor,
     },
     premiere: {
         label: "World Premiere",
-        color: "#f95e14",
-        textcolor: "#4f1700",
+        color: badgeColor,
+        textcolor: textColor,
     },
     original: {
         label: "Original Work",
-        color: "#352c00",
-        textcolor: "#e2bc00",
+        color: badgeColor,
+        textcolor: textColor,
     },
     family: {
         label: "Family-Friendly",
-        textcolor: "#3fc465",
-        color: "#00350b",
+        textcolor: textColor,
+        color: badgeColor,
     },
     age: {
         label: "PG13",
-        textcolor: "#78bfe9",
-        color: "#0d0035",
+        textcolor: textColor,
+        color: badgeColor,
     },
     comedy: {
         label: "Comedy",
-        color: "#f95e14",
-        textcolor: "#4f1700",
+        color: badgeColor,
+        textcolor: textColor,
     },
     drama: {
         label: "Drama",
-        color: "#f95e14",
-        textcolor: "#4f1700",
+        color: badgeColor,
+        textcolor: textColor,
     },
     romance: {
         label: "Romance",
-        color: "#f95e14",
-        textcolor: "#4f1700",
+        color: badgeColor,
+        textcolor: textColor,
     },
     musical: {
         label: "Musical",
-        color: "#f95e14",
-        textcolor: "#4f1700",
+        color: badgeColor,
+        textcolor: textColor,
     },
 };
 

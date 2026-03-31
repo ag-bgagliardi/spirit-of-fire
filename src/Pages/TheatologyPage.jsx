@@ -1,6 +1,6 @@
 import Footer from "../Main/Footer";
 import { useEffect } from "react";
-import "../Style/global.css";
+import "../Style/index.css";
 
 function TheaHero() {
   return (

@@ -101,6 +101,7 @@ input, textarea, select {
 .container      { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad-x); }
 .section-pad    { padding: var(--space-lg) 0; }
 .section-pad-xl { padding: var(--space-xl) var(--space-sm); }
+.section-flames { position: relative; }
 
 .flex-col    { display: flex; flex-direction: column; }
 .flex-row    { display: flex; flex-direction: row; }
@@ -198,6 +199,25 @@ input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.reserve-ticket-button { 
+  width: 100%;
+  padding: 16px;
+  font-size: 12px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  background: var(--surface-highest);
+  border: 1px solid rgba(89,66,56,0.3);
+  color: var(--on-surface);
+  transition: all .5s;
+  cursor: "pointer";
+  font-weight: 500;
+}
+
+.reserve-ticket-button:hover { 
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /* ── Divider ── */
@@ -968,7 +988,7 @@ input, textarea, select {
   grid-template-columns: clamp(120px, 15vw, 200px) 1fr;
   gap: clamp(20px, 3vw, 40px);
   transition: all .4s;
-  padding: clamp(24px, 3vw, 40px);
+  padding: clamp(24px, 3vw, 48px);
   position: relative;
   overflow: hidden;
 }
@@ -1224,6 +1244,8 @@ input, textarea, select {
   padding-bottom: 2px;
   transition: color .3s;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .nav__link:hover { color: var(--primary) !important; cursor: pointer; }
@@ -1271,7 +1293,6 @@ input, textarea, select {
 
 .nav__mobile-link {
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: 18px;
   color: rgba(229,226,225,0.8);
   cursor: pointer;
@@ -1632,6 +1653,58 @@ input, textarea, select {
   transition: all 1s; */
 }
 
+.ticket-button {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5px, 1.5vw, 12px) clamp(10px, 3vw, 23px);
+  font-size: clamp(11px, 1.2vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  color: var(--on-primary-container);
+  box-shadow: 5px 5px 5px black;
+
+  /* Fiery gradient */
+  background: linear-gradient(
+    10deg,
+    #c43a00 10%,
+    var(--primary-container) 40%,
+    var(--primary-lighter) 100%,
+    var(--secondary-container) 100%
+  );
+  background-size: 200% 100%;
+  background-position: left center;
+
+  transition: background-position .4s ease, opacity .25s, box-shadow .25s;
+}
+
+.ticket-button:hover {
+  box-shadow: 1px 1px 25x 10px rgba(255,255,255,.1);
+  background-position: right center;
+}
+
+.ticket-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.1), transparent);
+  transition: .65s;
+}
+
+.ticket-button:hover:before {
+  left: 100%;
+}
+
+.ticket-button:active {
+  opacity: .8;
+}
+
+
 .cast-card-name-container {
   font-size: 18px;
   transition: all .3s;
@@ -1777,11 +1850,11 @@ input, textarea, select {
   top: 16px;
   right: 16px;
   z-index: 10;
-  width: 32px;
-  height: 32px;
-  background: var(--surface-highest);
+  width: 42px;
+  height: 42px;
+  background: var(--primary-container);
   border: 1px solid rgba(89,66,56,0.3);
-  color: var(--outline);
+  color: var(--primary);
   font-size: 13px;
   cursor: pointer;
   display: flex;
@@ -1791,7 +1864,7 @@ input, textarea, select {
 }
 
 .modal__close:hover {
-  background: var(--primary-container);
+  background: var(--primary-lighter);
   color: var(--on-primary-container);
   border-color: var(--primary-container);
 }
@@ -2031,4 +2104,126 @@ input, textarea, select {
   .section-cta-bordered__inner h2 {
     font-size: clamp(28px, 6vw, 44px);
   }
+}
+
+/* ── Nav link wrapper (for dropdown positioning) ── */
+.nav__link-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Dropdown arrow ── */
+.nav__dropdown-arrow {
+  font-size: 8px;
+  vertical-align: middle;
+  letter-spacing: 0;
+  transition: opacity .2s;
+  margin-left: 5px;
+}
+
+/* ── Dropdown panel ── */
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: calc(-5%);
+  min-width: 220px;
+  background: rgba(19,19,19,0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(89,66,56,0.3);
+  border-top: 1px solid var(--primary-container);
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
+/* ── Dropdown items ── */
+.nav__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 20px 20px 10px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: rgba(229,226,225,0.75);
+  cursor: pointer;
+  transition: color .2s, background .2s;
+  border-bottom: 1px solid rgba(89,66,56,0.15);
+}
+
+.nav__dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.nav__dropdown-item:hover {
+  color: var(--primary-container);
+  background: rgba(249,94,20,0.06);
+}
+
+.nav__dropdown-marker {
+  font-size: 7px;
+  color: var(--primary-container);
+  opacity: 0.5;
+  flex-shrink: 0;
+  transition: opacity .2s;
+}
+
+.nav__dropdown-item:hover .nav__dropdown-marker {
+  opacity: 1;
+}
+
+/* ── Mobile submenu ── */
+.nav__mobile-link--parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0 12px 16px;
+  border-left: 2px solid rgba(249,94,20,0.2);
+  margin-left: 8px;
+}
+
+.nav__mobile-sublink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: rgba(229,226,225,0.6);
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color .2s;
+}
+
+.nav__mobile-sublink:hover,
+.nav__mobile-sublink.active {
+  color: var(--primary-container);
+}
+
+.nav__mobile-sublink .nav__dropdown-marker {
+  font-size: 7px;
+  color: var(--primary-container);
+  opacity: 0.4;
+}
+
+.nav__mobile-sublink:hover .nav__dropdown-marker,
+.nav__mobile-sublink.active .nav__dropdown-marker {
+  opacity: 1;
+}
+
+.flames-background {
+  background-image: url(../Assets/Images/flames-background.png);
+  opacity: 2%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
 }

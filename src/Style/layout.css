@@ -1,0 +1,72 @@
+/* ── Containers ── */
+.container      { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad-x); }
+.section-pad    { padding: var(--space-lg) 0; }
+.section-pad-xl { padding: var(--space-xl) var(--space-sm); }
+.section-flames { position: relative; }
+.section-header { text-align: center; margin-bottom: var(--space-md); }
+
+/* ── Flex utilities ── */
+.flex-col    { display: flex; flex-direction: column; }
+.flex-row    { display: flex; flex-direction: row; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+
+/* ── Grid utilities ── */
+.grid-2       { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); align-items: center; }
+.grid-3       { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-5-7     { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-md); align-items: center; }
+.grid-gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 260px); gap: 8px; }
+
+/* ── Backgrounds ── */
+.bg-surface           { background: var(--surface); }
+.bg-surface-low       { background: var(--surface-low); }
+.bg-surface-lowest    { background: var(--surface-lowest); }
+.bg-surface-high      { background: var(--surface-high); }
+.bg-surface-highest   { background: var(--surface-highest); }
+.bg-surface-container { background: var(--surface-container); }
+
+/* ── Decorative ── */
+.pat {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.5 7.5L40 10l-7.5 2.5L30 20l-2.5-7.5L20 10l7.5-2.5z' fill='%23594238' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.divider-flame {
+  height: 3px;
+  width: 80px;
+  background: var(--primary-container);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--primary-container), rgba(89,66,56,0.2), transparent);
+}
+
+.cta-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(249,94,20,0.07) 0%, transparent 70%);
+}
+
+.flames-background {
+  background-image: url(../Assets/Images/flames-background.png);
+  opacity: 0.02;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+/* ── CTA section ── */
+.section-cta-bordered {
+  padding: var(--space-lg) var(--pad-x);
+  background: var(--surface-low);
+  border-top: 1px solid rgba(89,66,56,0.1);
+  border-bottom: 1px solid rgba(89,66,56,0.1);
+}
+
+.section-cta-bordered__inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}

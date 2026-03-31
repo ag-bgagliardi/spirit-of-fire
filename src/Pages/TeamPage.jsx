@@ -7,7 +7,7 @@ import silasImage from "../Assets/People/SilasWide.jpeg";
 import madelineImage from "../Assets/People/MadelineWide.jpeg";
 import barbaraImage from "../Assets/People/Barbara.jpg";
 import stephanieImage from "../Assets/People/Stephanie.jpg";
-import "../Style/global.css";
+import "../Style/index.css";
 
 const TEAM = [
   { name: "Rico Heisler",       title: "Artistic Director",      badge: "Cofounder", roles: ["Actor", "Director", "Choreographer"],          image: ricoImage,      icon: "🎬", col: "founder" },
@@ -128,7 +128,7 @@ function TeamSection() {
       <div className="team-grid">
         <div className="team-grid__col">
           <SectionLabel label="Founders" />
-          <div className="flex-col" style={{ gap: 24 }}>
+          <div className="flex-col" style={{ gap: 32 }}>
             {founders.map(m => <MemberCard key={m.name} member={m} featured />)}
           </div>
         </div>

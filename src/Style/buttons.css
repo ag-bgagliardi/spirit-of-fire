@@ -1,0 +1,188 @@
+/* ── Primary ── */
+.btn-primary {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  padding: clamp(10px, 1.5vw, 16px) clamp(20px, 3vw, 32px);
+  font-size: clamp(10px, 1.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background .25s, color .25s, opacity .25s;
+}
+.btn-primary:hover  { background: var(--primary); color: var(--on-primary); }
+.btn-primary:active { opacity: .8; }
+
+/* ── Ghost (dark border) ── */
+.btn-ghost {
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+  padding: clamp(10px, 1.5vw, 16px) clamp(20px, 3vw, 32px);
+  font-size: clamp(10px, 1.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: none;
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.btn-ghost:hover  { background: rgba(89,66,56,0.2); color: var(--primary); border-color: var(--primary); }
+.btn-ghost:active { opacity: .8; }
+
+/* ── Ghost (primary border) ── */
+.btn-ghost-primary {
+  border: 1px solid rgba(255, 181, 154, 0.3);
+  color: var(--primary);
+  padding: clamp(10px, 1.5vw, 16px) clamp(24px, 4vw, 40px);
+  font-size: clamp(10px, 1.2vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: none;
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.btn-ghost-primary:hover  { background: rgba(255,181,154,0.08); border-color: var(--primary); }
+.btn-ghost-primary:active { opacity: .8; }
+
+/* ── Outline ── */
+.btn-outline {
+  border: 1px solid var(--outline);
+  color: var(--on-surface);
+  padding: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 48px);
+  font-size: clamp(10px, 1.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: none;
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.btn-outline:hover  { background: rgba(168,138,126,0.1); color: var(--primary); border-color: var(--primary); }
+.btn-outline:active { opacity: .8; }
+
+/* ── Solid (inverted) ── */
+.btn-solid {
+  background: var(--on-surface);
+  color: var(--surface);
+  padding: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 48px);
+  font-size: clamp(10px, 1.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background .25s, color .25s;
+}
+.btn-solid:hover  { background: var(--primary-container); color: var(--on-primary-container); }
+.btn-solid:active { opacity: .8; }
+
+/* ── Text ── */
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: clamp(10px, 1.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: letter-spacing .3s, color .25s;
+}
+.btn-text:hover { letter-spacing: 0.3em; color: var(--primary-container); }
+
+/* ── Icon ── */
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+  font-size: 16px;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.btn-icon:hover  { background: var(--primary-container); color: var(--on-primary-container); border-color: var(--primary-container); }
+.btn-icon:active { opacity: .8; }
+
+/* ── Submit ── */
+.submit-btn {
+  width: 100%;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  padding: 18px 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(249,94,20,0.2);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: opacity .25s, box-shadow .25s;
+}
+.submit-btn--disabled {
+  background: var(--surface-highest);
+  color: var(--outline);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.submit-btn:not(.submit-btn--disabled):hover  { opacity: .88; box-shadow: 0 14px 36px rgba(249,94,20,0.35); }
+.submit-btn:not(.submit-btn--disabled):active { opacity: .75; }
+
+/* ── Reserve ticket ── */
+.reserve-ticket-button {
+  width: 100%;
+  padding: 16px;
+  font-size: 12px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  background: var(--surface-highest);
+  border: 1px solid rgba(89,66,56,0.3);
+  color: var(--on-surface);
+  transition: all .5s;
+  cursor: pointer;
+  font-weight: 500;
+}
+.reserve-ticket-button:hover { font-size: 14px; font-weight: 700; }
+
+/* ── Ticket (fiery gradient) ── */
+.ticket-button {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5px, 1.5vw, 12px) clamp(10px, 3vw, 23px);
+  font-size: clamp(11px, 1.2vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  color: var(--on-primary-container);
+  box-shadow: 5px 5px 5px black;
+  background: linear-gradient(10deg, #c43a00 10%, var(--primary-container) 40%, var(--primary-lighter) 100%);
+  background-size: 200% 100%;
+  background-position: left center;
+  transition: background-position .4s ease, opacity .25s, box-shadow .25s;
+}
+.ticket-button:hover {
+  background-position: right center;
+  box-shadow: 0 0 20px rgba(249,94,20,0.45);
+}
+.ticket-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.1), transparent);
+  transition: .65s;
+}
+.ticket-button:hover::before { left: 100%; }
+.ticket-button:active         { opacity: .8; }
