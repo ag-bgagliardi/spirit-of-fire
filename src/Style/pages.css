@@ -144,7 +144,7 @@
 .tier-row__desc  { font-size: 12px; color: var(--on-surface-variant); line-height: 1.6; font-weight: 300; }
 
 /* ── Show page ── */
-.show-hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding: 0 var(--pad-x); }
+.show-hero { position: relative; display: flex; align-items: center; overflow: hidden; padding: 0 var(--pad-x); }
 .show-hero__bg { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; transform: scale(1.05); filter: saturate(0.6); }
 .show-hero__bg-fade    { position: absolute; inset: 0; background: linear-gradient(to right, rgba(19,19,19,0.97) 40%, rgba(19,19,19,0.5) 100%); }
 .show-hero__bg-vignette{ position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,19,19,1) 0%, transparent 60%); }
@@ -168,6 +168,92 @@
 .cast-card-name-container      { font-size: 18px; transition: all .3s; margin-bottom: 4px; }
 .cast-card-character-container { font-size: 20px; transition: all .3s; margin: 0 4px; }
 .cast-card__name { padding: 10px 0; text-transform: uppercase; text-align: center; letter-spacing: .2em; }
+/* ════════════════════════════════════════════
+   CAST CARD — BIO OVERLAY
+   Add these rules to your cast card stylesheet
+   ════════════════════════════════════════════ */
+
+/* Both .cast-card__image and .modal-cast-card__image need:
+   position: relative; overflow: hidden;
+   (set inline in JSX, or add here if you prefer) */
+
+/* ── Bio overlay panel ── */
+.cast-card__bio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 8, 5, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cast-card__bio-overlay.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ── Bio text ── */
+.cast-card__bio-text {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(229, 226, 225, 0.85);
+  margin: 0;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+@media (max-width: 600px) {
+  .cast-card__bio-text {
+    font-size: 18px;
+  }
+}
+
+/* ── Close hint in corner ── */
+.cast-card__bio-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--primary-container);
+  opacity: 0.7;
+  line-height: 1;
+}
+
+/* ── Info hint badge (shown when bio exists and overlay is closed) ── */
+.cast-card__bio-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(249, 94, 20, 0.5);
+  background: rgba(13, 8, 5, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+
+.cast-card__bio-hint span {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-style: italic;
+  color: var(--primary-container);
+  line-height: 1;
+}
 
 /* ── Modal ── */
 .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; display: flex; align-items: center; justify-content: center; padding: var(--pad-x); backdrop-filter: blur(6px); }
@@ -179,7 +265,7 @@
 .modal__cover-fade { position: absolute; inset: 0; background: linear-gradient(to top, var(--surface-low) 0%, transparent 60%); }
 .modal__badges{ display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 20px; background: var(--surface-low); }
 .modal__right { display: flex; flex-direction: column; gap: 24px; padding: 40px 40px 32px; overflow-y: auto; max-height: 80vh; }
-.modal__right::-webkit-scrollbar       { width: 3px; }
+.modal__right::-webkit-scrollbar       { width: 2px; }
 .modal__right::-webkit-scrollbar-track { background: transparent; }
 .modal__right::-webkit-scrollbar-thumb { background: var(--outline-variant); }
 .modal__header      { border-bottom: 1px solid rgba(89,66,56,0.2); padding-bottom: 20px; }
@@ -187,10 +273,9 @@
 .modal__description { border-left: 2px solid var(--outline-variant); padding-left: 20px; }
 .modal__actions     { border-top: 1px solid rgba(89,66,56,0.15); padding-top: 24px; margin-top: auto; }
 .modal-cast-grid    { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
-.modal-cast-card    { cursor: pointer; overflow: hidden; }
+.modal-cast-card    { overflow: hidden; }
 .modal-cast-card__image { aspect-ratio: 3/4; background-position: center top; background-size: cover; background-repeat: no-repeat; background-color: var(--surface-highest); transition: filter .5s; position: relative; display: flex; align-items: center; justify-content: center; }
 .modal-cast-card__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,19,19,0.8) 0%, transparent 50%); }
-.modal-cast-card__bar  { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; transition: background .3s; }
 .modal-cast-card__body { padding: 8px 4px 4px; display: flex; flex-direction: column; gap: 3px; }
 .modal-cast-card__name { font-size: 12px; transition: color .3s; line-height: 1.3; }
 

@@ -1808,7 +1808,7 @@ input, textarea, select {
 }
 
 @media (max-width: 600px) {
-  .cast-grid { grid-template-columns: 1fr 1fr; }
+  .cast-grid { grid-template-columns: 1fr; }
 }
 
 .show-card-badges {
@@ -1910,7 +1910,7 @@ input, textarea, select {
   max-height: 80vh;
 }
 
-.modal__right::-webkit-scrollbar       { width: 3px; }
+.modal__right::-webkit-scrollbar       { width: 2px; }
 .modal__right::-webkit-scrollbar-track { background: transparent; }
 .modal__right::-webkit-scrollbar-thumb { background: var(--outline-variant); }
 

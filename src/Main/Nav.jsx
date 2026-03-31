@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const LINKS = [
@@ -6,9 +6,9 @@ const LINKS = [
   {
     label: "About Us",
     dropdown: [
-      { label: "Our Mission",          path: "/mission" },
-      { label: "Our Team",             path: "/team" },
-      { label: "Affiliates & Partners",path: "/affiliates" },
+      { label: "Our Mission",           path: "/mission" },
+      { label: "Our Team",              path: "/team" },
+      { label: "Affiliates & Partners", path: "/affiliates" },
     ],
   },
   { label: "Participate", path: "/participate" },
@@ -23,11 +23,12 @@ const LINKS = [
   },
 ];
 
-function DropdownMenu({ items, onNav, onMouseEnter, onMouseLeave }) {
+function DropdownMenu({ items, onNav }) {
   return (
-    <div className="nav__dropdown" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <div className="nav__dropdown">
       {items.map(({ label, path }) => (
         <span key={label} className="nav__dropdown-item" onClick={() => onNav(path)}>
+          <span className="nav__dropdown-marker">✦</span>
           {label}
         </span>
       ))}
@@ -36,46 +37,24 @@ function DropdownMenu({ items, onNav, onMouseEnter, onMouseLeave }) {
 }
 
 function NavLink({ link, pathname, onNav }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef(null);
-  const timerRef = useRef(null);
   const isActive = link.dropdown
     ? link.dropdown.some(d => d.path === pathname)
     : pathname === link.path;
 
-  function handleMouseEnter() {
-    clearTimeout(timerRef.current);
-    setOpen(true);
-  }
-
-  function handleMouseLeave() {
-    timerRef.current = setTimeout(() => setOpen(false), 120);
-  }
-
-  useEffect(() => () => clearTimeout(timerRef.current), []);
-
   if (link.dropdown) {
     return (
-      <div
-        ref={ref}
-        className="nav__link-wrap"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className="nav__link-wrap">
         <span
           className="nav__link"
           style={{
-            color: isActive || open ? "var(--primary-container)" : "rgba(229,226,225,0.7)",
-            borderBottom: isActive ? "1px solid rgba(249,94,20,0.5)" : "none",
+            color: isActive ? "var(--primary-container)" : "rgba(229,226,225,0.7)",
             cursor: "pointer",
           }}
         >
           {link.label}
-          <span className="nav__dropdown-arrow" style={{ opacity: open ? 1 : 0.5 }}>
-            {open ? " ▲" : " ▼"}
-          </span>
+          <span className="nav__dropdown-arrow">▼</span>
         </span>
-        {open && <DropdownMenu items={link.dropdown} onNav={path => { onNav(path); setOpen(false); }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />}
+        <DropdownMenu items={link.dropdown} onNav={onNav} />
       </div>
     );
   }
@@ -86,7 +65,6 @@ function NavLink({ link, pathname, onNav }) {
       onClick={() => onNav(link.path)}
       style={{
         color: isActive ? "var(--primary-container)" : "rgba(229,226,225,0.7)",
-        borderBottom: isActive ? "1px solid rgba(249,94,20,0.5)" : "none",
         cursor: "pointer",
       }}
     >
@@ -141,7 +119,7 @@ export default function Nav() {
                 >
                   {link.label}
                   <span className="nav__dropdown-arrow">
-                    {mobileExpanded === link.label ? " ▲" : " ▼"}
+                    {mobileExpanded === link.label ? "▲" : "▼"}
                   </span>
                 </span>
                 {mobileExpanded === link.label && (

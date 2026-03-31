@@ -54,6 +54,8 @@ function ShowHero({ show, scrollTo }) {
 
 function CastMember({ person }) {
     const [hov, setHov] = useState(false);
+    const [bioOpen, setBioOpen] = useState(false);
+
     return (
         <div
             className="cast-card cast-card-body"
@@ -72,20 +74,43 @@ function CastMember({ person }) {
                 </h5>
                 <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
             </div>
-            <div className="cast-card__image"
+
+            {/* Image with clickable bio overlay */}
+            <div
+                className="cast-card__image"
+                onClick={() => person.bio && setBioOpen(o => !o)}
                 style={{
                     backgroundImage: person.image ? `url(${person.image})` : "none",
-                    filter: hov ? "grayscale(0)" : "grayscale(1)",
+                    filter: hov && !bioOpen ? "grayscale(0)" : bioOpen ? "grayscale(0)" : "grayscale(1)",
+                    cursor: person.bio ? "pointer" : "default",
+                    position: "relative",
+                    overflow: "hidden",
                 }}
             >
                 {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
                 <div className="cast-card__image-overlay" />
                 <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
+
+                {/* Bio overlay */}
+                {person.bio && (
+                    <div className={`cast-card__bio-overlay${bioOpen ? " open" : ""}`}>
+                        <p className="cast-card__bio-text">{person.bio}</p>
+                        <span className="cast-card__bio-close">✕</span>
+                    </div>
+                )}
+
+                {/* Hint icon when bio available and not open */}
+                {person.bio && !bioOpen && (
+                    <div className="cast-card__bio-hint">
+                        <span>i</span>
+                    </div>
+                )}
             </div>
+
             <div className="cast-card-character-container">
-                <h4 
-                    className="serif cast-card__name" 
-                    style={{  color: hov ? "var(--primary)" : "var(--primary-lighter)" }}
+                <h4
+                    className="serif cast-card__name"
+                    style={{ color: hov ? "var(--primary)" : "var(--primary-lighter)" }}
                 >
                     {person.character}
                 </h4>
@@ -130,7 +155,7 @@ function ShowAbout({ show }) {
                 </div>
             </div>
         </section> : <></>
-    );  
+    );
 }
 
 function PhotoCarousel({ show }) {

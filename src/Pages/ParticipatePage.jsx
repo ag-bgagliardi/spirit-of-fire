@@ -79,6 +79,10 @@ function AuditionsForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", production: "", experience: "", training: "", note: "" });
   const up = (k, v) => setForm(p => ({ ...p, [k]: v }));
 
+  const submitForm = () => {
+    setSent(true)
+  }
+
   return (
     <FormCard eyebrow="Audition Inquiry">
       {sent ? <SuccessBanner msg="Your audition inquiry has been received. We'll be in touch soon." /> : (
@@ -114,7 +118,7 @@ function AuditionsForm() {
           <Field label="Anything Else?">
             <textarea className="field__input field__textarea" value={form.note} onChange={e => up("note", e.target.value)} rows={2} placeholder="Questions, scheduling notes, special skills…" />
           </Field>
-          <div onClick={() => form.name && form.email && setSent(true)}>
+          <div onClick={() => form.name && form.email && submitForm()}>
             <SubmitBtn label="Submit Audition Inquiry →" disabled={!form.name || !form.email} />
           </div>
           <FormNote>Audition dates are announced per production. Submitting this form does not guarantee a slot.</FormNote>
@@ -150,15 +154,15 @@ function SubmissionsForm() {
               <select className="field__input field__select" value={form.type} onChange={e => up("type", e.target.value)}>
                 <option value="" disabled hidden>Select a type…</option>
                 <option>Original Play</option>
-                <option>Musical</option>
+                <option>Original Musical</option>
                 <option>Adaptation</option>
                 <option>One-Act</option>
                 <option>Other</option>
               </select>
             </Field>
           </FormGrid>
-          <Field label="Logline / Synopsis">
-            <textarea className="field__input field__textarea" value={form.logline} onChange={e => up("logline", e.target.value)} rows={4} placeholder="A brief description of your project — its story, themes, and what makes it worth telling…" />
+          <Field label="Project Summary">
+            <textarea className="field__input field__textarea" value={form.logline} onChange={e => up("logline", e.target.value)} rows={4} placeholder="A brief description of your project — and why you want to tell this story - This should be no more than 4-5 sentences" />
           </Field>
           <Field label="Draft Status">
             <select className="field__input field__select" value={form.draft} onChange={e => up("draft", e.target.value)}>
@@ -175,7 +179,7 @@ function SubmissionsForm() {
           <div onClick={() => form.name && form.email && form.title && setSent(true)}>
             <SubmitBtn label="Submit Project →" disabled={!form.name || !form.email || !form.title} />
           </div>
-          <FormNote>We read every submission. Response times may vary depending on our current production schedule.</FormNote>
+          <FormNote>We will followup to read submissions. Response times may vary depending on our current production schedule.</FormNote>
         </div>
       )}
     </FormCard>
@@ -253,12 +257,12 @@ function JumpCard({ card, i, onNav }) {
       style={{
         borderRight: i < 2 ? "1px solid rgba(89,66,56,0.2)" : "none",
         background: hov ? "var(--surface-container)" : "transparent",
-        cursor: hov ? "pointer": "auto"
+        cursor: hov ? "pointer" : "auto"
       }}
     >
-      <span className="jump-card__emoji" style={{ filter: hov ? "grayscale(0)" : "grayscale(1)", cursor: hov ? "pointer": "auto" }}>{card.emoji}</span>
+      <span className="jump-card__emoji" style={{ filter: hov ? "grayscale(0)" : "grayscale(1)", cursor: hov ? "pointer" : "auto" }}>{card.emoji}</span>
       <div>
-        <p className="jump-card__label serif" style={{ color: hov ? "var(--primary)" : "var(--on-surface)", cursor: hov ? "pointer": "auto" }}>{card.label}</p>
+        <p className="jump-card__label serif" style={{ color: hov ? "var(--primary)" : "var(--on-surface)", cursor: hov ? "pointer" : "auto" }}>{card.label}</p>
         <p className="label-xs color-outline">{card.desc}</p>
       </div>
       <span className="jump-card__arrow" style={{ color: hov ? "var(--primary-container)" : "transparent" }}>→</span>
@@ -269,8 +273,8 @@ function JumpCard({ card, i, onNav }) {
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function ParticipateHero({ onNav }) {
   const cards = [
-    { label: "Auditions",     desc: "Step onto the stage",    emoji: "🎭", id: "auditions" },
-    { label: "Submissions",   desc: "Pitch your project",     emoji: "✍️", id: "submissions" },
+    { label: "Auditions", desc: "Step onto the stage", emoji: "🎭", id: "auditions" },
+    { label: "Submissions", desc: "Pitch your project", emoji: "✍️", id: "submissions" },
     { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔧", id: "crew" },
   ];
   return (
@@ -322,7 +326,7 @@ export default function ParticipatePage() {
       </SectionBlock>
       <Divider />
       <SectionBlock id="submissions" eyebrow="Original Work" heading="Project" accent=" Submissions"
-        sub="Do you have a play, musical, or adaptation you believe in? Spirit of Fire is always looking for bold original stories that speak to the human experience through the lens of faith and craft. Pitch us your project.">
+        sub="Do you have a play, musical, or adaptation you believe in? Spirit of Fire is always looking for bold, character driven stories that speak to the human experience.">
         <SubmissionsForm />
       </SectionBlock>
       <Divider />

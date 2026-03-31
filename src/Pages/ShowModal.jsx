@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CastThumb({ person }) {
+function CastThumb({ person, onClose, goToShow }) {
   const [hov, setHov] = useState(false);
+
   return (
     <div
       className="modal-cast-card"
@@ -13,7 +14,6 @@ function CastThumb({ person }) {
         className="modal-cast-card__image"
         style={{
           backgroundImage: person.image ? `url(${person.image})` : "none",
-          filter: hov ? "grayscale(0)" : "grayscale(0.6)",
         }}
       >
         {!person.image && <span style={{ fontSize: 28, opacity: .3 }}>🎭</span>}
@@ -23,6 +23,7 @@ function CastThumb({ person }) {
           style={{ background: hov ? "var(--primary-container)" : "transparent" }}
         />
       </div>
+
       <div className="modal-cast-card__body">
         <p className="modal-cast-card__name serif" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
           {person.name}
@@ -43,7 +44,6 @@ function CastThumb({ person }) {
 export default function ShowModal({ show, onClose, ShowDescription }) {
   const navigate = useNavigate();
 
-  // Close on Escape
   useEffect(() => {
     function onKey(e) { if (e.key === "Escape") onClose(); }
     document.addEventListener("keydown", onKey);
@@ -103,7 +103,7 @@ export default function ShowModal({ show, onClose, ShowDescription }) {
               </div>
               <div className="modal-cast-grid">
                 {show.cast.map((person, i) => (
-                  <CastThumb key={i} person={person} />
+                  <CastThumb key={i} person={person} onClose={onClose} goToShow={goToShow} />
                 ))}
               </div>
             </div>

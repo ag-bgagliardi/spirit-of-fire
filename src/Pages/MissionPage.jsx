@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Main/Footer";
 import ricoImage from "../Assets/People/Rico.webp";
@@ -97,9 +97,8 @@ function LocationSection() {
   );
 }
 
-function LeadershipProfile({ name, role, bio, cta, icon, image }) {
+function LeadershipProfile({ name, role, bio, cta, icon, image, onCta }) {
   const [hov, setHov] = useState(false);
-  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div
       className="profile-card"
@@ -109,10 +108,11 @@ function LeadershipProfile({ name, role, bio, cta, icon, image }) {
       <div className="profile-card__image-wrap">
         <div
           className="profile-card__image"
+          onClick={onCta}
           style={{
             backgroundImage: `url(${image})`,
             filter: hov ? "grayscale(0)" : "grayscale(1)",
-            cursor: hov ? "pointer": "auto"
+            cursor: "pointer",
           }}
         >
           <div className="profile-card__image-overlay" />
@@ -125,23 +125,32 @@ function LeadershipProfile({ name, role, bio, cta, icon, image }) {
         <h3 className="serif" style={{ fontSize: 28, marginBottom: 4 }}>{name}</h3>
         <span className="label-xs color-primary" style={{ display: "block", marginBottom: 24 }}>{role}</span>
         <p className="body-md color-on-surface-var" style={{ marginBottom: 24 }}>{bio}</p>
-        <span className="btn-text">{cta} →</span>
+        <span className="btn-text" onClick={onCta}>{cta} →</span>
       </div>
     </div>
   );
 }
 
 function LeadershipSection() {
+  const navigate = useNavigate();
   const profiles = [
     {
-      name: "Rico Heisler", role: "Artistic Director",
+      name: "Rico Heisler",
+      role: "Artistic Director",
       bio: "A Bachelor of Arts graduate from the University of Northwestern (Saint Paul) and the J.D. William Mitchell College of Law, he has had over 20 years of directing, choreographing and acting experience. Rico brings an intensity and deep physical breadth to every project.",
-      cta: "Read More", icon: "🎬", image: ricoImage,
+      cta: "Read More",
+      icon: "🎬",
+      image: ricoImage,
+      pageID: "personal"
     },
     {
-      name: "Benjamin Gagliardi", role: "Dramatist",
+      name: "Benjamin Gagliardi",
+      role: "Dramatist",
       bio: "A graduate of Theatre and Computer Science from the University of Wisconsin, Madison, Benjamin is an aspiring writer and actor. He finds particular joy in humor and comedy.",
-      cta: "View Portfolio", icon: "✍️", image: benImage,
+      cta: "View Portfolio",
+      icon: "✍️",
+      image: benImage,
+      pageID: "benjamin"
     },
   ];
   return (
@@ -149,7 +158,9 @@ function LeadershipSection() {
       <div className="container">
         <h2 className="serif" style={{ fontSize: 40, marginBottom: 80 }}>Founders of <em>Spirit of Fire</em></h2>
         <div className="grid-2" style={{ gap: 96 }}>
-          {profiles.map(p => <LeadershipProfile key={p.name} {...p} />)}
+          {profiles.map(p => (
+            <LeadershipProfile key={p.name} {...p} onCta={() => navigate(`/${profiles.pageID}`)} />
+          ))}
         </div>
       </div>
     </section>
@@ -168,7 +179,7 @@ function MissionCTA() {
           Join us for an evening of unbridled joy and laughter, as family and loved ones learn to forgive and work with each other.
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
-          <button className="btn-primary" onClick={() => navigate("/tickets", {show: productions[0]} )}>Reserve Your Ticket</button>
+          <button className="btn-primary" onClick={() => navigate("/tickets", { show: productions[0] })}>Reserve Your Ticket</button>
           <button className="btn-ghost-primary" onClick={() => navigate("/support")}>Become a Patron</button>
         </div>
       </div>

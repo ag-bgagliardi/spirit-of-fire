@@ -10,12 +10,12 @@ import stephanieImage from "../Assets/People/Stephanie.jpg";
 import "../Style/index.css";
 
 const TEAM = [
-  { name: "Rico Heisler",       title: "Artistic Director",      badge: "Cofounder", roles: ["Actor", "Director", "Choreographer"],          image: ricoImage,      icon: "🎬", col: "founder" },
-  { name: "Benjamin Gagliardi", title: "Dramatist",              badge: "Cofounder", roles: ["Actor", "Writer", "Songwriter"],               image: benImage,       icon: "✍️", col: "founder" },
-  { name: "Madeline Gagliardi", title: "Administrator",                              roles: ["Manager", "Actor", "Singer"],                   image: madelineImage,  icon: "◆",  col: "company" },
-  { name: "Silas Heisler",      title: "Creative Consultant",                        roles: ["Actor", "Singer"],                              image: silasImage,     icon: "◆",  col: "company" },
-  { name: "Barbara Gagliardi",  title: "Creative Designer",                          roles: ["Actor", "Singer", "Director", "Designer"],      image: barbaraImage,   icon: "◆",  col: "company" },
-  { name: "Stephanie Wilson",   title: "Director of Marketing",                      roles: ["Designer", "Marketer"],                         image: stephanieImage, icon: "◆",  col: "company" },
+  { name: "Rico Heisler",       title: "Artistic Director",      badge: "Cofounder", roles: ["Actor", "Director", "Choreographer"],          image: ricoImage,      icon: "🎬", col: "founder", pageID: "personal"  },
+  { name: "Benjamin Gagliardi", title: "Dramatist",              badge: "Cofounder", roles: ["Actor", "Writer", "Songwriter"],               image: benImage,       icon: "✍️", col: "founder", pageID: "benjamin" },
+  { name: "Madeline Gagliardi", title: "Administrator",                              roles: ["Manager", "Actor", "Singer"],                   image: madelineImage,  icon: "◆",  col: "company", pageID: "personal"  },
+  { name: "Silas Heisler",      title: "Creative Consultant",                        roles: ["Actor", "Singer"],                              image: silasImage,     icon: "◆",  col: "company", pageID: "personal"  },
+  { name: "Barbara Gagliardi",  title: "Creative Designer",                          roles: ["Actor", "Singer", "Director", "Designer"],      image: barbaraImage,   icon: "◆",  col: "company", pageID: "personal"  },
+  { name: "Stephanie Wilson",   title: "Director of Marketing",                      roles: ["Designer", "Marketer"],                         image: stephanieImage, icon: "◆",  col: "company", pageID: "personal"  },
 ];
 
 function RolePills({ roles }) {
@@ -28,6 +28,7 @@ function RolePills({ roles }) {
 
 function MemberCard({ member, featured }) {
   const [hov, setHov] = useState(false);
+  const navigate = useNavigate();
 
   if (featured) {
     return (
@@ -40,6 +41,7 @@ function MemberCard({ member, featured }) {
           border: `1px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
           cursor: hov ? "pointer": "auto"
         }}
+        onClick={() => navigate(`/${member.pageID}`)}
       >
         <div className="member-card__glow" style={{ background: hov ? "radial-gradient(ellipse at top left,rgba(249,94,20,0.06),transparent 70%)" : "none" }} />
         <div style={{ position: "relative" }}>
@@ -73,7 +75,8 @@ function MemberCard({ member, featured }) {
         background: hov ? "var(--surface-high)" : "var(--surface-low)",
         border: `1px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
       }}
-    >
+      onClick={() => navigate(`/${member.pageID}`)}
+  >
       <div className="member-card__glow" style={{ background: hov ? "radial-gradient(ellipse at top,rgba(249,94,20,0.06),transparent 70%)" : "none" }} />
       <div
         className="member-card__image member-card__image--landscape"
