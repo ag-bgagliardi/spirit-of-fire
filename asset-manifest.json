@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.b84c3397.css",
-    "main.js": "/static/js/main.de5696d7.js",
+    "main.css": "/static/css/main.3c371a3c.css",
+    "main.js": "/static/js/main.29f4714d.js",
     "static/media/Stuart.jpg": "/static/media/Stuart.bc2717c5ff30ff2ba1a9.jpg",
+    "static/media/flames-background.png": "/static/media/flames-background.63d0b342b5f6018cea92.png",
     "static/media/Lance.jpg": "/static/media/Lance.cda061442f0eb6545cc5.jpg",
     "static/media/Barbara.jpg": "/static/media/Barbara.35c982002720d4afd8dd.jpg",
     "static/media/SilasWide.jpeg": "/static/media/SilasWide.4d26be525726cc4a1f3e.jpeg",
@@ -20,11 +21,11 @@
     "static/media/AnimalCrackers.jpg": "/static/media/AnimalCrackers.9af4bb6b78183e6a21ef.jpg",
     "static/media/Rico.webp": "/static/media/Rico.efacf7afc755c0b7b821.webp",
     "index.html": "/index.html",
-    "main.b84c3397.css.map": "/static/css/main.b84c3397.css.map",
-    "main.de5696d7.js.map": "/static/js/main.de5696d7.js.map"
+    "main.3c371a3c.css.map": "/static/css/main.3c371a3c.css.map",
+    "main.29f4714d.js.map": "/static/js/main.29f4714d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b84c3397.css",
-    "static/js/main.de5696d7.js"
+    "static/css/main.3c371a3c.css",
+    "static/js/main.29f4714d.js"
   ]
 }
