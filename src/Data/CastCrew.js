@@ -1,5 +1,5 @@
 import ricoImage from "../Assets/People/Rico.webp";
-import benImage from "../Assets/People/Benjamin.jpeg";
+import benImage from "../Assets/People/Benjamin2.jpg";
 import silasImage from "../Assets/People/SilasWide.jpeg";
 import madelineImage from "../Assets/People/MadelineWide.jpeg";
 import barbaraImage from "../Assets/People/Barbara.jpg";

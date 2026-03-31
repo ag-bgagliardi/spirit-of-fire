@@ -35,7 +35,8 @@ function ProductionsHero() {
           }}>
             <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
           </div>
-          <div className="btn-primary" onClick={() => navigate("/motherrabbit")} style={{ position: "absolute", bottom: -24, left: -24, padding: "10px 30px", fontSize: 22 }}>
+          {/* <div className="btn-primary" onClick={() => navigate("/motherrabbit")} style={{ position: "absolute", bottom: -24, left: -24, padding: "10px 30px", fontSize: 22 }}> */}
+          <div className="hero_tag">
             Original Comedy
           </div>
         </div>

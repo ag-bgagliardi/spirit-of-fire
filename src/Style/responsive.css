@@ -5,95 +5,393 @@
 /* ── Tablet (≤900px) ── */
 @media (max-width: 900px) {
   /* Layout */
-  .btn-icon         { display: none; }
-  .grid-2           { grid-template-columns: 1fr; }
-  .grid-3           { grid-template-columns: 1fr 1fr; }
-  .grid-5-7         { grid-template-columns: 1fr; }
-  .grid-gallery     { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .btn-icon {
+    display: none;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid-5-7 {
+    grid-template-columns: 1fr;
+  }
+  .grid-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
 
   /* Mission */
-  .mission-statement__grid        { grid-template-columns: 1fr; }
-  .mission-statement__image-frame { display: none; }
-  .warehouse-grid                 { grid-template-columns: 1fr; }
+  .mission-statement__grid {
+    grid-template-columns: 1fr;
+    padding: 0px;
+  }
+  .mission-statement__image-frame {
+    display: none;
+  }
+  .warehouse-grid {
+    grid-template-columns: 1fr;
+  }
 
   /* Team */
-  .team-grid         { grid-template-columns: 1fr; }
-  .team-grid__col    { padding: 0 var(--pad-x); }
-  .team-company-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-grid__col {
+    padding: 0 var(--pad-x);
+  }
+  .team-company-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 
   /* Participate */
-  .section-block__grid           { grid-template-columns: 1fr; gap: 32px; }
-  .section-block__label          { position: static; }
-  .participate-hero__jump-grid   { grid-template-columns: 1fr; }
-  .jump-card { border-right: none !important; border-bottom: 1px solid rgba(89,66,56,0.2); }
+  .section-block__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .section-block__label {
+    position: static;
+  }
+  .participate-hero__jump-grid {
+    grid-template-columns: 1fr;
+  }
+  .jump-card {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(89, 66, 56, 0.2);
+  }
 
   /* Tickets */
-  .tickets-page        { padding: 32px 0 64px; overflow: hidden; }
-  .tickets-layout      { grid-template-columns: 1fr; padding: 0 var(--pad-x); min-width: 0; }
-  .performance-summary { position: static; border-left: none; border-top: 1px solid rgba(255,181,154,0.15); }
-  .show-selector-grid  { grid-template-columns: 1fr; gap: 16px; }
-  .show-selector-card  { width: 100%; min-width: 0; }
-  .amount-grid         { grid-template-columns: repeat(3, 1fr); }
+  .tickets-page {
+    padding: 32px 0 64px;
+    overflow: hidden;
+  }
+  .tickets-layout {
+    grid-template-columns: 1fr;
+    padding: 0 var(--pad-x);
+    min-width: 0;
+  }
+  .performance-summary {
+    position: static;
+    border-left: none;
+    border-top: 1px solid rgba(255, 181, 154, 0.15);
+  }
+  .show-selector-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .show-selector-card {
+    width: 100%;
+    min-width: 0;
+  }
+  .amount-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   /* Donation */
-  .donation-grid { grid-template-columns: 1fr; }
+  .donation-grid {
+    grid-template-columns: 1fr;
+  }
 
   /* Affiliates */
-  .partner-card       { grid-template-columns: 1fr; }
-  .partner-card__info { display: none; }
-  .partner-card__logo { width: 100%; min-height: 220px; }
-  .affiliates-hero    { padding: 0 var(--pad-x) 48px; }
-  .affiliates-hero h1 { font-size: clamp(36px, 10vw, 80px); word-break: break-word; }
-  .affiliates-hero p  { max-width: 100%; word-break: break-word; }
+  .partner-card {
+    grid-template-columns: 1fr;
+  }
+  .partner-card__info {
+    display: none;
+  }
+  .partner-card__logo {
+    width: 100%;
+    min-height: 220px;
+  }
+  .affiliates-hero {
+    padding: 0 var(--pad-x) 48px;
+  }
+  .affiliates-hero h1 {
+    font-size: clamp(36px, 10vw, 80px);
+    word-break: break-word;
+  }
+  .affiliates-hero p {
+    max-width: 100%;
+    word-break: break-word;
+  }
 
   /* Essay */
-  .essay-virtue-grid { grid-template-columns: 1fr; }
+  .essay-virtue-grid {
+    grid-template-columns: 1fr;
+  }
 
   /* Footer */
-  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
 
   /* Show page */
-  .show-hero__content { grid-template-columns: 1fr; padding-top: 100px; }
-  .show-hero__cover   { display: none; }
-  .show-hero__actions { flex-direction: column; align-items: flex-start; }
-  .show-hero__description { max-width: 100%; font-size: 15px; }
-  .show-card-badges   { align-items: flex-start; }
-  .cast-grid          { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); column-gap: 24px; row-gap: 60px; }
-  .carousel__slide    { aspect-ratio: 16/9; }
+  .show-hero__content {
+    grid-template-columns: 1fr;
+    padding-top: 100px;
+  }
+  .show-hero__cover {
+    display: none;
+  }
+  .show-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .show-hero__description {
+    max-width: 100%;
+    font-size: 15px;
+  }
+  .show-card-badges {
+    align-items: flex-start;
+  }
+  .cast-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    column-gap: 24px;
+    row-gap: 60px;
+  }
+  .carousel__slide {
+    aspect-ratio: 16/9;
+  }
 
   /* Modal */
-  .modal { grid-template-columns: 1fr; max-height: 95vh; overflow-y: auto; }
-  .modal__cover  { min-height: 220px; }
-  .modal__right  { padding: 24px 20px; max-height: none; overflow-y: visible; }
-  .modal__close  { top: 12px; right: 12px; }
+  .modal {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__cover {
+    min-height: 220px;
+  }
+  .modal__right {
+    padding: 24px 20px;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
 }
 
 /* ── Mobile (≤600px) ── */
 @media (max-width: 600px) {
   /* Layout */
-  .grid-3       { grid-template-columns: 1fr; }
-  .grid-gallery { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .form-grid    { grid-template-columns: 1fr; }
-  .hero_card    { display: none; }
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero_card {
+    display: none;
+  }
 
   /* Team */
-  .team-company-grid    { grid-template-columns: 1fr; }
-  .member-card-featured { grid-template-columns: 1fr; }
+  .team-company-grid {
+    grid-template-columns: 1fr;
+  }
+  .member-card-featured {
+    grid-template-columns: 1fr;
+  }
 
   /* Tickets */
-  .show-selector-grid { grid-template-columns: 1fr; }
-  .amount-grid        { grid-template-columns: repeat(2, 1fr); }
-  .step-indicator__list { max-width: 100%; }
+  .show-selector-grid {
+    grid-template-columns: 1fr;
+  }
+  .amount-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .step-indicator__list {
+    max-width: 100%;
+  }
 
   /* Profile */
-  .profile-card { flex-direction: column; }
-  .profile-card__image-wrap { width: 100%; }
+  .profile-card {
+    flex-direction: column;
+  }
+  .profile-card__image-wrap {
+    width: 100%;
+  }
 
   /* Footer */
-  .footer__grid { grid-template-columns: 1fr; }
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
 
   /* Show page */
-  .cast-grid { grid-template-columns: 1fr 1fr; column-gap: 16px; row-gap: 48px; }
-  .show-hero__content { padding-top: 100px; padding-bottom: 48px; }
-  .section-cta-bordered__inner h2 { font-size: clamp(28px, 6vw, 44px); }
+  .cast-grid {
+    grid-template-columns: 1fr;
+    column-gap: 16px;
+    row-gap: 48px;
+  }
+  .show-hero__content {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+  .section-cta-bordered__inner h2 {
+    font-size: clamp(28px, 6vw, 44px);
+  }
+}
+
+@media (max-width: 900px) {
+  /* Mission hero */
+  .mission-hero__rule {
+    display: none;
+  }
+  .mission-hero__inner {
+    padding-top: 100px;
+    gap: 28px;
+  }
+  .mission-hero__sub {
+    max-width: 100%;
+  }
+
+  /* Mission statement */
+  .mission-statement__statement-wrap {
+    grid-template-columns: 1fr;
+  }
+  .mission-statement__emblem-wrap {
+    display: none;
+  }
+  .mission-statement__ideals-wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .mission-statement__ideals-header {
+    position: static;
+  }
+
+  /* Other pages */
+  .show-hero__content {
+    grid-template-columns: 1fr;
+    padding-top: 100px;
+  }
+  .show-hero__cover {
+    display: none;
+  }
+  .show-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .show-hero__description {
+    max-width: 100%;
+    font-size: 15px;
+  }
+  .cast-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    column-gap: 24px;
+    row-gap: 60px;
+  }
+  .tickets-layout {
+    grid-template-columns: 1fr;
+    padding: 0 var(--pad-x);
+  }
+  .performance-summary {
+    position: static;
+    border-left: none;
+    border-top: 1px solid rgba(255, 181, 154, 0.15);
+  }
+  .show-selector-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .donation-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-grid__col {
+    padding: 0 var(--pad-x);
+  }
+  .team-company-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .partner-card {
+    grid-template-columns: 1fr;
+  }
+  .partner-card__logo {
+    width: 100%;
+    min-height: 220px;
+  }
+  .essay-virtue-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .modal {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__cover {
+    min-height: 220px;
+  }
+  .modal__right {
+    padding: 24px 20px;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
+  .cast-card__bio-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mission hero */
+  .mission-hero__title {
+    font-size: clamp(44px, 12vw, 72px);
+  }
+  .mission-hero__ornament {
+    display: none;
+  }
+
+  /* Mission statement */
+  .mission-statement__quote {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+  .mission-statement__quote::before {
+    font-size: clamp(48px, 12vw, 72px);
+  }
+  .mission-statement__ideal-item {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .mission-statement__ideals-title {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  /* Other pages */
+  .cast-grid {
+    grid-template-columns: 1fr;
+    column-gap: 16px;
+    row-gap: 48px;
+  }
+  .show-hero__content {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+  .team-company-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+  .amount-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .member-card-featured {
+    grid-template-columns: 1fr;
+  }
 }

@@ -15,6 +15,7 @@ import ComingSoon from "../Pages/ComingSoon";
 import ShowPage from "../Pages/ShowPage";
 import productions from "../Data/CurrentShows";
 import BenjaminPage from "../Personal/BenjaminPage";
+import BenjaminResume from "../Personal/BenjaminResume";
 
 function Layout() {
   const { pathname } = useLocation();
@@ -39,6 +40,7 @@ function Layout() {
           <Route path="/past-productions"     element={<ComingSoon />} />
           <Route path="/portfolio"     element={<ComingSoon />} />
           <Route path="/benjamin"     element={<BenjaminPage />} />
+          <Route path="/benjamin-resume"     element={<BenjaminResume />} />
           <Route path="/personal"     element={<ComingSoon />} />
           {productions.map((show) => {
             return <Route path={`/${show.id}`}  element={<ShowPage show={show} />} />

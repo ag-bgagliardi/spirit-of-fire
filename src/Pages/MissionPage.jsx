@@ -2,14 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Main/Footer";
 import ricoImage from "../Assets/People/Rico.webp";
-import benImage from "../Assets/People/Benjamin.png";
+import benImage from "../Assets/People/Benjamin2.jpg";
 import "../Style/index.css";
-import productions from "../Data/CurrentShows"; 
+import productions from "../Data/CurrentShows";
 
 function MissionHero() {
   return (
     <section className="mission-hero">
-      <div className="mission-hero__bg-base" />
+      <div className="mission-hero__bg-base image-overlay">
+        <div className="horse-background"></div>
+      </div>
       <div className="mission-hero__bg-fade" />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
         <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>
@@ -54,7 +56,7 @@ function MissionStatement() {
         </div>
         <div style={{ position: "relative" }}>
           <div className="mission-statement__image-frame">
-            <div className="mission-statement__image-inner">🕊️</div>
+            <div className="mission-statement__image-inner" />
           </div>
         </div>
       </div>
@@ -102,13 +104,13 @@ function LeadershipProfile({ name, role, bio, cta, icon, image, onCta }) {
   return (
     <div
       className="profile-card"
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
     >
       <div className="profile-card__image-wrap">
         <div
           className="profile-card__image"
           onClick={onCta}
+          onMouseEnter={() => setHov(true)}
+          onMouseLeave={() => setHov(false)}
           style={{
             backgroundImage: `url(${image})`,
             filter: hov ? "grayscale(0)" : "grayscale(1)",
@@ -116,6 +118,10 @@ function LeadershipProfile({ name, role, bio, cta, icon, image, onCta }) {
           }}
         >
           <div className="profile-card__image-overlay" />
+          <div
+            className="mission-card__bar"
+            style={{ background: hov ? "var(--primary-container)" : "transparent" }}
+          />
         </div>
         <div className="profile-card__icon-badge">
           <span style={{ fontSize: 16 }}>{icon}</span>
@@ -156,10 +162,10 @@ function LeadershipSection() {
   return (
     <section className="section-pad" style={{ padding: "96px 48px" }}>
       <div className="container">
-        <h2 className="serif" style={{ fontSize: 40, marginBottom: 80 }}>Founders of <em>Spirit of Fire</em></h2>
+        <h2 className="serif leadership-title" style={{ fontSize: 40, marginBottom: 80 }}>Founders of <em>Spirit of Fire</em></h2>
         <div className="grid-2" style={{ gap: 96 }}>
           {profiles.map(p => (
-            <LeadershipProfile key={p.name} {...p} onCta={() => navigate(`/${profiles.pageID}`)} />
+            <LeadershipProfile key={p.name} {...p} onCta={() => navigate(`/${p.pageID}`)} />
           ))}
         </div>
       </div>
@@ -192,7 +198,7 @@ export default function MissionPage() {
     <main>
       <MissionHero />
       <MissionStatement />
-      <LocationSection />
+      {/* TODO: Add this! <LocationSection /> */}
       <LeadershipSection />
       <MissionCTA />
       <Footer />

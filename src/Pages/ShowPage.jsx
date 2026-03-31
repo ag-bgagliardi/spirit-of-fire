@@ -57,56 +57,13 @@ function CastMember({ person }) {
     const [bioOpen, setBioOpen] = useState(false);
 
     return (
-        <div
-            className="cast-card cast-card-body"
+        <div className="cast-card"
+            style={{
+                cursor: hov ? "pointer" : "auto",
+            }}
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}
-            style={{
-                border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
-                background: hov ? "var(--surface-high)" : "var(--surface-low)",
-                cursor: hov ? "pointer" : "auto",
-                transition: "background .4s, border .3s",
-            }}
         >
-            <div className="cast-card-name-container">
-                <h5 className="cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
-                    {person.name}
-                </h5>
-                <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
-            </div>
-
-            {/* Image with clickable bio overlay */}
-            <div
-                className="cast-card__image"
-                onClick={() => person.bio && setBioOpen(o => !o)}
-                style={{
-                    backgroundImage: person.image ? `url(${person.image})` : "none",
-                    filter: hov && !bioOpen ? "grayscale(0)" : bioOpen ? "grayscale(0)" : "grayscale(1)",
-                    cursor: person.bio ? "pointer" : "default",
-                    position: "relative",
-                    overflow: "hidden",
-                }}
-            >
-                {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
-                <div className="cast-card__image-overlay" />
-                <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
-
-                {/* Bio overlay */}
-                {person.bio && (
-                    <div className={`cast-card__bio-overlay${bioOpen ? " open" : ""}`}>
-                        <p className="cast-card__bio-text">{person.bio}</p>
-                        <span className="cast-card__bio-close">✕</span>
-                    </div>
-                )}
-
-                {/* Hint icon when bio available and not open */}
-                {person.bio && !bioOpen && (
-                    <div className="cast-card__bio-hint">
-                        <span>i</span>
-                    </div>
-                )}
-            </div>
-
             <div className="cast-card-character-container">
                 <h4
                     className="serif cast-card__name"
@@ -114,7 +71,54 @@ function CastMember({ person }) {
                 >
                     {person.character}
                 </h4>
-                <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+            </div>
+            <div
+                className="cast-card-body"
+                style={{
+                    border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
+                    background: hov ? "var(--surface-high)" : "var(--surface-low)",
+                    transition: "background .4s, border .3s",
+                }}
+            >
+                {/* Image with clickable bio overlay */}
+                <div
+                    className="cast-card__image"
+                    onClick={() => person.bio && setBioOpen(o => !o)}
+                    style={{
+                        backgroundImage: person.image ? `url(${person.image})` : "none",
+                        filter: hov && !bioOpen ? "grayscale(0)" : bioOpen ? "grayscale(0)" : "grayscale(1)",
+                        cursor: person.bio ? "pointer" : "default",
+                        position: "relative",
+                        overflow: "hidden",
+                    }}
+                >
+                    {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
+                    <div className="cast-card__image-overlay" />
+                    <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
+
+                    {/* Bio overlay */}
+                    {person.bio && (
+                        <div className={`cast-card__bio-overlay${bioOpen ? " open" : ""}`}>
+                            <p className="cast-card__bio-text">{person.bio}</p>
+                            <span className="cast-card__bio-close">✕</span>
+                        </div>
+                    )}
+
+                    {/* Hint icon when bio available and not open */}
+                    {person.bio && !bioOpen && (
+                        <div className="cast-card__bio-hint">
+                            <span>i</span>
+                        </div>
+                    )}
+                </div>
+
+                <div className="cast-card-name-container">
+                    <h5 className="cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
+                        {person.name}
+                    </h5>
+                    <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+                    <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+                </div>
             </div>
         </div>
     );
@@ -123,7 +127,7 @@ function CastMember({ person }) {
 function CastSection({ cast }) {
     if (!cast || cast.length === 0) return null;
     return (
-        <section id="learn-more-anchor" className="section-pad bg-surface section-flames">
+        <section id="learn-more-anchor" className="section-pad bg-surface image-overlay">
             <div className="flames-background"></div>
             <div className="container">
                 <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 80 }}>
@@ -141,20 +145,20 @@ function CastSection({ cast }) {
 function ShowAbout({ show }) {
     return (
         show.about ?
-        <section className="pat section-pad bg-surface-low">
-            <div className="container">
-                <div className="show-about__grid">
-                    <div>
-                        <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 32 }}>
-                            <div className="divider-flame" style={{ height: 1, width: 48 }} />
-                            <span className="label-xs color-primary" style={{ letterSpacing: ".4em" }}>About the Show</span>
+            <section className="pat section-pad bg-surface-low">
+                <div className="container">
+                    <div className="show-about__grid">
+                        <div>
+                            <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 32 }}>
+                                <div className="divider-flame" style={{ height: 1, width: 48 }} />
+                                <span className="label-xs color-primary" style={{ letterSpacing: ".4em" }}>About the Show</span>
+                            </div>
+                            <h2 className="serif" style={{ fontSize: 40, marginBottom: 32 }}>The Story</h2>
+                            {show.about}
                         </div>
-                        <h2 className="serif" style={{ fontSize: 40, marginBottom: 32 }}>The Story</h2>
-                        {show.about}
                     </div>
                 </div>
-            </div>
-        </section> : <></>
+            </section> : <></>
     );
 }
 
@@ -202,7 +206,7 @@ function ShowCTA({ show }) {
                 </p>
                 <div className="flex-row" style={{ justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
                     <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Reserve Your Ticket</button>
-                    <button className="btn-ghost-primary" onClick={() => navigate("/support", {state: show})}>Become a Patron</button>
+                    <button className="btn-ghost-primary" onClick={() => navigate("/support", { state: show })}>Become a Patron</button>
                 </div>
             </div>
         </section>

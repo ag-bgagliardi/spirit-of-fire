@@ -4,7 +4,7 @@ import instagramLogo from "../Assets/Logos/instagram.png";
 const LINKS = ["Privacy Policy", "Terms of Service", "Archive"];
 
 const SOCIALS = [
-  { title: "Facebook",  logo: facebookLogo,  link: "https://www.facebook.com/profile.php/?id=61583353555340" },
+  { title: "Facebook", logo: facebookLogo, link: "https://www.facebook.com/profile.php/?id=61583353555340" },
   { title: "Instagram", logo: instagramLogo, link: "https://www.instagram.com/spiritoffiretheatre/" },
 ];
 
@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <div className="footer__logo">Spirit of Fire</div>
           <p className="serif-italic footer__tagline">
-            Artwork is courtesy of <a href="https://www.fullofeyes.com/" target="_blank" style={{ color:"#ffb59a" }}>Fullofeyes</a>, a beautiful library of exegetical art and animation, completely free for the Global Church.
+            Artwork is courtesy of <a href="https://www.fullofeyes.com/" target="_blank" style={{ color: "#ffb59a" }}>Fullofeyes</a>, a beautiful library of exegetical art and animation, completely free for the Global Church.
           </p>
         </div>
         <div className="flex-col" style={{ gap: 16 }}>
@@ -25,7 +25,11 @@ export default function Footer() {
           ))}
         </div>
         <div className="flex-col" style={{ gap: 16 }}>
-          <h4 className="footer__heading">Social Media Links</h4>
+          <h4 className="footer__heading">Contact Us</h4>
+          <a key="spiritoffire-link" className="footer__social" href="mailto:spiritoffiretheatre@gmail.com" target="_blank" rel="noreferrer">
+            <img src={"favicon.ico"} alt="spiritoffire email link" className="footer__social-icon" />
+            SpiritofFireTheatre@gmail.com
+          </a>
           {SOCIALS.map(s => (
             <a key={s.title} className="footer__social" href={s.link} target="_blank" rel="noreferrer">
               <img src={s.logo} alt={s.title} className="footer__social-icon" />
@@ -34,7 +38,7 @@ export default function Footer() {
           ))}
         </div>
         <div>
-          <h4 className="footer__heading" style={{ marginBottom: 24 }}>Spirit of Fire Newsletter</h4>
+          <h4 className="footer__heading" style={{ marginBottom: 24 }}>Sign up for Spirit of Fire Updates</h4>
           <div className="footer__newsletter">
             <input className="footer__newsletter-input" placeholder="Email Address" type="email" />
             <span className="footer__newsletter-btn">→</span>

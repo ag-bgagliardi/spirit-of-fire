@@ -4,9 +4,9 @@
   top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(19,19,19,0.8);
+  background: rgba(19, 19, 19, 0.8);
   backdrop-filter: blur(20px);
-  box-shadow: 0 20px 50px rgba(128,42,0,0.15);
+  box-shadow: 0 20px 50px rgba(128, 42, 0, 0.15);
 }
 
 .nav__inner {
@@ -18,20 +18,22 @@
 
 .nav__divider {
   height: 1px;
-  background: linear-gradient(to right, rgba(255,181,154,0.1), transparent);
+  background: linear-gradient(to right, rgba(255, 181, 154, 0.1), transparent);
 }
 
 /* ── Logo ── */
 .nav__logo {
   font-family: var(--font-serif);
   font-size: clamp(14px, 2ch, 2ch);
-  letter-spacing: .2em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--primary-container);
   cursor: pointer;
   flex-shrink: 0;
 }
-.nav__logo:hover { color: var(--primary) !important; }
+.nav__logo:hover {
+  color: var(--primary) !important;
+}
 
 /* ── Desktop links ── */
 .nav__links {
@@ -45,21 +47,24 @@
 }
 
 .nav__links > * + * {
-  border-left: 1px solid rgba(249,94,20,0.2);
+  border-left: 1px solid rgba(249, 94, 20, 0.2);
 }
 
 .nav__link {
   font-family: var(--font-serif);
   font-size: clamp(11px, 1.2vw, 0.9em);
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
   padding-bottom: 2px;
-  transition: color .3s;
+  transition: color 0.3s;
   white-space: nowrap;
   display: flex;
   align-items: center;
   gap: 4px;
 }
-.nav__link:hover { color: var(--primary) !important; cursor: pointer; }
+.nav__link:hover {
+  color: var(--primary) !important;
+  cursor: pointer;
+}
 
 /* ── CTA ── */
 .nav__cta {
@@ -67,8 +72,13 @@
   font-size: clamp(10px, 1.2vw, 12px);
   flex-shrink: 0;
 }
-.nav__cta:hover  { background-color: var(--primary) !important; transition: .3s; }
-.nav__cta:active { background-color: var(--on-surface) !important; }
+.nav__cta:hover {
+  background-color: var(--primary) !important;
+  transition: 0.3s;
+}
+.nav__cta:active {
+  background-color: var(--on-surface) !important;
+}
 
 /* ── Dropdown wrapper ── */
 .nav__link-wrap {
@@ -80,9 +90,11 @@
   font-size: 8px;
   letter-spacing: 0;
   opacity: 0.5;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
-.nav__link-wrap:hover .nav__dropdown-arrow { opacity: 1; }
+.nav__link-wrap:hover .nav__dropdown-arrow {
+  opacity: 1;
+}
 
 /* ── Dropdown panel ── */
 .nav__dropdown {
@@ -91,17 +103,19 @@
   left: 0;
   transform: translateY(-8px);
   min-width: 220px;
-  background: rgba(19,19,19,0.97);
+  background: rgba(19, 19, 19, 0.97);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(89,66,56,0.3);
+  border: 1px solid rgba(89, 66, 56, 0.3);
   display: flex;
   flex-direction: column;
   z-index: 200;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
   /* hidden by default — CSS hover reveals it */
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s ease, transform .25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 /* Bridge pseudo-element fills the gap so hover isn't broken */
@@ -128,22 +142,31 @@
   padding: 20px 20px 20px 14px;
   font-family: var(--font-serif);
   font-size: 14px;
-  color: rgba(229,226,225,0.75);
+  color: rgba(229, 226, 225, 0.75);
   cursor: pointer;
-  transition: color .2s, background .2s;
-  border-bottom: 1px solid rgba(89,66,56,0.15);
+  transition:
+    color 0.2s,
+    background 0.2s;
+  border-bottom: 1px solid rgba(89, 66, 56, 0.15);
 }
-.nav__dropdown-item:last-child { border-bottom: none; }
-.nav__dropdown-item:hover { color: var(--primary-container); background: rgba(249,94,20,0.06); }
+.nav__dropdown-item:last-child {
+  border-bottom: none;
+}
+.nav__dropdown-item:hover {
+  color: var(--primary-container);
+  background: rgba(249, 94, 20, 0.06);
+}
 
 .nav__dropdown-marker {
   font-size: 7px;
   color: var(--primary-container);
   opacity: 0.5;
   flex-shrink: 0;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
-.nav__dropdown-item:hover .nav__dropdown-marker { opacity: 1; }
+.nav__dropdown-item:hover .nav__dropdown-marker {
+  opacity: 1;
+}
 
 /* ── Mobile toggle ── */
 .nav__mobile-toggle {
@@ -158,7 +181,7 @@
   width: 24px;
   height: 2px;
   background: var(--on-surface);
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 /* ── Mobile menu ── */
@@ -167,20 +190,24 @@
   flex-direction: column;
   padding: 16px var(--pad-x) 24px;
   gap: 20px;
-  border-top: 1px solid rgba(89,66,56,0.15);
+  border-top: 1px solid rgba(89, 66, 56, 0.15);
 }
-.nav__mobile-menu.open { display: flex; }
+.nav__mobile-menu.open {
+  display: flex;
+}
 
 .nav__mobile-link {
   font-family: var(--font-serif);
   font-size: 18px;
-  color: rgba(229,226,225,0.8);
+  color: rgba(229, 226, 225, 0.8);
   cursor: pointer;
   padding: 4px 0;
-  transition: color .3s;
+  transition: color 0.3s;
 }
 .nav__mobile-link:hover,
-.nav__mobile-link.active { color: var(--primary-container); }
+.nav__mobile-link.active {
+  color: var(--primary-container);
+}
 
 .nav__mobile-link--parent {
   display: flex;
@@ -194,7 +221,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 4px 0 12px 16px;
-  border-left: 2px solid rgba(249,94,20,0.2);
+  border-left: 2px solid rgba(249, 94, 20, 0.2);
   margin-left: 8px;
 }
 
@@ -204,20 +231,32 @@
   gap: 10px;
   font-family: var(--font-serif);
   font-size: 15px;
-  color: rgba(229,226,225,0.6);
+  color: rgba(229, 226, 225, 0.6);
   cursor: pointer;
   padding: 6px 0;
-  transition: color .2s;
+  transition: color 0.2s;
 }
 .nav__mobile-sublink:hover,
-.nav__mobile-sublink.active { color: var(--primary-container); }
-.nav__mobile-sublink .nav__dropdown-marker { opacity: 0.4; }
+.nav__mobile-sublink.active {
+  color: var(--primary-container);
+}
+.nav__mobile-sublink .nav__dropdown-marker {
+  opacity: 0.4;
+}
 .nav__mobile-sublink:hover .nav__dropdown-marker,
-.nav__mobile-sublink.active .nav__dropdown-marker { opacity: 1; }
+.nav__mobile-sublink.active .nav__dropdown-marker {
+  opacity: 1;
+}
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .nav__links         { display: none; }
-  .nav__cta           { display: none; }
-  .nav__mobile-toggle { display: flex; }
+  .nav__links {
+    display: none;
+  }
+  .nav__cta {
+    display: none;
+  }
+  .nav__mobile-toggle {
+    display: flex;
+  }
 }
