@@ -15,6 +15,55 @@ export function ProductionPhotos() {
     return null;
 }
 
+/* ── Bio Modal ── */
+function BioModal({ person, onClose }) {
+    useEffect(() => {
+        function onKey(e) { if (e.key === "Escape") onClose(); }
+        document.addEventListener("keydown", onKey);
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.removeEventListener("keydown", onKey);
+            document.body.style.overflow = "";
+        };
+    }, [onClose]);
+
+    return (
+        <div className="modal-backdrop" onClick={onClose}>
+            <div className="bio-modal" onClick={e => e.stopPropagation()}>
+                <button className="modal__close" onClick={onClose}>✕</button>
+
+                {/* Left: photo */}
+                <div className="bio-modal__photo-wrap">
+                    <div
+                        className="bio-modal__photo"
+                        style={{ backgroundImage: person.image ? `url(${person.image})` : "none" }}
+                    >
+                        {!person.image && <span style={{ fontSize: 48, opacity: .2 }}>🎭</span>}
+                        <div className="bio-modal__photo-fade" />
+                    </div>
+                </div>
+
+                {/* Right: content */}
+                <div className="bio-modal__body">
+                    <div className="bio-modal__header">
+                        <p className="label-tiny color-primary-container" style={{ letterSpacing: ".3em", marginBottom: 10 }}>
+                            {person.character}
+                        </p>
+                        <h2 className="serif bio-modal__name">{person.name}</h2>
+                        {person.role && (
+                            <p className="label-xs color-outline" style={{ marginTop: 8, letterSpacing: ".2em" }}>
+                                {person.role}
+                            </p>
+                        )}
+                    </div>
+                    <div className="bio-modal__divider" />
+                    <p className="body-md color-on-surface-var bio-modal__bio">{person.bio}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 function ShowHero({ show, scrollTo }) {
     const navigate = useNavigate();
     return (
@@ -52,15 +101,14 @@ function ShowHero({ show, scrollTo }) {
     );
 }
 
-function CastMember({ person }) {
+function CastMember({ person, onBioOpen }) {
     const [hov, setHov] = useState(false);
-    const [bioOpen, setBioOpen] = useState(false);
+    const hasBio = Boolean(person.bio);
 
     return (
-        <div className="cast-card"
-            style={{
-                cursor: hov ? "pointer" : "auto",
-            }}
+        <div
+            className="cast-card"
+            style={{ cursor: hov && hasBio ? "pointer" : "auto" }}
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}
         >
@@ -72,6 +120,7 @@ function CastMember({ person }) {
                     {person.character}
                 </h4>
             </div>
+
             <div
                 className="cast-card-body"
                 style={{
@@ -80,14 +129,13 @@ function CastMember({ person }) {
                     transition: "background .4s, border .3s",
                 }}
             >
-                {/* Image with clickable bio overlay */}
                 <div
                     className="cast-card__image"
-                    onClick={() => person.bio && setBioOpen(o => !o)}
+                    onClick={() => hasBio && onBioOpen(person)}
                     style={{
                         backgroundImage: person.image ? `url(${person.image})` : "none",
-                        filter: hov && !bioOpen ? "grayscale(0)" : bioOpen ? "grayscale(0)" : "grayscale(1)",
-                        cursor: person.bio ? "pointer" : "default",
+                        filter: hov ? "grayscale(0)" : "grayscale(1)",
+                        cursor: hasBio ? "pointer" : "default",
                         position: "relative",
                         overflow: "hidden",
                     }}
@@ -95,17 +143,7 @@ function CastMember({ person }) {
                     {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
                     <div className="cast-card__image-overlay" />
                     <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
-
-                    {/* Bio overlay */}
-                    {person.bio && (
-                        <div className={`cast-card__bio-overlay${bioOpen ? " open" : ""}`}>
-                            <p className="cast-card__bio-text">{person.bio}</p>
-                            <span className="cast-card__bio-close">✕</span>
-                        </div>
-                    )}
-
-                    {/* Hint icon when bio available and not open */}
-                    {person.bio && !bioOpen && (
+                    {hasBio && (
                         <div className="cast-card__bio-hint">
                             <span>i</span>
                         </div>
@@ -116,8 +154,9 @@ function CastMember({ person }) {
                     <h5 className="cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
                         {person.name}
                     </h5>
-                    <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
-                    <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+                    {person.role && (
+                        <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+                    )}
                 </div>
             </div>
         </div>
@@ -125,20 +164,29 @@ function CastMember({ person }) {
 }
 
 function CastSection({ cast }) {
+    const [activePerson, setActivePerson] = useState(null);
+
     if (!cast || cast.length === 0) return null;
     return (
-        <section id="learn-more-anchor" className="section-pad bg-surface image-overlay">
-            <div className="flames-background"></div>
-            <div className="container">
-                <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 80 }}>
-                    <div className="divider-flame" style={{ height: 1, width: 48 }} />
-                    <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>The Cast</h2>
+        <>
+            {activePerson && (
+                <BioModal person={activePerson} onClose={() => setActivePerson(null)} />
+            )}
+            <section id="learn-more-anchor" className="section-pad bg-surface image-overlay">
+                <div className="flames-background" />
+                <div className="container">
+                    <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 80 }}>
+                        <div className="divider-flame" style={{ height: 1, width: 48 }} />
+                        <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>The Cast</h2>
+                    </div>
+                    <div className="cast-grid">
+                        {cast.map((person, i) => (
+                            <CastMember key={i} person={person} onBioOpen={setActivePerson} />
+                        ))}
+                    </div>
                 </div>
-                <div className="cast-grid">
-                    {cast.map((person, i) => <CastMember key={i} person={person} />)}
-                </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
 
@@ -223,8 +271,8 @@ export default function ShowPage({ show, ShowDescription: Desc = ShowDescription
         <main>
             <ShowHero show={show} scrollTo={scrollTo} />
             <CastSection cast={show.cast} />
-            <ShowAbout show={show} ><Desc /></ShowAbout>
-            <PhotoCarousel show={show} ><ProductionPhotos /></PhotoCarousel>
+            <ShowAbout show={show}><Desc /></ShowAbout>
+            <PhotoCarousel show={show}><ProductionPhotos /></PhotoCarousel>
             <ShowCTA show={show} />
             <Footer />
         </main>

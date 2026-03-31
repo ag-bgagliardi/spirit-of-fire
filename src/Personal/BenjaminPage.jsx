@@ -203,11 +203,12 @@ export default function BenjaminPage() {
               width: "75%",
               padding: "20px 0px"
             }}>
-              <span class="color-on-surface-var">Benjamin Gagliardi is a Theatre Graduate from UW Madison. He now spends his free time as an actor and writer in Hudson, Wisconsin. He is the cofounder of the Theatre company Spirit of Fire, and is excited to present his first comedy, Mother Rabbit. He wants to extend special thanks to his family, the Heislers, and the Wilson family for their inspiration and help through the show.</span>
+              <span class="color-on-surface-var">Benjamin Gagliardi is a Theatre Graduate from UW Madison and cofounder of Spirit of Fire Theatre. He met his friend and cofounder Rico Heisler in highschool while Rico was his director. Over the years they connected over a deep desire to perform great theatre, with moral messages, without necessarily performing "Morality Plays". In his free time, Benjamin began to write and perform skit comedy, as well as poetry, translating into the dramatist for Spirit of Fire. </span>
             </div>
             <a href="mailto:ben.j.gagliardi@gmail.com" className="ben-hero__contact">
               ben.j.gagliardi@gmail.com
             </a>
+            <button className="btn-primary" onClick={() => navigate("/benjamin-resume")} style={{marginLeft: 40, padding: "10px 20px"}}>View Resume</button>
           </div>
 
         </div>

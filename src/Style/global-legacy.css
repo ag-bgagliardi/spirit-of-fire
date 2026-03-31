@@ -107,7 +107,7 @@ input, textarea, select {
 .flex-row    { display: flex; flex-direction: row; }
 .flex-center { display: flex; align-items: center; justify-content: center; }
 
-.grid-2       { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); align-items: center; }
+.grid-2       { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); align-items: start; }
 .grid-3       { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .grid-5-7     { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-md); align-items: center; }
 .grid-gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 260px); gap: 8px; }

@@ -1,6 +1,7 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import partnersData from "../Data/PartnersData"
+import { useNavigate } from "react-router-dom";
 
 function AffiliatesHero() {
   return (
@@ -27,14 +28,16 @@ function PartnerCard({ partner }) {
   const [hov, setHov] = useState(false);
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
-    <div
+    <a
       className="partner-card"
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
+      href={partner.link} target="_blank"
       style={{
         border: `3px solid ${hov ? "rgba(249,94,20,0.3)" : "rgba(89,66,56,0.2)"}`,
         background: hov ? "var(--surface-high)" : "var(--surface-low)",
-        marginBottom: 32 
+        marginBottom: 32, 
+        textDecoration: "none"
       }}
     >
       <div style={{ position: "absolute", inset: 0, background: hov ? "radial-gradient(ellipse at left,rgba(249,94,20,0.05),transparent 60%)" : "none", transition: "all .5s", pointerEvents: "none" }} />
@@ -79,7 +82,7 @@ function PartnerCard({ partner }) {
           Visit {partner.name} →
         </a>
       </div>
-    </div>
+    </a>
   );
 }
 

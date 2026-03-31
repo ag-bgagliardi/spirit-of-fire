@@ -974,6 +974,83 @@
   line-height: 1;
 }
 
+/* ── Bio modal ── */
+.bio-modal {
+  position: relative;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  max-width: 780px;
+  width: 100%;
+  max-height: 80vh;
+  background: var(--surface-low);
+  border: 1px solid rgba(89, 66, 56, 0.25);
+  overflow: hidden;
+}
+
+.bio-modal__photo-wrap {
+  position: relative;
+}
+
+.bio-modal__photo {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--surface-highest);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-modal__photo-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, transparent 60%, var(--surface-low) 100%),
+    linear-gradient(to top, var(--surface-low) 0%, transparent 40%);
+}
+
+.bio-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 40px 36px 32px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+.bio-modal__body::-webkit-scrollbar {
+  width: 2px;
+}
+.bio-modal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.bio-modal__body::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+}
+
+.bio-modal__name {
+  font-size: clamp(24px, 3.5vw, 36px);
+  line-height: 1.1;
+  color: var(--on-surface);
+}
+
+.bio-modal__divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--primary-container),
+    rgba(89, 66, 56, 0.15),
+    transparent
+  );
+}
+
+.bio-modal__bio {
+  line-height: 1.85;
+}
+
 /* ── Modal ── */
 .modal-backdrop {
   position: fixed;
