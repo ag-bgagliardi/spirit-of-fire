@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.3c371a3c.css",
-    "main.js": "/static/js/main.a88dd8dd.js",
+    "main.css": "/static/css/main.f031f4f0.css",
+    "main.js": "/static/js/main.b19ebf71.js",
+    "static/media/horse-background.jpg": "/static/media/horse-background.cf9c57bf58c80ebba585.jpg",
     "static/media/Stuart.jpg": "/static/media/Stuart.bc2717c5ff30ff2ba1a9.jpg",
     "static/media/flames-background.png": "/static/media/flames-background.63d0b342b5f6018cea92.png",
     "static/media/Lance.jpg": "/static/media/Lance.cda061442f0eb6545cc5.jpg",
     "static/media/Barbara.jpg": "/static/media/Barbara.35c982002720d4afd8dd.jpg",
     "static/media/SilasWide.jpeg": "/static/media/SilasWide.4d26be525726cc4a1f3e.jpeg",
-    "static/media/Benjamin.png": "/static/media/Benjamin.a5fe75fee4e3352142b8.png",
+    "static/media/Benjamin2.jpg": "/static/media/Benjamin2.a90dfeed5b9d85afb67c.jpg",
     "static/media/Martha.jpg": "/static/media/Martha.e84c86f9b636ddb4ab84.jpg",
     "static/media/MadelineWide.jpeg": "/static/media/MadelineWide.a715164aa2d469903610.jpeg",
     "static/media/Kenzie.jpg": "/static/media/Kenzie.a6196cd65f6967a6b803.jpg",
@@ -15,17 +16,17 @@
     "static/media/Brandyn.jpg": "/static/media/Brandyn.0406e3446281bb6956d8.jpg",
     "static/media/MissingTheRain.webp": "/static/media/MissingTheRain.9727353f16412b64607b.webp",
     "static/media/Stephanie.jpg": "/static/media/Stephanie.1bdb53a82bb3e4113a4d.jpg",
+    "static/media/logo512.png": "/static/media/logo512.ad5dc668be6c7a6b28be.png",
     "static/media/bbt.webp": "/static/media/bbt.2d41d9bd87bcc27a2c8d.webp",
-    "static/media/Benjamin.jpeg": "/static/media/Benjamin.eaa2f3f75c79ea6cb755.jpeg",
     "static/media/salvationArmy.webp": "/static/media/salvationArmy.556225f4ac0d0fd01baa.webp",
     "static/media/AnimalCrackers.jpg": "/static/media/AnimalCrackers.9af4bb6b78183e6a21ef.jpg",
     "static/media/Rico.webp": "/static/media/Rico.efacf7afc755c0b7b821.webp",
     "index.html": "/index.html",
-    "main.3c371a3c.css.map": "/static/css/main.3c371a3c.css.map",
-    "main.a88dd8dd.js.map": "/static/js/main.a88dd8dd.js.map"
+    "main.f031f4f0.css.map": "/static/css/main.f031f4f0.css.map",
+    "main.b19ebf71.js.map": "/static/js/main.b19ebf71.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c371a3c.css",
-    "static/js/main.a88dd8dd.js"
+    "static/css/main.f031f4f0.css",
+    "static/js/main.b19ebf71.js"
   ]
 }
