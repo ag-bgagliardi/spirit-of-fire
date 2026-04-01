@@ -27,8 +27,7 @@ function Layout() {
         <Routes>
           <Route path="/" element={<ProductionsPage />} />
           <Route path="/test" element={<HomePage />} />
-          <Route path="/mission" element={<MissionPage />} />
-          <Route path="/team" element={<TeamPage />} />
+          <Route path="/about-us" element={<MissionPage />} />
           <Route path="/productions" element={<ProductionsPage />} />
           <Route path="/tickets" element={<ComingSoon />} />
           <Route path="/test-tickets" element={<TicketsPage />} />
@@ -40,6 +39,8 @@ function Layout() {
           <Route path="/tickets" element={<ComingSoon />} />
           <Route path="/past-productions" element={<ComingSoon />} />
           <Route path="/portfolio" element={<Portfolio />} />
+
+          <Route path="/team" element={<TeamPage />} />
           <Route path="/benjamin" element={<AboutPage />} />
           <Route path="/benjamin-resume" element={<BenjaminResume />} />
           <Route path="/personal" element={<ComingSoon />} />

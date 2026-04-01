@@ -15,19 +15,23 @@ const Crew = [
         name: "Rico Heisler",
         title: "Artistic Director",
         badge: "Cofounder",
+        role: "Artistic Director",
         roles: ["Actor", "Director", "Choreographer"],
         image: ricoImage,
         icon: "🎬",
-        col: "founder"
+        col: "founder",
+        bio: "A Bachelor of Arts graduate from the University of Northwestern (Saint Paul) and the J.D. William Mitchell College of Law, he has had over 20 years of directing, choreographing and acting experience. Rico brings an intensity and deep physical breadth to every project.",
     },
     {
         name: "Benjamin Gagliardi",
         title: "Dramatist",
         badge: "Cofounder",
+        role: "Dramatist",
         roles: ["Actor", "Writer", "Songwriter"],
         image: benImage,
         icon: "✍️",
-        col: "founder"
+        col: "founder",
+        bio: "A graduate of Theatre and Computer Science from the University of Wisconsin, Madison, Benjamin is an aspiring writer and actor. He finds particular joy in humor and comedy.",
     },
     {
         name: "Madeline Gagliardi",
@@ -35,7 +39,8 @@ const Crew = [
         roles: ["Manager", "Actor", "Singer"],
         image: madelineImage,
         icon: "◆",
-        col: "company"
+        col: "company",
+        bio: "As a proud mother of five daughters, Madeline Gagliardi comes from years of working for the States of Wisconsin and Minnesota in legislative affairs, public policy, and case management in collaboration with various state agencies. Madeline also brings years of experience in non-profit advancement and administration, including her work with Marquette University and the Archdiocese of Saint Paul & Minneapolis. She is thrilled to be joining Spirit of Fire Theatre, combining her professional skills with her background and love for choral, vocal, and musical theatre."
     },
     {
         name: "Silas Heisler",
@@ -43,7 +48,8 @@ const Crew = [
         roles: ["Actor", "Singer"],
         image: silasImage,
         icon: "◆",
-        col: "company"
+        col: "company",
+        bio: "Silas Heisler is a student at the University of Northwestern St Paul studying theology and vocal performance. He grew up immersed in the world of theater as he watched his Father, Rico Heisler, perform in several production at Chanhassen Dinner Theater and direct shows at Hudson Highschool alongside his mother. He quickly fell in love with all areas of performance and maintains a deep desire to tell good, true, and beautiful stories for the Glory of God."
     },
     {
         name: "Barbara Gagliardi",

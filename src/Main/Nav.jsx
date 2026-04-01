@@ -3,22 +3,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const LINKS = [
   { label: "Productions", path: "/productions" },
-  {
-    label: "About Us",
-    dropdown: [
-      { label: "Our Mission",           path: "/mission" },
-      { label: "Our Team",              path: "/team" },
-      { label: "Affiliates & Partners", path: "/affiliates" },
-    ],
-  },
+  { label: "About Us", path: "/about-us" },
   { label: "Participate", path: "/participate" },
-  { label: "Support",     path: "/support" },
+  { label: "Support", path: "/support" },
   {
     label: "Archive",
     dropdown: [
       { label: "Past Productions", path: "/past-productions" },
-      { label: "Portfolio",        path: "/portfolio" },
-      { label: "Theatology",       path: "/theatology" },
+      { label: "Portfolio", path: "/portfolio" },
+      { label: "Theatology", path: "/theatology" },
+      { label: "Affiliates & Partners", path: "/affiliates" },
     ],
   },
 ];

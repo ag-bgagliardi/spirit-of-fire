@@ -395,3 +395,70 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤900px)
+   ════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* Mission hero */
+  .mission-hero__rule {
+    display: none;
+  }
+  .mission-hero__inner {
+    padding-top: 100px;
+    gap: 28px;
+  }
+  .mission-hero__sub {
+    max-width: 100%;
+  }
+
+  /* Mission statement */
+  .mission-statement__statement-wrap {
+    grid-template-columns: 1fr;
+  }
+  .mission-statement__emblem-wrap {
+    display: none;
+  }
+  .mission-statement__ideals-wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .mission-statement__ideals-header {
+    position: static;
+  }
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤600px)
+   ════════════════════════════════════════════ */
+/* ── Mission overflow fix (all screen sizes) ── */
+.mission-hero,
+.mission-statement {
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+  /* Mission hero */
+  .mission-hero__title {
+    font-size: clamp(44px, 12vw, 72px);
+  }
+  .mission-hero__ornament {
+    display: none;
+  }
+
+  /* Mission statement */
+  .mission-statement__quote {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+  .mission-statement__quote::before {
+    font-size: clamp(48px, 12vw, 72px);
+  }
+  .mission-statement__ideal-item {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .mission-statement__ideals-title {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+}
