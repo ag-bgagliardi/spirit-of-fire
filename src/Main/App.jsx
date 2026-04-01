@@ -16,7 +16,7 @@ import ShowPage from "../Pages/ShowPage";
 import productions from "../Data/CurrentShows";
 import BenjaminPage from "../Personal/BenjaminPage";
 import BenjaminResume from "../Personal/BenjaminResume";
-import Portfolio from "../Personal/Portfolio";
+import Portfolio from "../Pages/Portfolio";
 
 function Layout() {
   const { pathname } = useLocation();

@@ -4,7 +4,7 @@ import benImage from "../Assets/People/Benjamin2.jpg";
 import Footer from "../Main/Footer";
 import "./benjamin.css";
 import "../Style/typography.css";
-
+// TODO make this a page of Everyone's bio that clicking links to
 /* ── Data ── */
 const theatre = [
   { title: "Mother Rabbit", role: "Bobby", org: "Spirit of Fire Theatre", director: "Rico Heisler", year: 2026 },

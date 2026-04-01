@@ -79,3 +79,6 @@ select {
 ::-webkit-scrollbar-thumb {
   background: #594238;
 }
+::-webkit-scrollbar-corner {
+  background: #131313;
+}

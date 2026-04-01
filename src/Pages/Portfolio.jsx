@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Footer from "../Main/Footer";
-import "./benjamin.css";
 import "../Style/portfolio.css";
 
 /* ════════════════════════════════════════════
@@ -146,10 +145,10 @@ function WorkModal({ item, type, onClose }) {
               {type === "play" ? "Play" : type === "screenplay" ? "Screenplay" : type === "skit" ? "Skit" : type === "poem" ? "Poem" : "Music"}
               {item.length && ` · ${item.length}`}
             </span>
-            <span className="ben-writing-item__year" style={{ fontSize: 11 }}>{item.year}</span>
+            <span className="port-writing-item__year" style={{ fontSize: 11 }}>{item.year}</span>
           </div>
           <h2 className="port-modal__title serif">{item.title}</h2>
-          <span className="ben-pill port-modal__pill" style={{ borderColor: styleColor[item.style] || "var(--outline)", color: styleColor[item.style] || "var(--outline)" }}>
+          <span className="port-pill port-modal__pill" style={{ borderColor: styleColor[item.style] || "var(--outline)", color: styleColor[item.style] || "var(--outline)" }}>
             {item.style}
           </span>
         </div>
@@ -212,8 +211,8 @@ function WorkModal({ item, type, onClose }) {
 
 function SectionLabel({ children }) {
   return (
-    <div className="ben-section-label">
-      <div className="ben-section-label__line" />
+    <div className="port-section-label">
+      <div className="port-section-label__line" />
       <span>{children}</span>
     </div>
   );
@@ -221,7 +220,7 @@ function SectionLabel({ children }) {
 
 function StylePill({ style }) {
   return (
-    <span className="ben-pill" style={{ borderColor: styleColor[style] || "var(--outline)", color: styleColor[style] || "var(--outline)" }}>
+    <span className="port-pill" style={{ borderColor: styleColor[style] || "var(--outline)", color: styleColor[style] || "var(--outline)" }}>
       {style}
     </span>
   );
@@ -231,7 +230,7 @@ function StylePill({ style }) {
 function ScriptTable({ items, type, onOpen }) {
   const [hov, setHov] = useState(null);
   return (
-    <div className="ben-theatre-table">
+    <div className="port-theatre-table">
       <div className="port-script-header">
         <span>Title</span>
         <span>Style</span>
@@ -246,9 +245,9 @@ function ScriptTable({ items, type, onOpen }) {
           onMouseLeave={() => setHov(null)}
           onClick={() => onOpen(item, type)}
         >
-          <span className="ben-theatre-row__title">{item.title}</span>
+          <span className="port-theatre-row__title">{item.title}</span>
           <span><StylePill style={item.style} /></span>
-          <span className="ben-theatre-row__year">{item.year}</span>
+          <span className="port-theatre-row__year">{item.year}</span>
           <span className="port-script-row__cta">
             {item.status === "available"
               ? <span className="port-script-row__badge port-script-row__badge--buy">Buy</span>
@@ -263,18 +262,18 @@ function ScriptTable({ items, type, onOpen }) {
 
 function TheatreSection({ onOpen }) {
   return (
-    <section className="ben-section">
+    <section className="port-section">
       <SectionLabel>Plays</SectionLabel>
       <ScriptTable items={plays} type="play" onOpen={onOpen} />
 
       <div style={{ marginTop: 48 }}>
-        <SectionLabel>Screenplays</SectionLabel>
-        <ScriptTable items={screenplays} type="screenplay" onOpen={onOpen} />
+        <SectionLabel>Skits</SectionLabel>
+        <ScriptTable items={skits} type="skit" onOpen={onOpen} />
       </div>
 
       <div style={{ marginTop: 48 }}>
-        <SectionLabel>Skits</SectionLabel>
-        <ScriptTable items={skits} type="skit" onOpen={onOpen} />
+        <SectionLabel>Screenplays</SectionLabel>
+        <ScriptTable items={screenplays} type="screenplay" onOpen={onOpen} />
       </div>
     </section>
   );
@@ -283,7 +282,7 @@ function TheatreSection({ onOpen }) {
 function PoemSection({ onOpen }) {
   const [hov, setHov] = useState(null);
   return (
-    <section className="ben-section">
+    <section className="port-section">
       <SectionLabel>Poetry</SectionLabel>
       <div className="port-poem-grid">
         {poems.map((p, i) => (
@@ -296,11 +295,11 @@ function PoemSection({ onOpen }) {
           >
             <div className="port-poem-card__top">
               <span className="port-poem-card__title serif">{p.title}</span>
-              <span className="ben-writing-item__year">{p.year}</span>
+              <span className="port-writing-item__year">{p.year}</span>
             </div>
             <div className="port-poem-card__bottom">
               <StylePill style={p.style} />
-              <span className="port-poem-card__arrow">→</span>
+              <img className="port-poem-card__arrow" src="url(../../public/open-book.png)"></img>
             </div>
           </div>
         ))}
@@ -312,22 +311,22 @@ function PoemSection({ onOpen }) {
 function MusicSection({ onOpen }) {
   const [hov, setHov] = useState(null);
   return (
-    <section className="ben-section">
+    <section className="port-section">
       <SectionLabel>Music</SectionLabel>
-      <div className="ben-music-grid">
+      <div className="port-music-grid">
         {music.map((m, i) => (
           <div
             key={i}
-            className={`ben-music-card${hov === i ? " hov" : ""}`}
+            className={`port-music-card${hov === i ? " hov" : ""}`}
             onMouseEnter={() => setHov(i)}
             onMouseLeave={() => setHov(null)}
             onClick={() => onOpen(m, "music")}
             style={{ cursor: "pointer" }}
           >
-            <div className="ben-music-card__note">♩</div>
-            <span className="ben-music-card__title">{m.title}</span>
-            <span className="ben-music-card__style">{m.style}</span>
-            <span className="ben-music-card__year">{m.year}</span>
+            <div className="port-music-card__note">♩</div>
+            <span className="port-music-card__title">{m.title}</span>
+            <span className="port-music-card__style">{m.style}</span>
+            <span className="port-music-card__year">{m.year}</span>
           </div>
         ))}
       </div>
@@ -354,7 +353,7 @@ export default function Portfolio() {
   }
 
   return (
-    <main className="ben-page">
+    <main className="port-page">
       {activeItem && <WorkModal item={activeItem} type={activeType} onClose={closeModal} />}
 
       {/* Hero */}
@@ -391,11 +390,11 @@ export default function Portfolio() {
       </section>
 
       {/* Content */}
-      <div className="ben-body container">
+      <div className="port-body container">
         <TheatreSection onOpen={openModal} />
-        <div className="ben-divider" />
+        <div className="port-divider" />
         <PoemSection onOpen={openModal} />
-        <div className="ben-divider" />
+        <div className="port-divider" />
         <MusicSection onOpen={openModal} />
       </div>
 
