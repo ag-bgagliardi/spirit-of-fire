@@ -462,3 +462,98 @@
     font-size: clamp(28px, 7vw, 40px);
   }
 }
+
+/* ════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════════ */
+
+/* ── Global overflow fix ── */
+/* Negative inset on emblem border-outer and absolute rule
+   can push content past the viewport edge on mobile */
+.mission-hero,
+.mission-statement {
+  overflow-x: hidden;
+}
+
+/* ── Tablet (≤900px) ── */
+@media (max-width: 900px) {
+  /* Modal */
+  .modal {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__cover {
+    min-height: 220px;
+  }
+  .modal__right {
+    padding: 24px 20px;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* ── Mobile (≤600px) ── */
+@media (max-width: 600px) {
+  /* Bio modal */
+  .bio-modal {
+    grid-template-columns: 1fr;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .bio-modal__photo {
+    min-height: 220px;
+  }
+  .bio-modal__photo-fade {
+    background: linear-gradient(to top, var(--surface-low) 0%, transparent 50%);
+  }
+  .bio-modal__body {
+    padding: 24px 20px;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  /* Show modal */
+  .modal {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__cover {
+    min-height: 220px;
+  }
+  .modal__right {
+    padding: 24px 20px;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
+
+  /* Portfolio modal */
+  .port-modal {
+    max-height: 90vh;
+  }
+  .port-modal__header,
+  .port-modal__synopsis,
+  .port-modal__sample,
+  .port-modal__actions,
+  .port-modal__purchase {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .port-modal__divider {
+    margin: 0 20px;
+  }
+  .port-modal__purchase-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
