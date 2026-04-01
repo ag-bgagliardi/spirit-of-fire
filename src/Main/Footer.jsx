@@ -31,6 +31,12 @@ export default function Footer() {
             </a>
           ))}
         </div>
+        <div className="flex-col" style={{ gap: 16 }}>
+          <h4 className="footer__heading">More Information</h4>
+          {LINKS.map(l => (
+            <span key={l} className="footer__link">{l}</span>
+          ))}
+        </div>
         <div>
           <h4 className="footer__heading" style={{ marginBottom: 24 }}>Sign up for Spirit of Fire Updates</h4>
           <div className="footer__newsletter">
@@ -38,12 +44,6 @@ export default function Footer() {
             <span className="footer__newsletter-btn">→</span>
           </div>
           <p className="footer__copyright">© 2026 Spirit of Fire Theatre Company. Soli Deo Gloria.</p>
-        </div>
-        <div className="flex-col" style={{ gap: 16 }}>
-          <h4 className="footer__heading">More Information</h4>
-          {LINKS.map(l => (
-            <span key={l} className="footer__link">{l}</span>
-          ))}
         </div>
       </div>
     </footer>
