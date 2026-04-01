@@ -16,6 +16,7 @@ import ShowPage from "../Pages/ShowPage";
 import productions from "../Data/CurrentShows";
 import BenjaminPage from "../Personal/BenjaminPage";
 import BenjaminResume from "../Personal/BenjaminResume";
+import Portfolio from "../Personal/Portfolio";
 
 function Layout() {
   const { pathname } = useLocation();
@@ -38,7 +39,7 @@ function Layout() {
           <Route path="/theatology"  element={<TheatologyPage />} />
           <Route path="/tickets"     element={<ComingSoon />} />
           <Route path="/past-productions"     element={<ComingSoon />} />
-          <Route path="/portfolio"     element={<ComingSoon />} />
+          <Route path="/portfolio"     element={<Portfolio />} />
           <Route path="/benjamin"     element={<BenjaminPage />} />
           <Route path="/benjamin-resume"     element={<BenjaminResume />} />
           <Route path="/personal"     element={<ComingSoon />} />
