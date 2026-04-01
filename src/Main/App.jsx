@@ -25,26 +25,26 @@ function Layout() {
       <Nav />
       <div style={{ paddingTop: 80 }}>
         <Routes>
-          <Route path="/"            element={<TempHome />} />
-          <Route path="/test"            element={<HomePage />} />
-          <Route path="/mission"     element={<MissionPage />} />
-          <Route path="/team"        element={<TeamPage />} />
+          <Route path="/" element={<ProductionsPage />} />
+          <Route path="/test" element={<HomePage />} />
+          <Route path="/mission" element={<MissionPage />} />
+          <Route path="/team" element={<TeamPage />} />
           <Route path="/productions" element={<ProductionsPage />} />
-          <Route path="/tickets"     element={<ComingSoon />} />
-          <Route path="/test-tickets"     element={<TicketsPage />} />
+          <Route path="/tickets" element={<ComingSoon />} />
+          <Route path="/test-tickets" element={<TicketsPage />} />
           <Route path="/participate" element={<ParticipatePage />} />
-          <Route path="/affiliates"  element={<AffiliatesPage />} />
-          <Route path="/support"     element={<ComingSoon />} />
-          <Route path="/test-support"     element={<SupportPage />} />
-          <Route path="/theatology"  element={<TheatologyPage />} />
-          <Route path="/tickets"     element={<ComingSoon />} />
-          <Route path="/past-productions"     element={<ComingSoon />} />
-          <Route path="/portfolio"     element={<Portfolio />} />
-          <Route path="/benjamin"     element={<AboutPage />} />
-          <Route path="/benjamin-resume"     element={<BenjaminResume />} />
-          <Route path="/personal"     element={<ComingSoon />} />
+          <Route path="/affiliates" element={<AffiliatesPage />} />
+          <Route path="/support" element={<ComingSoon />} />
+          <Route path="/test-support" element={<SupportPage />} />
+          <Route path="/theatology" element={<TheatologyPage />} />
+          <Route path="/tickets" element={<ComingSoon />} />
+          <Route path="/past-productions" element={<ComingSoon />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/benjamin" element={<AboutPage />} />
+          <Route path="/benjamin-resume" element={<BenjaminResume />} />
+          <Route path="/personal" element={<ComingSoon />} />
           {productions.map((show) => {
-            return <Route path={`/${show.id}`}  element={<ShowPage show={show} />} />
+            return <Route path={`/${show.id}`} element={<ShowPage show={show} />} />
           })}
         </Routes>
       </div>

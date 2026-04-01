@@ -203,55 +203,56 @@ const screenplays = [
 // ];
 const poems = [];
 
-const music = [
-    {
-        title: "Hollowpoints",
-        style: "Choral",
-        year: 2026,
-        description: "",
-        author: "Benjamin Gagliardi",
-        link: "https://musescore.com/user/28994480/scores/31764482"
-    },{
-        title: "Seluna",
-        style: "Choral",
-        year: 2025,
-        description: "",
-        author: "Benjamin Gagliardi",
-        link: "https://musescore.com/user/28994480/scores/27541243"
-    },
-    {
-        title: "Sefrinuum",
-        style: "Piano / Strings",
-        year: 2025,
-        description: "",
-        author: "Benjamin Gagliardi",
-        link: "https://musescore.com/user/28994480/scores/21761614/s/6stvD8"
-    },
-    {
-        title: "Steeple Waltz",
-        style: "Piano",
-        year: 2024,
-        description: "",
-        author: "Benjamin Gagliardi",
-        link: ""
-    },
-    {
-        title: "Go With You",
-        style: "Piano / Strings",
-        year: 2024,
-        description: "",
-        author: "Benjamin Gagliardi",
-        link: ""
-    },
-    {
-        title: "Iodorae",
-        style: "Piano",
-        year: 2023,
-        description: "",
-        author: "Benjamin Gagliardi",
-        link: "https://musescore.com/user/28994480/scores/21640252"
-    },
-];
+// const music = [
+//     {
+//         title: "Hollowpoints",
+//         style: "Choral",
+//         year: 2026,
+//         description: "",
+//         author: "Benjamin Gagliardi",
+//         link: "https://musescore.com/user/28994480/scores/31764482"
+//     },{
+//         title: "Seluna",
+//         style: "Choral",
+//         year: 2025,
+//         description: "",
+//         author: "Benjamin Gagliardi",
+//         link: "https://musescore.com/user/28994480/scores/27541243"
+//     },
+//     {
+//         title: "Sefrinuum",
+//         style: "Piano / Strings",
+//         year: 2025,
+//         description: "",
+//         author: "Benjamin Gagliardi",
+//         link: "https://musescore.com/user/28994480/scores/21761614/s/6stvD8"
+//     },
+//     {
+//         title: "Steeple Waltz",
+//         style: "Piano",
+//         year: 2024,
+//         description: "",
+//         author: "Benjamin Gagliardi",
+//         link: ""
+//     },
+//     {
+//         title: "Go With You",
+//         style: "Piano / Strings",
+//         year: 2024,
+//         description: "",
+//         author: "Benjamin Gagliardi",
+//         link: ""
+//     },
+//     {
+//         title: "Iodorae",
+//         style: "Piano",
+//         year: 2023,
+//         description: "",
+//         author: "Benjamin Gagliardi",
+//         link: "https://musescore.com/user/28994480/scores/21640252"
+//     },
+// ];
+const music = []
 
 const portfolio = {
     plays: plays,

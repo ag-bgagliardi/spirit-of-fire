@@ -198,33 +198,28 @@ function PoemSection({ onOpen }) {
   const [hov, setHov] = useState(null);
   return (
     <section className="port-section">
-      {
-        poems.length > 0 ? <>
-          <SectionLabel>Poetry</SectionLabel>
-          <div className="port-poem-grid">
-            {poems.map((p, i) => (
-              <div
-                key={i}
-                className={`port-poem-card${hov === i ? " hov" : ""}`}
-                onMouseEnter={() => setHov(i)}
-                onMouseLeave={() => setHov(null)}
-                onClick={() => onOpen(p, "poem")}
-              >
-                <div className="port-poem-card__top">
-                  <span className="port-poem-card__title serif">{p.title}</span>
-                  <span className="port-writing-item__year">{p.year}</span>
-                </div>
-                <div className="port-poem-card__bottom">
-                  <span className="port-music-card__style">{p.author}</span>
-                  <div className="port-poem-card__arrow"></div>
-                </div>
-              </div>
-            ))}
+      <SectionLabel>Poetry</SectionLabel>
+      <div className="port-poem-grid">
+        {poems.map((p, i) => (
+          <div
+            key={i}
+            className={`port-poem-card${hov === i ? " hov" : ""}`}
+            onMouseEnter={() => setHov(i)}
+            onMouseLeave={() => setHov(null)}
+            onClick={() => onOpen(p, "poem")}
+          >
+            <div className="port-poem-card__top">
+              <span className="port-poem-card__title serif">{p.title}</span>
+              <span className="port-writing-item__year">{p.year}</span>
+            </div>
+            <div className="port-poem-card__bottom">
+              <span className="port-music-card__style">{p.author}</span>
+              <div className="port-poem-card__arrow"></div>
+            </div>
           </div>
-        </> : <></>
-      }
-    </section>
-  );
+        ))}
+      </div>
+    </section>)
 }
 
 function MusicSection({ onOpen }) {
@@ -287,7 +282,7 @@ export default function Portfolio() {
             <em className="color-primary-container"> Works</em>
           </h1>
           <p className="port-hero__sub body-lg color-on-surface-var">
-            Plays, screenplays, poetry, and music — contact us to perform and have your work featured.
+            At Spirit of Fire we support all art made to uplift the soul and bring others to the light of Chirst. Whether you have a play, song, poem, or painting, you can have your art featured or performed in our Theatre Company.
           </p>
           {/* <div className="port-hero__stats">
             <div className="port-hero__stat">
@@ -311,10 +306,20 @@ export default function Portfolio() {
       {/* Content */}
       <div className="port-body container">
         <TheatreSection onOpen={openModal} />
-        <div className="port-divider" />
-        <PoemSection onOpen={openModal} />
-        <div className="port-divider" />
-        <MusicSection onOpen={openModal} />
+        {
+          poems.length > 0 ? 
+          <>
+            <div className="port-divider" />
+            <PoemSection onOpen={openModal} />
+          </> : <></>
+        }
+        {
+          music.length > 0 ? 
+          <>
+            <div className="port-divider" />
+            <MusicSection onOpen={openModal} />
+          </> : <></>
+        }
       </div>
 
       <Footer />

@@ -1,22 +1,10 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ricoImage from "../Assets/People/Rico.webp";
-import benImage from "../Assets/People/Benjamin2.jpg";
-import silasImage from "../Assets/People/SilasWide.jpeg";
-import madelineImage from "../Assets/People/MadelineWide.jpeg";
-import barbaraImage from "../Assets/People/Barbara.jpg";
-import stephanieImage from "../Assets/People/Stephanie.jpg";
+import People from "../Data/CastCrew"
 import "../Style/index.css";
 
-const TEAM = [
-  { name: "Rico Heisler",       title: "Artistic Director",      badge: "Cofounder", roles: ["Actor", "Director", "Choreographer"],          image: ricoImage,      icon: "🎬", col: "founder", pageID: "personal"  },
-  { name: "Benjamin Gagliardi", title: "Dramatist",              badge: "Cofounder", roles: ["Actor", "Writer", "Songwriter"],               image: benImage,       icon: "✍️", col: "founder", pageID: "personal" },
-  { name: "Madeline Gagliardi", title: "Administrator",                              roles: ["Manager", "Actor", "Singer"],                   image: madelineImage,  icon: "◆",  col: "company", pageID: "personal"  },
-  { name: "Silas Heisler",      title: "Creative Consultant",                        roles: ["Actor", "Singer"],                              image: silasImage,     icon: "◆",  col: "company", pageID: "personal"  },
-  { name: "Barbara Gagliardi",  title: "Creative Designer",                          roles: ["Actor", "Singer", "Director", "Designer"],      image: barbaraImage,   icon: "◆",  col: "company", pageID: "personal"  },
-  { name: "Stephanie Wilson",   title: "Director of Marketing",                      roles: ["Designer", "Marketer"],                         image: stephanieImage, icon: "◆",  col: "company", pageID: "personal"  },
-];
+const TEAM = People.crew;
 
 function RolePills({ roles }) {
   return (
