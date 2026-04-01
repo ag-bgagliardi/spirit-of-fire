@@ -40,9 +40,7 @@
   z-index: 2;
 }
 .hero_tag {
-  background: var(--secondary-container);
-
-  color: var(--on-primary-container);
+  background: var(--on-primary-container);
   padding: clamp(10px, 1.5vw, 16px) clamp(20px, 3vw, 32px);
   font-size: clamp(10px, 1.2vw, 11px);
   font-weight: 700;
