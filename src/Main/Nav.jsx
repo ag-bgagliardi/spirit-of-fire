@@ -97,7 +97,7 @@ export default function Nav() {
         </nav>
 
         <button className="ticket-button nav__cta" onClick={() => go("/tickets")}>
-          Book Tickets
+          Tickets
         </button>
 
         <div className="nav__mobile-toggle" onClick={() => setOpen(o => !o)}>
@@ -148,7 +148,7 @@ export default function Nav() {
           </div>
         ))}
         <button className="btn-primary" style={{ marginTop: 8 }} onClick={() => go("/tickets")}>
-          Book Tickets
+          Tickets
         </button>
       </nav>
     </header>
