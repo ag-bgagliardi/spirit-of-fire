@@ -1209,7 +1209,7 @@
   margin-top: -10px;
 }
 .footer__tagline {
-  color: var(--outline-variant);
+  color: var(--outline);
   line-height: 1.8;
   font-size: 13px;
 }
@@ -1222,7 +1222,7 @@
   font-weight: 500;
 }
 .footer__link {
-  color: var(--outline-variant);
+  color: var(--outline);
   font-size: 14px;
   cursor: pointer;
   transition: color 0.3s;
@@ -1234,7 +1234,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--outline-variant);
+  color: var(--outline);
   font-size: 14px;
   cursor: pointer;
   text-decoration: none;
@@ -1255,7 +1255,7 @@
 }
 .footer__newsletter {
   display: flex;
-  border-bottom: 1px solid var(--outline-variant);
+  border-bottom: 1px solid var(--outline);
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
@@ -1274,5 +1274,5 @@
 }
 .footer__copyright {
   font-size: 9px;
-  color: var(--outline-variant);
+  color: var(--outline);
 }
