@@ -198,27 +198,31 @@ function PoemSection({ onOpen }) {
   const [hov, setHov] = useState(null);
   return (
     <section className="port-section">
-      <SectionLabel>Poetry</SectionLabel>
-      <div className="port-poem-grid">
-        {poems.map((p, i) => (
-          <div
-            key={i}
-            className={`port-poem-card${hov === i ? " hov" : ""}`}
-            onMouseEnter={() => setHov(i)}
-            onMouseLeave={() => setHov(null)}
-            onClick={() => onOpen(p, "poem")}
-          >
-            <div className="port-poem-card__top">
-              <span className="port-poem-card__title serif">{p.title}</span>
-              <span className="port-writing-item__year">{p.year}</span>
-            </div>
-            <div className="port-poem-card__bottom">
-              <span className="port-music-card__style">{p.author}</span>
-              <div className="port-poem-card__arrow"></div>
-            </div>
+      {
+        poems.length > 0 ? <>
+          <SectionLabel>Poetry</SectionLabel>
+          <div className="port-poem-grid">
+            {poems.map((p, i) => (
+              <div
+                key={i}
+                className={`port-poem-card${hov === i ? " hov" : ""}`}
+                onMouseEnter={() => setHov(i)}
+                onMouseLeave={() => setHov(null)}
+                onClick={() => onOpen(p, "poem")}
+              >
+                <div className="port-poem-card__top">
+                  <span className="port-poem-card__title serif">{p.title}</span>
+                  <span className="port-writing-item__year">{p.year}</span>
+                </div>
+                <div className="port-poem-card__bottom">
+                  <span className="port-music-card__style">{p.author}</span>
+                  <div className="port-poem-card__arrow"></div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </> : <></>
+      }
     </section>
   );
 }
@@ -241,7 +245,7 @@ function MusicSection({ onOpen }) {
             <div className="port-music-card__note">♩</div>
             <span className="port-music-card__title">{m.title}</span>
             <span className="port-music-card__style">{m.style}</span>
-            <span className="port-music-card__style">{m.author}</span>
+            {/* <span className="port-music-card__style">{m.author}</span> */}
             <span className="port-music-card__year">{m.year}</span>
           </div>
         ))}
