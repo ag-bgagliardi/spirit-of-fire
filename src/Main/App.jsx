@@ -14,7 +14,7 @@ import TheatologyPage from "../Pages/TheatologyPage";
 import ComingSoon from "../Pages/ComingSoon";
 import ShowPage from "../Pages/ShowPage";
 import productions from "../Data/CurrentShows";
-import BenjaminPage from "../Personal/BenjaminPage";
+import AboutPage from "../Personal/AboutPage";
 import BenjaminResume from "../Personal/BenjaminResume";
 import Portfolio from "../Pages/Portfolio";
 
@@ -40,7 +40,7 @@ function Layout() {
           <Route path="/tickets"     element={<ComingSoon />} />
           <Route path="/past-productions"     element={<ComingSoon />} />
           <Route path="/portfolio"     element={<Portfolio />} />
-          <Route path="/benjamin"     element={<BenjaminPage />} />
+          <Route path="/benjamin"     element={<AboutPage />} />
           <Route path="/benjamin-resume"     element={<BenjaminResume />} />
           <Route path="/personal"     element={<ComingSoon />} />
           {productions.map((show) => {

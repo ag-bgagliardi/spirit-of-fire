@@ -1,109 +1,15 @@
 import { useState, useEffect } from "react";
 import Footer from "../Main/Footer";
 import "../Style/portfolio.css";
-
+import portfolio from "../Data/Portfolio"
 /* ════════════════════════════════════════════
    DATA
    ════════════════════════════════════════════ */
-
-const plays = [
-  {
-    title: "Mother Rabbit",
-    style: "Comedy",
-    length: "2 acts",
-    year: 2025,
-    status: "available",
-    synopsis: `Peter Kotski's mother is sick. His father passed away years ago. 
-        His eccentric brothers are eccentric, and estranged. His mother's illness 
-        brings them all together again, where they must reconcile with each other, 
-        and her infamous personal Doctor, Reverend Byrd. Filled with boystrous energy
-        shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
-        who comes. The show is Family-friendly and has strong themes of forgiveness and 
-        family values.`,
-    sample: `PETER "What church do you belong to?\nKEIRA "First Presbyterian Church."\nRICHARD "You’re the first?"\nKEIRA "Of its kind, yes."\nBOBBY "You’re fish people?"\nPETER "Excuse him, he hasn’t eaten."\nBOBBY "You stay out of this."\nRICHARD "What did you say you were?"\nKEIRA "Presbyterian."\nRICHARD "I don’t know what that is."\nBOBBY "It means they eat fish."\nKEIRA "No, that's Pescatirian."\nBOBBY "What did you just call me?"\nBYRD "No, Pescatarian."\nBOBBY "So you’re an exterminator."`,
-    purchaseUrl: "#",
-  },
-  {
-    title: "Missing the Rain",
-    style: "Drama",
-    length: "2 acts",
-    year: 2024,
-    status: "available",
-    synopsis: "",
-    sample: ``,
-    purchaseUrl: "#",
-  },
-];
-
-const skits = [
-  {
-    title: "The Eulogy",
-    style: "Comedy",
-    year: 2023,
-    synopsis: "A neurotic and strange man performs a ridiculous Eulogy. Short-form comedy, approximately 4 minutes.",
-    sample: ``,
-    purchaseUrl: "#",
-    status: "available",
-  },
-  {
-    title: "Breakfast Conversations",
-    style: "Comedy",
-    year: 2021,
-    synopsis: "Two people at a morning breakfast table. They begin to argue over what to do when a deer gets in front of your car. Heavily inspired by Abbott and Costello, approximately 6 minutes.",
-    sample: ``,
-    purchaseUrl: "#",
-    status: "available",
-  },
-];
-
-const screenplays = [
-  {
-    title: "The Apartment",
-    style: "Comedy",
-    year: 2022,
-    synopsis: "Bobby Ryan makes a breakthrough with bomb proofing furniture, much to the chagrin of his roommate. Short-form screenplay, approximately 24 pages.",
-    sample: `BOBBY 'Well then I said “that fruit salad reminds me of your daughter, because she’s the worst thing here”'\nDOUG 'And what did the dad say to that?'\nBOBBY 'Oh he goes, “I don’t care if you’re the best man, you’re outta here!”'`,
-  },
-  {
-    title: "The Pitch",
-    style: "Comedy",
-    year: 2021,
-    synopsis: "Bobby Ryan is struggling to succeed as an entrepaneur, when he bumps into an old friend. Short-form, approximately 17 pages.",
-    sample: `BOBBY "Well they loved me Richard, but it just didn’t work out."\nRICHARD "Why?"\nBOBBY "They didn’t like me so much"\nRICHARD "Did you pitch the wrist brace?"\nBOBBY "No, I pitched Edible cell phones…"\nRICHARD "Oh, yeah...? [confused, disappointed]"\nBOBBY "Yeah... some guy accidentally ate his actual phone"`,
-  },
-  {
-    title: "The Interview",
-    style: "Comedy",
-    year: 2020,
-    synopsis: "Bobby Ryan is interviewed by the local news about his travelling hot tub business. Short-form, approximately 3 pages.",
-    sample: `BOBBY	"So, Pastor Ellers, when we last saw you, you were the Pastor of the Pescetarian Church of Zioooon"\nPASTOR ELLERS "Presbyterian"\nBOBBY "What?"\nPASTOR ELLERS "Presbyterian, it's the Presbyterian Church of Zion"\nBOBBY "Right, right, and so… where are you now?"\nPASTOR ELLERS "Still a Pastor..."`,
-  },
-];
-
-const poems = [
-  { title: "Wasn't It Nice?",        style: "Drama",    year: 2026, lines: ""},
-  { title: "Desolation Day",         style: "Drama",    year: 2026, lines: ""},
-  { title: "Grocery Store",          style: "Romantic", year: 2026, lines: ""},
-  { title: "Abroad",                 style: "Drama",    year: 2026, lines: ""},
-  { title: "Alunalei",               style: "Romantic", year: 2025, lines: ""},
-  { title: "Crosby Drive",           style: "Drama",    year: 2025, lines: ""},
-  { title: "Love for You",           style: "Drama",    year: 2025, lines: ""},
-  { title: "Stormclouds",            style: "Drama",    year: 2024, lines: ""},
-  { title: "Empty Sea",              style: "Drama",    year: 2023, lines: ""},
-  { title: "Sitting at My Desk Today", style: "Drama",  year: 2022, lines: ""},
-  { title: "Hollowpoints",           style: "Drama",    year: 2022, lines: ""},
-  { title: "Open Eyes",              style: "Drama",    year: 2021, lines: ""},
-  { title: "Bittertime",             style: "Drama",    year: 2020, lines: ""},
-  { title: "Addicts Creed",          style: "Drama",    year: 2020, lines: ""},
-];
-
-const music = [
-  { title: "Seluna",        style: "Choral",          year: 2025, description: ""},
-  { title: "Sefrinuum",     style: "Piano / Strings", year: 2025, description: ""},
-  { title: "Steeple Waltz", style: "Piano",           year: 2024, description: ""},
-  { title: "Go With You",   style: "Piano / Strings", year: 2024, description: ""},
-  { title: "Iodorae",       style: "Piano",           year: 2023, description: ""},
-];
+const plays = portfolio.plays;
+const skits = portfolio.skits;
+const screenplays = portfolio.screenplays;
+const poems = portfolio.poems;
+const music = portfolio.music;
 
 const styleColor = {
   Comedy:          "var(--primary-container)",
@@ -169,20 +75,24 @@ function WorkModal({ item, type, onClose }) {
         {hasSample && (
           <div className="port-modal__sample">
             <p className="label-tiny color-primary-container" style={{ letterSpacing: ".3em", marginBottom: 12 }}>
-              {type === "poem" ? "Excerpt" : type === "music" ? "Notes" : "Sample"}
+              {type === "poem" ? "Text" : type === "music" ? "Notes" : "Sample"}
             </p>
             <pre className="port-modal__sample-text serif">{sampleText}</pre>
           </div>
         )}
 
         {/* Music link */}
-        {type === "music" && item.link && (
-          <div className="port-modal__actions">
+        {type === "music" && (item.link ? 
+          (<div className="port-modal__actions">
             <a href={item.link} target="_blank" rel="noopener noreferrer" className="btn-ghost port-modal__action-btn">
               View on Musescore →
             </a>
-          </div>
-        )}
+          </div>):
+          (<p style={{padding:20, marginLeft:20}}>
+            Link Currently Unavailable
+          </p>
+          )
+        ) }
 
         {/* Purchase */}
         {isPurchasable && (
@@ -232,7 +142,9 @@ function ScriptTable({ items, type, onOpen }) {
   return (
     <div className="port-theatre-table">
       <div className="port-script-header">
+        <span></span>
         <span>Title</span>
+        <span>Author</span>
         <span>Style</span>
         <span>Year</span>
         <span></span>
@@ -245,7 +157,10 @@ function ScriptTable({ items, type, onOpen }) {
           onMouseLeave={() => setHov(null)}
           onClick={() => onOpen(item, type)}
         >
+          {console.log(item.icon)}
+          <div className="port-theatre-row__icon" style={{backgroundImage: `url(${item.icon})`}} />
           <span className="port-theatre-row__title">{item.title}</span>
+          <span className="port-music-card__style">{item.author}</span>
           <span><StylePill style={item.style} /></span>
           <span className="port-theatre-row__year">{item.year}</span>
           <span className="port-script-row__cta">
@@ -298,8 +213,8 @@ function PoemSection({ onOpen }) {
               <span className="port-writing-item__year">{p.year}</span>
             </div>
             <div className="port-poem-card__bottom">
-              <StylePill style={p.style} />
-              <img className="port-poem-card__arrow" src="url(../../public/open-book.png)"></img>
+              <span className="port-music-card__style">{p.author}</span>
+              <div className="port-poem-card__arrow"></div>
             </div>
           </div>
         ))}
@@ -326,6 +241,7 @@ function MusicSection({ onOpen }) {
             <div className="port-music-card__note">♩</div>
             <span className="port-music-card__title">{m.title}</span>
             <span className="port-music-card__style">{m.style}</span>
+            <span className="port-music-card__style">{m.author}</span>
             <span className="port-music-card__year">{m.year}</span>
           </div>
         ))}
@@ -361,16 +277,15 @@ export default function Portfolio() {
         <div className="port-hero__bg" />
         <div className="port-hero__fade" />
         <div className="port-hero__inner container">
-          <p className="port-hero__eyebrow">Benjamin Gagliardi</p>
+          <p className="port-hero__eyebrow">Spirit of Fire</p>
           <h1 className="port-hero__title display-xl">
-            The<br />
-            <em className="color-primary-container">Works</em>
+            Original 
+            <em className="color-primary-container"> Works</em>
           </h1>
           <p className="port-hero__sub body-lg color-on-surface-var">
-            Plays, screenplays, poetry, and music — a living record of
-            everything written, composed, and staged.
+            Plays, screenplays, poetry, and music — contact us to perform and have your work featured.
           </p>
-          <div className="port-hero__stats">
+          {/* <div className="port-hero__stats">
             <div className="port-hero__stat">
               <span className="port-hero__stat-num">{plays.length + screenplays.length + skits.length}</span>
               <span className="port-hero__stat-label">Scripts</span>
@@ -385,7 +300,7 @@ export default function Portfolio() {
               <span className="port-hero__stat-num">{music.length}</span>
               <span className="port-hero__stat-label">Compositions</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

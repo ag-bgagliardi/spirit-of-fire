@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import benImage from "../Assets/People/Benjamin2.jpg";
 import Footer from "../Main/Footer";
-import "./benjamin.css";
+import "./about.css";
 // TODO: Turn this into the portfolio page
 /* ── Data ── */
 const theatre = [
@@ -68,8 +68,8 @@ const styleTag = { Comedy: "var(--primary-container)", Drama: "var(--outline)", 
 
 function SectionLabel({ children }) {
   return (
-    <div className="ben-section-label">
-      <div className="ben-section-label__line" />
+    <div className="about-section-label">
+      <div className="about-section-label__line" />
       <span>{children}</span>
     </div>
   );
@@ -77,7 +77,7 @@ function SectionLabel({ children }) {
 
 function StylePill({ style }) {
   return (
-    <span className="ben-pill" style={{ borderColor: styleTag[style] || "var(--outline)", color: styleTag[style] || "var(--outline)" }}>
+    <span className="about-pill" style={{ borderColor: styleTag[style] || "var(--outline)", color: styleTag[style] || "var(--outline)" }}>
       {style}
     </span>
   );
@@ -86,10 +86,10 @@ function StylePill({ style }) {
 function TheatreSection() {
   const [hov, setHov] = useState(null);
   return (
-    <section className="ben-section">
+    <section className="about-section">
       <SectionLabel>Stage</SectionLabel>
-      <div className="ben-theatre-table">
-        <div className="ben-theatre-header">
+      <div className="about-theatre-table">
+        <div className="about-theatre-header">
           <span>Title</span>
           <span>Role</span>
           <span>Company</span>
@@ -99,15 +99,15 @@ function TheatreSection() {
         {theatre.map((row, i) => (
           <div
             key={i}
-            className={`ben-theatre-row${hov === i ? " hov" : ""}`}
+            className={`about-theatre-row${hov === i ? " hov" : ""}`}
             onMouseEnter={() => setHov(i)}
             onMouseLeave={() => setHov(null)}
           >
-            <span className="ben-theatre-row__title">{row.title}</span>
-            <span className="ben-theatre-row__role">{row.role}</span>
-            <span className="ben-theatre-row__org">{row.org}</span>
-            <span className="ben-theatre-row__dir">{row.director}</span>
-            <span className="ben-theatre-row__year">{row.year}</span>
+            <span className="about-theatre-row__title">{row.title}</span>
+            <span className="about-theatre-row__role">{row.role}</span>
+            <span className="about-theatre-row__org">{row.org}</span>
+            <span className="about-theatre-row__dir">{row.director}</span>
+            <span className="about-theatre-row__year">{row.year}</span>
           </div>
         ))}
       </div>
@@ -117,43 +117,43 @@ function TheatreSection() {
 
 function WritingSection() {
   return (
-    <section className="ben-section">
+    <section className="about-section">
       <SectionLabel>Writing</SectionLabel>
-      <div className="ben-writing-grid">
+      <div className="about-writing-grid">
 
         {/* Plays */}
-        <div className="ben-writing-col">
-          <p className="ben-writing-col__heading">Plays</p>
+        <div className="about-writing-col">
+          <p className="about-writing-col__heading">Plays</p>
           {writing.plays.map((p, i) => (
-            <div key={i} className="ben-writing-item">
-              <div className="ben-writing-item__top">
-                <span className="ben-writing-item__title">{p.title}</span>
-                <span className="ben-writing-item__year">{p.year}</span>
+            <div key={i} className="about-writing-item">
+              <div className="about-writing-item__top">
+                <span className="about-writing-item__title">{p.title}</span>
+                <span className="about-writing-item__year">{p.year}</span>
               </div>
-              <div className="ben-writing-item__meta">
+              <div className="about-writing-item__meta">
                 <StylePill style={p.style} />
-                {p.length && <span className="ben-writing-item__length">{p.length}</span>}
+                {p.length && <span className="about-writing-item__length">{p.length}</span>}
               </div>
             </div>
           ))}
 
-          <p className="ben-writing-col__heading" style={{ marginTop: 32 }}>Skits</p>
+          <p className="about-writing-col__heading" style={{ marginTop: 32 }}>Skits</p>
           {writing.skits.map((p, i) => (
-            <div key={i} className="ben-writing-item">
-              <div className="ben-writing-item__top">
-                <span className="ben-writing-item__title">{p.title}</span>
-                <span className="ben-writing-item__year">{p.year}</span>
+            <div key={i} className="about-writing-item">
+              <div className="about-writing-item__top">
+                <span className="about-writing-item__title">{p.title}</span>
+                <span className="about-writing-item__year">{p.year}</span>
               </div>
               <StylePill style={p.style} />
             </div>
           ))}
 
-          <p className="ben-writing-col__heading" style={{ marginTop: 32 }}>Screenplays</p>
+          <p className="about-writing-col__heading" style={{ marginTop: 32 }}>Screenplays</p>
           {writing.screenplays.map((p, i) => (
-            <div key={i} className="ben-writing-item">
-              <div className="ben-writing-item__top">
-                <span className="ben-writing-item__title">{p.title}</span>
-                <span className="ben-writing-item__year">{p.year}</span>
+            <div key={i} className="about-writing-item">
+              <div className="about-writing-item__top">
+                <span className="about-writing-item__title">{p.title}</span>
+                <span className="about-writing-item__year">{p.year}</span>
               </div>
               <StylePill style={p.style} />
             </div>
@@ -161,15 +161,15 @@ function WritingSection() {
         </div>
 
         {/* Poems */}
-        <div className="ben-writing-col">
-          <p className="ben-writing-col__heading">Poetry</p>
-          <div className="ben-poem-grid">
+        <div className="about-writing-col">
+          <p className="about-writing-col__heading">Poetry</p>
+          <div className="about-poem-grid">
             {writing.poems.map((p, i) => (
-              <div key={i} className="ben-poem-item">
-                <span className="ben-poem-item__title">{p.title}</span>
-                <div className="ben-poem-item__bottom">
+              <div key={i} className="about-poem-item">
+                <span className="about-poem-item__title">{p.title}</span>
+                <div className="about-poem-item__bottom">
                   <StylePill style={p.style} />
-                  <span className="ben-writing-item__year">{p.year}</span>
+                  <span className="about-writing-item__year">{p.year}</span>
                 </div>
               </div>
             ))}
@@ -183,15 +183,15 @@ function WritingSection() {
 
 function MusicSection() {
   return (
-    <section className="ben-section">
+    <section className="about-section">
       <SectionLabel>Music</SectionLabel>
-      <div className="ben-music-grid">
+      <div className="about-music-grid">
         {music.map((m, i) => (
-          <div key={i} className="ben-music-card">
-            <div className="ben-music-card__note">♩</div>
-            <span className="ben-music-card__title">{m.title}</span>
-            <span className="ben-music-card__style">{m.style}</span>
-            <span className="ben-music-card__year">{m.year}</span>
+          <div key={i} className="about-music-card">
+            <div className="about-music-card__note">♩</div>
+            <span className="about-music-card__title">{m.title}</span>
+            <span className="about-music-card__style">{m.style}</span>
+            <span className="about-music-card__year">{m.year}</span>
           </div>
         ))}
       </div>
@@ -204,57 +204,57 @@ export default function BenjaminResume() {
   const navigate = useNavigate();
 
   return (
-    <main className="ben-page">
+    <main className="about-page">
 
       {/* Hero */}
-      <section className="ben-hero">
-        <div className="ben-hero__bg" />
-        <div className="ben-hero__fade" />
+      <section className="about-hero">
+        <div className="about-hero__bg" />
+        <div className="about-hero__fade" />
 
-        <div className="ben-hero__inner container">
+        <div className="about-hero__inner container">
 
           {/* Photo */}
-          <div className="ben-hero__photo-wrap">
-            <div className="ben-hero__photo-border-outer" />
-            <div className="ben-hero__photo-border" />
-            <div className="ben-hero__photo" style={{ backgroundImage: `url(${benImage})` }} />
-            <div className="ben-hero__photo-overlay" />
+          <div className="about-hero__photo-wrap">
+            <div className="about-hero__photo-border-outer" />
+            <div className="about-hero__photo-border" />
+            <div className="about-hero__photo" style={{ backgroundImage: `url(${benImage})` }} />
+            <div className="about-hero__photo-overlay" />
           </div>
 
           {/* Identity */}
-          <div className="ben-hero__identity">
-            <p className="ben-hero__eyebrow">Spirit of Fire</p>
-            <h1 className="ben-hero__name display-xl">Benjamin<br />Gagliardi</h1>
-            <div className="ben-hero__roles">
+          <div className="about-hero__identity">
+            <p className="about-hero__eyebrow">Spirit of Fire</p>
+            <h1 className="about-hero__name display-xl">Benjamin<br />Gagliardi</h1>
+            <div className="about-hero__roles">
               {["Actor", "Playwright", "Director", "Singer", "Songwriter"].map(r => (
-                <span key={r} className="ben-hero__role-chip">{r}</span>
+                <span key={r} className="about-hero__role-chip">{r}</span>
               ))}
             </div>
-            <div className="ben-hero__details">
-              <div className="ben-hero__detail-row">
-                <span className="ben-hero__detail-label">Height</span>
-                <span className="ben-hero__detail-val">6' 0"</span>
+            <div className="about-hero__details">
+              <div className="about-hero__detail-row">
+                <span className="about-hero__detail-label">Height</span>
+                <span className="about-hero__detail-val">6' 0"</span>
               </div>
-              <div className="ben-hero__detail-row">
-                <span className="ben-hero__detail-label">Hair</span>
-                <span className="ben-hero__detail-val">Brown</span>
+              <div className="about-hero__detail-row">
+                <span className="about-hero__detail-label">Hair</span>
+                <span className="about-hero__detail-val">Brown</span>
               </div>
-              <div className="ben-hero__detail-row">
-                <span className="ben-hero__detail-label">Eyes</span>
-                <span className="ben-hero__detail-val">Green</span>
+              <div className="about-hero__detail-row">
+                <span className="about-hero__detail-label">Eyes</span>
+                <span className="about-hero__detail-val">Green</span>
               </div>
-              <div className="ben-hero__detail-row">
-                <span className="ben-hero__detail-label">Based</span>
-                <span className="ben-hero__detail-val">Hudson, WI</span>
+              <div className="about-hero__detail-row">
+                <span className="about-hero__detail-label">Based</span>
+                <span className="about-hero__detail-val">Hudson, WI</span>
               </div>
             </div>
-            <div className="ben-hero__edu">
-              <span className="ben-hero__edu-line">Acting: Baron Kelly, Aubrey Deeker</span>
-              <span className="ben-hero__edu-line">Voice: Katheryn Flynn</span>
-              <span className="ben-hero__edu-line">Certificate of Theatre — UW Madison</span>
-              <span className="ben-hero__edu-line">B.S. Computer Science — UW Madison</span>
+            <div className="about-hero__edu">
+              <span className="about-hero__edu-line">Acting: Baron Kelly, Aubrey Deeker</span>
+              <span className="about-hero__edu-line">Voice: Katheryn Flynn</span>
+              <span className="about-hero__edu-line">Certificate of Theatre — UW Madison</span>
+              <span className="about-hero__edu-line">B.S. Computer Science — UW Madison</span>
             </div>
-            <a href="mailto:ben.j.gagliardi@gmail.com" className="ben-hero__contact">
+            <a href="mailto:ben.j.gagliardi@gmail.com" className="about-hero__contact">
               ben.j.gagliardi@gmail.com
             </a>
           </div>
@@ -263,11 +263,11 @@ export default function BenjaminResume() {
       </section>
 
       {/* Resume sections */}
-      <div className="ben-body container">
+      <div className="about-body container">
         <TheatreSection />
-        <div className="ben-divider" />
+        <div className="about-divider" />
         <WritingSection />
-        <div className="ben-divider" />
+        <div className="about-divider" />
         <MusicSection />
       </div>
 

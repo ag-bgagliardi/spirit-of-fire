@@ -283,6 +283,7 @@ function ParticipateHero({ onNav }) {
         <div className="participate-hero__bg-base" />
         <div className="participate-hero__bg-fade" />
         <div className="participate-hero__bg-glow" />
+        <div className="hero__bg-image" />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
           <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Be Part of the Story</span>
           <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>Participate</h1>

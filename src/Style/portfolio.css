@@ -68,6 +68,14 @@
   border-top: 1px solid rgba(89, 66, 56, 0.2);
 }
 
+.port-theatre-row__icon {
+  height: 60px;
+  width: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .port-theatre-row__title {
   font-family: var(--font-serif);
   font-style: italic;
@@ -183,7 +191,11 @@
 .port-hero__bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #0a0200 0%, #150600 50%, #0a0000 100%);
+  background-image: url("../Assets/Images/fire-flame-with-sparkle-black-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 10%;
 }
 
 .port-hero__fade {
@@ -271,7 +283,7 @@
 /* ── Script table ── */
 .port-script-header {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 60px 80px;
+  grid-template-columns: 80px 2fr 2fr 1fr 60px 80px;
   gap: 16px;
   padding: 10px 16px;
   font-size: 8px;
@@ -283,13 +295,25 @@
 
 .port-script-row {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 60px 80px;
+  grid-template-columns: 80px 2fr 2fr 1fr 60px 80px;
   gap: 16px;
-  padding: 18px 16px;
+  padding: 10px 16px;
   border-bottom: 1px solid rgba(89, 66, 56, 0.1);
   align-items: center;
   cursor: pointer;
   transition: background 0.2s;
+  position: relative;
+}
+
+.port-script-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--primary-container);
+  transition: width 0.8s ease;
 }
 
 .port-script-row:last-child {
@@ -298,6 +322,10 @@
 
 .port-script-row.hov {
   background: rgba(249, 94, 20, 0.04);
+}
+
+.port-script-row.hov::before {
+  width: 100%;
 }
 
 .port-script-row.hov .port-theatre-row__title {
@@ -393,15 +421,16 @@
 
 .port-poem-card__arrow {
   font-size: 14px;
-  color: var(--outline);
+  width: 32px;
+  height: 32px;
+  background-image: url("../Assets/icons/open-book-open.png");
   transition:
-    color 0.2s,
     transform 0.2s;
 }
 
 .port-poem-card.hov .port-poem-card__arrow {
-  color: var(--primary-container);
   transform: translateX(4px);
+  background-image: url("../Assets/icons/open-book.png");
 }
 
 /* ── Modal ── */

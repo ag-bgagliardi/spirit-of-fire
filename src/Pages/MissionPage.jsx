@@ -123,9 +123,6 @@ function LeadershipProfile({ name, role, bio, cta, icon, image, onCta }) {
             style={{ background: hov ? "var(--primary-container)" : "transparent" }}
           />
         </div>
-        <div className="profile-card__icon-badge">
-          <span style={{ fontSize: 16 }}>{icon}</span>
-        </div>
       </div>
       <div className="profile-card__body">
         <h3 className="serif" style={{ fontSize: 28, marginBottom: 4 }}>{name}</h3>
@@ -156,7 +153,7 @@ function LeadershipSection() {
       cta: "View Portfolio",
       icon: "✍️",
       image: benImage,
-      pageID: "benjamin"
+      pageID: "portfolio"
     },
   ];
   return (

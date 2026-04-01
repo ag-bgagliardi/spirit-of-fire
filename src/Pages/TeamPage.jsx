@@ -11,7 +11,7 @@ import "../Style/index.css";
 
 const TEAM = [
   { name: "Rico Heisler",       title: "Artistic Director",      badge: "Cofounder", roles: ["Actor", "Director", "Choreographer"],          image: ricoImage,      icon: "🎬", col: "founder", pageID: "personal"  },
-  { name: "Benjamin Gagliardi", title: "Dramatist",              badge: "Cofounder", roles: ["Actor", "Writer", "Songwriter"],               image: benImage,       icon: "✍️", col: "founder", pageID: "benjamin" },
+  { name: "Benjamin Gagliardi", title: "Dramatist",              badge: "Cofounder", roles: ["Actor", "Writer", "Songwriter"],               image: benImage,       icon: "✍️", col: "founder", pageID: "personal" },
   { name: "Madeline Gagliardi", title: "Administrator",                              roles: ["Manager", "Actor", "Singer"],                   image: madelineImage,  icon: "◆",  col: "company", pageID: "personal"  },
   { name: "Silas Heisler",      title: "Creative Consultant",                        roles: ["Actor", "Singer"],                              image: silasImage,     icon: "◆",  col: "company", pageID: "personal"  },
   { name: "Barbara Gagliardi",  title: "Creative Designer",                          roles: ["Actor", "Singer", "Director", "Designer"],      image: barbaraImage,   icon: "◆",  col: "company", pageID: "personal"  },
@@ -51,7 +51,6 @@ function MemberCard({ member, featured }) {
           >
             <div className="member-card__image-overlay" />
           </div>
-          <div className="member-card__icon-badge">{member.icon}</div>
         </div>
         <div className="member-card-featured__body">
           <div>
@@ -101,6 +100,7 @@ function TeamHero() {
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,1) 0%,rgba(19,19,19,0.2) 70%)" }} />
       <div style={{ position: "absolute", inset: 0, opacity: .2, backgroundImage: "radial-gradient(ellipse at 70% 40%,rgba(249,94,20,0.5) 0%,transparent 60%)" }} />
+      <div className="hero__bg-image" />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
         <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>The Company</span>
         <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>

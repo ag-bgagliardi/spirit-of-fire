@@ -9,6 +9,7 @@ function AffiliatesHero() {
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,1) 0%,rgba(19,19,19,0.2) 70%)" }} />
       <div style={{ position: "absolute", inset: 0, opacity: .18, backgroundImage: "radial-gradient(ellipse at 65% 40%,rgba(249,94,20,0.6) 0%,transparent 60%)" }} />
+      <div className="hero__bg-image" />
       <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 860 }}>
         <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>
           Community &amp; Collaboration

@@ -305,13 +305,6 @@
   background: linear-gradient(160deg, #1a0800, #0a0300);
   opacity: 40%;
 }
-.profile-card__icon-badge {
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  background: var(--primary-container);
-  padding: 10px;
-}
 .profile-card__body {
   flex: 1;
 }
@@ -399,6 +392,15 @@
     rgba(249, 94, 20, 0.7) 0%,
     transparent 60%
   );
+}
+.hero__bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("../Assets/Images/fire-flame-with-sparkle-black-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 10%;
 }
 .participate-hero__jump-bar {
   background: var(--surface-lowest);
