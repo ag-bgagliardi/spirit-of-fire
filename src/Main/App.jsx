@@ -1,22 +1,24 @@
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+// IMPORT PAGES //
 import Nav from "./Nav";
 import HomePage from "../Pages/HomePage";
-import TempHome from "../Pages/TempHome";
 import MissionPage from "../Pages/MissionPage";
-import TeamPage from "../Pages/TeamPage";
 import TicketsPage from "../Pages/TicketsPage";
 import ProductionsPage from "../Pages/ProductionsPage";
 import ParticipatePage from "../Pages/ParticipatePage";
 import AffiliatesPage from "../Pages/AffiliatesPage";
 import SupportPage from "../Pages/SupportPage";
 import TheatologyPage from "../Pages/TheatologyPage";
-import ComingSoon from "../Pages/ComingSoon";
 import ShowPage from "../Pages/ShowPage";
-import productions from "../Data/CurrentShows";
-import AboutPage from "../Personal/AboutPage";
-import BenjaminResume from "../Personal/BenjaminResume";
 import Portfolio from "../Pages/Portfolio";
+// IMPORT OLD/TESTING/LEGACY
+import ComingSoon from "../Legacy/ComingSoon";
+import TeamPage from "../Legacy/TeamPage";
+import AboutPage from "../Legacy/AboutPage";
+import BenjaminResume from "../Legacy/BenjaminResume";
+// IMPORT CONSTANTS
+import productions from "../Data/CurrentShows";
 
 function Layout() {
   const { pathname } = useLocation(); 
