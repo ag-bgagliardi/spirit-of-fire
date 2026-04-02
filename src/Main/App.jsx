@@ -1,5 +1,5 @@
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-
+import { useEffect } from "react";
 import Nav from "./Nav";
 import HomePage from "../Pages/HomePage";
 import TempHome from "../Pages/TempHome";
@@ -19,7 +19,10 @@ import BenjaminResume from "../Personal/BenjaminResume";
 import Portfolio from "../Pages/Portfolio";
 
 function Layout() {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Nav />

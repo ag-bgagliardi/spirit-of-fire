@@ -100,7 +100,7 @@ function MissionHero() {
   return (
     <section className="team-mission-hero">
       <div className="team-mission-hero__bg image-overlay">
-        <div className="horse-background" />
+        <div className="dove-background" />
       </div>
       <div className="team-mission-hero__fade" />
       <div className="team-mission-hero__inner">
@@ -148,12 +148,14 @@ function LeadershipSection({ onBioOpen }) {
   return (
     <>
     <section className="section-pad" style={{ padding: "96px 48px 0px" }}>
-      <div className="container" style={{ marginBottom: 60, background: 'var(--surface-low)', paddingTop:40, paddingBottom:40 }}>
-        <h2 className="serif" style={{ fontSize: 40, marginBottom: 40 }}>The Founders</h2>
-        <div className="grid-2" style={{ gap: 96, alignItems:"start" }}>
-          {founders.map(m => (
-            <MemberCard key={m.name} member={m} featured onBioOpen={onBioOpen} />
-          ))}
+      <div style={{ background: 'var(--surface-low)', width:"100vw"}}>
+        <div className="container" style={{ marginBottom: 60, paddingTop:40, paddingBottom:40 }}>
+          <h2 className="serif" style={{ fontSize: 40, marginBottom: 40 }}>The Founders</h2>
+          <div className="grid-2" style={{ gap: 96, alignItems:"start" }}>
+            {founders.map(m => (
+              <MemberCard key={m.name} member={m} featured onBioOpen={onBioOpen} />
+            ))}
+          </div>
         </div>
       </div>
       <div className="container" style={{ marginBottom: 60 }}>
@@ -171,21 +173,20 @@ function LeadershipSection({ onBioOpen }) {
   );
 }
 
-function TeamCTA() {
+function MissionCTA() {
   const navigate = useNavigate();
   return (
-    <section className="section-pad bg-surface-lowest" style={{ padding: "120px 48px", borderTop: "1px solid rgba(89,66,56,0.15)", textAlign: "center", position: "relative" }}>
-      <div className="cta-glow" style={{ pointerEvents: "none" }} />
-      <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
-        <h2 className="serif-italic" style={{ fontSize: 44, marginBottom: 20, lineHeight: 1.2 }}>
-          Feel the <span className="color-primary-container">calling?</span>
+    <section className="section-pad bg-surface-lowest">
+      <div className="section-cta-bordered__inner">
+        <h2 className="serif" style={{ fontSize: 48, marginBottom: 24 }}>
+          Don't miss <em className="color-primary"> Mother Rabbit!</em>
         </h2>
-        <p className="body-md color-on-surface-var" style={{ marginBottom: 48 }}>
-          Spirit of Fire is always looking for passionate artists who share our devotion to excellence, craft, and the glory of God.
+        <p className="body-lg" style={{ color: "rgba(229,226,225,0.6)", marginBottom: 48 }}>
+          Join us for an evening of unbridled joy and laughter, as family and loved ones learn to forgive and work with each other.
         </p>
-        <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
-          <button className="btn-primary" onClick={() => navigate("/participate")}>Get Involved</button>
-          <button className="btn-ghost-primary" onClick={() => navigate("/mission")}>Our Mission</button>
+        <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
+          <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Your Ticket</button>
+          <button className="btn-ghost-primary" onClick={() => navigate("/participate")}>Get Involved</button>
         </div>
       </div>
     </section>
@@ -202,7 +203,7 @@ export default function MissionPage() {
       )}
       <MissionHero />
       <LeadershipSection onBioOpen={setActivePerson} />
-      <TeamCTA />
+      <MissionCTA />
       <Footer />
     </main>
   );

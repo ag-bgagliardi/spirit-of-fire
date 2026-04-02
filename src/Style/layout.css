@@ -110,7 +110,8 @@
 }
 
 .flames-background,
-.horse-background {
+.horse-background,
+.dove-background {
   opacity: 0.02;
   position: absolute;
   width: 100%;
@@ -122,6 +123,12 @@
 
 .flames-background {
   background-image: url(../Assets/Images/flames-background.png);
+}
+
+.dove-background {
+  background-image: url(../Assets/Images/dove.jpg);
+  background-position: center;
+  opacity: 0.2;
 }
 
 .horse-background {

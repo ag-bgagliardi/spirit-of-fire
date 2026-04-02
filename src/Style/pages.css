@@ -41,11 +41,6 @@
 }
 .hero_tag {
   background: var(--on-primary-container);
-  padding: clamp(10px, 1.5vw, 16px) clamp(20px, 3vw, 32px);
-  font-size: clamp(10px, 1.2vw, 11px);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
   position: absolute;
   bottom: -24px;
   left: -24px;
@@ -54,6 +49,18 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.hero_top_tag {
+  border: 1px solid rgba(255, 181, 154, 0.3);
+  background-color: var(--tertiary-container);
+  width: 100%;
+  padding: 5px 30px;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .hero_card {

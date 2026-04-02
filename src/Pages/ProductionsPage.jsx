@@ -14,7 +14,7 @@ function ProductionsHero() {
         <div>
           <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 24 }}>
             <div style={{ height: 1, width: 48, background: "var(--primary-container)" }} />
-            <span className="label-xs color-primary" style={{ letterSpacing: ".3em" }}>Current Season</span>
+            <span className="label-xs color-primary" style={{ letterSpacing: ".3em" }}>Thursday June 11th - Sunday June 14th</span>
           </div>
           <h1 className="serif-italic" style={{ fontSize: 80, lineHeight: .92, letterSpacing: "-.03em", marginBottom: 32 }}>
             Mother <span className="color-primary-container">Rabbit</span>
@@ -22,7 +22,8 @@ function ProductionsHero() {
           <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
             Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
           </p>
-          <button className="btn-ghost" onClick={() => navigate("/motherrabbit")}>Read More</button>
+          <button className="btn-ghost" onClick={() => navigate("/motherrabbit")} style={{marginRight:20}}>Read More</button>
+          <button className="btn-primary" onClick={() => navigate("/tickets", {state: productions[0]})}>Tickets</button>
         </div>
         <div style={{ position: "relative" }}>
           <div style={{
@@ -33,11 +34,13 @@ function ProductionsHero() {
             backgroundRepeat: "no-repeat",
             maxHeight:"70vh"
           }}>
+            <div className="hero_top_tag serif">
+              Running only 6/11-6/14 in Hudson!
+            </div>
             <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
           </div>
-          {/* <div className="btn-primary" onClick={() => navigate("/motherrabbit")} style={{ position: "absolute", bottom: -24, left: -24, padding: "10px 30px", fontSize: 22 }}> */}
           <div className="hero_tag serif">
-            Original Comedy!
+            Original Comedy
           </div>
         </div>
       </div>
@@ -124,6 +127,27 @@ function MainQuote() {
   );
 }
 
+function MainCTA() {
+  const navigate = useNavigate();
+  return (
+    <section className="section-pad bg-surface-lowest" style={{ padding: "120px 48px", borderTop: "1px solid rgba(89,66,56,0.15)", textAlign: "center", position: "relative" }}>
+      <div className="cta-glow" style={{ pointerEvents: "none" }} />
+      <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
+        <h2 className="serif-italic" style={{ fontSize: 44, marginBottom: 20, lineHeight: 1.2 }}>
+          Feel the <span className="color-primary-container">calling?</span>
+        </h2>
+        <p className="body-md color-on-surface-var" style={{ marginBottom: 48 }}>
+          Spirit of Fire is always looking for passionate artists who share our devotion to excellence, craft, and the glory of God.
+        </p>
+        <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
+          <button className="btn-primary" onClick={() => navigate("/participate")}>Get Involved</button>
+          <button className="btn-ghost-primary" onClick={() => navigate("/mission")}>Our Mission</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function ProductionsPage() {
   const [modalShow, setModalShow] = useState(null);
 
@@ -139,6 +163,7 @@ export default function ProductionsPage() {
           ShowDescription={"MotherRabbitDescription"} // optional per-show component
         />
       )}
+      <MainCTA />
       <Footer />
     </main>
   );

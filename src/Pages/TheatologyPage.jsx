@@ -6,7 +6,7 @@ function TheaHero() {
   return (
     <section style={{ position: "relative", height: 560, display: "flex", alignItems: "flex-end", padding: "0 48px 96px", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,1) 0%,rgba(19,19,19,0.15) 65%)" }} />
+      <div className="horse-background" style={{ position: "absolute", inset: 0 }} />
       <div style={{ position: "absolute", inset: 0, opacity: .2, backgroundImage: "radial-gradient(ellipse at 40% 30%,rgba(249,94,20,0.7) 0%,transparent 55%)" }} />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
         <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>

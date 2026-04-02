@@ -477,6 +477,9 @@
 
 /* ── Tablet (≤900px) ── */
 @media (max-width: 900px) {
+  .hero_top_tag {
+    font-size: 0.9em;
+  }
   /* Modal */
   .modal {
     grid-template-columns: 1fr;
@@ -499,6 +502,10 @@
 
 /* ── Mobile (≤600px) ── */
 @media (max-width: 600px) {
+  .hero_top_tag {
+    font-size: 0.6em;
+    padding: 5px;
+  }
   /* Bio modal */
   .bio-modal {
     grid-template-columns: 1fr;

@@ -265,7 +265,7 @@ function JumpCard({ card, i, onNav }) {
         <p className="jump-card__label serif" style={{ color: hov ? "var(--primary)" : "var(--on-surface)", cursor: hov ? "pointer" : "auto" }}>{card.label}</p>
         <p className="label-xs color-outline">{card.desc}</p>
       </div>
-      <span className="jump-card__arrow" style={{ color: hov ? "var(--primary-container)" : "transparent" }}>→</span>
+      <span className="jump-card__arrow" style={{ color: "var(--primary-container)" }}>↓</span>
     </div>
   );
 }

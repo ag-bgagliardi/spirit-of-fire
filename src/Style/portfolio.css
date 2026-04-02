@@ -65,7 +65,7 @@
 /* ════ THEATRE TABLE ════ */
 .port-theatre-table {
   width: 100%;
-  border-top: 1px solid rgba(89, 66, 56, 0.2);
+  border-top: 3px solid rgba(89, 66, 56, 0.2);
 }
 
 .port-theatre-row__icon {
@@ -239,9 +239,8 @@
 }
 
 .port-hero__sub {
-  max-width: 480px;
   line-height: 1.85;
-  margin: 0;
+  margin: 20px;
 }
 
 /* Stats row */
@@ -298,7 +297,7 @@
   grid-template-columns: 80px 2fr 2fr 1fr 60px 80px;
   gap: 16px;
   padding: 10px 16px;
-  border-bottom: 1px solid rgba(89, 66, 56, 0.1);
+  border-bottom: 3px solid rgba(89, 66, 56, 0.1);
   align-items: center;
   cursor: pointer;
   transition: background 0.2s;

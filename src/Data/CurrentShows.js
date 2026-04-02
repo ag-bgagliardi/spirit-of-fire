@@ -63,7 +63,7 @@ const badges = {
 const productions = [
     {
         title: "Mother Rabbit",
-        dates: "JUN 01 — JUL 01",
+        dates: "JUN 11 — JUN 14",
         badges: [
             badges.encore,
             badges.comedy,
