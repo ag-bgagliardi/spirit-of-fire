@@ -1,5 +1,5 @@
 import Footer from "../Main/Footer";
-import ShowModal from "./ShowModal";
+import ShowModal from "../Modals/ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import productions from "../Data/CurrentShows"

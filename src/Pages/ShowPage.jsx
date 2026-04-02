@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Main/Footer";
 import productions from "../Data/CurrentShows";
-import BioModal from "../Personal/BioModal"
+import BioModal from "../Modals/BioModal"
 
 export function ShowDescription() {
     return (

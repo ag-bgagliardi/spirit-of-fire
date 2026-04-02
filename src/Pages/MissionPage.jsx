@@ -4,7 +4,7 @@ import Footer from "../Main/Footer";
 import "../Style/index.css";
 import "../Style/portfolio.css";
 import People from "../Data/CastCrew";
-import BioModal from "../Personal/BioModal";
+import BioModal from "../Modals/BioModal";
 
 const TEAM = People.crew;
 
