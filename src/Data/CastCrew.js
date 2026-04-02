@@ -50,7 +50,7 @@ const Crew = [
         image: silasImage,
         icon: "◆",
         col: "company",
-        bio: "Silas Heisler is a student at the University of Northwestern St Paul studying theology and vocal performance. He grew up immersed in the world of theater as he watched his Father, Rico Heisler, perform in several production at Chanhassen Dinner Theater and direct shows at Hudson Highschool alongside his mother. He quickly fell in love with all areas of performance and maintains a deep desire to tell good, true, and beautiful stories for the Glory of God."
+        bio: "Silas Heisler is a student at the University of Northwestern St Paul studying theology and vocal performance. He grew up immersed in the world of theater as he watched his father, Rico Heisler, perform in several production at Chanhassen Dinner Theater and direct shows at Hudson High School alongside his mother. He quickly fell in love with all areas of performance and maintains a deep desire to tell good, true, and beautiful stories for the Glory of God."
     },
     {
         name: "Barbara Gagliardi",
