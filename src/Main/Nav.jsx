@@ -9,10 +9,10 @@ const LINKS = [
   {
     label: "Archive",
     dropdown: [
-      { label: "Past Productions", path: "/past-productions" },
       { label: "Portfolio", path: "/portfolio" },
       { label: "Theatology", path: "/theatology" },
       { label: "Affiliates & Partners", path: "/affiliates" },
+      { label: "Past Productions", path: "/past-productions" },
     ],
   },
 ];
