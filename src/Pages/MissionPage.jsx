@@ -147,8 +147,8 @@ function LeadershipSection({ onBioOpen }) {
 
   return (
     <>
-    <section className="section-pad" style={{ padding: "96px 48px 0px" }}>
-      <div style={{ background: 'var(--surface-low)', width:"100vw"}}>
+    <section className="section-pad" style={{ padding: "48px 0px"  }}>
+      <div style={{ background: 'var(--surface-low)', width:"100%"}}>
         <div className="container" style={{ marginBottom: 60, paddingTop:40, paddingBottom:40 }}>
           <h2 className="serif" style={{ fontSize: 40, marginBottom: 40 }}>The Founders</h2>
           <div className="grid-2" style={{ gap: 96, alignItems:"start" }}>
