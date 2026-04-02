@@ -6,6 +6,41 @@ import "../Style/index.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
 
+function HomeHero() {
+  const navigate = useNavigate();
+  return (
+    <section className="team-mission-hero">
+      <div className="team-mission-hero__bg image-overlay">
+        <div className="dove-background" />
+      </div>
+      <div className="team-mission-hero__fade" />
+      <div className="team-mission-hero__inner">
+        <p className="team-mission-hero__eyebrow">Spirit of Fire · Est. 2025</p>
+        <h1 className="team-mission-hero__title display-xl">
+          Spirit of <span className="color-primary-container">Fire</span> Theatre
+        </h1>
+        <div className="team-mission-hero__statement">
+          <div className="team-mission-hero__statement-ornament">
+            <div className="team-mission-hero__ornament-line" />
+            <span className="team-mission-hero__ornament-glyph">✦</span>
+            <div className="team-mission-hero__ornament-line" />
+          </div>
+          <button className="btn-primary" onClick={() => navigate("/productions", { state: productions[0] })}>Productions</button>
+          <div className="team-mission-hero__statement-ornament">
+            <div className="team-mission-hero__ornament-line" />
+            <span className="team-mission-hero__ornament-glyph">✦</span>
+            <div className="team-mission-hero__ornament-line" />
+          </div>
+        </div>
+        <div className="team-mission-hero__scroll-cue">
+          <div className="team-mission-hero__scroll-line" />
+          <span>Soli Deo Gloria</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ShowCard({ title, dates, badges, image, onBook, setModalShow, production }) {
   return (
     <div className="show-card">
@@ -98,20 +133,14 @@ function SpiritSection() {
           <p className="body-md color-on-surface-var">
             Fire represents the ferocious dedication and passion in any project we undertake. It represents the indwelling Holy Spirit that guides and inspires, and it represents the grace of our Lord we tirelessly seek. Thus, we desire always to have the Spirit, or the essence of this Fire.
           </p>
-          <button className="btn-text" onClick={() => navigate("/mission")}>Learn More →</button>
+          <button className="btn-text" onClick={() => navigate("/about-us")}>Learn More →</button>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          <div style={{ paddingTop: 48 }}>
-            <div
-              style={{ width: "100%", height: 360, background: "linear-gradient(180deg,#1a0a00,#0d0500)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 64, filter: "grayscale(1)", transition: "filter .7s" }}
-              onMouseEnter={e => e.currentTarget.style.filter = "grayscale(0)"}
-              onMouseLeave={e => e.currentTarget.style.filter = "grayscale(1)"}
-            >📚</div>
-          </div>
-          <div>
-            <div style={{ width: "100%", height: 460, background: "linear-gradient(180deg,#0d0500,#1a0a00)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 64 }}>
-              <img src="../favicon.ico" alt="Spirit of Fire" />
-            </div>
+        <div>
+          <div style={{ padding: 18, transform: "rotate(-10deg)", border: "3px solid var(--outline-variant)" }}>
+            <img
+              style={{ width: "100%", background: "linear-gradient(180deg,#1a0a00,#0d0500)", padding: 40, fontSize: 64, }}
+              src="../logo256.png" alt="Spirit of Fire"
+            />
           </div>
         </div>
       </div>
@@ -179,17 +208,23 @@ function GallerySection() {
   );
 }
 
-function CTASection() {
+function HomeCTA() {
   const navigate = useNavigate();
   return (
-    <section className="section-pad-xl bg-surface flex-col flex-center" style={{ textAlign: "center", position: "relative" }}>
-      <div className="cta-glow" />
-      <h2 className="display-lg serif-italic" style={{ maxWidth: 700, marginBottom: 48, lineHeight: 1.15, position: "relative" }}>
-        Keep the <span className="color-primary-container">Flame</span> alive
-      </h2>
-      <div className="flex-row" style={{ gap: 24, position: "relative" }}>
-        <button className="btn-solid" onClick={() => navigate("/support")}>Become a Patron</button>
-        <button className="btn-outline" onClick={() => navigate("/participate")}>Get Involved</button>
+    <section className="section-pad bg-surface-lowest" style={{ padding: "120px 48px", borderTop: "1px solid rgba(89,66,56,0.15)", textAlign: "center", position: "relative" }}>
+      <div className="cta-glow" style={{ pointerEvents: "none" }} />
+      <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
+        <h2 className="serif-italic" style={{ fontSize: 44, marginBottom: 20, lineHeight: 1.2 }}>
+          Feel the <span className="color-primary-container">calling?</span>
+        </h2>
+        <p className="body-md color-on-surface-var" style={{ marginBottom: 48 }}>
+          Spirit of Fire is always looking for passionate artists who share our devotion to excellence, craft, and the glory of God.
+        </p>
+        <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
+          <button className="btn-primary" onClick={() => navigate("/participate")}>Get Involved</button>
+          <button className="btn-ghost-primary" onClick={() => navigate("/tickets")}>Tickets</button>
+          <button className="btn-ghost" onClick={() => navigate("/about-us")}>Our Mission</button>
+        </div>
       </div>
     </section>
   );
@@ -197,20 +232,22 @@ function CTASection() {
 
 export default function HomePage() {
   const [modalShow, setModalShow] = useState(null);
+  const galleryImages = [];
   return (
     <main>
-      <HeroSection />
+      <HomeHero />
       <SpiritSection />
       <NextOnStageSection setModalShow={setModalShow} />
-      <GallerySection />
-      <CTASection />
       {modalShow && (
         <ShowModal
           show={modalShow}
           onClose={() => setModalShow(null)}
-          ShowDescription={"MotherRabbitDescription"} // optional per-show component
         />
       )}
+      {
+        galleryImages.length > 0 ? <GallerySection /> : <></>
+      }
+      <HomeCTA />
       <Footer />
     </main>
   );

@@ -53,7 +53,7 @@ export default function ComingSoon({ title, subtitle }) {
 
         {/* Actions */}
         <div className="coming-soon__actions">
-          <button className="btn-primary" onClick={() => navigate("/")}>
+          <button className="btn-primary" onClick={() => navigate("/productions")}>
             Return Home
           </button>
           <button className="btn-ghost" onClick={() => navigate("/productions")}>

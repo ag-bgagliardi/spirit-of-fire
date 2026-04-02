@@ -500,7 +500,7 @@
   padding: 28px 40px;
   background: var(--surface-lowest);
   border-bottom: 1px solid rgba(89, 66, 56, 0.1);
-  overflow: scroll;
+  overflow: visible;
 }
 
 .port-modal__sample-text {

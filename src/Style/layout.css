@@ -47,8 +47,8 @@
 }
 .grid-5-7 {
   display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: var(--space-md);
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-lg);
   align-items: center;
 }
 .grid-gallery {

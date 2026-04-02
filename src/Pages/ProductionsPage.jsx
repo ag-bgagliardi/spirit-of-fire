@@ -160,7 +160,6 @@ export default function ProductionsPage() {
         <ShowModal
           show={modalShow}
           onClose={() => setModalShow(null)}
-          ShowDescription={"MotherRabbitDescription"} // optional per-show component
         />
       )}
       <MainCTA />

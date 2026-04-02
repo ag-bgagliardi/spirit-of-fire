@@ -28,8 +28,7 @@ function Layout() {
       <Nav />
       <div style={{ paddingTop: 80 }}>
         <Routes>
-          <Route path="/" element={<ProductionsPage />} />
-          <Route path="/test" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about-us" element={<MissionPage />} />
           <Route path="/productions" element={<ProductionsPage />} />
           <Route path="/tickets" element={<ComingSoon />} />
