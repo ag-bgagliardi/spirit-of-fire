@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.62628f20.css",
-    "main.js": "/static/js/main.47480ed3.js",
+    "main.css": "/static/css/main.2d16850a.css",
+    "main.js": "/static/js/main.7fed53bf.js",
     "static/media/horse-background.jpg": "/static/media/horse-background.cf9c57bf58c80ebba585.jpg",
     "static/media/Stuart.jpg": "/static/media/Stuart.bc2717c5ff30ff2ba1a9.jpg",
     "static/media/flames-background.png": "/static/media/flames-background.63d0b342b5f6018cea92.png",
@@ -18,6 +18,7 @@
     "static/media/Brandyn.jpg": "/static/media/Brandyn.0406e3446281bb6956d8.jpg",
     "static/media/MissingTheRain.webp": "/static/media/MissingTheRain.9727353f16412b64607b.webp",
     "static/media/Stephanie.jpg": "/static/media/Stephanie.1bdb53a82bb3e4113a4d.jpg",
+    "static/media/dove.jpg": "/static/media/dove.ebe68550cedc790f929a.jpg",
     "static/media/logo512.png": "/static/media/logo512.ad5dc668be6c7a6b28be.png",
     "static/media/coffin.webp": "/static/media/coffin.8e2a6ad5d60ee73890c6.webp",
     "static/media/bbt.webp": "/static/media/bbt.2d41d9bd87bcc27a2c8d.webp",
@@ -25,11 +26,11 @@
     "static/media/AnimalCrackers.jpg": "/static/media/AnimalCrackers.9af4bb6b78183e6a21ef.jpg",
     "static/media/Rico.webp": "/static/media/Rico.efacf7afc755c0b7b821.webp",
     "index.html": "/index.html",
-    "main.62628f20.css.map": "/static/css/main.62628f20.css.map",
-    "main.47480ed3.js.map": "/static/js/main.47480ed3.js.map"
+    "main.2d16850a.css.map": "/static/css/main.2d16850a.css.map",
+    "main.7fed53bf.js.map": "/static/js/main.7fed53bf.js.map"
   },
   "entrypoints": [
-    "static/css/main.62628f20.css",
-    "static/js/main.47480ed3.js"
+    "static/css/main.2d16850a.css",
+    "static/js/main.7fed53bf.js"
   ]
 }
