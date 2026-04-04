@@ -477,6 +477,9 @@
 
 /* ── Tablet (≤900px) ── */
 @media (max-width: 900px) {
+  .home-image-icon-container {
+    transform: none;
+  }
   .hero_top_tag {
     font-size: 0.9em;
   }
@@ -502,6 +505,9 @@
 
 /* ── Mobile (≤600px) ── */
 @media (max-width: 600px) {
+  .home-image-icon-container {
+    transform: none;
+  }
   .hero_top_tag {
     font-size: 0.6em;
     padding: 5px;

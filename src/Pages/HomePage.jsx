@@ -136,7 +136,7 @@ function SpiritSection() {
           <button className="btn-text" onClick={() => navigate("/about-us")}>Learn More →</button>
         </div>
         <div>
-          <div style={{ padding: 18, transform: "rotate(-10deg)", border: "3px solid var(--outline-variant)" }}>
+          <div className="home-image-icon-container">
             <img
               style={{ width: "100%", background: "linear-gradient(180deg,#1a0a00,#0d0500)", padding: 40, fontSize: 64, }}
               src="../logo256.png" alt="Spirit of Fire"

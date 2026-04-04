@@ -11,6 +11,11 @@
   align-items: center;
   overflow: hidden;
 }
+.home-image-icon-container { 
+  padding: 18px;
+  transform: rotate(-10deg);
+  border: 3px solid var(--outline-variant)
+}
 .hero_bg-base {
   position: absolute;
   inset: 0;
