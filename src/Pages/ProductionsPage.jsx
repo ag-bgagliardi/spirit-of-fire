@@ -23,7 +23,14 @@ function ProductionsHero() {
             Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
           </p>
           <button className="btn-ghost" onClick={() => navigate("/motherrabbit")} style={{ marginRight: 20 }}>Read More</button>
-          <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Tickets</button>
+          <a
+            href={"https://events.ticketleap.com/tickets/spirit-of-fire/mother-rabbit"}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary"
+            style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+          >Get Tickets</a>
+          {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Tickets</button> */}
         </div>
         <div style={{ position: "relative" }}>
           <div style={{
