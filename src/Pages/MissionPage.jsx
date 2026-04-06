@@ -147,28 +147,28 @@ function LeadershipSection({ onBioOpen }) {
 
   return (
     <>
-    <section className="section-pad" style={{ padding: "48px 0px"  }}>
-      <div style={{ background: 'var(--surface-low)', width:"100%"}}>
-        <div className="container" style={{ marginBottom: 60, paddingTop:40, paddingBottom:40 }}>
-          <h2 className="serif" style={{ fontSize: 40, marginBottom: 40 }}>The Founders</h2>
-          <div className="grid-2" style={{ gap: 96, alignItems:"start" }}>
-            {founders.map(m => (
-              <MemberCard key={m.name} member={m} featured onBioOpen={onBioOpen} />
+      <section className="section-pad" style={{ padding: "48px 0px" }}>
+        <div style={{ background: 'var(--surface-low)', width: "100%" }}>
+          <div className="container" style={{ marginBottom: 60, paddingTop: 40, paddingBottom: 40 }}>
+            <h2 className="serif" style={{ fontSize: 40, marginBottom: 40 }}>The Founders</h2>
+            <div className="grid-2" style={{ gap: 96, alignItems: "start" }}>
+              {founders.map(m => (
+                <MemberCard key={m.name} member={m} featured onBioOpen={onBioOpen} />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="container" style={{ marginBottom: 60 }}>
+          <SectionLabel label="The Company" />
+          <div className="team-company-grid">
+            {company.map(m => (
+              <MemberCard key={m.name} member={m} onBioOpen={onBioOpen} />
             ))}
           </div>
         </div>
-      </div>
-      <div className="container" style={{ marginBottom: 60 }}>
-        <SectionLabel label="The Company" />
-        <div className="team-company-grid">
-          {company.map(m => (
-            <MemberCard key={m.name} member={m} onBioOpen={onBioOpen} />
-          ))}
-        </div>
-      </div>
-    </section>
-    <section className="pat section-pad bg-surface-low">
-    </section>
+      </section>
+      <section className="pat section-pad bg-surface-low">
+      </section>
     </>
   );
 }
@@ -185,7 +185,14 @@ function MissionCTA() {
           Join us for an evening of unbridled joy and laughter, as family and loved ones learn to forgive and work with each other.
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 24 }}>
-          <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Your Ticket</button>
+          <a
+            href={"https://events.ticketleap.com/events/spirit-of-fire"}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary"
+            style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+          >Reserve Your Ticket</a>
+          {/* <button className="btn-primary" onClick={() => navigate("/tickets")}>Reserve Your Ticket</button> */}
           <button className="btn-ghost-primary" onClick={() => navigate("/participate")}>Get Involved</button>
         </div>
       </div>

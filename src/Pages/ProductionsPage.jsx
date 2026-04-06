@@ -85,12 +85,20 @@ function ProdCard({ title, dates, badges, onBook, image, setModalShow, productio
         <div className="show-card_mobile-overlay" onClick={e => e.stopPropagation()}>
           <span className="show-card_mobile-overlay__title">{title}</span>
           <span className="show-card_mobile-overlay__dates">{dates}</span>
-          <button
+          <a
+            href={production.link.length > 0 ? production.link : "https://events.ticketleap.com/events/spirit-of-fire"}
+            target="_blank"
+            id="btn-constructor"
+            rel="noreferrer"
+            className="show-card_mobile-overlay__btn"
+            style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+          >Reserve Tickets</a>
+          {/* <button
             className="show-card_mobile-overlay__btn"
             onClick={e => { e.stopPropagation(); onBook(production); }}
           >
             Reserve Tickets
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -98,14 +106,24 @@ function ProdCard({ title, dates, badges, onBook, image, setModalShow, productio
       <div className="prod-card-desktop-meta" style={{ marginTop: 24 }}>
         <h3 className="show-card_title" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>{title}</h3>
         <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
-        <button
+        <a
+          href={production.link.length > 0 ? production.link : "https://events.ticketleap.com/events/spirit-of-fire"}
+          onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
+          target="_blank"
+          id="btn-constructor"
+          rel="noreferrer"
+          className="reserve-ticket-button"
+          style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+        >Reserve Tickets</a>
+        {/* <button
           onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
           onClick={() => onBook(production)}
           className="reserve-ticket-button"
         >
           Reserve Tickets
-        </button>
+        </button> */}
       </div>
     </div>
   );

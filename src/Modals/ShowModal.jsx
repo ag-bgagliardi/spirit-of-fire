@@ -116,9 +116,22 @@ export default function ShowModal({ show, onClose, ShowDescription }) {
 
           {/* Actions */}
           <div className="modal__actions flex-row" style={{ gap: 12, flexWrap: "wrap" }}>
-            <button className="btn-primary" onClick={() => { onClose(); navigate("/tickets", {state: show} ); }}>
+            {
+              show.link.length > 0 ?
+              <a 
+                href={show.link}
+                target="_blank"
+                id="btn-constructor"
+                rel="noreferrer"
+                className="btn-primary"
+                style={{textDecoration:"none"}}
+              >Reserve Tickets</a>
+              : <button className="btn-primary-disabled" disabled="true">Tickets Coming Soon</button>
+
+            }
+            {/* <button className="btn-primary" onClick={() => { onClose(); navigate("/tickets", {state: show} ); }}>
               Reserve Tickets
-            </button>
+            </button> */}
             <button className="btn-ghost" onClick={goToShow}>
               Full Details →
             </button>

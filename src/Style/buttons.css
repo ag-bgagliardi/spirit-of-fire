@@ -24,6 +24,20 @@
     opacity 0.25s,
     box-shadow 0.25s;
 }
+.btn-primary-disabled,
+.btn-ghost-primary-disabled,
+.btn-ghost-disabled {
+  cursor: default;
+  background: var(--surface-lightest) !important;
+  padding: clamp(10px, 1.5vw, 16px) clamp(20px, 3vw, 32px);
+  font-size: clamp(10px, 1.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  color: var(--surface-container);
+}
+
 .btn-primary:hover,
 .btn-ghost-primary:hover,
 .btn-ghost:hover {

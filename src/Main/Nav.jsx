@@ -89,11 +89,10 @@ export default function Nav() {
             <NavLink key={link.label} link={link} pathname={pathname} onNav={go} />
           ))}
         </nav>
-
-        <button className="ticket-button nav__cta" onClick={() => go("/tickets")}>
+        <a href="https://events.ticketleap.com/events/spirit-of-fire" target="_blank" id="btn-constructor" rel="noreferrer" className="ticket-button nav__cta" style={{textDecoration:"none"}}>Tickets</a>
+        {/* <button className="ticket-button nav__cta" onClick={() => go("/tickets")}>
           Tickets
-        </button>
-
+        </button> */}
         <div className="nav__mobile-toggle" onClick={() => setOpen(o => !o)}>
           <span /><span /><span />
         </div>

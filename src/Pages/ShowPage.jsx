@@ -30,7 +30,14 @@ function ShowHero({ show, scrollTo }) {
                     <div className="show-hero__actions">
                         <div className="flex-col" style={{ gap: 12 }}>
                             <button onClick={scrollTo} className="btn-ghost">Cast & Crew ↓</button>
-                            <button className="btn-primary" onClick={() => navigate("/tickets", { state: show })}>Reserve Tickets</button>
+                            <a
+                                href={show.link.length > 0 ? show.link : "https://events.ticketleap.com/events/spirit-of-fire"}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="btn-primary"
+                                style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+                            >Reserve Tickets</a>
+                            {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: show })}>Reserve Tickets</button> */}
                         </div>
                         <div className="show-card-badges">
                             {show.badges.map((badge, i) => (
@@ -205,7 +212,14 @@ function ShowCTA({ show }) {
                     Reserve your seat and join us for an unforgettable evening.
                 </p>
                 <div className="flex-row" style={{ justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
-                    <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Reserve Your Ticket</button>
+                    <a
+                        href={"https://events.ticketleap.com/events/spirit-of-fire"}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-primary"
+                        style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+                    >Reserve Your Ticket</a>
+                    {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Reserve Your Ticket</button> */}
                     <button className="btn-ghost-primary" onClick={() => navigate("/support", { state: show })}>Become a Patron</button>
                 </div>
             </div>

@@ -158,7 +158,7 @@
     .show-card_title,
     .show-card > .label-xs,
     .show-card > .reserve-ticket-button {
-      display: none;
+      display: none !important;
     }
 
     /* Make image wrapper square-ish rather than portrait */
