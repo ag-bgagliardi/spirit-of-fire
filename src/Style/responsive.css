@@ -142,8 +142,93 @@
     max-width: 100%;
     font-size: 15px;
   }
-  .show-card-badges {
-    align-items: flex-start;
+  /* ════════════════════════════════════════════
+   MOBILE SHOW CARD OVERLAY
+   Append to shared.css after the existing
+   .show-card_badge / .show-card_title rules
+   ════════════════════════════════════════════ */
+
+  /* Hidden on desktop */
+  .show-card_mobile-overlay {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    /* Hide the desktop text/button that sit below the image */
+    .show-card_title,
+    .show-card > .label-xs,
+    .show-card > .reserve-ticket-button {
+      display: none;
+    }
+
+    /* Make image wrapper square-ish rather than portrait */
+    .show-card_image-wrap {
+      margin-bottom: 0;
+      padding-top: 110%;
+    }
+
+    /* Heavier gradient so overlay text is always readable */
+    .show-card_gradient {
+      background: linear-gradient(
+        to top,
+        rgba(10, 3, 0, 0.92) 0%,
+        rgba(10, 3, 0, 0.5) 40%,
+        transparent 70%
+      );
+    }
+
+    /* The overlay block is inside .show-card_image-wrap */
+    .show-card_mobile-overlay {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      z-index: 5;
+      gap: 6px;
+    }
+
+    .show-card_mobile-overlay__title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(20px, 5vw, 26px);
+      color: var(--on-surface);
+      line-height: 1.1;
+    }
+
+    .show-card_mobile-overlay__dates {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: rgba(229, 226, 225, 0.55);
+      margin-bottom: 12px;
+    }
+
+    .show-card_mobile-overlay__btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background 0.2s;
+    }
+
+    .show-card_mobile-overlay__btn:active {
+      background: var(--primary);
+    }
+
+    /* ProdCard: same treatment — hide desktop elements */
+    .prod-card-desktop-meta {
+      display: none;
+    }
   }
   .cast-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));

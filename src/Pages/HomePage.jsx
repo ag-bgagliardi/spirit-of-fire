@@ -42,9 +42,14 @@ function HomeHero() {
 }
 
 function ShowCard({ title, dates, badges, image, onBook, setModalShow, production }) {
+  const navigate = useNavigate();
   return (
     <div className="show-card">
-      <div onClick={() => setModalShow(production)} className="show-card_image-wrap" style={{ cursor: "pointer" }}>
+      <div
+        className="show-card_image-wrap"
+        style={{ cursor: "pointer" }}
+        onClick={() => setModalShow(production)}
+      >
         <div
           className="show-card_image"
           style={{ backgroundImage: `url(${image})` }}
@@ -58,7 +63,21 @@ function ShowCard({ title, dates, badges, image, onBook, setModalShow, productio
             style={{ background: badges[0].color, color: badges[0].textcolor, display: "inline-block", width: "fit-content" }}
           >{badges[0].label}</span>
         </div>
+
+        {/* Mobile overlay — only visible ≤700px via CSS */}
+        <div className="show-card_mobile-overlay">
+          <span className="show-card_mobile-overlay__title">{title}</span>
+          <span className="show-card_mobile-overlay__dates">{dates}</span>
+          <button
+            className="show-card_mobile-overlay__btn"
+            onClick={e => { e.stopPropagation(); onBook(); }}
+          >
+            Reserve Tickets
+          </button>
+        </div>
       </div>
+
+      {/* Desktop-only text below image */}
       <h3 className="show-card_title">{title}</h3>
       <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
       <button
@@ -67,7 +86,7 @@ function ShowCard({ title, dates, badges, image, onBook, setModalShow, productio
         onClick={onBook}
         className="reserve-ticket-button"
       >
-        Reserve Ticket
+        Reserve Tickets
       </button>
     </div>
   );
@@ -75,7 +94,6 @@ function ShowCard({ title, dates, badges, image, onBook, setModalShow, productio
 
 function HeroSection() {
   const navigate = useNavigate();
-  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <section className="hero">
       <div className="hero_bg-base" />
@@ -138,7 +156,7 @@ function SpiritSection() {
         <div>
           <div className="home-image-icon-container">
             <img
-              style={{ width: "100%", background: "linear-gradient(180deg,#1a0a00,#0d0500)", padding: 40, fontSize: 64, }}
+              style={{ width: "100%", background: "linear-gradient(180deg,#1a0a00,#0d0500)", padding: 40, fontSize: 64 }}
               src="../logo256.png" alt="Spirit of Fire"
             />
           </div>
@@ -159,16 +177,23 @@ function NextOnStageSection({ setModalShow }) {
             <span className="label-upper color-primary">Upcoming Performances</span>
             <h2 className="display-lg" style={{ marginTop: 12 }}>Next on <em>Stage</em></h2>
           </div>
-          {
-            productions.length > 3 ?
-              <div className="flex-row" style={{ gap: 16 }}>
-                <button className="btn-icon">←</button>
-                <button className="btn-icon">→</button>
-              </div> : <></>
-          }
+          {productions.length > 3 && (
+            <div className="flex-row" style={{ gap: 16 }}>
+              <button className="btn-icon">←</button>
+              <button className="btn-icon">→</button>
+            </div>
+          )}
         </div>
         <div className="grid-3">
-          {shows.map(s => <ShowCard onBook={() => navigate("/tickets", { state: s })} key={s.title} {...s} setModalShow={setModalShow} production={s} />)}
+          {shows.map(s => (
+            <ShowCard
+              key={s.title}
+              {...s}
+              onBook={() => navigate("/tickets", { state: s })}
+              setModalShow={setModalShow}
+              production={s}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -239,14 +264,9 @@ export default function HomePage() {
       <SpiritSection />
       <NextOnStageSection setModalShow={setModalShow} />
       {modalShow && (
-        <ShowModal
-          show={modalShow}
-          onClose={() => setModalShow(null)}
-        />
+        <ShowModal show={modalShow} onClose={() => setModalShow(null)} />
       )}
-      {
-        galleryImages.length > 0 ? <GallerySection /> : <></>
-      }
+      {galleryImages.length > 0 && <GallerySection />}
       <HomeCTA />
       <Footer />
     </main>

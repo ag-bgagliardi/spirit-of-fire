@@ -150,7 +150,7 @@ function SupportProdCard({ title, dates, badges, onBook, image, setModalShow, pr
         onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
         onClick={onBook}
         className="reserve-ticket-button"
-      >Reserve Ticket</button>
+      >Reserve Tickets</button>
       <div className="show-card_image-wrap" style={{ cursor: hov ? "pointer" : "auto" }}>
         <div
           className="show-card_image"

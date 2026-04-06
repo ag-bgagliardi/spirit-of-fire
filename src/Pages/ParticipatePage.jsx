@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Footer from "../Main/Footer";
+import axios from "axios";
 import "../Style/index.css";
 
 // ── Shared field ─────────────────────────────────────────────────────────────
@@ -134,6 +135,43 @@ function SubmissionsForm() {
   const [form, setForm] = useState({ name: "", email: "", title: "", type: "", logline: "", draft: "", note: "" });
   const up = (k, v) => setForm(p => ({ ...p, [k]: v }));
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const onFileChange = (event) => {
+    console.log("🚀 ~ onFileChange ~ event:", event)
+		setSelectedFile(event.target.files[0]);
+  };
+  const onFileUpload = () => {
+		const formData = new FormData();
+		formData.append(
+			"myFile",
+			selectedFile,
+			selectedFile.name
+		);
+		console.log(selectedFile);
+		axios.post("api/uploadfile", formData);
+	};
+  const fileData = () => {
+		if (selectedFile) {
+			return (
+				<div>
+					<h2>File Details:</h2>
+					<p>File Name: {selectedFile.name}</p>
+					<p>File Type: {selectedFile.type}</p>
+					<p>
+						Last Modified: {selectedFile.lastModifiedDate.toDateString()}
+					</p>
+				</div>
+			);
+		} else {
+			return (
+				<div>
+					<br />
+					<h4>Choose before Pressing the Upload button</h4>
+				</div>
+			);
+		}
+	};
+
   return (
     <FormCard eyebrow="Project Submission">
       {sent ? <SuccessBanner msg="Your submission has been received. Our dramaturg will review it carefully." /> : (
@@ -164,6 +202,10 @@ function SubmissionsForm() {
           <Field label="Project Summary">
             <textarea className="field__input field__textarea" value={form.logline} onChange={e => up("logline", e.target.value)} rows={4} placeholder="A brief description of your project — and why you want to tell this story - This should be no more than 4-5 sentences" />
           </Field>
+          {/* <FormGrid> */}
+          {/* <Field label="Upload Project">
+              <input type="file" className="field__input" value={selectedFile?.name} onChange={onFileChange} placeholder="Upload your project" />
+          </Field> */}
           <Field label="Draft Status">
             <select className="field__input field__select" value={form.draft} onChange={e => up("draft", e.target.value)}>
               <option value="" disabled hidden>Where is the project?</option>
@@ -173,6 +215,7 @@ function SubmissionsForm() {
               <option>Production-Ready</option>
             </select>
           </Field>
+          {/* </FormGrid> */}
           <Field label="Additional Notes (optional)">
             <textarea className="field__input field__textarea" value={form.note} onChange={e => up("note", e.target.value)} rows={2} placeholder="Inspirations, collaborators, any context you'd like us to know…" />
           </Field>
@@ -277,6 +320,7 @@ function ParticipateHero({ onNav }) {
     { label: "Submissions", desc: "Pitch your project", emoji: "✍️", id: "submissions" },
     { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔧", id: "crew" },
   ];
+
   return (
     <section style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px" }}>

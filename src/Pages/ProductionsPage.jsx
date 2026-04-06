@@ -22,8 +22,8 @@ function ProductionsHero() {
           <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
             Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
           </p>
-          <button className="btn-ghost" onClick={() => navigate("/motherrabbit")} style={{marginRight:20}}>Read More</button>
-          <button className="btn-primary" onClick={() => navigate("/tickets", {state: productions[0]})}>Tickets</button>
+          <button className="btn-ghost" onClick={() => navigate("/motherrabbit")} style={{ marginRight: 20 }}>Read More</button>
+          <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Tickets</button>
         </div>
         <div style={{ position: "relative" }}>
           <div style={{
@@ -32,7 +32,7 @@ function ProductionsHero() {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            maxHeight:"70vh"
+            maxHeight: "70vh"
           }}>
             <div className="hero_top_tag serif">
               Running only 6/11-6/14 in Hudson!
@@ -50,16 +50,25 @@ function ProductionsHero() {
 
 function ProdCard({ title, dates, badges, onBook, image, setModalShow, production }) {
   const [hov, setHov] = useState(false);
+  const navigate = useNavigate();
+
   return (
-    <div onClick={() => setModalShow(production)} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
-      <div className="show-card_image-wrap" style={{ cursor: hov ? "pointer" : "auto" }}>
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+    >
+      {/* Image wrap */}
+      <div
+        className="show-card_image-wrap"
+        style={{ cursor: "pointer", marginBottom: 0 }}
+        onClick={() => setModalShow(production)}
+      >
         <div
           className="show-card_image"
           style={{
             backgroundImage: `url(${image})`,
             transform: hov ? "scale(1.05)" : "scale(1)",
             filter: hov ? "grayscale(0%)" : "grayscale(100%)",
-            cursor: hov ? "pointer" : "auto",
           }}
         >
           <div className="show-card_image-overlay" />
@@ -71,17 +80,33 @@ function ProdCard({ title, dates, badges, onBook, image, setModalShow, productio
             style={{ background: badges[0].color, color: badges[0].textcolor, display: "inline-block", width: "fit-content" }}
           >{badges[0].label}</span>
         </div>
+
+        {/* Mobile overlay — only visible ≤700px via CSS */}
+        <div className="show-card_mobile-overlay" onClick={e => e.stopPropagation()}>
+          <span className="show-card_mobile-overlay__title">{title}</span>
+          <span className="show-card_mobile-overlay__dates">{dates}</span>
+          <button
+            className="show-card_mobile-overlay__btn"
+            onClick={e => { e.stopPropagation(); onBook(production); }}
+          >
+            Reserve Tickets
+          </button>
+        </div>
       </div>
-      <h3 className="show-card_title" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>{title}</h3>
-      <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
-      <button
-        onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
-        onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-        onClick={() => onBook(production)}
-        className="reserve-ticket-button"
-      >
-        Reserve Ticket
-      </button>
+
+      {/* Desktop text below image */}
+      <div className="prod-card-desktop-meta" style={{ marginTop: 24 }}>
+        <h3 className="show-card_title" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>{title}</h3>
+        <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
+        <button
+          onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
+          onClick={() => onBook(production)}
+          className="reserve-ticket-button"
+        >
+          Reserve Tickets
+        </button>
+      </div>
     </div>
   );
 }
@@ -98,16 +123,23 @@ function Performances({ setModalShow }) {
             <h2 className="serif" style={{ fontSize: 36, marginBottom: 8 }}>Performances</h2>
             <p className="label-xs color-outline">Active Productions • 2026</p>
           </div>
-          {
-            productions.length > 3 ?
-              <div className="flex-row" style={{ gap: 16 }}>
-                <button className="btn-icon">←</button>
-                <button className="btn-icon">→</button>
-              </div> : <></>
-          }
+          {productions.length > 3 && (
+            <div className="flex-row" style={{ gap: 16 }}>
+              <button className="btn-icon">←</button>
+              <button className="btn-icon">→</button>
+            </div>
+          )}
         </div>
-        <div className="grid-3" style={{ gap: 48, }}>
-          {prods.map(p => <ProdCard key={p.title} {...p} onBook={() => navigate("/tickets", {state: p})} setModalShow={setModalShow} production={p} />)}
+        <div className="grid-3" style={{ gap: 48 }}>
+          {prods.map(p => (
+            <ProdCard
+              key={p.title}
+              {...p}
+              onBook={() => navigate("/tickets", { state: p })}
+              setModalShow={setModalShow}
+              production={p}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -115,7 +147,6 @@ function Performances({ setModalShow }) {
 }
 
 function MainQuote() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <section className="section-pad-xl" style={{ textAlign: "center", maxWidth: 900, margin: "0 auto" }}>
       <div className="color-primary-container" style={{ fontSize: 40, marginBottom: 32 }}>✦</div>
@@ -157,10 +188,7 @@ export default function ProductionsPage() {
       <Performances setModalShow={setModalShow} />
       <MainQuote />
       {modalShow && (
-        <ShowModal
-          show={modalShow}
-          onClose={() => setModalShow(null)}
-        />
+        <ShowModal show={modalShow} onClose={() => setModalShow(null)} />
       )}
       <MainCTA />
       <Footer />

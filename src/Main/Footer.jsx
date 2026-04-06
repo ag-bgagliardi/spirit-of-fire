@@ -1,5 +1,7 @@
 import facebookLogo from "../Assets/Logos/facebook.png";
 import instagramLogo from "../Assets/Logos/instagram.png";
+import emailjs from '@emailjs/browser';
+import { useState } from "react";
 
 const LINKS = ["Privacy Policy", "Terms of Service", "Archive"];
 
@@ -9,6 +11,23 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const [userEmail, setUserEmail] = useState(null);
+  const emailInput = (e) => {
+    setUserEmail(e.target.value)
+  }
+  async function sendEmail() {
+    console.log("🚀 ~ Footer ~ userEmail:", userEmail)
+    await emailjs.send(
+      'service_vgqmgoo',
+      'template_inoynht',
+      {
+        // from_name: "Spirit of Fire",
+        // from_email: "spiritoffiretheatre@gmail.com",
+        email: userEmail,
+      },
+      '0_BUIZUi6PwsND1oX'
+    );
+  }
   return (
     <footer className="footer">
       <div className="footer__grid">
@@ -40,8 +59,8 @@ export default function Footer() {
         <div>
           <h4 className="footer__heading" style={{ marginBottom: 24 }}>Sign up for Spirit of Fire Updates</h4>
           <div className="footer__newsletter">
-            <input className="footer__newsletter-input" placeholder="Email Address" type="email" />
-            <span className="footer__newsletter-btn">→</span>
+            <input className="footer__newsletter-input" placeholder="Email Address" type="email" onChange={emailInput} />
+            <div className="footer__newsletter-btn" onClick={sendEmail}>→</div>
           </div>
           <p className="footer__copyright">© 2026 Spirit of Fire Theatre Company. Soli Deo Gloria.</p>
         </div>
