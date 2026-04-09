@@ -1,8 +1,8 @@
-import ricoImage from "../Assets/People/Rico.webp";
+import ricoImage from "../Assets/People/Rico.png";
 import benImage from "../Assets/People/Benjamin2.jpg";
 import silasImage from "../Assets/People/SilasWide.jpeg";
 import madelineImage from "../Assets/People/MadelineWide.jpeg";
-import barbaraImage from "../Assets/People/Barbara.jpg";
+import barbaraImage from "../Assets/People/Barbara.jpeg";
 import stephanieImage from "../Assets/People/Stephanie.jpg";
 import marthaImage from "../Assets/People/Martha.jpg";
 import brandynImage from "../Assets/People/Brandyn.jpg";
@@ -44,6 +44,15 @@ const Crew = [
         bio: "As a proud mother of five daughters, Madeline Gagliardi comes from years of working for the States of Wisconsin and Minnesota in legislative affairs, public policy, and case management in collaboration with various state agencies. Madeline also brings years of experience in non-profit advancement and administration, including her work with Marquette University and the Archdiocese of Saint Paul & Minneapolis. She is thrilled to be joining Spirit of Fire Theatre, combining her professional skills with her background and love for choral, vocal, and musical theatre."
     },
     {
+        name: "Stephanie Wilson",
+        title: "Director of Marketing",
+        roles: ["Designer", "Marketer"],
+        image: stephanieImage,
+        icon: "◆",
+        col: "company",
+        bio: "Stephanie Wilson is a Marketing and Informations Systems graduate from the University of Wisconsin, Madison's school of business. She thrives in a wide variety of marketing projects, from Badger Catholic merchandizing and design, to Theatre publicity strategies, to her current position as a 3M Marketing intern."
+    },
+    {
         name: "Silas Heisler",
         title: "Creative Consultant",
         roles: ["Actor", "Singer"],
@@ -54,19 +63,12 @@ const Crew = [
     },
     {
         name: "Barbara Gagliardi",
-        title: "Creative Designer",
+        title: "Creative Consultant",
         roles: ["Actor", "Singer", "Director", "Designer"],
         image: barbaraImage,
         icon: "◆",
-        col: "company"
-    },
-    {
-        name: "Stephanie Wilson",
-        title: "Director of Marketing",
-        roles: ["Designer", "Marketer"],
-        image: stephanieImage,
-        icon: "◆",
-        col: "company"
+        col: "company",
+        bio: "Barbara Gagliardi has enjoyed involvement in Theatre her whole life, and a deep passion for the arts. She has helped in the ideation, design, and direction of many of our projects both current and past. She spends most of her time now with her husband, children, and grandchildren."
     },
 ];
 
@@ -99,7 +101,7 @@ const Casts = {
         {
             character: "Elena Kotski",
             name: "Barbara Gagliardi",
-            bio: "Barbara Gagliardi has enjoyed involvement in Theatre her whole life, and a deep passion for the arts. Playing Elena has been a delight. Working with such a young cast, including two of her children, has been very  refreshing. Talking about the characters and backstories with the author has made this experience uniquely memorable, and she hopes you enjoy the show.",
+            bio: "Barbara Gagliardi has enjoyed involvement in Theatre her whole life, and a deep passion for the arts. Playing Elena has been a delight. Working with such a young cast, including two of her children, has been very refreshing. Talking about the characters and backstories with the author has made this experience uniquely memorable, and she hopes you enjoy the show.",
             image: barbaraImage,
         },
         {

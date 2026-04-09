@@ -1,6 +1,7 @@
 
 import bigBlueLogo from "../Assets/Logos/bbt.webp";
 import salvationArmyLogo from "../Assets/Logos/salvationArmy.webp";
+import saintPatsLogo from "../Assets/Logos/splogo.png"
 const partnersData = [
     {
       name: 'Big Blue Theatre',
@@ -18,6 +19,15 @@ const partnersData = [
       type: "Evangelical Organization",
       link: "https://www.salvationarmyusa.org/mn/saint-paul/woodlynn-ave-corps/",
       location: "Many Locations, U.S.",
+      background: "white"
+    },
+    {
+      name: "Saint Patrick Parish",
+      description: "To joyfully proclaim, share, and celebrate the love and mercy of Jesus Christ through Word, Sacrament, prayer, and ministry.",
+      logo: saintPatsLogo,
+      type: "Catholic Church | School",
+      link: "https://www.stpatrickofhudson.org/",
+      location: "1500 Vine Street, Hudson, WI 54016",
       background: "white"
     },
   ]

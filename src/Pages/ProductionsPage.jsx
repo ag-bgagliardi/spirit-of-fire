@@ -28,7 +28,7 @@ function ProductionsHero() {
             target="_blank"
             rel="noreferrer"
             className="btn-primary"
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
           >Get Tickets</a>
           {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Tickets</button> */}
         </div>
@@ -197,7 +197,7 @@ function MainCTA() {
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
           <button className="btn-primary" onClick={() => navigate("/participate")}>Get Involved</button>
-          <button className="btn-ghost-primary" onClick={() => navigate("/mission")}>Our Mission</button>
+          <button className="btn-ghost-primary" onClick={() => navigate("/about-us")}>Our Mission</button>
         </div>
       </div>
     </section>

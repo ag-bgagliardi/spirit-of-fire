@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import benImage from "../Assets/People/Benjamin2.jpg";
-import ricoImage from "../Assets/People/Rico.webp";
+import ricoImage from "../Assets/People/Rico.png";
 import silasImage from "../Assets/People/Silas.jpg";
 import Footer from "../Main/Footer";
 import "./about.css";

@@ -35,7 +35,7 @@ function WorkModal({ item, type, onClose }) {
     };
   }, [onClose]);
 
-  const isPurchasable = (type === "play" || type === "skit") && item.purchaseUrl;
+  const isPurchasable = item.purchaseUrl;
   const hasSample = Boolean(item.sample || item.lines);
   const sampleText = item.sample || item.lines || "";
 
@@ -95,21 +95,27 @@ function WorkModal({ item, type, onClose }) {
         ) }
 
         {/* Purchase */}
-        {isPurchasable && (
-          <div className="port-modal__purchase">
-            <div className="port-modal__purchase-inner">
-              <div>
-                <p className="label-tiny color-primary-container" style={{ letterSpacing: ".25em", marginBottom: 4 }}>Available for Purchase</p>
-                <p className="port-modal__purchase-note color-on-surface-var">
-                  Full script available as a PDF download. Contact for performance rights and licensing.
-                </p>
-              </div>
+        <div className="port-modal__purchase">
+          <div className="port-modal__purchase-inner">
+            <div style={{width:"50%"}}>
+              <p className="label-tiny color-primary-container" style={{ letterSpacing: ".25em", marginBottom: 4 }}>Available for Purchase</p>
+              <p className="port-modal__purchase-note color-on-surface-var">
+                Full script available as a PDF download. Contact for performance rights and licensing.
+              </p>
+            </div>
+            {
+              isPurchasable ? 
               <a href={item.purchaseUrl} className="btn-primary port-modal__action-btn">
                 Purchase Script →
               </a>
-            </div>
+              : 
+              <a href="mailto:spiritoffire@gmail.com" className="btn-primary port-modal__action-btn">
+                Contact Us →
+              </a>
+              // <button className="btn-primary-disabled" disabled="true">Currently Unavailable</button>
+            }
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

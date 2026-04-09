@@ -21,7 +21,7 @@ const plays = [
         who comes. The show is Family-friendly and has strong themes of forgiveness and 
         family values.`,
         sample: `PETER "What church do you belong to?\nKEIRA "First Presbyterian Church."\nRICHARD "You’re the first?"\nKEIRA "Of its kind, yes."\nBOBBY "You’re fish people?"\nPETER "Excuse him, he hasn’t eaten."\nBOBBY "You stay out of this."\nRICHARD "What did you say you were?"\nKEIRA "Presbyterian."\nRICHARD "I don’t know what that is."\nBOBBY "It means they eat fish."\nKEIRA "No, that's Pescatirian."\nBOBBY "What did you just call me?"\nBYRD "No, Pescatarian."\nBOBBY "So you’re an exterminator."`,
-        purchaseUrl: "#",
+        // purchaseUrl: "#",
         icon: motherrabbit,
         author: "Benjamin Gagliardi"
     },
@@ -33,7 +33,7 @@ const plays = [
         status: "available",
         synopsis: "Lisa's family is coming apart, or maybe it already has. Her brother, Logan, and his friends visit for one last birthday party for their father. Lenny needs a break, Manny needs something to do, and a storm is coming.",
         sample: `PRIDANE "The house is swallowing me, Lisa! Everywhere I turn there’s a wall, And that’s the worst goddamn one. It’s looming."\nLISA "Will you stop with the swearing? There’s twenty feet between you and that wall."\nPRIDANE "No there isn’t."\nLISA "Yes there is. You’re only making a fuss because you shoved your desk into the corner of the room again. I get that you hate small spaces, so why do you keep pushing your desk into the corner?"\nPRIDANE "It’s the only place with any good light."\nLISA "You threw away paper with nothing on it."\nPRIDANE "I almost wrote something terrible, I had to throw it away."\nLISA "No, you absolutely did not. Stop being so dramatic."`,
-        purchaseUrl: "#",
+        // purchaseUrl: "#",
         icon: missingrain,
         author: "Benjamin Gagliardi"
     },
@@ -46,7 +46,7 @@ const skits = [
         year: 2023,
         synopsis: "A neurotic and strange man performs a ridiculous Eulogy. Short-form comedy, approximately 4 minutes.",
         sample: `It says he was a Cadet, which I always thought was a type of bird, but no, he fought very patriotically for us. And he fought in many places in the world including (Reads) here in the U.S. and (Reads) Bulimia. He was very brave, he was also very intelligent. These are educated guesses. Travis was probably better than me at almost everything except not dying.`,
-        purchaseUrl: "#",
+        // purchaseUrl: "#",
         status: "available",
         icon: rip,
         author: "Benjamin Gagliardi"
@@ -57,7 +57,7 @@ const skits = [
         year: 2021,
         synopsis: "Two people at a morning breakfast table. They begin to argue over what to do when a deer gets in front of your car. Heavily inspired by Abbott and Costello, approximately 6 minutes.",
         sample: `BOBBY: I could be the next Martin Luther King.\nROBERT: Well, I think you’d need a little bit more than a PhD in English.\nBOBBY: Right, I'd need to dye my hair.\nRICHARD: You’d need to dye your whole body.\nBOBBY: That’s racist.\nRICHARD: That is not racist.\nBOBBY: That’s what a racist would say.`,
-        purchaseUrl: "#",
+        // purchaseUrl: "#",
         status: "available",
         icon: cereal,
         author: "Benjamin Gagliardi"

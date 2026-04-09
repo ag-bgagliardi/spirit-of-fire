@@ -35,7 +35,7 @@ function ShowHero({ show, scrollTo }) {
                                 target="_blank"
                                 rel="noreferrer"
                                 className="btn-primary"
-                                style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+                                style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
                             >Reserve Tickets</a>
                             {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: show })}>Reserve Tickets</button> */}
                         </div>

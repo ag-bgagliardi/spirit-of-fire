@@ -73,15 +73,14 @@ function PartnerCard({ partner }) {
         <p className="color-on-surface-var" style={{ lineHeight: 1.8, fontSize: 14, fontWeight: 300, maxWidth: 480 }}>
           {partner.description}
         </p>
-        <a
+        <p
           className="label-upper"
-          style={{ color: "var(--primary-container)" }}
+          style={{ color: "var(--primary-container)", textDecoration:"underline" }}
           onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
           onMouseLeave={e => e.currentTarget.style.color = "var(--primary-container)"}
-          href={partner.link} target="_blank"
         >
           Visit {partner.name} →
-        </a>
+        </p>
       </div>
     </a>
   );
