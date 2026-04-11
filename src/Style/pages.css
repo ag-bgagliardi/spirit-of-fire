@@ -1645,3 +1645,37 @@
   font-size: 9px;
   color: var(--outline-variant);
 }
+.footer__newsletter-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 8px;
+  border-bottom: 1px solid rgba(249, 94, 20, 0.4);
+  animation: footer-fade-in 0.4s ease;
+}
+
+.footer__newsletter-success__glyph {
+  font-size: 12px;
+  color: var(--primary-container);
+}
+
+.footer__newsletter-success__msg {
+  font-size: 13px;
+  color: var(--primary);
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+@keyframes footer-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Button reset — remove default button chrome */
+.footer__newsletter-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.2s, opacity 0.2s;
+}

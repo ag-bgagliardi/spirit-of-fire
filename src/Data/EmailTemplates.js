@@ -1,4 +1,12 @@
 const emailTemplates = {
+    "updates": {
+        subject: "Signup Successful",
+        body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">Hi {{name}},</p>
+                <p>
+                    Thank you for signing up for Spirit of Fire updates, we will reach out with upcoming events!
+                </p>`,
+        id: "template_t8991ij"
+    },
     "auditionUser": {
         subject: "{{production}} Audition Notification",
         body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">Hi {{name}},</p>
