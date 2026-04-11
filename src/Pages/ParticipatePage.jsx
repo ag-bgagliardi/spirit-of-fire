@@ -5,32 +5,29 @@ import "../Style/index.css";
 import emailjs from '@emailjs/browser';
 import emailTemplates from "../Data/EmailTemplates";
 
-async function sendCompanyEmail(form, type) {
-  console.log("🚀 ~ submitForm ~ form:", form)
-  return true
-  // return await emailjs.send(
-  //   'service_vgqmgoo',
-  //   templates[type],
-  //   form,
-  //   '0_BUIZUi6PwsND1oX'
-  // );
-}
-
-async function sendUserEmail(form, type) {
-  let currTemplate = {...emailTemplates[type]};
-  let currBody = emailTemplates[type].body;
-  for (let key in form) {
-    currBody = currBody.replace(`{{${key}}}`, form[key])
+async function sendEmail(form, types) {
+  for (const type of types) {
+    let currTemplate = {...emailTemplates[type]};
+    let currBody = emailTemplates[type].body;
+    for (let key in form) {
+      if (form[key].isArray()) {
+        let listedValues = form[key].join(', ')
+        currBody = currBody.replace(`{{${key}}}`, listedValues)
+      } else {
+        currBody = currBody.replace(`{{${key}}}`, form[key])
+      }
+    }
+    currTemplate.subject = currTemplate.subject.replace(`{{production}}`, form.production)
+    currTemplate.body = currBody;
+    currTemplate.email = form.email;
+    await emailjs.send(
+      'service_vgqmgoo',
+      currTemplate.id,
+      currTemplate,
+      '0_BUIZUi6PwsND1oX'
+    );
   }
-  currTemplate.subject = currTemplate.subject.replace(`{{production}}`, form.production)
-  currTemplate.body = currBody;
-  currTemplate.email = form.email;
-  return await emailjs.send(
-    'service_vgqmgoo',
-    currTemplate.id,
-    currTemplate,
-    '0_BUIZUi6PwsND1oX'
-  );
+  return;
 }
 
 // ── Shared field ─────────────────────────────────────────────────────────────
@@ -110,10 +107,8 @@ function AuditionsForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", production: "", experience: "", training: "", note: "" });
   const up = (k, v) => setForm(p => ({ ...p, [k]: v }));
   const submitForm = (form, type) => {
-    sendCompanyEmail(form, type).then(() => {
-      sendUserEmail(form, type).then(() => {
-        // setSent(true);
-      })
+    sendEmail(form, type).then(() => {
+      // setSent(true);
     })
   }
   return (
@@ -151,7 +146,7 @@ function AuditionsForm() {
           <Field label="Anything Else?">
             <textarea className="field__input field__textarea" value={form.note} onChange={e => up("note", e.target.value)} rows={2} placeholder="Questions, scheduling notes, special skills…" />
           </Field>
-          <div onClick={() => form.name && form.email && form.production && submitForm(form, "audition")}>
+          <div onClick={() => form.name && form.email && form.production && submitForm(form, ["auditionUser", "auditionSOF"])}>
             <SubmitBtn label="Submit Audition Inquiry →" disabled={!form.name || !form.email || !form.production} />
           </div>
           <FormNote>Audition dates are announced per production. Submitting this form does not guarantee a slot.</FormNote>
@@ -167,10 +162,8 @@ function SubmissionsForm() {
   const [form, setForm] = useState({ name: "", email: "", title: "", type: "", logline: "", draft: "", note: "" });
   const up = (k, v) => setForm(p => ({ ...p, [k]: v }));
   const submitForm = (form, type) => {
-    sendCompanyEmail(form, type).then(() => {
-      sendUserEmail(form, type).then(() => {
-        setSent(true);
-      })
+    sendEmail(form, type).then(() => {
+      setSent(true);
     })
   }
 
@@ -258,7 +251,7 @@ function SubmissionsForm() {
           <Field label="Additional Notes (optional)">
             <textarea className="field__input field__textarea" value={form.note} onChange={e => up("note", e.target.value)} rows={2} placeholder="Inspirations, collaborators, any context you'd like us to know…" />
           </Field>
-          <div onClick={() => form.name && form.email && form.title && form.type && submitForm(form, "project")}>
+          <div onClick={() => form.name && form.email && form.title && form.type && submitForm(form, ["projectUser", "projectSOF"])}>
             <SubmitBtn label="Submit Project →" disabled={!form.name || !form.email || !form.title || !form.type} />
           </div>
           <FormNote>We will followup to read submissions. Response times may vary depending on our current production schedule.</FormNote>
@@ -279,10 +272,8 @@ function CrewForm() {
     ...p, roles: p.roles.includes(r) ? p.roles.filter(x => x !== r) : [...p.roles, r],
   }));
   const submitForm = (form, type) => {
-    sendCompanyEmail(form, type).then(() => {
-      sendUserEmail(form, type).then(() => {
-        setSent(true);
-      })
+    sendEmail(form, type).then(() => {
+      setSent(true);
     })
   }
 
@@ -325,7 +316,7 @@ function CrewForm() {
           <Field label="Anything Else?">
             <textarea className="field__input field__textarea" value={form.note} onChange={e => up("note", e.target.value)} rows={2} placeholder="Questions, motivations, or anything you'd like us to know…" />
           </Field>
-          <div onClick={() => form.name && form.email && form.roles.length && submitForm(form, "crew")}>
+          <div onClick={() => form.name && form.email && form.roles.length && submitForm(form, ["crewUser", "crewSOF"])}>
             <SubmitBtn label="Join the Crew →" disabled={!form.name || !form.email || !form.roles.length} />
           </div>
           <FormNote>Crew positions are filled per production. We'll contact you when a relevant opportunity arises.</FormNote>

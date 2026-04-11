@@ -89,7 +89,7 @@ export default function Nav() {
             <NavLink key={link.label} link={link} pathname={pathname} onNav={go} />
           ))}
         </nav>
-        <a href="https://events.ticketleap.com/events/spirit-of-fire" target="_blank" id="btn-constructor" rel="noreferrer" className="ticket-button nav__cta" style={{textDecoration:"none"}}>Tickets</a>
+        <a href="https://events.ticketleap.com/events/spirit-of-fire" target="_blank" id="btn-constructor" rel="noreferrer" className="ticket-button nav__cta" style={{textDecoration:"none", padding:"10px 40px", borderRadius:20 }}>Tickets</a>
         {/* <button className="ticket-button nav__cta" onClick={() => go("/tickets")}>
           Tickets
         </button> */}
@@ -140,9 +140,9 @@ export default function Nav() {
             )}
           </div>
         ))}
-        <button className="btn-primary" style={{ marginTop: 8 }} onClick={() => go("/tickets")}>
-          Tickets
-        </button>
+        <div>
+          <a href="https://events.ticketleap.com/events/spirit-of-fire" target="_blank" id="btn-constructor" rel="noreferrer" className="ticket-button" style={{textDecoration:"none", display:"flex", width:"fit-content", padding:"10px 20px"}}>Tickets</a>
+        </div>
       </nav>
     </header>
   );

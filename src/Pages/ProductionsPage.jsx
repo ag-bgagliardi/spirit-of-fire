@@ -30,7 +30,6 @@ function ProductionsHero() {
             className="btn-primary"
             style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
           >Get Tickets</a>
-          {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Tickets</button> */}
         </div>
         <div style={{ position: "relative" }}>
           <div style={{

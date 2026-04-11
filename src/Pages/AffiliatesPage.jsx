@@ -1,7 +1,6 @@
 import Footer from "../Main/Footer";
 import { useState, useEffect } from "react";
 import partnersData from "../Data/PartnersData"
-import { useNavigate } from "react-router-dom";
 
 function AffiliatesHero() {
   return (
