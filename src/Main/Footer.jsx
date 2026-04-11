@@ -12,6 +12,7 @@ const SOCIALS = [
 
 export default function Footer() {
   const [userEmail, setUserEmail] = useState(null);
+  const [sent, setSent] = useState(false);
   const emailInput = (e) => {
     setUserEmail(e.target.value)
   }
@@ -27,6 +28,8 @@ export default function Footer() {
       },
       '0_BUIZUi6PwsND1oX'
     );
+    setSent(true);
+    setUserEmail("");
   }
   return (
     <footer className="footer">
@@ -60,7 +63,10 @@ export default function Footer() {
           <h4 className="footer__heading" style={{ marginBottom: 24 }}>Sign up for Spirit of Fire Updates</h4>
           <div className="footer__newsletter">
             <input className="footer__newsletter-input" placeholder="Email Address" type="email" onChange={emailInput} />
-            <div className="footer__newsletter-btn" onClick={sendEmail}>→</div>
+            {
+              sent ? <>
+              </> : <div className="footer__newsletter-btn" onClick={sendEmail}>→</div>
+            }
           </div>
           <p className="footer__copyright">© 2026 Spirit of Fire Theatre Company. Soli Deo Gloria.</p>
         </div>
