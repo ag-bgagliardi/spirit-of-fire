@@ -63,6 +63,9 @@ const emailTemplates = {
         body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">Hi {{name}},</p>
                 <p>
                     Thank you {{name}} for applying to our crew! We wlll reach out to you shortly.
+                </p>
+                <p>
+                    You applied for the following roles: {{roles}}.
                 </p>`,
         id: "template_t8991ij"
     },

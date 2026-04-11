@@ -8,16 +8,19 @@ import emailTemplates from "../Data/EmailTemplates";
 async function sendEmail(form, types) {
   for (const type of types) {
     let currTemplate = {...emailTemplates[type]};
-    let currBody = emailTemplates[type].body;
+    let currBody = currTemplate.body;
+    let currSubject = currTemplate.subject;
     for (let key in form) {
-      if (form[key].isArray()) {
+      if (Array.isArray(form[key])) {
         let listedValues = form[key].join(', ')
-        currBody = currBody.replace(`{{${key}}}`, listedValues)
+        currBody = currBody.replaceAll(`{{${key}}}`, listedValues)
+        currSubject = currSubject.replaceAll(`{{${key}}}`, listedValues)
       } else {
-        currBody = currBody.replace(`{{${key}}}`, form[key])
+        currBody = currBody.replaceAll(`{{${key}}}`, form[key])
+        currSubject = currSubject.replaceAll(`{{${key}}}`, form[key])
       }
     }
-    currTemplate.subject = currTemplate.subject.replace(`{{production}}`, form.production)
+    currTemplate.subject = currSubject;
     currTemplate.body = currBody;
     currTemplate.email = form.email;
     await emailjs.send(
@@ -108,7 +111,7 @@ function AuditionsForm() {
   const up = (k, v) => setForm(p => ({ ...p, [k]: v }));
   const submitForm = (form, type) => {
     sendEmail(form, type).then(() => {
-      // setSent(true);
+      setSent(true);
     })
   }
   return (
@@ -133,7 +136,7 @@ function AuditionsForm() {
                 <option>Mother Rabbit</option>
                 <option>Animal Crackers</option>
                 <option>Missing the Rain</option>
-                <option>Open / Any</option>
+                <option>Any Show</option>
               </select>
             </Field>
           </FormGrid>
