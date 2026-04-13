@@ -108,7 +108,7 @@ function TheaBody() {
 export default function TheatologyPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
-    <main style={{ paddingTop: 80 }}>
+    <main>
       <TheaHero />
       <TheaLede />
       <TheaBody />

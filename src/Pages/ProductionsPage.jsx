@@ -10,7 +10,7 @@ function ProductionsHero() {
   const navigate = useNavigate();
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 48px 96px" }}>
-      <div className="grid-2">
+      <div style={{ paddingTop:80 }} className="grid-2">
         <div>
           <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 24 }}>
             <div style={{ height: 1, width: 48, background: "var(--primary-container)" }} />
@@ -43,7 +43,7 @@ function ProductionsHero() {
             <div className="hero_top_tag serif">
               Running only 6/11-6/14 in Hudson!
             </div>
-            <div style={{ height: "100%", width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
+            <div style={{ width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
           </div>
           <div className="hero_tag serif">
             Original Comedy

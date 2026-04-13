@@ -142,8 +142,8 @@ function ContactStrip() {
 
 export default function AffiliatesPage() {
   return (
-    <main style={{ paddingTop: 80 }}>
-      <AffiliatesHero />
+    <main>
+      <AffiliatesHero style={{ paddingTop:80 }} />
       <PartnersSection />
       <ContactStrip />
       <Footer />

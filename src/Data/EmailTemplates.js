@@ -68,8 +68,7 @@ const emailTemplates = {
     },
     "crewUser": {
         subject: "Application Submitted",
-        body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">Hi {{name}},</p>
-                <p>
+        body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">
                     Thank you {{name}} for applying to our crew! We wlll reach out to you shortly.
                 </p>
                 <p>
@@ -79,7 +78,7 @@ const emailTemplates = {
     },
     "crewSOF": {
         subject: "{{name}} Applied to Join the Crew",
-        body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">{{name}} would like to be alerted when casting calls are made for {{production}}</p>
+        body: `<p style="padding-top: 16px; border-top: 1px solid #eaeaea">{{name}} would like to assist with the following roles</p>
                 <p>
                     Roles: {{roles}}
                 </p>

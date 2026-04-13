@@ -28,7 +28,7 @@ function Layout() {
   return (
     <>
       <Nav />
-      <div style={{ paddingTop: 80 }}>
+      <div>
         <Routes>
           {/* NAV BARS */}
           <Route path="/" element={<HomePage />} />

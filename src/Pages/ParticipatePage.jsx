@@ -403,7 +403,7 @@ export default function ParticipatePage() {
   };
 
   return (
-    <main style={{ paddingTop: 80 }}>
+    <main>
       <ParticipateHero onNav={scrollTo} />
       <SectionBlock id="auditions" eyebrow="On Stage" heading="Auditions"
         sub="We hold open auditions for each production and welcome performers of all backgrounds. Fill out the form below and we'll reach out when auditions are announced for your production of interest.">
