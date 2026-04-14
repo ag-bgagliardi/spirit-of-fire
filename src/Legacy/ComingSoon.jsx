@@ -89,20 +89,20 @@ export default function ComingSoon({ title, subtitle }) {
         .coming-soon__bg-base {
           position: absolute;
           inset: 0;
-          background: linear-gradient(160deg, #0d0200 0%, #131313 50%, #0a0100 100%);
+          background: linear-gradient(160deg, var(--bg-mission-b) 0%, var(--surface) 50%, var(--bg-hero-c) 100%);
         }
 
         .coming-soon__bg-glow {
           position: absolute;
           inset: 0;
-          background: radial-gradient(ellipse at 50% 40%, rgba(249,94,20,0.12) 0%, transparent 65%);
+          background: radial-gradient(ellipse at 50% 40%, var(--primary-12) 0%, transparent 65%);
           animation: glow-pulse 4s ease-in-out infinite;
         }
 
         .coming-soon__bg-vignette {
           position: absolute;
           inset: 0;
-          background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%);
+          background: radial-gradient(ellipse at center, transparent 40%, var(--overlay-black-60) 100%);
         }
 
         .coming-soon__top-border {
@@ -120,7 +120,7 @@ export default function ComingSoon({ title, subtitle }) {
           left: 0;
           right: 0;
           height: 1px;
-          background: linear-gradient(to right, transparent, rgba(249,94,20,0.3), transparent);
+          background: linear-gradient(to right, transparent, var(--primary-30), transparent);
         }
 
         .coming-soon__content {
@@ -185,7 +185,7 @@ export default function ComingSoon({ title, subtitle }) {
           flex-direction: column;
           align-items: center;
           gap: 8px;
-          border-top: 1px solid rgba(89,66,56,0.2);
+          border-top: 1px solid var(--outline-20);
           padding-top: 28px;
           width: 100%;
         }

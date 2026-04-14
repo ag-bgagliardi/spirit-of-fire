@@ -41,7 +41,7 @@ function NavLink({ link, pathname, onNav }) {
         <span
           className="nav__link"
           style={{
-            color: isActive ? "var(--primary-container)" : "rgba(229,226,225,0.7)",
+            color: isActive ? "var(--primary-container)" : "var(--nav-text-color)",
             cursor: "pointer",
           }}
         >
@@ -58,7 +58,7 @@ function NavLink({ link, pathname, onNav }) {
       className="nav__link"
       onClick={() => onNav(link.path)}
       style={{
-        color: isActive ? "var(--primary-container)" : "rgba(229,226,225,0.7)",
+        color: isActive ? "var(--primary-container)" : "var(--nav-text-color)",
         cursor: "pointer",
       }}
     >

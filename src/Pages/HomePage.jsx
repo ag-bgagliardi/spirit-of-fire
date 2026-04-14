@@ -1,6 +1,6 @@
 import Footer from "../Main/Footer";
 import ShowModal from "../Modals/ShowModal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/index.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";

@@ -4,21 +4,19 @@ import partnersData from "../Data/PartnersData"
 
 function AffiliatesHero() {
   return (
-    <section className="affiliates-hero" style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,1) 0%,rgba(19,19,19,0.2) 70%)" }} />
-      <div style={{ position: "absolute", inset: 0, opacity: .18, backgroundImage: "radial-gradient(ellipse at 65% 40%,rgba(249,94,20,0.6) 0%,transparent 60%)" }} />
-      <div className="hero__bg-image" />
-      <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 860 }}>
-        <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>
-          Community &amp; Collaboration
-        </span>
-        <h1 className="serif-italic color-on-surface" style={{ fontSize: 80, lineHeight: .92, letterSpacing: "-.03em", marginBottom: 24 }}>
-          Affiliates <span className="color-primary-container">&amp;</span><br />Partners
-        </h1>
-        <p className="body-md color-on-surface-var" style={{ fontSize: 17, maxWidth: 520 }}>
-          We are grateful to work alongside organizations that share our love of theatre and our commitment to artistic excellence.
-        </p>
+    <section style={{ position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px" }}>
+        <div className="participate-hero__bg-base" />
+        <div className="participate-hero__bg-fade" />
+        <div className="participate-hero__bg-glow" />
+        <div className="hero__bg-image" />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
+          <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Community &amp; Collaboration</span>
+          <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>Affiliates <span className="color-primary-container">&amp;</span><br />Partners</h1>
+          <p className="body-md color-on-surface-var" style={{ fontSize: 17, maxWidth: 540 }}>
+            We are grateful to work alongside organizations that share our love of theatre and our commitment to artistic excellence.
+          </p>
+        </div>
       </div>
     </section>
   );

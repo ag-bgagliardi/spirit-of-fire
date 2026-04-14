@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:wght@300;400;500;600&display=swap");
+
+/* ── Reset ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* SWITCH BETWEEN :root and .light-theme */
+/* .light-theme {  */
+:root {
+  /* ── Surfaces ── */
+  /* Dark → warm off-white / cream scale */
+  --surface: #faf7f5;
+  --surface-low: #f2ede9;
+  --surface-lowest: #ece5e0;
+  --surface-container: #e8e0da;
+  --surface-high: #ddd4cc;
+  --surface-highest: #cfc4bb;
+  --surface-light: #b8aca4d5;
+  --surface-lightest: #9c8e86;
+
+  /* ── Primary ── */
+  /* Orange darkened for contrast on light backgrounds */
+  --primary: #c0390a;
+  --primary-container: #e04e14;
+  --primary-lighter: #e8723d;
+  --primary-deep: #a82e00;
+  --on-primary: #ffffff;
+  --on-primary-container: #ffffff;
+
+  /* ── Secondary ── */
+  --secondary: #b89200;
+  --secondary-container: #d4a800;
+
+  /* ── On-surface ── */
+  /* Light → dark warm brown text */
+  --on-surface: #1a1210;
+  --on-surface-variant: #4a2e22;
+  --outline: #7a5a4e;
+  --outline-variant: #c4a898;
+
+  /* ── Tertiary ── */
+  --tertiary: #6b3fb5;
+  --tertiary-container: #8b5fd4;
+
+  /* ── Scene background hex colors ── */
+  /* Light hero bases — warm parchment-to-sand */
+  --bg-hero-a: #f0e0d0;
+  --bg-hero-b: #e8c8a8;
+  --bg-hero-c: #f2ddc8;
+  /* Light mission/team hero bases — warm parchment */
+  --bg-mission-a: #f5e6d8;
+  --bg-mission-b: #e8c9b0;
+  /* Light image overlays — translucent warm cream wash */
+  --bg-overlay-a: rgba(250, 235, 220, 0.28);
+  --bg-overlay-b: rgba(200, 160, 130, 0.18);
+  --bg-overlay-c: rgba(210, 170, 140, 0.12);
+
+  /* ── Tint family: surface/near-white rgba(250,245,240) ── */
+  /* Mirrors dark theme's surface tints but fades to warm white */
+  --surface-15: rgba(250, 245, 240, 0.15);
+  --surface-20: rgba(250, 245, 240, 0.2);
+  --surface-30: rgba(250, 245, 240, 0.3);
+  --surface-50: rgba(250, 245, 240, 0.5);
+  --surface-70: none;
+  --surface-80: none;
+  --surface-85: rgba(250, 245, 240, 0.85);
+  --surface-95: rgba(250, 245, 240, 0.95);
+  --surface-97: rgba(250, 245, 240, 0.97);
+  --surface-100: rgba(250, 245, 240, 1);
+
+  /* ── Tint family: outline/brown rgba(120,80,60) ── */
+  /* Lightened brown family for light-theme borders */
+  --outline-12: rgba(120, 80, 60, 0.12);
+  --outline-15: rgba(120, 80, 60, 0.15);
+  --outline-20: rgba(120, 80, 60, 0.2);
+  --outline-25: rgba(120, 80, 60, 0.25);
+  --outline-30: rgba(120, 80, 60, 0.3);
+  --outline-40: rgba(120, 80, 60, 0.4);
+  --outline-50: rgba(120, 80, 60, 0.5);
+
+  /* ── Tint family: primary-container/orange rgba(224,78,20) ── */
+  /* Slightly deeper orange so tints remain visible on white */
+  --primary-04: rgba(224, 78, 20, 0.04);
+  --primary-06: rgba(224, 78, 20, 0.06);
+  --primary-07: rgba(224, 78, 20, 0.07);
+  --primary-08: rgba(224, 78, 20, 0.08);
+  --primary-10: rgba(224, 78, 20, 0.1);
+  --primary-12: rgba(224, 78, 20, 0.12);
+  --primary-15: rgba(224, 78, 20, 0.15);
+  --primary-20: rgba(224, 78, 20, 0.2);
+  --primary-25: rgba(224, 78, 20, 0.25);
+  --primary-30: rgba(224, 78, 20, 0.3);
+  --primary-35: rgba(224, 78, 20, 0.35);
+  --primary-40: rgba(224, 78, 20, 0.4);
+  --primary-45: rgba(224, 78, 20, 0.45);
+  --primary-50: rgba(224, 78, 20, 0.5);
+  --primary-70: rgba(224, 78, 20, 0.7);
+
+  /* ── Tint family: primary-lighter/peach rgba(232,114,61) ── */
+  /* Adjusted peach to match lighter primary-lighter */
+  --peach-08: rgba(232, 114, 61, 0.08);
+  --peach-10: rgba(232, 114, 61, 0.1);
+  --peach-15: rgba(232, 114, 61, 0.15);
+  --peach-30: rgba(232, 114, 61, 0.3);
+  --peach-40: rgba(232, 114, 61, 0.4);
+
+  /* ── Tint family: on-surface/dark-text rgba(26,18,16) ── */
+  /* Dark text at opacity — replaces light text tints */
+  --on-surface-55: rgba(26, 18, 16, 0.55);
+  --on-surface-60: rgba(26, 18, 16, 0.6);
+  --on-surface-75: rgba(26, 18, 16, 0.75);
+  --on-surface-80: rgba(26, 18, 16, 0.8);
+  --on-surface-85: rgba(26, 18, 16, 0.85);
+
+  /* ── One-off overlay colors ── */
+  --overlay-black-60: rgba(80, 50, 30, 0.45); /* dropdown shadow — warm brown */
+  --overlay-black-75: rgba(80, 50, 30, 0.5); /* modal backdrop — warm brown */
+  --overlay-deep-50: rgba(230, 210, 195, 0.55); /* mobile card gradient mid */
+  --overlay-deep-92: rgba(220, 205, 195, 0.95); /* mobile card gradient base */
+  --overlay-nav-glow: rgba(180, 100, 40, 0.1); /* nav box-shadow */
+  --overlay-bio-hint: rgba(250, 240, 230, 0.8); /* cast bio hint bg */
+  --overlay-outline-10: rgba(120, 80, 60, 0.08); /* btn-outline hover bg */
+  --overlay-white-10: rgba(255, 255, 255, 0.2); /* button shimmer */
+
+  /* ── Semantic aliases ── */
+  --dark-border: rgba(120, 80, 60, 0.1); /* border lines */
+  --nav-bg: rgba(250, 245, 240, 0.88); /* nav backdrop */
+  --dropdown-bg: rgba(242, 237, 233, 0.98);
+
+  --nav-text-color: rgba(87, 87, 87, 0.7);
+}
+
+:root {
+  /* ── Fonts ── */
+  --font-serif: "Noto Serif", serif;
+  --font-sans: "Work Sans", sans-serif;
+
+  /* ── Fluid spacing ── */
+  --space-xs: clamp(8px, 1vw, 12px);
+  --space-sm: clamp(12px, 2vw, 24px);
+  --space-md: clamp(24px, 3vw, 48px);
+  --space-lg: clamp(48px, 5vw, 96px);
+  --space-xl: clamp(64px, 8vw, 160px);
+
+  --pad-x: clamp(20px, 5vw, 48px);
+}
+
+/* ── Base element styles ── */
+body {
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-sans);
+  color: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+}
+::-webkit-scrollbar-corner {
+  background: var(--surface);
+}

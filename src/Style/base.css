@@ -7,10 +7,9 @@
   padding: 0;
 }
 
-/* ══════════════════════════════════════════════════════════
-   CSS VARIABLES
-   ══════════════════════════════════════════════════════════ */
-:root {
+/* SWITCH BETWEEN :root and .dark-theme */
+/* .dark-theme { */
+:root { 
   /* ── Surfaces ── */
   --surface: #131313;
   --surface-low: #1c1b1b;
@@ -123,6 +122,10 @@
   --nav-bg: rgba(19, 19, 19, 0.8); /* nav backdrop = surface-80 */
   --dropdown-bg: rgba(19, 19, 19, 0.97); /* dropdown panel = surface-97 */
 
+  --nav-text-color: rgba(229,226,225,0.7);
+}
+
+:root {
   /* ── Fonts ── */
   --font-serif: "Noto Serif", serif;
   --font-sans: "Work Sans", sans-serif;

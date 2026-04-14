@@ -4,18 +4,19 @@ import "../Style/index.css";
 
 function TheaHero() {
   return (
-    <section style={{ position: "relative", height: 560, display: "flex", alignItems: "flex-end", padding: "0 48px 96px", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
-      <div className="horse-background" style={{ position: "absolute", inset: 0 }} />
-      <div style={{ position: "absolute", inset: 0, opacity: .2, backgroundImage: "radial-gradient(ellipse at 40% 30%,rgba(249,94,20,0.7) 0%,transparent 55%)" }} />
-      <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
-        <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>
-          Spirit of Fire · Essay
-        </span>
-        <h1 className="display-xl color-on-surface" style={{ lineHeight: .88, marginBottom: 28 }}>Theatology</h1>
-        <p className="serif-italic color-outline" style={{ fontSize: 15, letterSpacing: ".1em" }}>
-          The Theology of Theatre
-        </p>
+    <section style={{ position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px" }}>
+        <div className="participate-hero__bg-base" />
+        <div className="participate-hero__bg-fade" />
+        <div className="participate-hero__bg-glow" />
+        <div className="horse-background" style={{ position: "absolute", inset: 0, opacity:0.1 }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
+          <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Spirit of Fire · Essay</span>
+          <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>Theatology</h1>
+          <p className="body-md color-on-surface-var" style={{ fontSize: 17, maxWidth: 540 }}>
+            The Theology of Theatre
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -23,8 +24,8 @@ function TheaHero() {
 
 function TheaLede() {
   return (
-    <section className="bg-surface-lowest" style={{ borderBottom: "1px solid rgba(89,66,56,0.15)" }}>
-      <div className="essay-container" style={{ padding: "80px 48px" }}>
+    <section className="bg-surface-lowest" style={{ borderBottom: "1px solid var(--outline-15)" }}>
+      <div className="essay-container" style={{ padding: "80px var(--pad-x)" }}>
         <h2 className="serif-italic color-on-surface" style={{ fontSize: 34, lineHeight: 1.25 }}>
           What does Theatre mean to a Christian?
         </h2>
@@ -35,8 +36,8 @@ function TheaLede() {
 
 function TheaBody() {
   return (
-    <section className="pat bg-surface-low">
-      <div className="essay-container" style={{ padding: "80px 48px 0" }}>
+    <section className="bg-surface-low">
+      <div className="essay-container" style={{ padding: "80px var(--pad-x) 0" }}>
 
         <p className="essay-prose">
           In a world of so many forms and facets of Theatre, it is easy to believe that art is bigger than one philosophy. Why constrain yourself, when so many stories and such a vast amount of art exists? Because <span className="essay-strong">there is some objectivity in theatre</span>, and without guiding principals you drown in the noise of mediocrity. We all know from experience that there are inferior forms of theatrical expression, so the contention is not whether that is the case, but how to avoid theatre that does not resonate with the world.
@@ -90,7 +91,7 @@ function TheaBody() {
 
       </div>
 
-      <div className="essay-container" style={{ padding: "64px 48px 96px" }}>
+      <div className="essay-container" style={{ padding: "64px var(--pad-x) 96px" }}>
         <div className="essay-closing">
           <span className="color-primary-container" style={{ fontSize: 24, display: "block", marginBottom: 20 }}>✦</span>
           <blockquote className="serif-italic color-on-surface essay-closing__quote">
@@ -106,7 +107,6 @@ function TheaBody() {
 }
 
 export default function TheatologyPage() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <main>
       <TheaHero />
