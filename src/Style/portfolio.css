@@ -297,7 +297,7 @@
   grid-template-columns: 80px 2fr 2fr 1fr 60px 80px;
   gap: 16px;
   padding: 10px 16px;
-  border-bottom: 3px solid rgba(89, 66, 56, 0.1);
+  border-bottom: 3px solid var(--dark-border);
   align-items: center;
   cursor: pointer;
   transition: background 0.2s;
@@ -492,14 +492,14 @@
 
 .port-modal__synopsis {
   padding: 28px 40px;
-  border-bottom: 1px solid rgba(89, 66, 56, 0.1);
+  border-bottom: 1px solid var(--dark-border);
 }
 
 /* Sample / excerpt block */
 .port-modal__sample {
   padding: 28px 40px;
   background: var(--surface-lowest);
-  border-bottom: 1px solid rgba(89, 66, 56, 0.1);
+  border-bottom: 1px solid var(--dark-border);
   overflow: visible;
 }
 
@@ -518,7 +518,7 @@
 /* Music link / generic actions */
 .port-modal__actions {
   padding: 24px 40px;
-  border-bottom: 1px solid rgba(89, 66, 56, 0.1);
+  border-bottom: 1px solid var(--dark-border);
 }
 
 .port-modal__action-btn {

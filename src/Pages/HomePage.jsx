@@ -28,7 +28,7 @@ function HomeHero() {
           <button className="btn-primary" onClick={() => navigate("/productions", { state: productions[0] })}>Productions</button>
           <div className="team-mission-hero__statement-ornament">
             <div className="team-mission-hero__ornament-line" />
-            <span className="team-mission-hero__ornament-glyph">✦</span>
+            <span className="team-mission-hero__ornament-glyph">✦</span> 
             <div className="team-mission-hero__ornament-line" />
           </div>
         </div>
@@ -265,7 +265,14 @@ function HomeCTA() {
         </p>
         <div className="flex-row" style={{ justifyContent: "center", gap: 20 }}>
           <button className="btn-primary" onClick={() => navigate("/participate")}>Get Involved</button>
-          <button className="btn-ghost-primary" onClick={() => navigate("/tickets")}>Tickets</button>
+          <a
+            href={"https://events.ticketleap.com/events/spirit-of-fire"}
+            target="_blank"
+            id="btn-constructor"
+            rel="noreferrer"
+            className="btn-ghost-primary"
+            style={{ textDecoration: "none", display:"flex", justifyContent:"center" }}
+          >Tickets</a>
           <button className="btn-ghost" onClick={() => navigate("/about-us")}>Our Mission</button>
         </div>
       </div>

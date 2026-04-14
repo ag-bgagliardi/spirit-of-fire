@@ -1560,7 +1560,7 @@
 .footer {
   background: var(--surface);
   padding: clamp(48px, 6vw, 80px) 0 32px;
-  border-top: 1px solid rgba(89, 66, 56, 0.1);
+  border-top: 1px solid var(--dark-border);
 }
 .footer__grid {
   max-width: 1200px;
