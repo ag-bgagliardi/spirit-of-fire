@@ -7,8 +7,11 @@
   padding: 0;
 }
 
-/* ── CSS Variables ── */
+/* ══════════════════════════════════════════════════════════
+   CSS VARIABLES
+   ══════════════════════════════════════════════════════════ */
 :root {
+  /* ── Surfaces ── */
   --surface: #131313;
   --surface-low: #1c1b1b;
   --surface-lowest: #0e0e0e;
@@ -18,26 +21,113 @@
   --surface-light: #848080d5;
   --surface-lightest: #a6a2a2;
 
+  /* ── Primary ── */
   --primary: #ffb59a;
   --primary-container: #f95e14;
   --primary-lighter: #fb8a51;
+  --primary-deep: #c43a00;
   --on-primary: #5b1b00;
   --on-primary-container: #4f1700;
 
+  /* ── Secondary ── */
   --secondary: #f9d314;
   --secondary-container: #e2bc00;
 
+  /* ── On-surface ── */
   --on-surface: #e5e2e1;
   --on-surface-variant: #e0c0b2;
   --outline: #a88a7e;
   --outline-variant: #594238;
 
+  /* ── Tertiary ── */
   --tertiary: #d4bbff;
   --tertiary-container: #a37cea;
 
+  /* ── Scene background hex colors ── */
+  /* Dark near-black hero bases */
+  --bg-hero-a: #0a0000;
+  --bg-hero-b: #1a0800;
+  --bg-hero-c: #0d0500;
+  /* Dark red-brown mission/team hero bases */
+  --bg-mission-a: #1a0500;
+  --bg-mission-b: #0a0200;
+  /* Warm dark image overlays */
+  --bg-overlay-a: #1a0800;
+  --bg-overlay-b: #0a0300;
+  --bg-overlay-c: #050201;
+
+  /* ── Tint family: surface/near-black rgba(19,19,19) ── */
+  --surface-15: rgba(19, 19, 19, 0.15);
+  --surface-20: rgba(19, 19, 19, 0.2);
+  --surface-30: rgba(19, 19, 19, 0.3);
+  --surface-50: rgba(19, 19, 19, 0.5);
+  --surface-70: rgba(19, 19, 19, 0.7);
+  --surface-80: rgba(19, 19, 19, 0.8);
+  --surface-85: rgba(19, 19, 19, 0.85);
+  --surface-95: rgba(19, 19, 19, 0.95);
+  --surface-97: rgba(19, 19, 19, 0.97);
+  --surface-100: rgba(19, 19, 19, 1);
+
+  /* ── Tint family: outline/brown rgba(89,66,56) ── */
+  --outline-12: rgba(89, 66, 56, 0.12);
+  --outline-15: rgba(89, 66, 56, 0.15);
+  --outline-20: rgba(89, 66, 56, 0.2);
+  --outline-25: rgba(89, 66, 56, 0.25);
+  --outline-30: rgba(89, 66, 56, 0.3);
+  --outline-40: rgba(89, 66, 56, 0.4);
+  --outline-50: rgba(89, 66, 56, 0.5);
+
+  /* ── Tint family: primary-container/orange rgba(249,94,20) ── */
+  --primary-04: rgba(249, 94, 20, 0.04);
+  --primary-06: rgba(249, 94, 20, 0.06);
+  --primary-07: rgba(249, 94, 20, 0.07);
+  --primary-08: rgba(249, 94, 20, 0.08);
+  --primary-10: rgba(249, 94, 20, 0.1);
+  --primary-12: rgba(249, 94, 20, 0.12);
+  --primary-15: rgba(249, 94, 20, 0.15);
+  --primary-20: rgba(249, 94, 20, 0.2);
+  --primary-25: rgba(249, 94, 20, 0.25);
+  --primary-30: rgba(249, 94, 20, 0.3);
+  --primary-35: rgba(249, 94, 20, 0.35);
+  --primary-40: rgba(249, 94, 20, 0.4);
+  --primary-45: rgba(249, 94, 20, 0.45);
+  --primary-50: rgba(249, 94, 20, 0.5);
+  --primary-70: rgba(249, 94, 20, 0.7);
+
+  /* ── Tint family: primary-lighter/peach rgba(255,181,154) ── */
+  --peach-08: rgba(255, 181, 154, 0.08);
+  --peach-10: rgba(255, 181, 154, 0.1);
+  --peach-15: rgba(255, 181, 154, 0.15);
+  --peach-30: rgba(255, 181, 154, 0.3);
+  --peach-40: rgba(255, 181, 154, 0.4);
+
+  /* ── Tint family: on-surface/light-text rgba(229,226,225) ── */
+  --on-surface-55: rgba(229, 226, 225, 0.55);
+  --on-surface-60: rgba(229, 226, 225, 0.6);
+  --on-surface-75: rgba(229, 226, 225, 0.75);
+  --on-surface-80: rgba(229, 226, 225, 0.8);
+  --on-surface-85: rgba(229, 226, 225, 0.85);
+
+  /* ── One-off overlay colors ── */
+  --overlay-black-60: rgba(0, 0, 0, 0.6); /* dropdown shadow */
+  --overlay-black-75: rgba(0, 0, 0, 0.75); /* modal backdrop */
+  --overlay-deep-50: rgba(10, 3, 0, 0.5); /* mobile card gradient mid */
+  --overlay-deep-92: rgba(10, 3, 0, 0.92); /* mobile card gradient base */
+  --overlay-nav-glow: rgba(128, 42, 0, 0.15); /* nav box-shadow */
+  --overlay-bio-hint: rgba(13, 8, 5, 0.65); /* cast bio hint bg */
+  --overlay-outline-10: rgba(168, 138, 126, 0.1); /* btn-outline hover bg */
+  --overlay-white-10: rgba(255, 255, 255, 0.1); /* button shimmer */
+
+  /* ── Semantic aliases ── */
+  --dark-border: rgba(89, 66, 56, 0.1); /* reuses outline-10 logic */
+  --nav-bg: rgba(19, 19, 19, 0.8); /* nav backdrop = surface-80 */
+  --dropdown-bg: rgba(19, 19, 19, 0.97); /* dropdown panel = surface-97 */
+
+  /* ── Fonts ── */
   --font-serif: "Noto Serif", serif;
   --font-sans: "Work Sans", sans-serif;
 
+  /* ── Fluid spacing ── */
   --space-xs: clamp(8px, 1vw, 12px);
   --space-sm: clamp(12px, 2vw, 24px);
   --space-md: clamp(24px, 3vw, 48px);
@@ -45,11 +135,9 @@
   --space-xl: clamp(64px, 8vw, 160px);
 
   --pad-x: clamp(20px, 5vw, 48px);
-
-  --dark-border: rgba(89, 66, 56, 0.1);
 }
 
-/* ── Base ── */
+/* ── Base element styles ── */
 body {
   background: var(--surface);
   color: var(--on-surface);
@@ -76,11 +164,11 @@ select {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #131313;
+  background: var(--surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: #594238;
+  background: var(--outline-variant);
 }
 ::-webkit-scrollbar-corner {
-  background: #131313;
+  background: var(--surface);
 }

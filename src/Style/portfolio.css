@@ -1,12 +1,6 @@
 /* ════════════════════════════════════════════
    PORTFOLIO PAGE
-   Scoped to .port- prefix
-   ════════════════════════════════════════════ */
-
-/* ── Hero ── */
-/* ════════════════════════════════════════════
-   portJAMIN PAGE
-   All selectors are prefixed .port- to avoid
+   All selectors prefixed .port- to avoid
    collisions with global styles.
    ════════════════════════════════════════════ */
 
@@ -14,8 +8,6 @@
 .port-page {
   min-height: 100vh;
 }
-
-/* ── Body wrapper ── */
 .port-body {
   padding-top: var(--space-lg);
   padding-bottom: var(--space-xl);
@@ -26,7 +18,7 @@
   background: linear-gradient(
     to right,
     var(--primary-container),
-    rgba(89, 66, 56, 0.15),
+    var(--outline-15),
     transparent
   );
   margin: var(--space-lg) 0;
@@ -36,14 +28,12 @@
 .port-section {
   margin-bottom: 0;
 }
-
 .port-section-label {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-bottom: 40px;
 }
-
 .port-section-label__line {
   width: 40px;
   height: 2px;
@@ -65,7 +55,7 @@
 /* ════ THEATRE TABLE ════ */
 .port-theatre-table {
   width: 100%;
-  border-top: 3px solid rgba(89, 66, 56, 0.2);
+  border-top: 3px solid var(--outline-20);
 }
 
 .port-theatre-row__icon {
@@ -83,7 +73,6 @@
   color: var(--on-surface);
   line-height: 1.4;
 }
-
 .port-theatre-row.hov .port-theatre-row__title {
   color: var(--primary);
 }
@@ -96,7 +85,6 @@
 }
 
 /* ════ WRITING ════ */
-
 .port-writing-item__year {
   font-size: 10px;
   color: var(--primary-container);
@@ -122,11 +110,9 @@
   position: relative;
   overflow: hidden;
 }
-
 .port-music-card:hover {
   background: var(--surface-high);
 }
-
 .port-music-card::before {
   content: "";
   position: absolute;
@@ -137,7 +123,6 @@
   background: var(--primary-container);
   transition: height 0.35s ease;
 }
-
 .port-music-card:hover::before {
   height: 100%;
 }
@@ -149,7 +134,6 @@
   line-height: 1;
   margin-bottom: 4px;
 }
-
 .port-music-card__title {
   font-family: var(--font-serif);
   font-style: italic;
@@ -157,7 +141,6 @@
   color: var(--on-surface);
   line-height: 1.3;
 }
-
 .port-music-card__style {
   font-size: 10px;
   text-transform: uppercase;
@@ -165,7 +148,6 @@
   color: var(--outline);
   font-weight: 500;
 }
-
 .port-music-card__year {
   font-size: 11px;
   color: var(--primary-container);
@@ -179,6 +161,7 @@
   }
 }
 
+/* ── Hero ── */
 .port-hero {
   position: relative;
   min-height: 60vh;
@@ -202,11 +185,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse at 70% 40%,
-      rgba(249, 94, 20, 0.07) 0%,
-      transparent 55%
-    ),
+    radial-gradient(ellipse at 70% 40%, var(--primary-07) 0%, transparent 55%),
     linear-gradient(to bottom, transparent 50%, var(--surface) 100%);
 }
 
@@ -237,7 +216,6 @@
   line-height: 0.88;
   margin: 0;
 }
-
 .port-hero__sub {
   line-height: 1.85;
   margin: 20px;
@@ -250,13 +228,11 @@
   gap: 24px;
   padding-top: 8px;
 }
-
 .port-hero__stat {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-
 .port-hero__stat-num {
   font-family: var(--font-serif);
   font-style: italic;
@@ -264,7 +240,6 @@
   color: var(--primary-container);
   line-height: 1;
 }
-
 .port-hero__stat-label {
   font-size: 9px;
   text-transform: uppercase;
@@ -272,11 +247,10 @@
   color: var(--outline);
   font-weight: 600;
 }
-
 .port-hero__stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(89, 66, 56, 0.3);
+  background: var(--outline-30);
 }
 
 /* ── Script table ── */
@@ -303,7 +277,6 @@
   transition: background 0.2s;
   position: relative;
 }
-
 .port-script-row::before {
   content: "";
   position: absolute;
@@ -314,19 +287,15 @@
   background: var(--primary-container);
   transition: width 0.8s ease;
 }
-
 .port-script-row:last-child {
   border-bottom: none;
 }
-
 .port-script-row.hov {
-  background: rgba(249, 94, 20, 0.04);
+  background: var(--primary-04);
 }
-
 .port-script-row.hov::before {
   width: 100%;
 }
-
 .port-script-row.hov .port-theatre-row__title {
   color: var(--primary);
 }
@@ -335,7 +304,6 @@
   display: flex;
   justify-content: flex-end;
 }
-
 .port-script-row__badge {
   font-size: 8px;
   text-transform: uppercase;
@@ -347,13 +315,12 @@
 
 .port-script-row__badge--buy {
   color: var(--primary-container);
-  border-color: rgba(249, 94, 20, 0.4);
-  background: rgba(249, 94, 20, 0.06);
+  border-color: var(--primary-40);
+  background: var(--primary-06);
 }
-
 .port-script-row__badge--read {
   color: var(--outline);
-  border-color: rgba(89, 66, 56, 0.3);
+  border-color: var(--outline-30);
 }
 
 /* ── Poem grid ── */
@@ -373,7 +340,6 @@
   gap: 12px;
   position: relative;
 }
-
 .port-poem-card::before {
   content: "";
   position: absolute;
@@ -384,11 +350,9 @@
   background: var(--primary-container);
   transition: width 0.35s ease;
 }
-
 .port-poem-card.hov {
   background: var(--surface-high);
 }
-
 .port-poem-card.hov::before {
   width: 100%;
 }
@@ -399,7 +363,6 @@
   align-items: baseline;
   gap: 12px;
 }
-
 .port-poem-card__title {
   font-size: 15px;
   font-style: italic;
@@ -407,26 +370,21 @@
   transition: color 0.2s;
   line-height: 1.3;
 }
-
 .port-poem-card.hov .port-poem-card__title {
   color: var(--primary);
 }
-
 .port-poem-card__bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .port-poem-card__arrow {
   font-size: 14px;
   width: 32px;
   height: 32px;
   background-image: url("../Assets/icons/open-book-open.png");
-  transition:
-    transform 0.2s;
+  transition: transform 0.2s;
 }
-
 .port-poem-card.hov .port-poem-card__arrow {
   transform: translateX(4px);
   background-image: url("../Assets/icons/open-book.png");
@@ -442,10 +400,9 @@
   width: 100%;
   max-height: 85vh;
   background: var(--surface-low);
-  border: 1px solid rgba(89, 66, 56, 0.25);
+  border: 1px solid var(--outline-25);
   overflow-y: auto;
 }
-
 .port-modal::-webkit-scrollbar {
   width: 2px;
 }
@@ -462,19 +419,16 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .port-modal__meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .port-modal__title {
   font-size: clamp(26px, 4vw, 38px);
   line-height: 1.1;
   color: var(--on-surface);
 }
-
 .port-modal__pill {
   align-self: flex-start;
 }
@@ -484,7 +438,7 @@
   background: linear-gradient(
     to right,
     var(--primary-container),
-    rgba(89, 66, 56, 0.15),
+    var(--outline-15),
     transparent
   );
   margin: 0 40px;
@@ -495,14 +449,12 @@
   border-bottom: 1px solid var(--dark-border);
 }
 
-/* Sample / excerpt block */
 .port-modal__sample {
   padding: 28px 40px;
   background: var(--surface-lowest);
   border-bottom: 1px solid var(--dark-border);
   overflow: visible;
 }
-
 .port-modal__sample-text {
   font-family: var(--font-serif);
   font-style: italic;
@@ -511,28 +463,24 @@
   color: var(--on-surface-variant);
   white-space: pre-wrap;
   margin: 0;
-  border-left: 2px solid rgba(249, 94, 20, 0.3);
+  border-left: 2px solid var(--primary-30);
   padding-left: 20px;
 }
 
-/* Music link / generic actions */
 .port-modal__actions {
   padding: 24px 40px;
   border-bottom: 1px solid var(--dark-border);
 }
-
 .port-modal__action-btn {
   display: inline-block;
   text-decoration: none;
 }
 
-/* Purchase block */
 .port-modal__purchase {
   padding: 28px 40px;
-  background: rgba(249, 94, 20, 0.04);
-  border-top: 1px solid rgba(249, 94, 20, 0.15);
+  background: var(--primary-04);
+  border-top: 1px solid var(--primary-15);
 }
-
 .port-modal__purchase-inner {
   display: flex;
   align-items: center;
@@ -540,7 +488,6 @@
   gap: 24px;
   flex-wrap: wrap;
 }
-
 .port-modal__purchase-note {
   font-size: 13px;
   line-height: 1.6;
@@ -561,11 +508,9 @@
   .port-script-row > :nth-child(3) {
     display: none;
   }
-
   .port-poem-grid {
     grid-template-columns: 1fr 1fr;
   }
-
   .port-modal__header,
   .port-modal__synopsis,
   .port-modal__sample,
@@ -574,11 +519,9 @@
     padding-left: 24px;
     padding-right: 24px;
   }
-
   .port-modal__divider {
     margin: 0 24px;
   }
-
   .port-modal__purchase-inner {
     flex-direction: column;
     align-items: flex-start;

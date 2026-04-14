@@ -1,5 +1,4 @@
 /* ── Primary ── */
-
 .btn-primary {
   position: relative;
   overflow: hidden;
@@ -13,7 +12,7 @@
   color: var(--on-primary-container);
   background: linear-gradient(
     10deg,
-    #c43a00 10%,
+    var(--primary-deep) 10%,
     var(--primary-container) 40%,
     var(--primary-lighter) 100%
   );
@@ -42,7 +41,7 @@
 .btn-ghost-primary:hover,
 .btn-ghost:hover {
   background-position: right center;
-  box-shadow: 0 0 5px rgba(249, 94, 20, 0.45);
+  box-shadow: 0 0 5px var(--primary-45);
 }
 .btn-primary::before,
 .btn-ghost-primary:before,
@@ -56,7 +55,7 @@
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    var(--overlay-white-10),
     transparent
   );
   transition: 0.65s;
@@ -82,7 +81,6 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  /* border: none; */
   cursor: pointer;
   color: var(--on-surface);
   border: 1px solid var(--outline-variant);
@@ -93,12 +91,10 @@
     opacity 0.25s,
     box-shadow 0.25s;
 }
-/* .btn-ghost:hover  { background: rgba(89,66,56,0.2); color: var(--primary); border-color: var(--primary); }
-.btn-ghost:active { opacity: .8; } */
 
 /* ── Ghost (primary border) ── */
 .btn-ghost-primary {
-  border: 1px solid rgba(255, 181, 154, 0.3);
+  border: 1px solid var(--peach-30);
   color: var(--primary);
   padding: clamp(10px, 1.5vw, 16px) clamp(24px, 4vw, 40px);
   font-size: clamp(10px, 1.2vw, 12px);
@@ -115,7 +111,7 @@
   overflow: hidden;
 }
 .btn-ghost-primary:hover {
-  background: rgba(255, 181, 154, 0.08);
+  background: var(--peach-08);
   border-color: var(--primary);
 }
 .btn-ghost-primary:active {
@@ -139,7 +135,7 @@
     border-color 0.25s;
 }
 .btn-outline:hover {
-  background: rgba(168, 138, 126, 0.1);
+  background: var(--overlay-outline-10);
   color: var(--primary);
   border-color: var(--primary);
 }
@@ -227,7 +223,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  box-shadow: 0 10px 30px rgba(249, 94, 20, 0.2);
+  box-shadow: 0 10px 30px var(--primary-20);
   border: none;
   cursor: pointer;
   font-family: var(--font-sans);
@@ -243,7 +239,7 @@
 }
 .submit-btn:not(.submit-btn--disabled):hover {
   opacity: 0.88;
-  box-shadow: 0 14px 36px rgba(249, 94, 20, 0.35);
+  box-shadow: 0 14px 36px var(--primary-35);
 }
 .submit-btn:not(.submit-btn--disabled):active {
   opacity: 0.75;
@@ -257,7 +253,7 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   background: var(--surface-highest);
-  border: 1px solid rgba(89, 66, 56, 0.3);
+  border: 1px solid var(--outline-30);
   color: var(--on-surface);
   transition: all 0.5s;
   cursor: pointer;
@@ -282,7 +278,7 @@
   color: var(--on-primary-container);
   background: linear-gradient(
     10deg,
-    #c43a00 10%,
+    var(--primary-deep) 10%,
     var(--primary-container) 40%,
     var(--primary-lighter) 100%
   );
@@ -295,7 +291,7 @@
 }
 .ticket-button:hover {
   background-position: right center;
-  box-shadow: 0 0 5px rgba(249, 94, 20, 0.45);
+  box-shadow: 0 0 5px var(--primary-45);
 }
 .ticket-button::before {
   content: "";
@@ -307,7 +303,7 @@
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    var(--overlay-white-10),
     transparent
   );
   transition: 0.65s;

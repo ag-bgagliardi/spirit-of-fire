@@ -94,7 +94,7 @@
   background: linear-gradient(
     to right,
     var(--primary-container),
-    rgba(89, 66, 56, 0.2),
+    var(--outline-20),
     transparent
   );
 }
@@ -104,7 +104,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse at center,
-    rgba(249, 94, 20, 0.07) 0%,
+    var(--primary-07) 0%,
     transparent 70%
   );
 }
@@ -153,5 +153,5 @@
 .leadership-title {
   padding-bottom: 40px;
   margin-bottom: 40px !important;
-  border-bottom: 1px solid rgba(89, 66, 56, 0.2);
+  border-bottom: 1px solid var(--outline-20);
 }

@@ -2,6 +2,12 @@
    RESPONSIVE BREAKPOINTS
    ════════════════════════════════════════════ */
 
+/* ── Mission overflow fix (all screen sizes) ── */
+.mission-hero,
+.mission-statement {
+  overflow-x: hidden;
+}
+
 /* ── Tablet (≤900px) ── */
 @media (max-width: 900px) {
   /* Layout */
@@ -22,13 +28,44 @@
     grid-template-rows: auto;
   }
 
+  /* Home */
+  .home-image-icon-container {
+    transform: none;
+  }
+  .hero_top_tag {
+    font-size: 0.9em;
+  }
+
   /* Mission */
+  .mission-hero__rule {
+    display: none;
+  }
+  .mission-hero__inner {
+    padding-top: 100px;
+    gap: 28px;
+  }
+  .mission-hero__sub {
+    max-width: 100%;
+  }
   .mission-statement__grid {
     grid-template-columns: 1fr;
     padding: 0px;
   }
   .mission-statement__image-frame {
     display: none;
+  }
+  .mission-statement__statement-wrap {
+    grid-template-columns: 1fr;
+  }
+  .mission-statement__emblem-wrap {
+    display: none;
+  }
+  .mission-statement__ideals-wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .mission-statement__ideals-header {
+    position: static;
   }
   .warehouse-grid {
     grid-template-columns: 1fr;
@@ -58,7 +95,7 @@
   }
   .jump-card {
     border-right: none !important;
-    border-bottom: 1px solid rgba(89, 66, 56, 0.2);
+    border-bottom: 1px solid var(--outline-20);
   }
 
   /* Tickets */
@@ -74,7 +111,7 @@
   .performance-summary {
     position: static;
     border-left: none;
-    border-top: 1px solid rgba(255, 181, 154, 0.15);
+    border-top: 1px solid var(--peach-15);
   }
   .show-selector-grid {
     grid-template-columns: 1fr;
@@ -142,94 +179,6 @@
     max-width: 100%;
     font-size: 15px;
   }
-  /* ════════════════════════════════════════════
-   MOBILE SHOW CARD OVERLAY
-   Append to shared.css after the existing
-   .show-card_badge / .show-card_title rules
-   ════════════════════════════════════════════ */
-
-  /* Hidden on desktop */
-  .show-card_mobile-overlay {
-    display: none;
-  }
-
-  @media (max-width: 700px) {
-    /* Hide the desktop text/button that sit below the image */
-    .show-card_title,
-    .show-card > .label-xs,
-    .show-card > .reserve-ticket-button {
-      display: none !important;
-    }
-
-    /* Make image wrapper square-ish rather than portrait */
-    .show-card_image-wrap {
-      margin-bottom: 0;
-      padding-top: 110%;
-    }
-
-    /* Heavier gradient so overlay text is always readable */
-    .show-card_gradient {
-      background: linear-gradient(
-        to top,
-        rgba(10, 3, 0, 0.92) 0%,
-        rgba(10, 3, 0, 0.5) 40%,
-        transparent 70%
-      );
-    }
-
-    /* The overlay block is inside .show-card_image-wrap */
-    .show-card_mobile-overlay {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px;
-      z-index: 5;
-      gap: 6px;
-    }
-
-    .show-card_mobile-overlay__title {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(20px, 5vw, 26px);
-      color: var(--on-surface);
-      line-height: 1.1;
-    }
-
-    .show-card_mobile-overlay__dates {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: rgba(229, 226, 225, 0.55);
-      margin-bottom: 12px;
-    }
-
-    .show-card_mobile-overlay__btn {
-      width: 100%;
-      padding: 14px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      background: var(--primary-container);
-      color: var(--on-primary-container);
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      transition: background 0.2s;
-    }
-
-    .show-card_mobile-overlay__btn:active {
-      background: var(--primary);
-    }
-
-    /* ProdCard: same treatment — hide desktop elements */
-    .prod-card-desktop-meta {
-      display: none;
-    }
-  }
   .cast-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     column-gap: 24px;
@@ -257,6 +206,85 @@
     top: 12px;
     right: 12px;
   }
+  .cast-card__bio-text {
+    font-size: 18px;
+  }
+}
+
+/* ── Mobile show card overlay (≤700px) ── */
+.show-card_mobile-overlay {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .show-card_title,
+  .show-card > .label-xs,
+  .show-card > .reserve-ticket-button {
+    display: none !important;
+  }
+
+  .show-card_image-wrap {
+    margin-bottom: 0;
+    padding-top: 110%;
+  }
+
+  .show-card_gradient {
+    background: linear-gradient(
+      to top,
+      var(--overlay-deep-92) 0%,
+      var(--overlay-deep-50) 40%,
+      transparent 70%
+    );
+  }
+
+  .show-card_mobile-overlay {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    z-index: 5;
+    gap: 6px;
+  }
+
+  .show-card_mobile-overlay__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(20px, 5vw, 26px);
+    color: var(--on-surface);
+    line-height: 1.1;
+  }
+
+  .show-card_mobile-overlay__dates {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--on-surface-55);
+    margin-bottom: 12px;
+  }
+
+  .show-card_mobile-overlay__btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.2s;
+  }
+  .show-card_mobile-overlay__btn:active {
+    background: var(--primary);
+  }
+  .prod-card-desktop-meta {
+    display: none;
+  }
 }
 
 /* ── Mobile (≤600px) ── */
@@ -274,6 +302,37 @@
   }
   .hero_card {
     display: none;
+  }
+  .home-image-icon-container {
+    transform: none;
+  }
+  .hero_top_tag {
+    font-size: 0.6em;
+    padding: 5px;
+  }
+
+  /* Mission hero */
+  .mission-hero__title {
+    font-size: clamp(44px, 12vw, 72px);
+  }
+  .mission-hero__ornament {
+    display: none;
+  }
+
+  /* Mission statement */
+  .mission-statement__quote {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+  .mission-statement__quote::before {
+    font-size: clamp(48px, 12vw, 72px);
+  }
+  .mission-statement__ideal-item {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .mission-statement__ideals-title {
+    font-size: clamp(28px, 7vw, 40px);
   }
 
   /* Team */
@@ -321,282 +380,7 @@
   .section-cta-bordered__inner h2 {
     font-size: clamp(28px, 6vw, 44px);
   }
-}
 
-@media (max-width: 900px) {
-  /* Mission hero */
-  .mission-hero__rule {
-    display: none;
-  }
-  .mission-hero__inner {
-    padding-top: 100px;
-    gap: 28px;
-  }
-  .mission-hero__sub {
-    max-width: 100%;
-  }
-
-  /* Mission statement */
-  .mission-statement__statement-wrap {
-    grid-template-columns: 1fr;
-  }
-  .mission-statement__emblem-wrap {
-    display: none;
-  }
-  .mission-statement__ideals-wrap {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .mission-statement__ideals-header {
-    position: static;
-  }
-
-  /* Other pages */
-  .show-hero__content {
-    grid-template-columns: 1fr;
-    padding-top: 100px;
-  }
-  .show-hero__cover {
-    display: none;
-  }
-  .show-hero__actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .show-hero__description {
-    max-width: 100%;
-    font-size: 15px;
-  }
-  .cast-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    column-gap: 24px;
-    row-gap: 60px;
-  }
-  .tickets-layout {
-    grid-template-columns: 1fr;
-    padding: 0 var(--pad-x);
-  }
-  .performance-summary {
-    position: static;
-    border-left: none;
-    border-top: 1px solid rgba(255, 181, 154, 0.15);
-  }
-  .show-selector-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .donation-grid {
-    grid-template-columns: 1fr;
-  }
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-  .team-grid__col {
-    padding: 0 var(--pad-x);
-  }
-  .team-company-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .partner-card {
-    grid-template-columns: 1fr;
-  }
-  .partner-card__logo {
-    width: 100%;
-    min-height: 220px;
-  }
-  .essay-virtue-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .modal {
-    grid-template-columns: 1fr;
-    max-height: 95vh;
-    overflow-y: auto;
-  }
-  .modal__cover {
-    min-height: 220px;
-  }
-  .modal__right {
-    padding: 24px 20px;
-    max-height: none;
-    overflow-y: visible;
-  }
-  .modal__close {
-    top: 12px;
-    right: 12px;
-  }
-  .cast-card__bio-text {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 600px) {
-  /* Mission hero */
-  .mission-hero__title {
-    font-size: clamp(44px, 12vw, 72px);
-  }
-  .mission-hero__ornament {
-    display: none;
-  }
-
-  /* Mission statement */
-  .mission-statement__quote {
-    font-size: clamp(18px, 5vw, 26px);
-  }
-  .mission-statement__quote::before {
-    font-size: clamp(48px, 12vw, 72px);
-  }
-  .mission-statement__ideal-item {
-    grid-template-columns: 28px 1fr;
-    gap: 12px;
-    padding: 18px 0;
-  }
-  .mission-statement__ideals-title {
-    font-size: clamp(28px, 7vw, 40px);
-  }
-
-  /* Other pages */
-  .cast-grid {
-    grid-template-columns: 1fr;
-    column-gap: 16px;
-    row-gap: 48px;
-  }
-  .show-hero__content {
-    padding-top: 100px;
-    padding-bottom: 48px;
-  }
-  .team-company-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer__grid {
-    grid-template-columns: 1fr;
-  }
-  .amount-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .member-card-featured {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ════════════════════════════════════════════
-   RESPONSIVE — TABLET (≤900px)
-   ════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  /* Mission hero */
-  .mission-hero__rule {
-    display: none;
-  }
-  .mission-hero__inner {
-    padding-top: 100px;
-    gap: 28px;
-  }
-  .mission-hero__sub {
-    max-width: 100%;
-  }
-
-  /* Mission statement */
-  .mission-statement__statement-wrap {
-    grid-template-columns: 1fr;
-  }
-  .mission-statement__emblem-wrap {
-    display: none;
-  }
-  .mission-statement__ideals-wrap {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .mission-statement__ideals-header {
-    position: static;
-  }
-}
-
-/* ════════════════════════════════════════════
-   RESPONSIVE — MOBILE (≤600px)
-   ════════════════════════════════════════════ */
-/* ── Mission overflow fix (all screen sizes) ── */
-.mission-hero,
-.mission-statement {
-  overflow-x: hidden;
-}
-
-@media (max-width: 600px) {
-  /* Mission hero */
-  .mission-hero__title {
-    font-size: clamp(44px, 12vw, 72px);
-  }
-  .mission-hero__ornament {
-    display: none;
-  }
-
-  /* Mission statement */
-  .mission-statement__quote {
-    font-size: clamp(18px, 5vw, 26px);
-  }
-  .mission-statement__quote::before {
-    font-size: clamp(48px, 12vw, 72px);
-  }
-  .mission-statement__ideal-item {
-    grid-template-columns: 28px 1fr;
-    gap: 12px;
-    padding: 18px 0;
-  }
-  .mission-statement__ideals-title {
-    font-size: clamp(28px, 7vw, 40px);
-  }
-}
-
-/* ════════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-   ════════════════════════════════════════════ */
-
-/* ── Global overflow fix ── */
-/* Negative inset on emblem border-outer and absolute rule
-   can push content past the viewport edge on mobile */
-.mission-hero,
-.mission-statement {
-  overflow-x: hidden;
-}
-
-/* ── Tablet (≤900px) ── */
-@media (max-width: 900px) {
-  .home-image-icon-container {
-    transform: none;
-  }
-  .hero_top_tag {
-    font-size: 0.9em;
-  }
-  /* Modal */
-  .modal {
-    grid-template-columns: 1fr;
-    max-height: 95vh;
-    overflow-y: auto;
-  }
-  .modal__cover {
-    min-height: 220px;
-  }
-  .modal__right {
-    padding: 24px 20px;
-    max-height: none;
-    overflow-y: visible;
-  }
-  .modal__close {
-    top: 12px;
-    right: 12px;
-  }
-}
-
-/* ── Mobile (≤600px) ── */
-@media (max-width: 600px) {
-  .home-image-icon-container {
-    transform: none;
-  }
-  .hero_top_tag {
-    font-size: 0.6em;
-    padding: 5px;
-  }
   /* Bio modal */
   .bio-modal {
     grid-template-columns: 1fr;

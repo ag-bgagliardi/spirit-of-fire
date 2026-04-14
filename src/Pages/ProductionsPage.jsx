@@ -99,12 +99,6 @@ function ProdCard({ title, dates, badges, onBook, image, setModalShow, productio
             className="show-card_mobile-overlay__btn"
             style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
           >Reserve Tickets</a>
-          {/* <button
-            className="show-card_mobile-overlay__btn"
-            onClick={e => { e.stopPropagation(); onBook(production); }}
-          >
-            Reserve Tickets
-          </button> */}
         </div>
       </div>
 
