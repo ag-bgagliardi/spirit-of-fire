@@ -1065,22 +1065,21 @@
   align-items: end;
 }
 .cast-card,
-.cast-card-body {
+.cast-card-body,
+.cast-card-body-bio {
   transition: all 0.4s;
   overflow: hidden;
   position: relative;
-}
-.cast-card-body-bio {
-  transition: background .4s, border .3s;
   display: flex;
   flex-direction: column;
-  padding: 20px 18px 18px;
-  gap: 12px;
   cursor: pointer;
-  /* height: max-content; */
+}
+
+.cast-card-body-bio {
+  padding: 20px 18px 18px;
+  gap: 12;
 }
 .cast-card__image {
-  aspect-ratio: 3/4;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1090,6 +1089,9 @@
   align-items: center;
   justify-content: center;
   background-color: var(--surface-highest);
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: unset;
 }
 .cast-card__image-overlay {
   position: absolute;
@@ -1108,6 +1110,9 @@
   font-size: 18px;
   transition: all 0.3s;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cast-card-character-container {
   font-size: 20px;

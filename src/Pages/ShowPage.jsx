@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
 import Footer from "../Main/Footer";
-import productions from "../Data/CurrentShows";
 
 export function ShowDescription() {
     return (
@@ -63,104 +62,112 @@ function CastMember({ person }) {
     const [hov, setHov] = useState(false);
     const hasBio = Boolean(person.bio);
 
-    return (
-        <div className="cast-card"
-            style={{ cursor: hov && hasBio ? "pointer" : "auto" }}
-            onMouseEnter={() => setHov(true)}
-            onMouseLeave={() => setHov(false)}>
+    // Shared border/bg that responds to hover — applied to both faces
+    const faceStyle = {
+        border: `2px solid ${hov ? "var(--primary-25)" : "var(--outline-15)"}`,
+        background: hov ? "var(--surface-high)" : "var(--surface-low)",
+        transition: "background .4s, border .3s",
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        boxSizing: "border-box",
+    };
 
-            {/* Character name sits above the flip card */}
+    return (
+        <div
+            className="cast-card"
+            style={{ cursor: hasBio ? "pointer" : "auto" }}
+            onMouseEnter={() => setHov(true)}
+            onMouseLeave={() => setHov(false)}
+        >
             <div className="cast-card-character-container">
-                <h4 className="serif cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--primary-lighter)" }}>
+                <h4 className="serif cast-card__name"
+                    style={{ color: hov ? "var(--primary)" : "var(--primary-lighter)" }}>
                     {person.character}
                 </h4>
             </div>
-
-            <ReactCardFlip
-                isFlipped={flipped}
-                flipDirection="horizontal"
-                flipSpeedBackToFront={0.45}
-                flipSpeedFrontToBack={0.45}
-            >
-
-                {/* ══ FRONT — photo card ══ */}
-                <div
-                    className="cast-card-body"
-                    style={{
-                        border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
-                        background: hov ? "var(--surface-high)" : "var(--surface-low)",
-                        transition: "background .4s, border .3s",
-                    }}
-                    onClick={() => hasBio && setFlipped(true)}
+            <div style={{ position: "relative", width: "100%", paddingBottom: "calc(133.33% + 72px)" }}>
+                <ReactCardFlip
+                    isFlipped={flipped}
+                    flipDirection="horizontal"
+                    flipSpeedBackToFront={0.45}
+                    flipSpeedFrontToBack={0.45}
+                    containerStyle={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
                 >
+
+                    {/* ══ FRONT — photo card ══ */}
                     <div
-                        className="cast-card__image"
-                        style={{
-                            backgroundImage: person.image ? `url(${person.image})` : "none",
-                            filter: hov ? "grayscale(0)" : "grayscale(0.2)",
-                            position: "relative",
-                            overflow: "hidden",
-                        }}
+                        className="cast-card-body"
+                        style={{ ...faceStyle, display: "flex", flexDirection: "column", cursor: hasBio ? "pointer" : "default" }}
+                        onClick={() => hasBio && setFlipped(true)}
                     >
-                        {!person.image && (
-                            <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>
-                        )}
-                        <div className="cast-card__image-overlay" />
-                        <div className="cast-card__image-bar" />
-                        {hasBio && (
-                            <div className="cast-card__bio-hint">
-                                <span>i</span>
-                            </div>
-                        )}
-                    </div>
+                        {/* Image stretches to fill all space above the name strip */}
+                        <div
+                            className="cast-card__image"
+                            style={{
+                                backgroundImage: person.image ? `url(${person.image})` : "none",
+                                filter: hov ? "grayscale(0)" : "grayscale(0.2)",
+                            }}
+                        >
+                            {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
+                            <div className="cast-card__image-overlay" />
+                            <div className="cast-card__image-bar"
+                                style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
+                            {hasBio && (
+                                <div className="cast-card__bio-hint"><span>i</span></div>
+                            )}
+                        </div>
 
-                    <div className="cast-card-name-container">
-                        <h5 className="cast-card__name color-on-surface">{person.name}</h5>
-                        {person.role && (
-                            <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
-                        )}
-                    </div>
-                </div>
-
-                {/* ══ BACK — bio card ══ */}
-                <div
-                    className="cast-card-body-bio"
-                    style={{
-                        border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
-                        background: hov ? "var(--surface-high)" : "var(--surface-low)",              
-                    }}
-                    onClick={() => setFlipped(false)}
-                >
-                    {/* Header row */}
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
-                        <div style={{ minWidth: 0 }}>
-                            <h5 className="serif-italic" style={{ color: "var(--primary-lighter)", fontSize: 15, marginBottom: 3, lineHeight: 1.2 }}>
-                                {person.name}
-                            </h5>
-                            <span className="label-xs color-outline">{person.character}</span>
+                        {/* Name strip — fixed-height footer of the front face */}
+                        <div className="cast-card-name-container" style={{ flexShrink: 0, height: 72 }}>
+                            <h5 className="cast-card__name color-on-surface">{person.name}</h5>
+                            {person.role && (
+                                <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+                            )}
                         </div>
                     </div>
 
-                    {/* Divider */}
-                    <div style={{ height: 1, background: "var(--primary-20)", flexShrink: 0 }} />
+                    {/* ══ BACK — bio card ══ */}
+                    <div
+                        className="cast-card-body-bio"
+                        style={{
+                            ...faceStyle
+                        }}
+                        onClick={() => setFlipped(false)}
+                    >
+                        {/* Header: name + close hint */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, flexShrink: 0 }}>
+                            <div style={{ minWidth: 0 }}>
+                                <h5 className="serif-italic"
+                                    style={{ color: "var(--primary-lighter)", fontSize: 15, marginBottom: 3, lineHeight: 1.2 }}>
+                                    {person.name}
+                                </h5>
+                                <span className="label-xs color-outline">{person.character}</span>
+                            </div>
+                        </div>
 
-                    {/* Bio text */}
-                    <p style={{
-                        fontSize: "clamp(11px, 1.3vw, 13px)",
-                        lineHeight: 1.8,
-                        color: "var(--on-surface-variant)",
-                        fontWeight: 300,
-                        flex: 1,
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 10,
-                        WebkitBoxOrient: "vertical",
-                    }}>
-                        {person.bio}
-                    </p>
-                </div>
+                        {/* Divider */}
+                        <div style={{ height: 1, background: "var(--primary-20)", flexShrink: 0 }} />
 
-            </ReactCardFlip>
+                        {/* Bio fills all remaining vertical space and scrolls if needed */}
+                        <p style={{
+                            fontSize: "clamp(11px, 1.3vw, 13px)",
+                            lineHeight: 1.8,
+                            color: "var(--on-surface-variant)",
+                            fontWeight: 300,
+                            flex: 1,
+                            minHeight: 0,
+                            overflowY: "auto",
+                            scrollbarWidth: "thin",
+                            scrollbarColor: "var(--outline-variant) transparent",
+                        }}>
+                            {person.bio}
+                        </p>
+                    </div>
+
+                </ReactCardFlip>
+            </div>
         </div>
     );
 }
