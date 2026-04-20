@@ -1,7 +1,7 @@
 /* ── Spirit of Fire — Stylesheet Entry Point ── */
 
-/* @import "./base.css"; */
-@import "./base-light.css";
+@import "./base.css";
+/* @import "./base-light.css"; */
 @import "./typography.css";
 @import "./layout.css";
 @import "./buttons.css";

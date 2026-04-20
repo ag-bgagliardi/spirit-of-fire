@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ReactCardFlip from "react-card-flip";
 import Footer from "../Main/Footer";
 import productions from "../Data/CurrentShows";
-import BioModal from "../Modals/BioModal"
 
 export function ShowDescription() {
     return (
@@ -17,7 +17,6 @@ export function ProductionPhotos() {
 }
 
 function ShowHero({ show, scrollTo }) {
-    const navigate = useNavigate();
     return (
         <section className="show-hero">
             <div className="show-hero__bg" style={{ backgroundImage: `url(${show.image})` }} />
@@ -37,7 +36,6 @@ function ShowHero({ show, scrollTo }) {
                                 className="btn-primary"
                                 style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
                             >Reserve Tickets</a>
-                            {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: show })}>Reserve Tickets</button> */}
                         </div>
                         <div className="show-card-badges">
                             {show.badges.map((badge, i) => (
@@ -60,92 +58,130 @@ function ShowHero({ show, scrollTo }) {
     );
 }
 
-function CastMember({ person, onBioOpen }) {
+function CastMember({ person }) {
+    const [flipped, setFlipped] = useState(false);
     const [hov, setHov] = useState(false);
     const hasBio = Boolean(person.bio);
 
     return (
-        <div
-            className="cast-card"
+        <div className="cast-card"
             style={{ cursor: hov && hasBio ? "pointer" : "auto" }}
             onMouseEnter={() => setHov(true)}
-            onMouseLeave={() => setHov(false)}
-        >
+            onMouseLeave={() => setHov(false)}>
+
+            {/* Character name sits above the flip card */}
             <div className="cast-card-character-container">
-                <h4
-                    className="serif cast-card__name"
-                    style={{ color: hov ? "var(--primary)" : "var(--primary-lighter)" }}
-                >
+                <h4 className="serif cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--primary-lighter)" }}>
                     {person.character}
                 </h4>
             </div>
 
-            <div
-                className="cast-card-body"
-                style={{
-                    border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
-                    background: hov ? "var(--surface-high)" : "var(--surface-low)",
-                    transition: "background .4s, border .3s",
-                }}
+            <ReactCardFlip
+                isFlipped={flipped}
+                flipDirection="horizontal"
+                flipSpeedBackToFront={0.45}
+                flipSpeedFrontToBack={0.45}
             >
+
+                {/* ══ FRONT — photo card ══ */}
                 <div
-                    className="cast-card__image"
-                    onClick={() => hasBio && onBioOpen(person)}
+                    className="cast-card-body"
                     style={{
-                        backgroundImage: person.image ? `url(${person.image})` : "none",
-                        filter: hov ? "grayscale(0)" : "grayscale(1)",
-                        cursor: hasBio ? "pointer" : "default",
-                        position: "relative",
-                        overflow: "hidden",
+                        border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
+                        background: hov ? "var(--surface-high)" : "var(--surface-low)",
+                        transition: "background .4s, border .3s",
                     }}
+                    onClick={() => hasBio && setFlipped(true)}
                 >
-                    {!person.image && <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>}
-                    <div className="cast-card__image-overlay" />
-                    <div className="cast-card__image-bar" style={{ background: hov ? "var(--primary-container)" : "transparent" }} />
-                    {hasBio && (
-                        <div className="cast-card__bio-hint">
-                            <span>i</span>
-                        </div>
-                    )}
+                    <div
+                        className="cast-card__image"
+                        style={{
+                            backgroundImage: person.image ? `url(${person.image})` : "none",
+                            filter: hov ? "grayscale(0)" : "grayscale(0.2)",
+                            position: "relative",
+                            overflow: "hidden",
+                        }}
+                    >
+                        {!person.image && (
+                            <span style={{ fontSize: 40, opacity: .3 }}>🎭</span>
+                        )}
+                        <div className="cast-card__image-overlay" />
+                        <div className="cast-card__image-bar" />
+                        {hasBio && (
+                            <div className="cast-card__bio-hint">
+                                <span>i</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="cast-card-name-container">
+                        <h5 className="cast-card__name color-on-surface">{person.name}</h5>
+                        {person.role && (
+                            <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
+                        )}
+                    </div>
                 </div>
 
-                <div className="cast-card-name-container">
-                    <h5 className="cast-card__name" style={{ color: hov ? "var(--primary)" : "var(--on-surface)" }}>
-                        {person.name}
-                    </h5>
-                    {person.role && (
-                        <span className="label-xs color-outline" style={{ display: "block" }}>{person.role}</span>
-                    )}
+                {/* ══ BACK — bio card ══ */}
+                <div
+                    className="cast-card-body-bio"
+                    style={{
+                        border: `2px solid ${hov ? "rgba(249,94,20,0.25)" : "rgba(89,66,56,0.15)"}`,
+                        background: hov ? "var(--surface-high)" : "var(--surface-low)",              
+                    }}
+                    onClick={() => setFlipped(false)}
+                >
+                    {/* Header row */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+                        <div style={{ minWidth: 0 }}>
+                            <h5 className="serif-italic" style={{ color: "var(--primary-lighter)", fontSize: 15, marginBottom: 3, lineHeight: 1.2 }}>
+                                {person.name}
+                            </h5>
+                            <span className="label-xs color-outline">{person.character}</span>
+                        </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div style={{ height: 1, background: "var(--primary-20)", flexShrink: 0 }} />
+
+                    {/* Bio text */}
+                    <p style={{
+                        fontSize: "clamp(11px, 1.3vw, 13px)",
+                        lineHeight: 1.8,
+                        color: "var(--on-surface-variant)",
+                        fontWeight: 300,
+                        flex: 1,
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 10,
+                        WebkitBoxOrient: "vertical",
+                    }}>
+                        {person.bio}
+                    </p>
                 </div>
-            </div>
+
+            </ReactCardFlip>
         </div>
     );
 }
 
 function CastSection({ cast }) {
-    const [activePerson, setActivePerson] = useState(null);
-
     if (!cast || cast.length === 0) return null;
     return (
-        <>
-            {activePerson && (
-                <BioModal person={activePerson} onClose={() => setActivePerson(null)} />
-            )}
-            <section id="learn-more-anchor" className="section-pad bg-surface image-overlay">
-                <div className="flames-background" />
-                <div className="container">
-                    <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 80 }}>
-                        <div className="divider-flame" style={{ height: 1, width: 48 }} />
-                        <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>The Cast</h2>
-                    </div>
-                    <div className="cast-grid">
-                        {cast.map((person, i) => (
-                            <CastMember key={i} person={person} onBioOpen={setActivePerson} />
-                        ))}
-                    </div>
+        <section id="learn-more-anchor" className="section-pad bg-surface image-overlay">
+            <div className="flames-background" />
+            <div className="container">
+                <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 80 }}>
+                    <div className="divider-flame" style={{ height: 1, width: 48 }} />
+                    <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>The Cast</h2>
                 </div>
-            </section>
-        </>
+                <div className="cast-grid">
+                    {cast.map((person, i) => (
+                        <CastMember key={i} person={person} />
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 }
 
@@ -208,7 +244,7 @@ function ShowCTA({ show }) {
                 <h2 className="serif" style={{ fontSize: 44, marginBottom: 20 }}>
                     Don't miss <em className="color-primary">{show.title}!</em>
                 </h2>
-                <p className="body-lg" style={{ color: "rgba(229,226,225,0.6)", marginBottom: 48 }}>
+                <p className="body-lg" style={{ color: "var(--on-surface-60)", marginBottom: 48 }}>
                     Reserve your seat and join us for an unforgettable evening.
                 </p>
                 <div className="flex-row" style={{ justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
@@ -219,7 +255,6 @@ function ShowCTA({ show }) {
                         className="btn-primary"
                         style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
                     >Reserve Your Ticket</a>
-                    {/* <button className="btn-primary" onClick={() => navigate("/tickets", { state: productions[0] })}>Reserve Your Ticket</button> */}
                     <button className="btn-ghost-primary" onClick={() => navigate("/support", { state: show })}>Become a Patron</button>
                 </div>
             </div>
@@ -227,8 +262,7 @@ function ShowCTA({ show }) {
     );
 }
 
-export default function ShowPage({ show, ShowDescription: Desc = ShowDescription, children }) {
-    useEffect(() => { window.scrollTo(0, 0); }, []);
+export default function ShowPage({ show, ShowDescription: Desc = ShowDescription }) {
     const scrollTo = () => {
         const el = document.getElementById("learn-more-anchor");
         if (el) el.scrollIntoView({ behavior: "smooth" });

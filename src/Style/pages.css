@@ -1070,6 +1070,15 @@
   overflow: hidden;
   position: relative;
 }
+.cast-card-body-bio {
+  transition: background .4s, border .3s;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 18px 18px;
+  gap: 12px;
+  cursor: pointer;
+  /* height: max-content; */
+}
 .cast-card__image {
   aspect-ratio: 3/4;
   background-position: center top;
@@ -1363,10 +1372,9 @@
 .team-mission-hero__bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    160deg,
-    var(--bg-mission-a) 0%,
-    var(--bg-mission-b) 100%
+  background: radial-gradient(
+    var(--bg-mission-a) 40%,
+    var(--bg-mission-b)
   );
 }
 .team-mission-hero__fade {

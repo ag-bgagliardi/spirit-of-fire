@@ -15,6 +15,7 @@
     "axios": "^1.14.0",
     "nodemailer": "^8.0.4",
     "react": "^19.2.4",
+    "react-card-flip": "^1.2.3",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.2",
     "react-scripts": "^5.0.1",
