@@ -12,6 +12,7 @@ import TheatologyPage from "../Pages/TheatologyPage";
 import Portfolio from "../Pages/Portfolio";
 import AffiliatesPage from "../Pages/AffiliatesPage";
 import TicketsPage from "../Pages/TicketsPage";
+import PastShows from "../Pages/PastShows";
 // IMPORT OLD/TESTING/LEGACY
 import ComingSoon from "../Legacy/ComingSoon";
 import TeamPage from "../Legacy/TeamPage";
@@ -39,7 +40,7 @@ function Layout() {
           <Route path="/theatology" element={<TheatologyPage />} />
           <Route path="/affiliates" element={<AffiliatesPage />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/past-productions" element={<ComingSoon />} />
+          <Route path="/past-productions" element={<PastShows />} />
           {/* TESTING IN PROGRESS PAGES */}
           <Route path="/tickets" element={<ComingSoon />} />
           <Route path="/test-tickets" element={<TicketsPage />} />

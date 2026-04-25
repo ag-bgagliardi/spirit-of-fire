@@ -4,21 +4,59 @@ import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
 import People from "./CastCrew"
 
+const badgeColor = "#ffbb00";
+const textColor = "#350000";
+
 const badges = {
     encore: {
         label: "Encore Performance",
-        color: "#a37cea",
-        textcolor: "#38017a",
+        color: badgeColor,
+        textcolor: textColor,
     },
     adaptation: {
         label: "Adaptation",
-        color: "#201f1f",
-        textcolor: "#ffb59a",
+        color: badgeColor,
+        textcolor: textColor,
     },
     premiere: {
         label: "World Premiere",
-        color: "#f95e14",
-        textcolor: "#4f1700",
+        color: badgeColor,
+        textcolor: textColor,
+    },
+    original: {
+        label: "Original Work",
+        color: badgeColor,
+        textcolor: textColor,
+    },
+    family: {
+        label: "Family-Friendly",
+        textcolor: textColor,
+        color: badgeColor,
+    },
+    age: {
+        label: "PG13",
+        textcolor: textColor,
+        color: badgeColor,
+    },
+    comedy: {
+        label: "Comedy",
+        color: badgeColor,
+        textcolor: textColor,
+    },
+    drama: {
+        label: "Drama",
+        color: badgeColor,
+        textcolor: textColor,
+    },
+    romance: {
+        label: "Romance",
+        color: badgeColor,
+        textcolor: textColor,
+    },
+    musical: {
+        label: "Musical",
+        color: badgeColor,
+        textcolor: textColor,
     },
 };
 
@@ -26,12 +64,23 @@ const productions = [
     { 
         title: "Mother Rabbit",
         dates: "FEB 05 — FEB 08",
-        badge: badges.encore.label,
-        badgeColor: badges.encore.color,
-        badgeText: badges.encore.textcolor,
+        badges: [
+            badges.encore,
+            badges.comedy,
+            badges.original,
+            badges.family,
+        ],
         image: motherRabbitImage,
         id: "motherrabbit",
-        cast: People.casts.MotherRabbit_Feb_2026
+        cast: People.casts.MotherRabbit_Jun_2026,
+        description: `Peter Kotski's mother is sick. His father passed away years ago. 
+        His eccentric brothers are eccentric, and estranged. His mother's illness 
+        brings them all together again, where they must reconcile with each other, 
+        and her infamous personal Doctor, Reverend Byrd. Filled with boystrous energy
+        shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
+        who comes. The show is Family-friendly and has strong themes of forgiveness and 
+        family values.`,
+        images: [animalCrackersImage, missingRainImage]
     }
 ];
 
