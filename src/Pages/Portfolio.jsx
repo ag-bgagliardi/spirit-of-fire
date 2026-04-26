@@ -290,22 +290,6 @@ export default function Portfolio() {
           <p className="port-hero__sub body-lg color-on-surface-var">
             At Spirit of Fire we support all art made to uplift the soul and bring others to the light of Chirst. Whether you have a play, song, poem, or painting, you can have your art featured or performed in our Theatre Company.
           </p>
-          {/* <div className="port-hero__stats">
-            <div className="port-hero__stat">
-              <span className="port-hero__stat-num">{plays.length + screenplays.length + skits.length}</span>
-              <span className="port-hero__stat-label">Scripts</span>
-            </div>
-            <div className="port-hero__stat-divider" />
-            <div className="port-hero__stat">
-              <span className="port-hero__stat-num">{poems.length}</span>
-              <span className="port-hero__stat-label">Poems</span>
-            </div>
-            <div className="port-hero__stat-divider" />
-            <div className="port-hero__stat">
-              <span className="port-hero__stat-num">{music.length}</span>
-              <span className="port-hero__stat-label">Compositions</span>
-            </div>
-          </div> */}
         </div>
       </section>
 

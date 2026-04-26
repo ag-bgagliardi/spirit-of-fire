@@ -2,7 +2,17 @@
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
-import People from "./CastCrew"
+import People from "./CastCrew";
+
+import MR1 from "../Assets/ShowImages/MR/MR1.JPG";
+import MR2 from "../Assets/ShowImages/MR/MR2.JPG";
+import MR3 from "../Assets/ShowImages/MR/MR3.JPG";
+import MR4 from "../Assets/ShowImages/MR/MR4.JPG";
+import MR5 from "../Assets/ShowImages/MR/MR5.JPG";
+import MR6 from "../Assets/ShowImages/MR/MR6.JPG";
+import MR7 from "../Assets/ShowImages/MR/MR7.JPG";
+import MR8 from "../Assets/ShowImages/MR/MR8.JPG";
+import MR9 from "../Assets/ShowImages/MR/MR9.JPG";
 
 const badgeColor = "#ffbb00";
 const textColor = "#350000";
@@ -80,7 +90,7 @@ const productions = [
         shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
         who comes. The show is Family-friendly and has strong themes of forgiveness and 
         family values.`,
-        images: [animalCrackersImage, missingRainImage]
+        images: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
     }
 ];
 

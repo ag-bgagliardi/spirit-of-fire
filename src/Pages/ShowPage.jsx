@@ -228,7 +228,7 @@ function PhotoCarousel({ show }) {
             </div>
             <div className="carousel">
                 <div className="carousel__track" style={{ transform: `translateX(-${idx * 100}%)` }}>
-                    {photos.map((photo, i) => <div key={i} className="carousel__slide">{photo}</div>)}
+                    {photos.map((photo, i) => <div key={i} className="carousel__slide" style={{ backgroundImage:`url(${photo})`, backgroundSize:"cover", backgroundPosition:"center", backgroundRepeat:"no-repeat" }} ></div>)}
                 </div>
                 <button className="carousel__btn carousel__btn--prev" onClick={prev}>←</button>
                 <button className="carousel__btn carousel__btn--next" onClick={next}>→</button>

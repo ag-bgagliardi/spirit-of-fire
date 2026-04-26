@@ -219,7 +219,8 @@
 @media (max-width: 700px) {
   .show-card_title,
   .show-card > .label-xs,
-  .show-card > .reserve-ticket-button {
+  .show-card > .reserve-ticket-button,
+  .show-card > .home-ticket-button {
     display: none !important;
   }
 

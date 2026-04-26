@@ -1,11 +1,10 @@
 import Footer from "../Main/Footer";
 import ShowModal from "../Modals/ShowModal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import productions from "../Data/CurrentShows"
+import productions from "../Data/CurrentShows";
+import portfolio from "../Data/Portfolio"
 import "../Style/index.css";
-
-const AMOUNTS = [5, 10, 25, 50, 100];
 
 const TIERS = [
   { label: "Friend of the Fire", range: "$1 – $49", desc: "Recognition in our programmes." },
@@ -13,12 +12,14 @@ const TIERS = [
   { label: "Founding Patron", range: "$250+", desc: "Named recognition, early ticket access, and a personal thank-you from the artistic director." },
 ];
 
+// ── Hero ──────────────────────────────────────────────────────────────────────
+
 function SupportHero() {
   return (
-    <section style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg,#1a0500 0%,#0a0200 100%)" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(19,19,19,1) 0%,rgba(19,19,19,0.2) 70%)" }} />
-      <div style={{ position: "absolute", inset: 0, opacity: .2, backgroundImage: "radial-gradient(ellipse at 30% 40%,rgba(249,94,20,0.6) 0%,transparent 60%)" }} />
+    <section style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 var(--pad-x) 80px", overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, var(--bg-mission-a) 0%, var(--bg-mission-b) 100%)" }} />
+      <div className="flames-background" style={{ opacity:"0.1", inset: 0 }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, var(--surface-100) 0%, var(--surface-20) 70%)" }} />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
         <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Keep the Flame Alive</span>
         <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>
@@ -32,93 +33,104 @@ function SupportHero() {
   );
 }
 
-function DonationForm() {
-  const [selected, setSelected] = useState(50);
-  const [custom, setCustom] = useState("");
-  const [isCustom, setIsCustom] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [note, setNote] = useState("");
-  const displayAmt = isCustom ? (custom || "—") : `$${selected}`;
+// ── Best ways to support ──────────────────────────────────────────────────────
 
+function SupportWays() {
+  const navigate = useNavigate();
+  let scripts = portfolio.plays.slice(0, 3);
+  if (scripts.length < 3) {
+    for (let i = 0; i < 3 - scripts.length; i++) {
+      scripts.push(portfolio.screenplays[i]);
+    }
+  }
   return (
     <section className="pat section-pad bg-surface-low">
       <div className="container">
-        <div className="donation-grid">
 
-          {/* Left: form */}
-          <div>
-            <div className="flex-row section-label-row">
-              <div className="divider-flame" style={{ height: 1, width: 48 }} />
-              <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>Make a Gift</h2>
-            </div>
+        <div className="flex-row" style={{ alignItems: "center", gap: 24, marginBottom: 56 }}>
+          <div className="divider-flame" style={{ height: 1, width: 48 }} />
+          <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>How to Support</h2>
+        </div>
 
-            <p className="label-xs color-outline" style={{ marginBottom: 16 }}>Select an Amount</p>
-            <div className="amount-grid">
-              {AMOUNTS.map(a => {
-                const sel = !isCustom && selected === a;
-                return (
-                  <button key={a} onClick={() => { setSelected(a); setIsCustom(false); setCustom(""); }}
-                    className={sel ? "amount-btn amount-btn--active" : "amount-btn"}
-                  >${a}</button>
-                );
-              })}
-            </div>
-            <div className={isCustom ? "custom-amount custom-amount--active" : "custom-amount"}>
-              <span className="custom-amount__symbol">$</span>
-              <input
-                className="field__input"
-                style={{ borderBottom: "none" }}
-                placeholder="Custom amount"
-                value={custom}
-                type="number"
-                min="1"
-                onChange={e => { setCustom(e.target.value); setIsCustom(true); }}
-                onFocus={() => setIsCustom(true)}
-              />
-            </div>
+        <div className="grid-2" style={{ gap: "clamp(32px, 5vw, 72px)", alignItems: "start" }}>
 
-            <p className="label-xs color-outline" style={{ marginBottom: 24 }}>Your Information</p>
-            <div className="form-fields" style={{ marginBottom: 40 }}>
-              <input className="field__input" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} />
-              <input className="field__input" placeholder="Email Address" type="email" value={email} onChange={e => setEmail(e.target.value)} />
-              <textarea className="field__input field__textarea" placeholder="Any comments (optional)" value={note} onChange={e => setNote(e.target.value)} rows={3} />
+          {/* Card 1 — Tickets */}
+          <div style={{ background: "var(--surface-container)", border: "1px solid var(--outline-20)", padding: "clamp(28px, 4vw, 48px)" }}>
+            <h3 className="serif-italic color-on-surface" style={{ fontSize: "clamp(24px, 3vw, 32px)", lineHeight: 1.15, marginBottom: 16 }}>
+              Come to a <span className="color-primary-container">Show</span>
+            </h3>
+            <p className="body-md color-on-surface-var" style={{ fontSize: 15, marginBottom: 32 }}>
+              The single best way to support Spirit of Fire is to be in the audience. Every ticket sold directly funds our productions, our artists, and our ability to keep making theatre in Hudson, Wisconsin.
+            </p>
+            <div style={{ borderTop: "1px solid var(--outline-15)", paddingTop: 24, display: "flex", flexDirection: "column", gap: 12 }}>
+              {productions.map(p => (
+                <div>
+                  <div style={{
+                    display: "flex", justifyContent: "space-between", alignItems: "center",
+                    padding: "14px 0", borderBottom: "1px solid var(--outline-12)", gap: 16,
+                  }}>
+                    <div>
+                      <p className="serif-italic color-on-surface" style={{ fontSize: 17, marginBottom: 3 }}>{p.title}</p>
+                      <p className="label-xs color-outline" style={{ letterSpacing: ".2em" }}>{p.dates}</p>
+                    </div>
+                    {
+                      p.link.length > 0 ?
+                        <a className="btn-primary"
+                          style={{ fontSize: 10, padding: "10px 20px", whiteSpace: "nowrap", textDecoration: "none" }}
+                          href={p.link && p.link.length > 0 ? p.link : "https://events.ticketleap.com/events/spirit-of-fire"}
+                          target="_blank"
+                          rel="noreferrer"
+                        > Reserve → </a>
+                        :
+                        <a className="btn-primary-disabled" disabled style={{ fontSize: 10, padding: "10px 20px", whiteSpace: "nowrap", textDecoration: "none" }}>
+                          Coming soon →
+                        </a>
+                    }
+                  </div>
+                </div>
+              ))}
             </div>
-
             <button
-              className="submit-btn"
-              onMouseEnter={e => e.currentTarget.style.opacity = ".88"}
-              onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+              className="btn-ghost"
+              onClick={() => navigate("/productions")}
+              style={{ width: "100%", marginTop: 24, textAlign: "center" }}
             >
-              Donate {displayAmt} →
+              View All Productions
             </button>
-            <p className="form-note" style={{ marginTop: 14 }}>Secure payment processing coming soon. Thank you for your patience.</p>
           </div>
 
-          {/* Right: why give */}
-          <div style={{ position: "sticky", top: 120 }}>
-            <div className="why-give-card">
-              <span style={{ fontSize: 32, display: "block", marginBottom: 20 }}><img src="/favicon.ico" alt="" /></span>
-              <h3 className="serif-italic" style={{ fontSize: 26, marginBottom: 16, lineHeight: 1.2 }}>Why Your Gift Matters</h3>
-              <p className="body-md color-on-surface-var" style={{ fontSize: 14, marginBottom: 24 }}>
-                Spirit of Fire is an independent theatre company. We rely on ticket sales, goodwill offerings, and the generous patronage of those who believe in what we are doing.
+          {/* Card 2 — Scripts */}
+          <div style={{ background: "var(--surface-container)", border: "1px solid var(--outline-20)", padding: "clamp(28px, 4vw, 48px)" }}>
+            <h3 className="serif-italic color-on-surface" style={{ fontSize: "clamp(24px, 3vw, 32px)", lineHeight: 1.15, marginBottom: 16 }}>
+              Purchase a <span className="color-primary-container">Script</span>
+            </h3>
+            <p className="body-md color-on-surface-var" style={{ fontSize: 15, marginBottom: 32 }}>
+              Our dramatist Benjamin Gagliardi writes original plays, screenplays, and one-acts. Purchasing a script supports both the writer and the company — and puts great storytelling in your hands.
+            </p>
+            <div style={{ borderTop: "1px solid var(--outline-15)", paddingTop: 24 }}>
+              <p className="label-xs color-outline" style={{ letterSpacing: ".2em", marginBottom: 20 }}>
+                Available Works
               </p>
-              <p className="body-md color-on-surface-var" style={{ fontSize: 14 }}>
-                Your support directly funds set design, production costs, and the development of new original works — including world premieres like <em className="color-primary">Missing the Rain</em>.
-              </p>
-            </div>
-
-            {TIERS.map((tier, i) => (
-              <div key={i} className="tier-row" style={{ borderBottom: i < 2 ? "1px solid rgba(89,66,56,0.15)" : "none" }}>
-                <div className="tier-row__dot" />
-                <div>
-                  <p className="tier-row__label">
-                    {tier.label} <span className="tier-row__range">{tier.range}</span>
-                  </p>
-                  <p className="tier-row__desc">{tier.desc}</p>
-                </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 28 }}>
+                {
+                  scripts.map((w, i) => (
+                    <div key={i} style={{
+                      display: "flex", justifyContent: "space-between", alignItems: "center",
+                      padding: "12px 0", borderBottom: "1px solid var(--outline-12)",
+                    }}>
+                      <p className="serif-italic color-on-surface" style={{ fontSize: 16 }}>{w.title}</p>
+                      <span className="label-xs color-outline">{w.style}</span>
+                    </div>
+                  ))}
               </div>
-            ))}
+              <button
+                className="btn-primary"
+                onClick={() => navigate("/portfolio")}
+                style={{ width: "100%", textAlign: "center" }}
+              >
+                Browse the Portfolio →
+              </button>
+            </div>
           </div>
 
         </div>
@@ -126,106 +138,86 @@ function DonationForm() {
     </section>
   );
 }
+
+// ── Direct donation coming soon ───────────────────────────────────────────────
+
+function DonationComingSoon() {
+  return (
+    <section className="section-pad bg-surface">
+      <div className="container">
+        <div style={{
+          maxWidth: 720,
+          margin: "0 auto",
+          padding: "clamp(40px, 6vw, 72px) clamp(28px, 4vw, 56px)",
+          border: "1px solid var(--outline-20)",
+          background: "var(--surface-low)",
+          textAlign: "center",
+          position: "relative",
+        }}>
+          {/* Top rule */}
+          <div style={{ position: "absolute", top: 0, left: "10%", right: "10%", height: 2, background: "linear-gradient(to right, transparent, var(--primary-container), transparent)" }} />
+
+          <span className="color-primary-container" style={{ fontSize: 28, display: "block", marginBottom: 24 }}>✦</span>
+
+          <h2 className="serif-italic color-on-surface" style={{ fontSize: "clamp(26px, 3.5vw, 38px)", lineHeight: 1.2, marginBottom: 20 }}>
+            Direct Donations<br />Coming Soon
+          </h2>
+
+          <p className="body-md color-on-surface-var" style={{ fontSize: 15, maxWidth: 500, margin: "0 auto 32px", lineHeight: 1.85 }}>
+            We are currently setting up a secure way to accept direct financial contributions. In the meantime, the most meaningful way to support Spirit of Fire is to purchase a ticket, bring a friend, or pick up one of our scripts.
+          </p>
+
+          <div style={{ borderTop: "1px solid var(--outline-15)", paddingTop: 28, display: "flex", flexDirection: "column", gap: 10 }}>
+            <p className="label-xs color-outline" style={{ letterSpacing: ".2em", marginBottom: 8 }}>
+              Want to be notified when giving opens?
+            </p>
+            <p className="body-md color-on-surface-var" style={{ fontSize: 14 }}>
+              Reach out to us directly at{" "}
+              <a
+                href="mailto:spiritoffiretheatre@gmail.com"
+                style={{ color: "var(--primary-container)", textDecoration: "none" }}
+              >
+                SpiritofFireTheatre@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Quote strip ───────────────────────────────────────────────────────────────
 
 function QuoteStrip() {
   return (
-    <section className="section-pad bg-surface-lowest" style={{ padding: "96px 48px", textAlign: "center" }}>
-      <div className="color-primary-container" style={{ fontSize: 28, marginBottom: 24 }}>✦</div>
-      <blockquote className="serif-italic color-on-surface" style={{ fontSize: 28, lineHeight: 1.5, maxWidth: 720, margin: "0 auto 28px" }}>
-        You have made us for yourself, O Lord, and our heart is restless until it rests in you.
-      </blockquote>
-      <cite className="label-xs color-primary" style={{ letterSpacing: ".4em", fontStyle: "normal" }}>Spirit of Fire Theatre Company</cite>
-    </section>
-  );
-}
-
-function SupportProdCard({ title, dates, badges, onBook, image, setModalShow, production }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <div onClick={() => setModalShow(production)} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
-      <h3 className="display-sm" style={{ color: hov ? "var(--primary)" : "var(--on-surface)", transition: "color .3s", marginBottom: 8 }}>{title}</h3>
-      <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
-      <button
-        onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
-        onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-        onClick={onBook}
-        className="reserve-ticket-button"
-      >Reserve Tickets</button>
-      <div className="show-card_image-wrap" style={{ cursor: hov ? "pointer" : "auto" }}>
-        <div
-          className="show-card_image"
-          style={{
-            backgroundImage: `url(${image})`,
-            transform: hov ? "scale(1.05)" : "scale(1)",
-            filter: hov ? "grayscale(0%)" : "grayscale(100%)",
-            cursor: hov ? "pointer" : "auto"
-          }}
-        >
-          <div className="show-card_image-overlay" />
-        </div>
-        <div className="show-card_gradient" />
-        <div className="show-card_badge-wrap">
-          <span
-            className="show-card_badge"
-            style={{ background: badges[0].color, color: badges[0].textcolor, display: "inline-block", width: "fit-content" }}
-          >{badges[0].label}</span>        </div>
-      </div>
-    </div>
-  );
-}
-
-function SupportPerformances( {setModalShow} ) {
-  const navigate = useNavigate();
-  const prods = productions;
-  return (
-    <section className="section-pad bg-surface-low" style={{ padding: "96px 48px" }}>
-      <div className="container" style={{ padding: 0 }}>
-        <div className="flex-row" style={{ alignItems: "center", gap: 24 }}>
-          <div className="divider-flame" style={{ height: 1, width: 48 }} />
-          <h2 className="serif label-upper color-primary" style={{ fontSize: 13, letterSpacing: ".4em" }}>Support Our Shows</h2>
-        </div>
-        <button
-          onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-          onClick={() => navigate("/portfolio")}
-          style={{ width: "20%", padding: 16, margin: "30px 60px", fontSize: 11, letterSpacing: ".25em", textTransform: "uppercase", background: "var(--surface-highest)", border: "1px solid rgba(89,66,56,0.3)", color: "var(--on-surface)", transition: "all .5s", cursor: "pointer", fontFamily: "var(--font-sans)" }}
-        >Purchase Scripts</button>
-        <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, borderBottom: "1px solid rgba(89,66,56,0.2)", paddingBottom: 28 }}>
-          <div>
-            <h2 className="serif" style={{ fontSize: 36, marginBottom: 8 }}>Current Projects</h2>
-            <p className="label-xs color-outline">Active Productions • 2026</p>
-          </div>
-          {
-            productions.length > 3 ?
-              <div className="flex-row" style={{ gap: 16 }}>
-                <button className="btn-icon">←</button>
-                <button className="btn-icon">→</button>
-              </div> : <></>
-          }
-        </div>
-        <div className="grid-3" style={{ gap: 48 }}>
-          {prods.map(p => <SupportProdCard key={p.title} {...p} onBook={() => navigate("/tickets", {state: p} )} setModalShow={setModalShow} production={p} />)}
-        </div>
+    <section className="section-pad bg-surface-lowest" style={{ textAlign: "center" }}>
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 var(--pad-x)" }}>
+        <div className="color-primary-container" style={{ fontSize: 28, marginBottom: 24 }}>✦</div>
+        <blockquote className="serif-italic color-on-surface" style={{ fontSize: "clamp(18px, 2.5vw, 28px)", lineHeight: 1.5, marginBottom: 28 }}>
+          You have made us for yourself, O Lord, and our heart is restless until it rests in you.
+        </blockquote>
+        <cite className="label-xs color-primary" style={{ letterSpacing: ".4em", fontStyle: "normal" }}>
+          Spirit of Fire Theatre Company
+        </cite>
       </div>
     </section>
   );
 }
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function SupportPage() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
   const [modalShow, setModalShow] = useState(null);
+
   return (
-    <main style={{ paddingTop: 80 }}>
+    <main style={{ paddingTop: 65 }}>
       <SupportHero />
-      <DonationForm />
-      <SupportPerformances setModalShow={setModalShow}  />
+      <SupportWays />
+      <DonationComingSoon />
       <QuoteStrip />
       {modalShow && (
-        <ShowModal
-          show={modalShow}
-          onClose={() => setModalShow(null)}
-          ShowDescription={"MotherRabbitDescription"} // optional per-show component
-        />
+        <ShowModal show={modalShow} onClose={() => setModalShow(null)} />
       )}
       <Footer />
     </main>

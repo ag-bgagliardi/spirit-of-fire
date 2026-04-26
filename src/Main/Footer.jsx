@@ -2,9 +2,14 @@ import facebookLogo from "../Assets/Logos/facebook.png";
 import instagramLogo from "../Assets/Logos/instagram.png";
 import emailjs from '@emailjs/browser';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import emailTemplates from "../Data/EmailTemplates";
 
-const LINKS = ["Privacy Policy", "Terms of Service", "Archive"];
+const LINKS = [
+  { title: "Theatology", link: "/theatology" },
+  { title: "Portfolio", link: "/portfolio" },
+  { title: "Archive", link: "/past-productions" },
+];
 
 const SOCIALS = [
   { title: "Facebook",  logo: facebookLogo,  link: "https://www.facebook.com/profile.php/?id=61583353555340" },
@@ -14,6 +19,7 @@ const SOCIALS = [
 export default function Footer() {
   const [userEmail, setUserEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const navigate = useNavigate();
 
   async function sendEmail() {
     if (!userEmail || status !== "idle") return;
@@ -62,7 +68,7 @@ export default function Footer() {
 
         <div className="flex-col" style={{ gap: 16 }}>
           <h4 className="footer__heading">More Information</h4>
-          {LINKS.map(l => <span key={l} className="footer__link">{l}</span>)}
+          {LINKS.map(l => <button key={l.title + '-footer'} className="footer__social" onClick={() => navigate(l.link)}>{l.title}</button>)}
         </div>
 
         <div>

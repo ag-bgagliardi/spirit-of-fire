@@ -406,7 +406,7 @@ export default function ParticipatePage() {
     <main>
       <ParticipateHero onNav={scrollTo} />
       <SectionBlock id="auditions" eyebrow="On Stage" heading="Auditions"
-        sub="We hold open auditions for each production and welcome performers of all backgrounds. Fill out the form below and we'll reach out when auditions are announced for your production of interest.">
+        sub="We hold both open and closed auditions on a per-production basis, but welcome any interest from performers who wish to participate fully in our shows. Fill out the form and we'll reach out when auditions are announced for your production of interest.">
         <AuditionsForm />
       </SectionBlock>
       <Divider />

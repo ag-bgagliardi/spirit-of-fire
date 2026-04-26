@@ -129,9 +129,6 @@ export default function ShowModal({ show, onClose, ShowDescription }) {
               : <button className="btn-primary-disabled" disabled="true">Tickets Coming Soon</button>
 
             }
-            {/* <button className="btn-primary" onClick={() => { onClose(); navigate("/tickets", {state: show} ); }}>
-              Reserve Tickets
-            </button> */}
             <button className="btn-ghost" onClick={goToShow}>
               Full Details →
             </button>

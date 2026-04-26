@@ -221,52 +221,23 @@ function PastShowCard({ show, onClick }) {
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function ArchiveHero({ onNav }) {
-  const cards = [
-    { label: "Auditions", desc: "Step onto the stage", emoji: "🎭", id: "auditions" },
-    { label: "Submissions", desc: "Pitch your project", emoji: "✍️", id: "submissions" },
-    { label: "Join the Crew", desc: "Work behind the scenes", emoji: "🔧", id: "crew" },
-  ];
 
   return (
-    <section style={{ position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px" }}>
-        <div className="participate-hero__bg-base" />
-        <div className="participate-hero__bg-fade" />
-        <div className="participate-hero__bg-glow" />
-        <div className="hero__bg-image" />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
-          <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 20 }}>
-            <div style={{ height: 1, width: 36, background: "var(--primary-container)" }} />
-            <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em" }}>Spirit of Fire · Archive</span>
-          </div>
-          <h1 className="display-xl color-on-surface" style={{ lineHeight: .88, marginBottom: 20 }}>
-            Past Productions
-          </h1>
+    <section className="archive-hero">
+      <div className="port-hero__bg" />
+      <div className="port-hero__fade" />
+      <div className="port-hero__inner container">
+        <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 20 }}>
+          <div style={{ height: 1, width: 36, background: "var(--primary-container)" }} />
+          <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em" }}>Spirit of Fire · Archive</span>
         </div>
+        <h1 className="port-hero__title display-xl">
+          Past Productions
+        </h1>
       </div>
     </section>
   );
 }
-// function ArchiveHero() {
-//   return (
-//     <section style={{ position: "relative", height: 480, display: "flex", alignItems: "flex-end", padding: "0 var(--pad-x) 80px", overflow: "hidden" }}>
-//       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, var(--bg-mission-a) 0%, var(--bg-mission-b) 100%)" }} />
-//       <div className="flames-background" />
-//       <div style={{ position: "absolute", inset: 0, opacity: 0.18, backgroundImage: "radial-gradient(ellipse at 35% 40%, var(--primary-70) 0%, transparent 55%)" }} />
-//       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, var(--surface-100) 0%, transparent 60%)" }} />
-
-// <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
-//   <div className="flex-row" style={{ alignItems: "center", gap: 16, marginBottom: 20 }}>
-//     <div style={{ height: 1, width: 36, background: "var(--primary-container)" }} />
-//     <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em" }}>Spirit of Fire · Archive</span>
-//   </div>
-//   <h1 className="display-xl color-on-surface" style={{ lineHeight: .88, marginBottom: 20 }}>
-//     Past Productions
-//   </h1>
-// </div>
-//     </section>
-//   );
-// }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 

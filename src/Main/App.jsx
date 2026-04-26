@@ -42,10 +42,9 @@ function Layout() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/past-productions" element={<PastShows />} />
           {/* TESTING IN PROGRESS PAGES */}
-          <Route path="/tickets" element={<ComingSoon />} />
-          <Route path="/test-tickets" element={<TicketsPage />} />
-          <Route path="/support" element={<ComingSoon />} />
-          <Route path="/test-support" element={<SupportPage />} />
+          {/* <Route path="/tickets" element={<ComingSoon />} />
+          <Route path="/test-tickets" element={<TicketsPage />} /> */}
+          <Route path="/support" element={<SupportPage />} />
           {/* LEGACY PAGES */}
           <Route path="/team" element={<TeamPage />} />
           <Route path="/benjamin" element={<AboutPage />} />

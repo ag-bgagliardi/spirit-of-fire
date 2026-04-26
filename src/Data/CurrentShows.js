@@ -1,8 +1,15 @@
-
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
-import People from "./CastCrew"
+import People from "./CastCrew";
+
+import MR1 from "../Assets/ShowImages/MR/MR1.JPG";
+import MR2 from "../Assets/ShowImages/MR/MR2.JPG";
+import MR3 from "../Assets/ShowImages/MR/MR3.JPG";
+import MR4 from "../Assets/ShowImages/MR/MR4.JPG";
+import MR5 from "../Assets/ShowImages/MR/MR5.JPG";
+import MR6 from "../Assets/ShowImages/MR/MR6.JPG";
+import MR7 from "../Assets/ShowImages/MR/MR7.JPG";
 
 const badgeColor = "#ffbb00";
 const textColor = "#350000";
@@ -80,7 +87,8 @@ const productions = [
         and her infamous personal Doctor, Reverend Byrd. Filled with boystrous energy
         shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
         who comes. The show is Family-friendly and has strong themes of forgiveness and 
-        family values.`
+        family values.`,
+        photos: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
     },
     {
         title: "Animal Crackers",
@@ -105,7 +113,7 @@ const productions = [
             badges.original,
             badges.age,
         ],
-        link: "https://events.ticketleap.com/events/spirit-of-fire",
+        link: "",
         image: missingRainImage,
         id: "missingtherain",
         cast: People.casts.MissingTheRain_Characters,

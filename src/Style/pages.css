@@ -967,6 +967,15 @@
   font-weight: 300;
 }
 
+.archive-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: 0 var(--pad-x);
+}
+
 /* ── Show page ── */
 .show-hero {
   position: relative;
@@ -1377,10 +1386,7 @@
 .team-mission-hero__bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    var(--bg-mission-a) 40%,
-    var(--bg-mission-b)
-  );
+  background: radial-gradient(var(--bg-mission-a) 40%, var(--bg-mission-b));
 }
 .team-mission-hero__fade {
   position: absolute;

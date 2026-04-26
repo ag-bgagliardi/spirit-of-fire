@@ -28,7 +28,7 @@ function HomeHero() {
           <button className="btn-primary" onClick={() => navigate("/productions", { state: productions[0] })}>Productions</button>
           <div className="team-mission-hero__statement-ornament">
             <div className="team-mission-hero__ornament-line" />
-            <span className="team-mission-hero__ornament-glyph">✦</span> 
+            <span className="team-mission-hero__ornament-glyph">✦</span>
             <div className="team-mission-hero__ornament-line" />
           </div>
         </div>
@@ -68,44 +68,38 @@ function ShowCard({ title, dates, badges, image, onBook, setModalShow, productio
         <div className="show-card_mobile-overlay">
           <span className="show-card_mobile-overlay__title">{title}</span>
           <span className="show-card_mobile-overlay__dates">{dates}</span>
-          <a
-            href={production.link.length > 0 ? production.link : "https://events.ticketleap.com/events/spirit-of-fire"}
-            target="_blank"
-            id="btn-constructor"
-            rel="noreferrer"
-            className="show-card_mobile-overlay__btn"
-            style={{ textDecoration: "none", display:"flex", justifyContent:"center" }}
-          >Reserve Tickets</a>
-          {/* <button
-            className="show-card_mobile-overlay__btn"
-            onClick={e => { e.stopPropagation(); onBook(); }}
-          >
-            Reserve Tickets
-          </button> */}
+          {
+            production.link.length > 0 ?
+              <a
+                href={production.link}
+                target="_blank"
+                id="btn-constructor"
+                rel="noreferrer"
+                className="show-card_mobile-overlay__btn"
+                style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+              >Reserve Tickets</a>
+              : <button className="btn-primary-disabled" disabled="true">Tickets Coming Soon</button>
+          }
         </div>
       </div>
 
       {/* Desktop-only text below image */}
       <h3 className="show-card_title">{title}</h3>
       <p className="label-xs color-outline" style={{ marginBottom: 16 }}>{dates}</p>
-      <a
-        href={production.link.length > 0 ? production.link : "https://events.ticketleap.com/events/spirit-of-fire"}
-        onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
-        onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-        target="_blank"
-        id="btn-constructor"
-        rel="noreferrer"
-        className="reserve-ticket-button"
-        style={{ textDecoration: "none", display:"flex", justifyContent:"center" }}
-      >Reserve Tickets</a>
-      {/* <button
-        onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
-        onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
-        onClick={onBook}
-        className="reserve-ticket-button"
-      >
-        Reserve Tickets
-      </button> */}
+      {
+        production.link.length > 0 ?
+          <a
+            href={production.link}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--primary-container)"; e.currentTarget.style.color = "var(--on-primary-container)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "var(--surface-highest)"; e.currentTarget.style.color = "var(--on-surface)"; }}
+            target="_blank"
+            id="btn-constructor"
+            rel="noreferrer"
+            className="reserve-ticket-button"
+            style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
+          >Reserve Tickets</a>
+          : <button className="home-ticket-button btn-primary-disabled" style={{width:"100%"}} disabled="true">Tickets Coming Soon</button>
+      }
     </div>
   );
 }
@@ -271,7 +265,7 @@ function HomeCTA() {
             id="btn-constructor"
             rel="noreferrer"
             className="btn-ghost-primary"
-            style={{ textDecoration: "none", display:"flex", justifyContent:"center" }}
+            style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}
           >Tickets</a>
           <button className="btn-ghost" onClick={() => navigate("/about-us")}>Our Mission</button>
         </div>

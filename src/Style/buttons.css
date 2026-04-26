@@ -268,7 +268,7 @@
 .ticket-button {
   position: relative;
   overflow: hidden;
-  padding: clamp(5px, 1.5vw, 12px) clamp(10px, 3vw, 23px);
+  padding: clamp(5px, 1.5vw, 12px) clamp(12px, 3vw, 23px);
   font-size: clamp(11px, 1.2vw, 12px);
   font-weight: 700;
   letter-spacing: 0.2em;
