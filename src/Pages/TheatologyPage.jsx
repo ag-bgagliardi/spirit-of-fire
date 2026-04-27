@@ -5,7 +5,7 @@ import "../Style/index.css";
 function TheaHero() {
   return (
     <section style={{ position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px" }}>
+      <div style={{ position: "relative", height: 520, display: "flex", alignItems: "flex-end", padding: "0 48px 80px", justifyContent:"center" }}>
         <div className="participate-hero__bg-base" />
         <div className="participate-hero__bg-fade" />
         <div className="participate-hero__bg-glow" />

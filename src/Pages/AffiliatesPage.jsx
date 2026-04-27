@@ -11,7 +11,7 @@ function AffiliatesHero() {
         <div className="participate-hero__bg-glow" />
         <div className="hero__bg-image" />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
-          <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20 }}>Community &amp; Collaboration</span>
+          <span className="label-xs color-primary-container" style={{ letterSpacing: ".4em", display: "block", marginBottom: 20, justifyContent:"center" }}>Community &amp; Collaboration</span>
           <h1 className="display-xl color-on-surface" style={{ marginBottom: 24 }}>Affiliates <span className="color-primary-container">&amp;</span><br />Partners</h1>
           <p className="body-md color-on-surface-var" style={{ fontSize: 17, maxWidth: 540 }}>
             We are grateful to work alongside organizations that share our love of theatre and our commitment to artistic excellence.
