@@ -83,10 +83,10 @@ const productions = [
         cast: People.casts.MotherRabbit_Jun_2026,
         description: `Peter Kotski's mother is sick. His father passed away years ago. 
         His eccentric brothers are eccentric, and estranged. His mother's illness 
-        brings them all together again, where they must reconcile with each other, 
-        and her infamous personal Doctor, Reverend Byrd. Filled with boystrous energy
-        shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
-        who comes. The show is Family-friendly and has strong themes of forgiveness and 
+        brings them all together again, where they must reconcile with each other 
+        and her infamous personal doctor, Reverend Byrd. Filled with boistrous energy,
+        shenanigans, and all sorts of tomfoolery, "Mother Rabbit" has a laugh for anyone
+        who comes. The show is family-friendly and has strong themes of forgiveness and 
         family values.`,
         photos: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
     },

@@ -7,7 +7,7 @@ const LINKS = [
   { label: "Participate", path: "/participate" },
   { label: "Support", path: "/support" },
   {
-    label: "Archive",
+    label: "More Information",
     dropdown: [
       { label: "Portfolio", path: "/portfolio" },
       { label: "Theatology", path: "/theatology" },

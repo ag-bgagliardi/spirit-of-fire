@@ -20,7 +20,7 @@ function ProductionsHero() {
             Mother <span className="color-primary-container">Rabbit</span>
           </h1>
           <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
-            Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
+            Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are... eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
           </p>
           <button className="btn-ghost" onClick={() => navigate("/motherrabbit")} style={{ marginRight: 20 }}>Read More</button>
           <a

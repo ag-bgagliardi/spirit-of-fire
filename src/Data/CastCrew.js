@@ -31,7 +31,7 @@ const Crew = [
         image: benImage,
         icon: "◆",
         col: "founder",
-        bio: "A graduate of Theatre and Computer Science from the University of Wisconsin, Madison, Benjamin is an aspiring writer and actor. He finds particular joy in humor and comedy.",
+        bio: "A graduate of Theatre and Computer Science from the University of Wisconsin-Madison, Benjamin is an aspiring writer and actor. He finds particular joy in humor and comedy.",
         cta: {label: "Read Portfolio", link: "/portfolio"},
     },
     {
@@ -61,15 +61,15 @@ const Crew = [
         col: "company",
         bio: "Silas Heisler is a student at the University of Northwestern St Paul studying theology and vocal performance. He grew up immersed in the world of theater as he watched his father, Rico Heisler, perform in several production at Chanhassen Dinner Theater and direct shows at Hudson High School alongside his mother. He quickly fell in love with all areas of performance and maintains a deep desire to tell good, true, and beautiful stories for the Glory of God."
     },
-    {
-        name: "Barbara Gagliardi",
-        title: "Creative Consultant",
-        roles: ["Actor", "Singer", "Director", "Designer"],
-        image: barbaraImage,
-        icon: "◆",
-        col: "company",
-        bio: "Barbara Gagliardi has enjoyed involvement in Theatre her whole life, and a deep passion for the arts. She has helped in the ideation, design, and direction of many of our projects both current and past. She spends most of her time now with her husband, children, and grandchildren."
-    },
+    // {
+    //     name: "Barbara Gagliardi",
+    //     title: "Creative Consultant",
+    //     roles: ["Actor", "Singer", "Director", "Designer"],
+    //     image: barbaraImage,
+    //     icon: "◆",
+    //     col: "company",
+    //     bio: "Barbara Gagliardi has enjoyed involvement in Theatre her whole life, and a deep passion for the arts. She has helped in the ideation, design, and direction of many of our projects both current and past. She spends most of her time now with her husband, children, and grandchildren."
+    // },
 ];
 
 const Casts = {
