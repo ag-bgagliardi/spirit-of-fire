@@ -133,7 +133,7 @@ const Casts = {
             character: "Stage Manager",
             name: "Gideon Heisler",
             bio: "",
-            image: "",
+            image: gideonImage,
         },
     ],
     "MotherRabbit_Jun_2026": [
@@ -153,7 +153,7 @@ const Casts = {
             character: "Peter Kotski",
             name: "Gideon Heisler",
             // bio: "Brandyn’s inaugural production with Spirit of Fire. Primarily a dancer, he has collaborated most recently with Concerto Dance by Jolene Konkel and Flying Foot Forum. Spent several years working at Chanhassen Dinner Theatres, where he performing in Newsies!, Mary Poppins, Beauty and the Beast, Camelot, and Mama Mia!. Brandyn works in physical therapy and does online fitness coaching. Check him out on Instagram @ironwell.fitness. ",
-            // image: brandynImage,
+            image: gideonImage,
         },
         {
             character: "Sara Washabaugh",
@@ -191,12 +191,12 @@ const Casts = {
             bio: "Credits: 20 years directing & choreographing Hudson High School. Acting: Chanhassen Dinner Theatre including All Shook Up (Chad) and West Side Story (Bernardo); Jungle Theatre Urinetown; Bloomington Civic Theatre Crazy for You (Bobby), A Chorus Line (Mike); Minnesota Opera La Traviata and The Merry Widow. B.A. University of Northwestern (St. Paul). Rico shares his life with his wife, Kari, and their 7 children.",
             image: ricoImage,
         },
-        {
-            character: "Stage Manager",
-            name: "Gideon Heisler",
-            bio: "",
-            image: "",
-        },
+        // {
+        //     character: "Stage Manager",
+        //     name: "Gideon Heisler",
+        //     bio: "",
+        //     image: "",
+        // },
     ],
     "AnimalCrackers_Characters": [
         {
