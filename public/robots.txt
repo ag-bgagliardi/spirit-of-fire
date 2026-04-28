@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /participate
+Disallow: /support
+Disallow: /portfolio
+Disallow: /theatology
+Disallow: /affiliates
+Disallow: /past-productions

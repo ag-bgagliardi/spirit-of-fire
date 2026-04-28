@@ -9,6 +9,7 @@ import brandynImage from "../Assets/People/Brandyn.jpg";
 import stuartImage from "../Assets/People/Stuart.jpg";
 import lanceImage from "../Assets/People/Lance.jpg";
 import kenzieImage from "../Assets/People/Kenzie.jpg";
+import gideonImage from "../Assets/People/Gideon.jpeg"
 
 const Crew = [
     {
