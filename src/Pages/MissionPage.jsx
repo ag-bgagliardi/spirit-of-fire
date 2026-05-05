@@ -134,7 +134,7 @@ function MissionHero() {
         </div>
         <div className="team-mission-hero__scroll-cue">
           <div className="team-mission-hero__scroll-line" />
-          <span>Meet the Team</span>
+          <span className="hero-tag">Meet the Team</span>
         </div>
       </div>
     </section>

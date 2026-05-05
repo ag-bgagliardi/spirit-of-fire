@@ -1,7 +1,7 @@
 import ricoImage from "../Assets/People/Rico.png";
 import benImage from "../Assets/People/Benjamin2.jpg";
 import silasImage from "../Assets/People/SilasWide.jpeg";
-import madelineImage from "../Assets/People/MadelineWide.jpeg";
+import madelineImage from "../Assets/People/Madeline.jpg";
 import barbaraImage from "../Assets/People/Barbara.jpeg";
 import stephanieImage from "../Assets/People/Stephanie.jpg";
 import marthaImage from "../Assets/People/Martha.jpg";
@@ -37,7 +37,7 @@ const Crew = [
     },
     {
         name: "Madeline Gagliardi",
-        title: "Administrator",
+        title: "Executive Director",
         roles: ["Manager", "Actor", "Singer"],
         image: madelineImage,
         icon: "◆",

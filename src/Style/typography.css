@@ -78,3 +78,7 @@
 .color-outline {
   color: var(--outline);
 }
+.hero-tag {
+  font-weight: 500;
+  color: var(--on-surface-variant);
+}
