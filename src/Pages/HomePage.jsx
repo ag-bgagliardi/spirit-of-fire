@@ -34,7 +34,7 @@ function HomeHero() {
         </div>
         <div className="team-mission-hero__scroll-cue">
           <div className="team-mission-hero__scroll-line" />
-          <span>Soli Deo Gloria</span>
+          <span className="hero-tag">Soli Deo Gloria</span>
         </div>
       </div>
     </section>

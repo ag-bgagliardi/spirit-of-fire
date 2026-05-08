@@ -1,7 +1,7 @@
 import ricoImage from "../Assets/People/Rico.png";
 import benImage from "../Assets/People/Benjamin2.jpg";
 import silasImage from "../Assets/People/SilasWide.jpeg";
-import madelineImage from "../Assets/People/MadelineWide.jpeg";
+import madelineImage from "../Assets/People/Madeline.jpg";
 import barbaraImage from "../Assets/People/Barbara.jpeg";
 import stephanieImage from "../Assets/People/Stephanie.jpg";
 import marthaImage from "../Assets/People/Martha.jpg";
@@ -9,6 +9,7 @@ import brandynImage from "../Assets/People/Brandyn.jpg";
 import stuartImage from "../Assets/People/Stuart.jpg";
 import lanceImage from "../Assets/People/Lance.jpg";
 import kenzieImage from "../Assets/People/Kenzie.jpg";
+import gideonImage from "../Assets/People/Gideon.jpeg"
 
 const Crew = [
     {
@@ -36,7 +37,7 @@ const Crew = [
     },
     {
         name: "Madeline Gagliardi",
-        title: "Administrator",
+        title: "Executive Director",
         roles: ["Manager", "Actor", "Singer"],
         image: madelineImage,
         icon: "◆",
@@ -132,15 +133,15 @@ const Casts = {
             character: "Stage Manager",
             name: "Gideon Heisler",
             bio: "",
-            image: "",
+            image: gideonImage,
         },
     ],
     "MotherRabbit_Jun_2026": [
         {
             character: "Richard Kotski",
-            name: "Silas Heisler",
-            bio: "Silas Heisler is thrilled to be part of the inaugural Spirit of Fire production! Recent roles include Mr. Van Daan in The Diary of Anne Frank, Robert in The Play That Goes Wrong, Jean Valjean in Les Misérables, and Ren McCormack in Footloose. He is a student at the University of Northwestern–St. Paul, double majoring in Biblical and Theological Studies and Music.",
-            image: silasImage,
+            name: "Gideon Heisler",
+            // bio: "Brandyn’s inaugural production with Spirit of Fire. Primarily a dancer, he has collaborated most recently with Concerto Dance by Jolene Konkel and Flying Foot Forum. Spent several years working at Chanhassen Dinner Theatres, where he performing in Newsies!, Mary Poppins, Beauty and the Beast, Camelot, and Mama Mia!. Brandyn works in physical therapy and does online fitness coaching. Check him out on Instagram @ironwell.fitness. ",
+            image: gideonImage,
         },
         {
             character: "Robert (Bobby) Kotski",
@@ -150,9 +151,9 @@ const Casts = {
         },
         {
             character: "Peter Kotski",
-            name: "Gideon Heisler",
-            // bio: "Brandyn’s inaugural production with Spirit of Fire. Primarily a dancer, he has collaborated most recently with Concerto Dance by Jolene Konkel and Flying Foot Forum. Spent several years working at Chanhassen Dinner Theatres, where he performing in Newsies!, Mary Poppins, Beauty and the Beast, Camelot, and Mama Mia!. Brandyn works in physical therapy and does online fitness coaching. Check him out on Instagram @ironwell.fitness. ",
-            // image: brandynImage,
+            name: "Silas Heisler",
+            bio: "Silas Heisler is thrilled to be part of the inaugural Spirit of Fire production! Recent roles include Mr. Van Daan in The Diary of Anne Frank, Robert in The Play That Goes Wrong, Jean Valjean in Les Misérables, and Ren McCormack in Footloose. He is a student at the University of Northwestern–St. Paul, double majoring in Biblical and Theological Studies and Music.",
+            image: silasImage,
         },
         {
             character: "Sara Washabaugh",
@@ -190,12 +191,12 @@ const Casts = {
             bio: "Credits: 20 years directing & choreographing Hudson High School. Acting: Chanhassen Dinner Theatre including All Shook Up (Chad) and West Side Story (Bernardo); Jungle Theatre Urinetown; Bloomington Civic Theatre Crazy for You (Bobby), A Chorus Line (Mike); Minnesota Opera La Traviata and The Merry Widow. B.A. University of Northwestern (St. Paul). Rico shares his life with his wife, Kari, and their 7 children.",
             image: ricoImage,
         },
-        {
-            character: "Stage Manager",
-            name: "Gideon Heisler",
-            bio: "",
-            image: "",
-        },
+        // {
+        //     character: "Stage Manager",
+        //     name: "Gideon Heisler",
+        //     bio: "",
+        //     image: "",
+        // },
     ],
     "AnimalCrackers_Characters": [
         {
