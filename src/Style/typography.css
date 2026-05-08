@@ -81,4 +81,5 @@
 .hero-tag {
   font-weight: 500;
   color: var(--on-surface-variant);
+  filter: drop-shadow(0 0 8px rgb(80, 11, 0)) drop-shadow(0 0 24px rgb(60, 5, 0));
 }
