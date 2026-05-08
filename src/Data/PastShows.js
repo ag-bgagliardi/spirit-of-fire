@@ -82,7 +82,7 @@ const productions = [
         ],
         image: motherRabbitImage,
         id: "motherrabbit",
-        cast: People.casts.MotherRabbit_Jun_2026,
+        cast: People.casts.MotherRabbit_Feb_2026,
         description: "",
         images: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
     }

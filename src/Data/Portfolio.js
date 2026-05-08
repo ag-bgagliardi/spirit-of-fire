@@ -16,7 +16,7 @@ const plays = [
         synopsis: `Peter Kotski's mother is sick. His father passed away years ago. 
         His eccentric brothers are eccentric, and estranged. His mother's illness 
         brings them all together again, where they must reconcile with each other, 
-        and her infamous personal Doctor, Reverend Byrd. Filled with boystrous energy
+        and her infamous personal Doctor, Reverend Byrd. Filled with boisterous energy
         shenanigans, and all sorts of tomfoolery, Mother Rabbit has a laugh for anyone
         who comes. The show is Family-friendly and has strong themes of forgiveness and 
         family values.`,
