@@ -8,7 +8,7 @@ const TEAM_CREDENTIALS = [
   { username: "benjamin", password: "spiritoffire", displayName: "Benjamin Gagliardi" },
   { username: "madeline", password: "spiritoffire", displayName: "Madeline Gagliardi" },
   { username: "silas", password: "spiritoffire", displayName: "Silas Heisler" },
-  { username: "admin",    password: "spiritoffire", displayName: "Admin" },
+  { username: "admin",    password: "admin", displayName: "Admin" },
 ];
 
 const AuthContext = createContext(null);

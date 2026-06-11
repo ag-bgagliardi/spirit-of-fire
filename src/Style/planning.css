@@ -110,7 +110,7 @@
 
 .planning-header__inner {
   position: relative;
-  max-width: 1200px;
+  max-width: 1560px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -130,10 +130,18 @@
   margin-bottom: 8px;
 }
 
-.planning-body {
-  max-width: 1200px;
+/* ── Two-column planning layout ── */
+.planning-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  align-items: start;
+  max-width: 1560px;
   margin: 0 auto;
+}
+
+.planning-body {
   padding: 64px var(--pad-x) 120px;
+  min-width: 0; /* prevent overflow in grid */
 }
 
 /* ── Sync status bar ── */
@@ -237,12 +245,6 @@
   gap: 2px;
 }
 
-@media (max-width: 700px) {
-  .project-list-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ── Project row (list + next projects) ── */
 .project-row {
   display: grid;
@@ -259,11 +261,11 @@
 }
 
 .project-row--with-image {
-  grid-template-columns: 48px 1fr auto auto auto;
+  grid-template-columns: 48px 1fr auto auto;
 }
 
 .project-row--no-image {
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: 1fr auto auto;
 }
 
 .project-row--scheduled {
@@ -507,7 +509,240 @@
   margin-top: 28px;
 }
 
+/* ── Team notes sidebar ── */
+.team-notes-sidebar {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 40px 20px 40px 16px;
+  border-left: 1px solid var(--outline-15);
+  scrollbar-width: thin;
+  scrollbar-color: var(--outline-variant) transparent;
+}
+
+.team-notes-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.team-notes-sidebar__members {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Member notes card ── */
+.member-notes {
+  background: var(--surface-container);
+  border: 1px solid var(--outline-12);
+  padding: 16px;
+  margin-bottom: 2px;
+}
+
+.member-notes__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.member-notes__name {
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.member-notes__add-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary-10);
+  border: 1px solid var(--primary-30);
+  color: var(--primary-container);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  flex-shrink: 0;
+  transition: background .2s, border-color .2s;
+}
+.member-notes__add-btn:hover {
+  background: var(--primary-20);
+  border-color: var(--primary-container);
+}
+
+/* ── Compose area ── */
+.member-notes__compose {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.member-notes__textarea {
+  font-size: 12px;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.member-notes__compose-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.member-notes__save-btn {
+  padding: 8px 16px;
+  font-size: 9px;
+  letter-spacing: .2em;
+}
+
+/* ── Note list ── */
+.member-notes__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.member-notes__list--resolved {
+  opacity: 0.65;
+  margin-top: 8px;
+}
+
+.member-notes__item {
+  background: var(--surface-high);
+  padding: 10px 12px;
+  border-left: 2px solid var(--primary-30);
+}
+
+.member-notes__item--resolved {
+  border-left-color: var(--outline-30);
+}
+
+.member-notes__item-header {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.member-notes__resolve-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--outline-40);
+  background: transparent;
+  color: var(--outline);
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.member-notes__resolve-btn:hover {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: #4caf80;
+  color: #4caf80;
+}
+
+.member-notes__text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+  flex: 1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.member-notes__text--resolved {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.member-notes__item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.member-notes__item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.member-notes__meta {
+  font-size: 9px;
+  color: var(--outline);
+  letter-spacing: .08em;
+  opacity: 0.7;
+}
+
+.member-notes__empty {
+  font-size: 11px;
+  color: var(--outline);
+  font-style: italic;
+  opacity: 0.5;
+  padding: 8px 0 4px;
+}
+
+/* ── History toggle ── */
+.member-notes__history {
+  margin-top: 12px;
+  border-top: 1px solid var(--outline-12);
+  padding-top: 10px;
+}
+
+.member-notes__history-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--outline);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  padding: 0;
+  transition: color .2s;
+  width: 100%;
+  text-align: left;
+}
+.member-notes__history-toggle:hover { color: var(--on-surface-variant); }
+.member-notes__history-toggle span  { font-size: 8px; }
+
 /* ── Responsive ── */
+@media (max-width: 1100px) {
+  .planning-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .team-notes-sidebar {
+    position: static;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--outline-15);
+    padding: 40px var(--pad-x);
+  }
+
+  .team-notes-sidebar__members {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+}
+
 @media (max-width: 700px) {
   .planning-section-header {
     flex-direction: column;
@@ -521,9 +756,13 @@
     grid-template-columns: 1fr auto;
   }
 
-  .project-row__thumb    { display: none; }
-  .project-row__index    { display: none; }
+  .project-row__thumb      { display: none; }
+  .project-row__index      { display: none; }
   .project-row__btn--muted { display: none; }
+
+  .project-list-grid {
+    grid-template-columns: 1fr;
+  }
 
   .calendar-grid {
     grid-template-columns: 1fr 1fr;
@@ -531,6 +770,12 @@
 
   .add-from-list {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-notes-sidebar__members {
+    grid-template-columns: 1fr;
   }
 }
 

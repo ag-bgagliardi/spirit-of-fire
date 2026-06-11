@@ -1,18 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../Main/AuthContext";
 import { useNavigate } from "react-router-dom";
+import People from "../Data/CastCrew"
 import "../Style/planning.css";
 
 // ── Google Sheets config ──────────────────────────────────────────────────────
 const SHEET_ID = "19pXlRO9zcZZppLdCf2rHXEXX6LbvLZtm-_ptzwKB604";
 
-// GIDs for each tab — click the tab in Google Sheets and read gid=XXXX from the URL.
-// Project List is the first tab so gid=0. Replace GID_NEXT_PROJECTS with the
-// gid value from the URL when you have the Next Projects tab selected.
 const GID_PROJECT_LIST  = 0;
-const GID_NEXT_PROJECTS = 0; // ← REPLACE THIS with your Next Projects tab gid
+const GID_NEXT_PROJECTS = 435583994; // ← REPLACE with your Next Projects tab gid
 
-// Strip Google's JSONP wrapper — handles variable-length prefix robustly
 function parseSheetResponse(text) {
   const start = text.indexOf("{");
   const end   = text.lastIndexOf("}");
@@ -25,14 +22,12 @@ function cellVal(cell) {
   return cell.f ?? (cell.v !== null && cell.v !== undefined ? String(cell.v) : "");
 }
 
-// Fetch a sheet tab by its numeric gid, skip the header row
 async function fetchSheetByGid(gid) {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${gid}`;
   const res  = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status} fetching gid=${gid}`);
   const text = await res.text();
   const data = parseSheetResponse(text);
-  // Row 0 is the header — return data rows only
   return (data.table?.rows ?? []).slice(1).filter(r => r.c && r.c[0]?.v);
 }
 
@@ -40,6 +35,9 @@ async function fetchSheetByGid(gid) {
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const GENRES = ["Comedy","Drama","Romance","Musical","Tragedy","Mystery","One-Act","Other"];
 const TYPES  = ["Original Work","Adaptation","World Premiere","Revival","Reading"];
+
+// Team members shown in the notes sidebar — edit as needed
+const TEAM_MEMBERS = People.crew;
 
 // ── localStorage helpers ──────────────────────────────────────────────────────
 function lsGet(key, fb) {
@@ -161,16 +159,14 @@ function ScheduleModal({ project, existing, scheduled, projects, onSave, onClose
   const [year,  setYear]  = useState(existing?.year  ?? cur);
   const years = Array.from({ length: 8 }, (_, i) => cur + i);
 
-  // Check if the chosen month+year is already taken by a different project
   const selectedMonth = month === "" ? null : Number(month);
   const conflict = selectedMonth !== null && scheduled.find(s => {
-    if (s.projectId === project.id) return false; // allow rescheduling own slot
+    if (s.projectId === project.id) return false;
     return s.month === selectedMonth && s.year === year;
   });
   const conflictName = conflict
     ? (projects.find(p => p.id === conflict.projectId)?.name ?? "another project")
     : null;
-
   const canSave = !conflict;
 
   return (
@@ -406,7 +402,6 @@ function CalendarTimeline({ projects, scheduled }) {
 
   const byMonth = Array.from({ length: 12 }, () => ({ past: [], tentative: null }));
 
-  // Scheduled/tentative entries
   scheduled.forEach(s => {
     if (s.year === year && s.month !== null && s.month !== undefined) {
       const proj = projects.find(p => p.id === s.projectId);
@@ -414,7 +409,6 @@ function CalendarTimeline({ projects, scheduled }) {
     }
   });
 
-  // Past productions
   pastShows.forEach(show => {
     const dateStr    = show.dates || "";
     const monthMatch = dateStr.match(/^([A-Z]{3})/);
@@ -462,8 +456,7 @@ function CalendarTimeline({ projects, scheduled }) {
               ))}
 
               {tentative && (
-                <div className={`calendar-cell__tentative${past.length > 0 ? " calendar-cell__tentative--spaced" : ""}`}
-                  style={{ marginTop: past.length > 0 ? 8 : 0 }}>
+                <div className="calendar-cell__tentative" style={{ marginTop: past.length > 0 ? 8 : 0 }}>
                   <p className="serif-italic calendar-cell__tentative-name"
                     style={{ color: "var(--primary-lighter)" }}>{tentative.name}</p>
                   <span className="calendar-cell__tentative-badge">Tentative</span>
@@ -494,6 +487,192 @@ function CalendarTimeline({ projects, scheduled }) {
   );
 }
 
+// ── Team Notes Sidebar ────────────────────────────────────────────────────────
+
+function MemberNotes({ member, currentUser }) {
+  const key = `sof_notes_${member.id}`;
+  const [notes,       setNotes]       = useState(() => lsGet(key, []));
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [adding,      setAdding]      = useState(false);
+  const [editingId,   setEditingId]   = useState(null);
+  const [draft,       setDraft]       = useState("");
+
+  function persist(next) { setNotes(next); lsSet(key, next); }
+
+  function addNote() {
+    if (!draft.trim()) return;
+    persist([{
+      id:        Date.now(),
+      text:      draft.trim(),
+      resolved:  false,
+      createdAt: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      createdBy: currentUser?.displayName ?? "Team",
+    }, ...notes]);
+    setDraft("");
+    setAdding(false);
+  }
+
+  function saveEdit(id) {
+    if (!draft.trim()) return;
+    persist(notes.map(n => n.id === id ? { ...n, text: draft.trim() } : n));
+    setEditingId(null);
+    setDraft("");
+  }
+
+  function resolve(id) {
+    persist(notes.map(n => n.id === id
+      ? { ...n, resolved: true, resolvedAt: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" }) }
+      : n
+    ));
+  }
+
+  function remove(id) { persist(notes.filter(n => n.id !== id)); }
+
+  function startEdit(note) {
+    setEditingId(note.id);
+    setDraft(note.text);
+    setAdding(false);
+  }
+
+  const open     = notes.filter(n => !n.resolved);
+  const resolved = notes.filter(n =>  n.resolved);
+
+  return (
+    <div className="member-notes">
+      <div className="member-notes__header">
+        <div>
+          <p className="member-notes__name serif-italic color-on-surface">{member.name}</p>
+          <span className="label-xs color-outline" style={{ letterSpacing: ".15em" }}>{member.role}</span>
+        </div>
+        <button
+          className="member-notes__add-btn"
+          onClick={() => { setAdding(a => !a); setEditingId(null); setDraft(""); }}
+          title="Add note"
+        >+</button>
+      </div>
+
+      {adding && (
+        <div className="member-notes__compose">
+          <textarea
+            className="field__input field__textarea member-notes__textarea"
+            placeholder="Add a TODO note…"
+            value={draft}
+            onChange={e => setDraft(e.target.value)}
+            rows={3}
+            autoFocus
+          />
+          <div className="member-notes__compose-actions">
+            <button className="submit-btn member-notes__save-btn"
+              onClick={addNote} disabled={!draft.trim()}>
+              Add
+            </button>
+            <button className="btn-ghost member-notes__cancel-btn"
+              style={{ padding: "8px 12px" }}
+              onClick={() => { setAdding(false); setDraft(""); }}>
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
+      {open.length === 0 && !adding ? (
+        <p className="member-notes__empty">No open tasks.</p>
+      ) : (
+        <ul className="member-notes__list">
+          {open.map(note => (
+            <li key={note.id} className="member-notes__item">
+              {editingId === note.id ? (
+                <div className="member-notes__compose">
+                  <textarea
+                    className="field__input field__textarea member-notes__textarea"
+                    value={draft}
+                    onChange={e => setDraft(e.target.value)}
+                    rows={3}
+                    autoFocus
+                  />
+                  <div className="member-notes__compose-actions">
+                    <button className="submit-btn member-notes__save-btn"
+                      onClick={() => saveEdit(note.id)} disabled={!draft.trim()}>
+                      Save
+                    </button>
+                    <button className="btn-ghost member-notes__cancel-btn"
+                      style={{ padding: "8px 12px" }}
+                      onClick={() => { setEditingId(null); setDraft(""); }}>
+                      ✕
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="member-notes__item-header">
+                    <button className="member-notes__resolve-btn"
+                      onClick={() => resolve(note.id)} title="Mark resolved">✓</button>
+                    <p className="member-notes__text">{note.text}</p>
+                  </div>
+                  <div className="member-notes__item-footer">
+                    <span className="member-notes__meta">{note.createdAt} · {note.createdBy}</span>
+                    <div className="member-notes__item-actions">
+                      <button className="project-row__btn" style={{ fontSize: 9 }}
+                        onClick={() => startEdit(note)}>Edit</button>
+                      <button className="project-row__btn project-row__btn--muted" style={{ fontSize: 9 }}
+                        onClick={() => remove(note.id)}>✕</button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {resolved.length > 0 && (
+        <div className="member-notes__history">
+          <button className="member-notes__history-toggle"
+            onClick={() => setHistoryOpen(o => !o)}>
+            <span>{historyOpen ? "▲" : "▼"}</span>
+            Task History ({resolved.length})
+          </button>
+          {historyOpen && (
+            <ul className="member-notes__list member-notes__list--resolved">
+              {resolved.map(note => (
+                <li key={note.id} className="member-notes__item member-notes__item--resolved">
+                  <p className="member-notes__text member-notes__text--resolved">{note.text}</p>
+                  <div className="member-notes__item-footer">
+                    <span className="member-notes__meta">
+                      Resolved {note.resolvedAt} · {note.createdBy}
+                    </span>
+                    <button className="project-row__btn project-row__btn--muted" style={{ fontSize: 9 }}
+                      onClick={() => remove(note.id)}>✕</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TeamNotesSidebar({ currentUser }) {
+  return (
+    <aside className="team-notes-sidebar">
+      <div className="team-notes-sidebar__header">
+        <div className="planning-section-header__rule" />
+        <span className="label-tiny color-primary" style={{ letterSpacing: ".35em" }}>Team</span>
+      </div>
+      <h2 className="serif-italic color-on-surface" style={{ fontSize: 18, marginBottom: 20 }}>
+        TODO Notes
+      </h2>
+      <div className="team-notes-sidebar__members">
+        {TEAM_MEMBERS.map(member => (
+          <MemberNotes key={member.id} member={member} currentUser={currentUser} />
+        ))}
+      </div>
+    </aside>
+  );
+}
+
 // ── Main Page ─────────────────────────────────────────────────────────────────
 export default function PlanningPage() {
   const { user, logout } = useAuth();
@@ -501,78 +680,54 @@ export default function PlanningPage() {
 
   const [projects,   setProjects]   = useState(() => lsGet("sof_projects",  []));
   const [scheduled,  setScheduled]  = useState(() => lsGet("sof_scheduled", []));
-  const [syncStatus, setSyncStatus] = useState("loading"); // loading | ok | error | local
+  const [syncStatus, setSyncStatus] = useState("loading");
   const [lastSynced, setLastSynced] = useState(null);
 
-  // ── Fetch from Google Sheets ──
   const syncFromSheet = useCallback(async () => {
     setSyncStatus("loading");
     try {
-      // Project List sheet — columns: Title, Genre, Type, Author
       const projRows = await fetchSheetByGid(GID_PROJECT_LIST);
-      const sheetProjects = projRows
-        .map((r, i) => ({
-          id:      `sheet_${i}_${cellVal(r.c[0])}`.replace(/\s/g, "_"),
-          name:    cellVal(r.c[0]),
-          genre:   cellVal(r.c[1]),
-          type:    cellVal(r.c[2]),
-          author:  cellVal(r.c[3]),
-          image:   "",
-          _source: "sheet",
-        }));
+      const sheetProjects = projRows.map((r, i) => ({
+        id:      `sheet_${i}_${cellVal(r.c[0])}`.replace(/\s/g, "_"),
+        name:    cellVal(r.c[0]),
+        genre:   cellVal(r.c[1]),
+        type:    cellVal(r.c[2]),
+        author:  cellVal(r.c[3]),
+        image:   "",
+        _source: "sheet",
+      }));
 
-      // Next Projects sheet — columns: Title, Tentative Date
       const nextRows = await fetchSheetByGid(GID_NEXT_PROJECTS);
-      const sheetScheduled = nextRows
-        .map(r => {
-          const title = cellVal(r.c[0]);
-          const date  = cellVal(r.c[1]); // e.g. "Mar 2027" or "2027"
+      const sheetScheduled = nextRows.map(r => {
+        const title = cellVal(r.c[0]);
+        const date  = cellVal(r.c[1]);
+        const proj  = sheetProjects.find(p => p.name.toLowerCase() === title.toLowerCase());
+        if (!proj) return null;
 
-          // Find matching project by name
-          const proj  = sheetProjects.find(
-            p => p.name.toLowerCase() === title.toLowerCase()
-          );
-          if (!proj) return null;
-
-          // Parse date
-          let month = null;
-          let year  = new Date().getFullYear();
-
-          if (date) {
-            const monthMatch = date.match(/([A-Za-z]+)/);
-            const yearMatch  = date.match(/(\d{4})/);
-            if (yearMatch)  year  = Number(yearMatch[1]);
-            if (monthMatch) {
-              const mIdx = MONTHS.findIndex(
-                m => m.toLowerCase() === monthMatch[1].toLowerCase().slice(0, 3)
-              );
-              if (mIdx >= 0) month = mIdx;
-            }
+        let month = null;
+        let year  = new Date().getFullYear();
+        if (date) {
+          const monthMatch = date.match(/([A-Za-z]+)/);
+          const yearMatch  = date.match(/(\d{4})/);
+          if (yearMatch) year = Number(yearMatch[1]);
+          if (monthMatch) {
+            const mIdx = MONTHS.findIndex(m => m.toLowerCase() === monthMatch[1].toLowerCase().slice(0, 3));
+            if (mIdx >= 0) month = mIdx;
           }
+        }
+        return { projectId: proj.id, month, year, _source: "sheet" };
+      }).filter(Boolean);
 
-          return { projectId: proj.id, month, year, _source: "sheet" };
-        })
-        .filter(Boolean);
+      const localOnlyProjects  = lsGet("sof_projects",  []).filter(p => p._source !== "sheet");
+      const localOnlyScheduled = lsGet("sof_scheduled", []).filter(s => s._source !== "sheet");
 
-      // Merge: sheet entries are the base; local additions that aren't from
-      // the sheet are preserved on top
-      const localOnlyProjects = lsGet("sof_projects", []).filter(
-        p => p._source !== "sheet"
-      );
-      const localOnlyScheduled = lsGet("sof_scheduled", []).filter(
-        s => s._source !== "sheet"
-      );
-
-      const merged = [...sheetProjects, ...localOnlyProjects];
-      setProjects(merged);
-      lsSet("sof_projects", merged);
-
+      const merged         = [...sheetProjects, ...localOnlyProjects];
       const mergedScheduled = [...sheetScheduled, ...localOnlyScheduled];
-      setScheduled(mergedScheduled);
-      lsSet("sof_scheduled", mergedScheduled);
 
-      const now = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      setLastSynced(now);
+      setProjects(merged);   lsSet("sof_projects",  merged);
+      setScheduled(mergedScheduled); lsSet("sof_scheduled", mergedScheduled);
+
+      setLastSynced(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
       setSyncStatus("ok");
     } catch (err) {
       console.error("Sheet sync failed:", err);
@@ -582,7 +737,6 @@ export default function PlanningPage() {
 
   useEffect(() => { syncFromSheet(); }, [syncFromSheet]);
 
-  // ── Local mutations ──
   function saveProjects(val)  { setProjects(val);  lsSet("sof_projects",  val); }
   function saveScheduled(val) { setScheduled(val); lsSet("sof_scheduled", val); }
 
@@ -631,34 +785,38 @@ export default function PlanningPage() {
         </div>
       </section>
 
-      {/* Body */}
-      <div className="planning-body">
+      {/* Two-column layout: main content + sticky notes sidebar */}
+      <div className="planning-layout">
+        <div className="planning-body">
+          <SyncBar
+            status={syncStatus}
+            lastSynced={lastSynced}
+            onRefresh={syncFromSheet}
+          />
 
-        <NextProjects
-          projects={projects}
-          scheduled={scheduled}
-          onSchedule={scheduleProject}
-          onRemove={removeScheduled}
-        />
+          <NextProjects
+            projects={projects}
+            scheduled={scheduled}
+            onSchedule={scheduleProject}
+            onRemove={removeScheduled}
+          />
 
-        <CalendarTimeline
-          projects={projects}
-          scheduled={scheduled}
-        />
+          <CalendarTimeline
+            projects={projects}
+            scheduled={scheduled}
+          />
 
-        <SyncBar
-          status={syncStatus}
-          lastSynced={lastSynced}
-          onRefresh={syncFromSheet}
-        />
+          <ProjectList
+            projects={projects}
+            onAdd={addProject}
+            onEdit={editProject}
+            onDelete={deleteProject}
+          />
+        </div>
 
-        <ProjectList
-          projects={projects}
-          onAdd={addProject}
-          onEdit={editProject}
-          onDelete={deleteProject}
-        />
+        <TeamNotesSidebar currentUser={user} />
       </div>
+
     </main>
   );
 }
