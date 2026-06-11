@@ -4,13 +4,20 @@ import { useNavigate } from "react-router-dom";
 import "../Style/planning.css";
 
 // ── Google Sheets config ──────────────────────────────────────────────────────
-const SHEET_ID   = "19pXlRO9zcZZppLdCf2rHXEXX6LbvLZtm-_ptzwKB604";
-const BASE_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+const SHEET_ID = "19pXlRO9zcZZppLdCf2rHXEXX6LbvLZtm-_ptzwKB604";
 
-// Strip Google's JSONP wrapper and parse
+// GIDs for each tab — click the tab in Google Sheets and read gid=XXXX from the URL.
+// Project List is the first tab so gid=0. Replace GID_NEXT_PROJECTS with the
+// gid value from the URL when you have the Next Projects tab selected.
+const GID_PROJECT_LIST  = 0;
+const GID_NEXT_PROJECTS = 0; // ← REPLACE THIS with your Next Projects tab gid
+
+// Strip Google's JSONP wrapper — handles variable-length prefix robustly
 function parseSheetResponse(text) {
-  const clean = text.substring(47, text.length - 2);
-  return JSON.parse(clean);
+  const start = text.indexOf("{");
+  const end   = text.lastIndexOf("}");
+  if (start === -1 || end === -1) throw new Error("Unexpected gviz response format");
+  return JSON.parse(text.substring(start, end + 1));
 }
 
 function cellVal(cell) {
@@ -18,13 +25,15 @@ function cellVal(cell) {
   return cell.f ?? (cell.v !== null && cell.v !== undefined ? String(cell.v) : "");
 }
 
-async function fetchSheet(sheetName) {
-  const url = `${BASE_URL}&sheet=${encodeURIComponent(sheetName)}&headers=1`;
+// Fetch a sheet tab by its numeric gid, skip the header row
+async function fetchSheetByGid(gid) {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${gid}`;
   const res  = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status} fetching gid=${gid}`);
   const text = await res.text();
   const data = parseSheetResponse(text);
-  return data.table.rows;
+  // Row 0 is the header — return data rows only
+  return (data.table?.rows ?? []).slice(1).filter(r => r.c && r.c[0]?.v);
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -146,11 +155,23 @@ function ProjectModal({ existing, onSave, onClose }) {
 }
 
 // ── Schedule modal ────────────────────────────────────────────────────────────
-function ScheduleModal({ project, existing, onSave, onClose }) {
+function ScheduleModal({ project, existing, scheduled, projects, onSave, onClose }) {
   const cur = new Date().getFullYear();
   const [month, setMonth] = useState(existing?.month ?? "");
   const [year,  setYear]  = useState(existing?.year  ?? cur);
   const years = Array.from({ length: 8 }, (_, i) => cur + i);
+
+  // Check if the chosen month+year is already taken by a different project
+  const selectedMonth = month === "" ? null : Number(month);
+  const conflict = selectedMonth !== null && scheduled.find(s => {
+    if (s.projectId === project.id) return false; // allow rescheduling own slot
+    return s.month === selectedMonth && s.year === year;
+  });
+  const conflictName = conflict
+    ? (projects.find(p => p.id === conflict.projectId)?.name ?? "another project")
+    : null;
+
+  const canSave = !conflict;
 
   return (
     <div className="modal-backdrop" onClick={e => e.target === e.currentTarget && onClose()}>
@@ -162,7 +183,8 @@ function ScheduleModal({ project, existing, onSave, onClose }) {
           <div className="form-grid">
             <Field label="Month (optional)">
               <select className="field__input field__select" value={month}
-                onChange={e => setMonth(e.target.value)}>
+                onChange={e => setMonth(e.target.value)}
+                style={{ borderBottomColor: conflict ? "rgba(220,80,60,0.7)" : undefined }}>
                 <option value="">Any month</option>
                 {MONTHS.map((m, i) => <option key={m} value={i}>{m}</option>)}
               </select>
@@ -174,10 +196,18 @@ function ScheduleModal({ project, existing, onSave, onClose }) {
               </select>
             </Field>
           </div>
+          {conflict && (
+            <div className="login-error">
+              <span className="login-error__text">
+                {MONTHS[selectedMonth]} {year} is already assigned to <em>{conflictName}</em>. Choose a different month or year.
+              </span>
+            </div>
+          )}
         </div>
         <div className="team-modal__actions team-modal__actions--tight">
-          <button className="submit-btn" style={{ flex: 1 }}
-            onClick={() => onSave({ month: month === "" ? null : Number(month), year })}>
+          <button className="submit-btn" style={{ flex: 1, opacity: canSave ? 1 : 0.45 }}
+            disabled={!canSave}
+            onClick={() => canSave && onSave({ month: selectedMonth, year })}>
             Confirm →
           </button>
           <button className="btn-ghost" onClick={onClose} style={{ padding: "14px 24px" }}>Cancel</button>
@@ -356,6 +386,8 @@ function NextProjects({ projects, scheduled, onSchedule, onRemove }) {
         <ScheduleModal
           project={scheduling}
           existing={scheduled.find(s => s.projectId === scheduling.id)}
+          scheduled={scheduled}
+          projects={projects}
           onSave={handleScheduleSave}
           onClose={() => setScheduling(null)}
         />
@@ -477,9 +509,8 @@ export default function PlanningPage() {
     setSyncStatus("loading");
     try {
       // Project List sheet — columns: Title, Genre, Type, Author
-      const projRows = await fetchSheet("Project List");
+      const projRows = await fetchSheetByGid(GID_PROJECT_LIST);
       const sheetProjects = projRows
-        .filter(r => r.c[0]?.v)
         .map((r, i) => ({
           id:      `sheet_${i}_${cellVal(r.c[0])}`.replace(/\s/g, "_"),
           name:    cellVal(r.c[0]),
@@ -491,9 +522,8 @@ export default function PlanningPage() {
         }));
 
       // Next Projects sheet — columns: Title, Tentative Date
-      const nextRows = await fetchSheet("Next Projects");
+      const nextRows = await fetchSheetByGid(GID_NEXT_PROJECTS);
       const sheetScheduled = nextRows
-        .filter(r => r.c[0]?.v)
         .map(r => {
           const title = cellVal(r.c[0]);
           const date  = cellVal(r.c[1]); // e.g. "Mar 2027" or "2027"
