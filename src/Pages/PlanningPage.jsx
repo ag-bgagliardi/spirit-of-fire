@@ -603,18 +603,6 @@ export default function PlanningPage() {
 
       {/* Body */}
       <div className="planning-body">
-        <SyncBar
-          status={syncStatus}
-          lastSynced={lastSynced}
-          onRefresh={syncFromSheet}
-        />
-
-        <ProjectList
-          projects={projects}
-          onAdd={addProject}
-          onEdit={editProject}
-          onDelete={deleteProject}
-        />
 
         <NextProjects
           projects={projects}
@@ -626,6 +614,19 @@ export default function PlanningPage() {
         <CalendarTimeline
           projects={projects}
           scheduled={scheduled}
+        />
+
+        <SyncBar
+          status={syncStatus}
+          lastSynced={lastSynced}
+          onRefresh={syncFromSheet}
+        />
+
+        <ProjectList
+          projects={projects}
+          onAdd={addProject}
+          onEdit={editProject}
+          onDelete={deleteProject}
         />
       </div>
     </main>
