@@ -91,37 +91,37 @@ export default function Nav() {
           {LINKS.map(link => (
             <NavLink key={link.label} link={link} pathname={pathname} onNav={go} />
           ))}
+          {/* Team Log In / signed-in indicator */}
+          <button
+            onClick={handleAuthClick}
+            style={{
+              background: "transparent",
+              border: "1px solid var(--outline-30)",
+              color: isLoggedIn ? "var(--primary)" : "var(--nav-text-color)",
+              padding: "8px 16px",
+              fontSize: 10,
+              fontWeight: 600,
+              letterSpacing: ".18em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              fontFamily: "var(--font-sans)",
+              transition: "border-color .2s, color .2s",
+              flexShrink: 0,
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = "var(--primary-container)";
+              e.currentTarget.style.color = "var(--primary-container)";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = "var(--outline-30)";
+              e.currentTarget.style.color = isLoggedIn ? "var(--primary)" : "var(--nav-text-color)";
+            }}
+          >
+            {isLoggedIn ? `↩ ${user.displayName}` : "Team Log In"}
+          </button>
         </nav>
 
-        {/* Team Log In / signed-in indicator */}
-        <button
-          onClick={handleAuthClick}
-          style={{
-            background: "transparent",
-            border: "1px solid var(--outline-30)",
-            color: isLoggedIn ? "var(--primary)" : "var(--nav-text-color)",
-            padding: "8px 16px",
-            fontSize: 10,
-            fontWeight: 600,
-            letterSpacing: ".18em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            fontFamily: "var(--font-sans)",
-            transition: "border-color .2s, color .2s",
-            flexShrink: 0,
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.borderColor = "var(--primary-container)";
-            e.currentTarget.style.color = "var(--primary-container)";
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.borderColor = "var(--outline-30)";
-            e.currentTarget.style.color = isLoggedIn ? "var(--primary)" : "var(--nav-text-color)";
-          }}
-        >
-          {isLoggedIn ? `↩ ${user.displayName}` : "Team Log In"}
-        </button>
 
         {/* Tickets */}
         <a
