@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../Style/index.css";
 import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
 import productions from "../Data/CurrentShows"
+import ProductionsComingSoon from "./ProductionsComingSoon"
 
 function ProductionsHero() {
   const navigate = useNavigate();
@@ -202,7 +203,8 @@ export default function ProductionsPage() {
 
   return (
     <main className="pat" style={{ minHeight: "100vh" }}>
-      <ProductionsHero />
+      <ProductionsComingSoon />
+      {/* <ProductionsHero /> */}
       <Performances setModalShow={setModalShow} />
       <MainQuote />
       {modalShow && (

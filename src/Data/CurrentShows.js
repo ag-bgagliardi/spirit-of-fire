@@ -1,4 +1,4 @@
-import twelveAngryMenImage from "../Assets/Covers/TwelveAngryMen.jpg";
+import twelveAngryMenImage from "../Assets/Covers/TwelveAngryMen.png";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
 import People from "./CastCrew";
