@@ -81,11 +81,38 @@ const productions = [
             badges.family,
         ],
         image: motherRabbitImage,
-        id: "motherrabbit",
+        id: "motherrabbit-1",
         cast: People.casts.MotherRabbit_Feb_2026,
-        description: "",
+        description: `Peter Kotski's mother is sick. His father passed away years ago. 
+        His eccentric brothers are eccentric, and estranged. His mother's illness 
+        brings them all together again, where they must reconcile with each other 
+        and her infamous personal doctor, Reverend Byrd. Filled with boistrous energy,
+        shenanigans, and all sorts of tomfoolery, "Mother Rabbit" has a laugh for anyone
+        who comes. The show is family-friendly and has strong themes of forgiveness and 
+        family values.`,
         images: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
-    }
+    },
+    {
+        title: "Mother Rabbit",
+        dates: "JUN 11 — JUN 14",
+        badges: [
+            badges.encore,
+            badges.comedy,
+            badges.original,
+            badges.family,
+        ],
+        image: motherRabbitImage,
+        id: "motherrabbit-2",
+        cast: People.casts.MotherRabbit_Jun_2026,
+        description: `Peter Kotski's mother is sick. His father passed away years ago. 
+        His eccentric brothers are eccentric, and estranged. His mother's illness 
+        brings them all together again, where they must reconcile with each other 
+        and her infamous personal doctor, Reverend Byrd. Filled with boistrous energy,
+        shenanigans, and all sorts of tomfoolery, "Mother Rabbit" has a laugh for anyone
+        who comes. The show is family-friendly and has strong themes of forgiveness and 
+        family values.`,
+        photos: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
+    },
 ];
 
 export default productions;

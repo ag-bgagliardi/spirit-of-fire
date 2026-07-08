@@ -138,8 +138,8 @@ function Performances({ setModalShow }) {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, borderBottom: "1px solid rgba(89,66,56,0.2)", paddingBottom: 28 }}>
           <div>
-            <h2 className="serif" style={{ fontSize: 36, marginBottom: 8 }}>Performances</h2>
-            <p className="label-xs color-outline">Active Productions • 2026</p>
+            <h2 className="serif" style={{ fontSize: 36, marginBottom: 8 }}>2027 Performances</h2>
+            <p className="label-xs color-outline">Active Projects • Coming 2027</p>
           </div>
           {productions.length > 3 && (
             <div className="flex-row" style={{ gap: 16 }}>

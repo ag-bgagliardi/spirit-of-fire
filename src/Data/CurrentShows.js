@@ -1,4 +1,4 @@
-import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
+import twelveAngryMenImage from "../Assets/Covers/TwelveAngryMen.jpg";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
 import People from "./CastCrew";
@@ -69,26 +69,18 @@ const badges = {
 
 const productions = [
     {
-        title: "Mother Rabbit",
-        dates: "JUN 11 — JUN 14",
+        title: "Twelve Angry Men",
+        dates: "TBD",
         badges: [
-            badges.encore,
-            badges.comedy,
-            badges.original,
-            badges.family,
+            badges.drama,
+            badges.age,
+            badges.adaptation,
         ],
-        link: "https://events.ticketleap.com/tickets/spirit-of-fire/mother-rabbit",
-        image: motherRabbitImage,
-        id: "motherrabbit",
-        cast: People.casts.MotherRabbit_Jun_2026,
-        description: `Peter Kotski's mother is sick. His father passed away years ago. 
-        His eccentric brothers are eccentric, and estranged. His mother's illness 
-        brings them all together again, where they must reconcile with each other 
-        and her infamous personal doctor, Reverend Byrd. Filled with boistrous energy,
-        shenanigans, and all sorts of tomfoolery, "Mother Rabbit" has a laugh for anyone
-        who comes. The show is family-friendly and has strong themes of forgiveness and 
-        family values.`,
-        photos: [ MR1, MR2, MR3, MR4, MR5, MR6, MR7 ]
+        link: "",
+        image: twelveAngryMenImage,
+        id: "twelveangrymen",
+        cast: People.casts.TwelveAngryMen_Characters,
+        description: `A 19-year-old man has just stood trial for the fatal stabbing of his father. "He doesn't stand a chance," mutters the guard as the 12 jurors are taken into the bleak jury room. It looks like an open-and-shut case—until one of the jurors begins opening the others' eyes to the facts. "This is a remarkable thing about democracy," says the foreign-born juror, "that we are notified by mail to come down to this place—and decide on the guilt or innocence of a man; of a man we have not known before. We have nothing to gain or lose by our verdict. We should not make it a personal thing." But personal it does become, with each juror revealing his or her own character as the various testimonies are re-examined, the murder is re-enacted and a new murder threat is born before their eyes! Tempers get short, arguments grow heated, and the jurors become 12 angry men.`,
     },
     {
         title: "Animal Crackers",

@@ -186,7 +186,7 @@ function NextOnStageSection({ setModalShow }) {
       <div className="container">
         <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64 }}>
           <div>
-            <span className="label-upper color-primary">Upcoming Performances</span>
+            <span className="label-upper color-primary">Active Projects for the 2027 Season</span>
             <h2 className="display-lg" style={{ marginTop: 12 }}>Next on <em>Stage</em></h2>
           </div>
           {productions.length > 3 && (

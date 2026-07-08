@@ -306,6 +306,98 @@ const Casts = {
             bio: "",
             image: "",
         },
+    ],
+    "TwelveAngryMen_Characters": [
+        {
+            character: "Foreman",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #2",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #3",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #4",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #5",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #6",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #7",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #8",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #9",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #10",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #11",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Juror #12",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Guard",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Judge",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Clerk",
+            name: "",
+            bio: "",
+            image: "",
+        },
     ]
 }
 
