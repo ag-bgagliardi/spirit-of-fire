@@ -193,6 +193,69 @@
   color: var(--primary-container);
 }
 
+.sync-bar__sheets-link {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--outline);
+  text-decoration: none;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.sync-bar__sheets-link:hover { color: var(--primary-container); }
+
+/* ── Edit in Sheets link ── */
+.edit-in-sheets-link {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5px, 1.5vw, 12px) clamp(12px, 3vw, 23px);
+  font-size: clamp(11px, 1.2vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--on-primary-container);
+  background: linear-gradient(
+    10deg,
+    var(--primary-deep) 10%,
+    var(--primary-container) 40%,
+    var(--primary-lighter) 100%
+  );
+  background-size: 200% 100%;
+  background-position: left center;
+  transition:
+    background-position 0.4s ease,
+    opacity 0.25s,
+    box-shadow 0.25s;
+  border: 1px solid var(--outline-25);
+  text-decoration: none;
+}
+.edit-in-sheets-link:hover {
+  background-position: right center;
+  box-shadow: 0 0 5px var(--primary-45);
+}
+.edit-in-sheets-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    var(--overlay-white-10),
+    transparent
+  );
+  transition: 0.65s;
+}
+.edit-in-sheets-link:hover::before {
+  left: 100%;
+}
+.edit-in-sheets-link:active {
+  opacity: 0.8;
+}
 /* ── Section header ── */
 .planning-section {
   margin-bottom: 80px;

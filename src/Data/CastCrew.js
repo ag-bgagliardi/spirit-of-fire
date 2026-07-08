@@ -143,7 +143,7 @@ const Casts = {
         {
             character: "Richard Kotski",
             name: "Gideon Heisler",
-            // bio: "Brandyn’s inaugural production with Spirit of Fire. Primarily a dancer, he has collaborated most recently with Concerto Dance by Jolene Konkel and Flying Foot Forum. Spent several years working at Chanhassen Dinner Theatres, where he performing in Newsies!, Mary Poppins, Beauty and the Beast, Camelot, and Mama Mia!. Brandyn works in physical therapy and does online fitness coaching. Check him out on Instagram @ironwell.fitness. ",
+            bio: "Gideon Heisler is a senior doing PSEO college courses, while participating in theater and choir in Hudson as well. He spends his time singing, acting, and watching movies. Theatrical roles include Young Simba in the Lion King, the Cat in the Hat in Seussical, and Wadsworth in Clue.",
             image: gideonImage,
         },
         {
