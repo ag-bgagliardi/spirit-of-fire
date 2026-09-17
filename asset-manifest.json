@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.96b004b3.css",
-    "main.js": "/static/js/main.ebfe6abf.js",
+    "main.js": "/static/js/main.fcd3abd8.js",
     "static/media/MR2.JPG": "/static/media/MR2.06be9b9ee070b3f90e51.JPG",
     "static/media/MR3.JPG": "/static/media/MR3.9eb133eb57b404ada9d2.JPG",
     "static/media/MR8.JPG": "/static/media/MR8.2a18b339468237e66b64.JPG",
@@ -12,6 +12,7 @@
     "static/media/TwelveAngryMen.png": "/static/media/TwelveAngryMen.79c822274f9ae05481e6.png",
     "static/media/horse-background.jpg": "/static/media/horse-background.cf9c57bf58c80ebba585.jpg",
     "static/media/Stuart.jpg": "/static/media/Stuart.bc2717c5ff30ff2ba1a9.jpg",
+    "static/media/homepageImage.png": "/static/media/homepageImage.8b61b16ab5446f5b0aeb.png",
     "static/media/MR5.JPG": "/static/media/MR5.43e752d3ec0a326fd48d.JPG",
     "static/media/flames-background.png": "/static/media/flames-background.63d0b342b5f6018cea92.png",
     "static/media/Barbara.jpeg": "/static/media/Barbara.899c72c21b7bb5449bb9.jpeg",
@@ -39,10 +40,10 @@
     "static/media/splogo.png": "/static/media/splogo.0e65cef1b2e9148d25d3.png",
     "index.html": "/index.html",
     "main.96b004b3.css.map": "/static/css/main.96b004b3.css.map",
-    "main.ebfe6abf.js.map": "/static/js/main.ebfe6abf.js.map"
+    "main.fcd3abd8.js.map": "/static/js/main.fcd3abd8.js.map"
   },
   "entrypoints": [
     "static/css/main.96b004b3.css",
-    "static/js/main.ebfe6abf.js"
+    "static/js/main.fcd3abd8.js"
   ]
 }
