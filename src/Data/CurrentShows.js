@@ -1,3 +1,4 @@
+import christmasCarolImage from "../Assets/Covers/homepageImage.png";
 import twelveAngryMenImage from "../Assets/Covers/TwelveAngryMen.png";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
@@ -69,8 +70,22 @@ const badges = {
 
 const productions = [
     {
+        title: "A Christmas Carol",
+        dates: "December 29th - December 30th",
+        badges: [
+            badges.drama,
+            badges.age,
+            badges.adaptation,
+        ],
+        link: "",
+        image: christmasCarolImage,
+        id: "christmascarol",
+        cast: People.casts.ChristmasCarol_Characters,
+        description: `A faithful retelling of a beautiful Christmas Classic, A Christmas Carol will make you laugh, cry, and maybe even burst into song. Join us for a radio rendition of this ageless Yuletide Tale.`,
+    },
+    {
         title: "Twelve Angry Men",
-        dates: "TBD",
+        dates: "June 12th - June 20th",
         badges: [
             badges.drama,
             badges.age,
@@ -96,21 +111,21 @@ const productions = [
         cast: People.casts.AnimalCrackers_Characters,
         description: "Mayhem and zaniness ensue when a valuable painting goes missing during a party in honor of famed African explorer Captain Spaulding."
     },
-    {
-        title: "Missing the Rain",
-        dates: "TBD",
-        badges: [
-            badges.premiere,
-            badges.drama,
-            badges.original,
-            badges.age,
-        ],
-        link: "",
-        image: missingRainImage,
-        id: "missingtherain",
-        cast: People.casts.MissingTheRain_Characters,
-        description: ""
-    },
+    // {
+    //     title: "Missing the Rain",
+    //     dates: "TBD",
+    //     badges: [
+    //         badges.premiere,
+    //         badges.drama,
+    //         badges.original,
+    //         badges.age,
+    //     ],
+    //     link: "",
+    //     image: missingRainImage,
+    //     id: "missingtherain",
+    //     cast: People.casts.MissingTheRain_Characters,
+    //     description: ""
+    // },
 ];
 
 export default productions;

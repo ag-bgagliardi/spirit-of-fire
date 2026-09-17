@@ -3,7 +3,7 @@ import ShowModal from "../Modals/ShowModal";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/index.css";
-import motherRabbitImage from "../Assets/Covers/MotherRabbit.jpg";
+import homepageImage from "../Assets/Covers/homepageImage.png";
 import productions from "../Data/CurrentShows"
 import ProductionsComingSoon from "./ProductionsComingSoon"
 
@@ -18,36 +18,36 @@ function ProductionsHero() {
             <span className="label-xs color-primary" style={{ letterSpacing: ".3em" }}>Thursday June 11th - Sunday June 14th</span>
           </div>
           <h1 className="serif-italic" style={{ fontSize: 80, lineHeight: .92, letterSpacing: "-.03em", marginBottom: 32 }}>
-            Mother <span className="color-primary-container">Rabbit</span>
+            A Christmas <span className="color-primary-container">Carol</span>
           </h1>
           <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
-            Peter Kotski's mother is sick. His father passed away years ago. His eccentric brothers are... eccentric, and estranged. A family crisis brings them together--for better or worse--and their reunion begets all sorts of hijinks.
+            A faithful retelling of a beautiful Christmas Classic, <span style={{fontStyle:"italic"}}>A Christmas Carol</span> will make you laugh, cry, and maybe even burst into song. Join us for a radio rendition of this ageless Yuletide Tale.
           </p>
-          <button className="btn-ghost" onClick={() => navigate("/motherrabbit")} style={{ marginRight: 20 }}>Read More</button>
-          <a
+          <button className="btn-ghost" onClick={() => navigate("/christmascarol")} style={{ marginRight: 20 }}>Read More</button>
+          {/* <a
             href={"https://events.ticketleap.com/tickets/spirit-of-fire/mother-rabbit"}
             target="_blank"
             rel="noreferrer"
             className="btn-primary"
             style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
-          >Get Tickets</a>
+          >Get Tickets</a> */}
         </div>
         <div style={{ position: "relative" }}>
           <div style={{
             aspectRatio: "3/4",
-            backgroundImage: `url(${motherRabbitImage})`,
+            backgroundImage: `url(${homepageImage})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             maxHeight: "70vh"
           }}>
             <div className="hero_top_tag serif">
-              Running only 6/11-6/14 in Hudson!
+              Running this December in Hudson!
             </div>
             <div style={{ width: "100%", background: "linear-gradient(160deg,#1a0800,#0a0300)", opacity: "40%" }} />
           </div>
           <div className="hero_tag serif">
-            Original Comedy
+            Adaptation
           </div>
         </div>
       </div>
@@ -203,8 +203,8 @@ export default function ProductionsPage() {
 
   return (
     <main className="pat" style={{ minHeight: "100vh" }}>
-      <ProductionsComingSoon />
-      {/* <ProductionsHero /> */}
+      {/* <ProductionsComingSoon /> */}
+      <ProductionsHero />
       <Performances setModalShow={setModalShow} />
       <MainQuote />
       {modalShow && (
