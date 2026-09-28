@@ -21,7 +21,7 @@ function ProductionsHero() {
             A Christmas <span className="color-primary-container">Carol</span>
           </h1>
           <p className="body-md color-on-surface-var" style={{ maxWidth: 500, fontSize: 17, marginBottom: 40 }}>
-            A faithful retelling of a beautiful Christmas Classic, <span style={{fontStyle:"italic"}}>A Christmas Carol</span> will make you laugh, cry, and maybe even burst into song. Join us for a radio rendition of this ageless Yuletide Tale.
+            <strong>A Live Radio-Style Theatrical Presentation</strong> <br /> Dicken's beloved story brought to life with actors, live sound effects, and Christmas carols.
           </p>
           <button className="btn-ghost" onClick={() => navigate("/christmascarol")} style={{ marginRight: 20 }}>Read More</button>
           {/* <a

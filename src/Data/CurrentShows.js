@@ -81,7 +81,7 @@ const productions = [
         image: christmasCarolImage,
         id: "christmascarol",
         cast: People.casts.ChristmasCarol_Characters,
-        description: `A faithful retelling of a beautiful Christmas Classic, A Christmas Carol will make you laugh, cry, and maybe even burst into song. Join us for a radio rendition of this ageless Yuletide Tale.`,
+        description: `A Live Radio-Style Theatrical Presentation. Dicken's beloved story brought to life with actors, live sound effects, and Christmas carols.`,
     },
     {
         title: "Twelve Angry Men",
