@@ -203,8 +203,8 @@ export default function ProductionsPage() {
 
   return (
     <main className="pat" style={{ minHeight: "100vh" }}>
-      {/* <ProductionsComingSoon /> */}
-      <ProductionsHero />
+      <ProductionsComingSoon />
+      {/* <ProductionsHero /> */}
       <Performances setModalShow={setModalShow} />
       <MainQuote />
       {modalShow && (

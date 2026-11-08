@@ -1,4 +1,4 @@
-import ricoImage from "../Assets/People/Rico.png";
+import ricoImage from "../Assets/People/Rico.jpg";
 import benImage from "../Assets/People/Benjamin2.jpg";
 import silasImage from "../Assets/People/SilasWide.jpeg";
 import madelineImage from "../Assets/People/Madeline.jpg";
@@ -75,7 +75,6 @@ const Crew = [
     //     bio: "Barbara Gagliardi has enjoyed involvement in Theatre her whole life, and a deep passion for the arts. She has helped in the ideation, design, and direction of many of our projects both current and past. She spends most of her time now with her husband, children, and grandchildren."
     // },
 ];
-
 const Casts = {
     "MotherRabbit_Feb_2026": [
         {
@@ -490,6 +489,68 @@ const Casts = {
             bio: "",
             image: "",
         },
+    ],
+    "PlayOn_Characters": [
+        {
+            character: "Aggie Manvillle",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Geraldine “Gerry” Dunbar",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Henry Benish",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Polly Benish",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Marla “Smitty” Smith",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Saul Watson",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Billy Carewe",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Violet Imbry",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Louise Peary",
+            name: "",
+            bio: "",
+            image: "",
+        },
+        {
+            character: "Phyllis Montague",
+            name: "",
+            bio: "",
+            image: "",
+        }
     ]
 }
 

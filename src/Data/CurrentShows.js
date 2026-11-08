@@ -1,6 +1,7 @@
 import christmasCarolImage from "../Assets/Covers/homepageImage.png";
 import twelveAngryMenImage from "../Assets/Covers/TwelveAngryMen.png";
 import animalCrackersImage from "../Assets/Covers/AnimalCrackers.jpg";
+import playonImage from "../Assets/Covers/playon.png";
 import missingRainImage from "../Assets/Covers/MissingTheRain.webp";
 import People from "./CastCrew";
 
@@ -69,33 +70,33 @@ const badges = {
 };
 
 const productions = [
+    // {
+    //     title: "A Christmas Carol",
+    //     dates: "December 29th - December 30th",
+    //     badges: [
+    //         badges.drama,
+    //         badges.age,
+    //         badges.adaptation,
+    //     ],
+    //     link: "",
+    //     image: christmasCarolImage,
+    //     id: "christmascarol",
+    //     cast: People.casts.ChristmasCarol_Characters,
+    //     description: `A Live Radio-Style Theatrical Presentation. Dicken's beloved story brought to life with actors, live sound effects, and Christmas carols.`,
+    // },
     {
-        title: "A Christmas Carol",
-        dates: "December 29th - December 30th",
+        title: "Play On!",
+        dates: "June 11th - June 20th",
         badges: [
-            badges.drama,
+            badges.comedy,
             badges.age,
             badges.adaptation,
         ],
         link: "",
-        image: christmasCarolImage,
-        id: "christmascarol",
-        cast: People.casts.ChristmasCarol_Characters,
-        description: `A Live Radio-Style Theatrical Presentation. Dicken's beloved story brought to life with actors, live sound effects, and Christmas carols.`,
-    },
-    {
-        title: "Twelve Angry Men",
-        dates: "June 12th - June 20th",
-        badges: [
-            badges.drama,
-            badges.age,
-            badges.adaptation,
-        ],
-        link: "",
-        image: twelveAngryMenImage,
-        id: "twelveangrymen",
-        cast: People.casts.TwelveAngryMen_Characters,
-        description: `A 19-year-old man has just stood trial for the fatal stabbing of his father. "He doesn't stand a chance," mutters the guard as the 12 jurors are taken into the bleak jury room. It looks like an open-and-shut case—until one of the jurors begins opening the others' eyes to the facts. "This is a remarkable thing about democracy," says the foreign-born juror, "that we are notified by mail to come down to this place—and decide on the guilt or innocence of a man; of a man we have not known before. We have nothing to gain or lose by our verdict. We should not make it a personal thing." But personal it does become, with each juror revealing his or her own character as the various testimonies are re-examined, the murder is re-enacted and a new murder threat is born before their eyes! Tempers get short, arguments grow heated, and the jurors become 12 angry men.`,
+        image: playonImage,
+        id: "playon",
+        cast: People.casts.PlayOn_Characters,
+        description: `One plucky community theatre is about to produce a show called Murder Most Foul, a new “murder mystery play” with the same title as an Agatha Christie novel but with no relation whatsoever. The director/theatre manager, Gerry, thought producing the play was a good idea since the inexperienced playwright has agreed to let the company perform the show for no charge. Gerry, however, had no idea what disasters awaited her: the show is hilariously amateur, the “murder mystery” plot doesn’t really have a murder, and to top it off the playwright keeps changing the story and script only two days from its premiere! It doesn’t help that the cast is disgruntled, and the playwright accidentally deletes the entire sound effect board. All of the disasters come to fruition in Act III when the company performs the actual show with hilarious mishaps as every turn. Play On! is a hilarious love letter to community theatre.`,
     },
     {
         title: "Animal Crackers",
@@ -111,21 +112,21 @@ const productions = [
         cast: People.casts.AnimalCrackers_Characters,
         description: "Mayhem and zaniness ensue when a valuable painting goes missing during a party in honor of famed African explorer Captain Spaulding."
     },
-    // {
-    //     title: "Missing the Rain",
-    //     dates: "TBD",
-    //     badges: [
-    //         badges.premiere,
-    //         badges.drama,
-    //         badges.original,
-    //         badges.age,
-    //     ],
-    //     link: "",
-    //     image: missingRainImage,
-    //     id: "missingtherain",
-    //     cast: People.casts.MissingTheRain_Characters,
-    //     description: ""
-    // },
+    {
+        title: "Missing the Rain",
+        dates: "TBD",
+        badges: [
+            badges.premiere,
+            badges.drama,
+            badges.original,
+            badges.age,
+        ],
+        link: "",
+        image: missingRainImage,
+        id: "missingtherain",
+        cast: People.casts.MissingTheRain_Characters,
+        description: ""
+    },
 ];
 
 export default productions;
